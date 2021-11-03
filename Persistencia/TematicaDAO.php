@@ -124,7 +124,7 @@ class TematicaDAO implements DAO
             $tematica->setCodigo($row->id_tematica);
             $tematica->setNombre($row->nombre_tematica);
             $tematica->setDuracion($row->duracion_tematica);
-            $tematica->setDuracion($row->descripcion_tematica);
+            $tematica->setDescripcion($row->descripcion_tematica);
             
             $SesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
             $auxiliar1 = $SesionClaseDAO->listarIDSesionClase($row->id_tematica);
