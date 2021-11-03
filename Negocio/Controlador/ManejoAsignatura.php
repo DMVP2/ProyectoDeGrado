@@ -76,7 +76,7 @@ class ManejoAsignatura
     }
 
     /**
-     * Método que actualiza una Asignatura
+     * Método que actualiza una asignatura
      * 
      * @param Asignatura $pAsignatura
      */
