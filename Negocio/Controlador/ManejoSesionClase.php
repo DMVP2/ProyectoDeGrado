@@ -265,4 +265,30 @@ class ManejoSesionClase
         $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
         $cuestionarioDAO->activarPregunta($pCuestionario);
     }
+
+
+    /**
+     * Método que obtiene la lista de los cuestionarios por una sesion de clase dada
+     * 
+     * @param int $pCodigo
+     * @return Array $Cuestionario
+     */
+    public function listarFichasBibliograficasPorSesion($pCodigo)
+    {
+        $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
+        return $cuestionarioDAO->listarFichasBibliograficasPorSesion($pCodigo);
+    }
+
+
+    /**
+     * Método que obtiene la lista de los cuestionarios por una sesion de clase dada
+     * 
+     * @param int $pCodigo
+     * @return Array $Cuestionario
+     */
+    public function listarCuestionarioPorSesionClase($pCodigo)
+    {
+        $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
+        return $cuestionarioDAO->listarCuestionarioPorSesionClase($pCodigo);
+    }
 }
