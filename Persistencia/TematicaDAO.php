@@ -126,9 +126,9 @@ class TematicaDAO implements DAO
             $tematica->setDuracion($row->duracion_tematica);
             $tematica->setDescripcion($row->descripcion_tematica);
             
-            $SesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
-            $auxiliar1 = $SesionClaseDAO->listarIDSesionClase($row->id_tematica);
-            $tematica->setDuracion($auxiliar1);
+            $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
+            $auxiliar1 = $sesionClaseDAO->listarIDSesionClase($row->id_tematica);
+            $tematica->setSesionesClase($auxiliar1);
         } 
         else
         {
@@ -193,11 +193,11 @@ class TematicaDAO implements DAO
             $tematica->setCodigo($row->id_tematica);
             $tematica->setNombre($row->nombre_tematica);
             $tematica->setDuracion($row->duracion_tematica);
-            $tematica->setDuracion($row->descripcion_tematica);
+            $tematica->setDescripcion($row->descripcion_tematica);
             
-            $SesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
-            $auxiliar1 = $SesionClaseDAO->listarIDSesionClasePorTematica($row->id_tematica);
-            $tematica->setDuracion($auxiliar1);
+            $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
+            $auxiliar1 = $sesionClaseDAO->listarIDSesionClasePorTematica($row->id_tematica);
+            $tematica->setSesionesClase($auxiliar1);
 
             $datos[] = $tematica;
         }
