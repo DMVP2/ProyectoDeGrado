@@ -1,6 +1,6 @@
 <?php
 
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "AsignaturaDAO.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "BibliografiaDAO.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "CompetenciaDAO.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "AsignaturaDAO.php");
 
@@ -59,9 +59,10 @@ class ManejoAsignatura
      */
     public function listarAsignaturas()
     {
-        $asignaturaDAO = AsignaturaDAO::getTematicaDAO($this->conexion);
+        $asignaturaDAO = AsignaturaDAO::getAsignaturaDAO($this->conexion);
         return $asignaturaDAO->listarAsignaturas();
     }
+
 
     /**
      * Método que busca una asignatura por medio de su código
@@ -131,6 +132,19 @@ class ManejoAsignatura
         return $competenciaDAO->listarCompetencias();
     }
 
+
+    /**
+     * Método que obtiene la lista de los codigos de las competencias de una asignatura dada
+     * 
+     * @param int $pCodigo
+     * @return Array $competencias
+     */
+    public function listarCompetenciasPorAsignatura($pCodigo)
+    {
+        $asignaturaDAO = AsignaturaDAO::getAsignaturaDAO($this->conexion);
+        return $asignaturaDAO->listarCompetenciasPorAsignatura($pCodigo);
+    }
+
     /**
      * Método que busca una competencia por medio de su código
      * 
@@ -196,6 +210,18 @@ class ManejoAsignatura
     {
         $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
         return $bibliografiaDAO->listarBibliografias();
+    }
+
+     /**
+     * Método que obtiene la lista de los codigos de las bibliografias de una asignatura dada
+     * 
+     * @param int $pCodigo
+     * @return Array $bibliografias
+     */
+    public function listarBibliografiaPorAsignatura($pCodigo)
+    {
+        $asignaturaDAO = AsignaturaDAO::getAsignaturaDAO($this->conexion);
+        return $asignaturaDAO->listarBibliografiaPorAsignatura($pCodigo);
     }
 
     /**

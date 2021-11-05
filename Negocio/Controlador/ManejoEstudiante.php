@@ -62,6 +62,18 @@ class ManejoEstudiante
         return $estudianteDAO->listarEstudiante();
     }
 
+     /**
+     * Método que obtiene la lista de los codigos de las estudiantes de una asignatura dada
+     * 
+     * @param int $pCodigo
+     * @return Array $estudiantes
+     */
+    public function listarIDEstudiantePorAsignatura($pCodigo)
+    {
+        $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
+        return $estudianteDAO->listarIDEstudiantePorAsignatura($pCodigo);
+    }
+
     /**
      * Método que busca un estudiante por medio de su código
      * 
