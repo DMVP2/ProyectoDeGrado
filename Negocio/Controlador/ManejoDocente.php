@@ -62,6 +62,18 @@ class ManejoDocente
         return $docenteDAO->listarDocentes();
     }
 
+     /**
+     * Método que obtiene la lista de los codigos de los docentes de una asignatura dada
+     * 
+     * @param int $pCodigo
+     * @return Array $docentes
+     */
+    public function listarIDDocentePorHorarioDeAtencion($pCodigo)
+    {
+        $docenteDAO = DocenteDAO::getEstudianteDAO($this->conexion);
+        return $docenteDAO->listarIDDocentePorHorarioDeAtencion($pCodigo);
+    }
+
     /**
      * Método que busca un docente por medio de su código
      * 
