@@ -99,7 +99,7 @@ class SesionClaseDAO implements DAO
      * 
      * @param SesionClase $pSesionClase
      */
-    public function crearSesionClaseDAO($pSesionClase)
+    public function crearSesionClase($pSesionClase)
     {
         $sql = "AQUI SE INSERTA EL SQL";
         pg_query($this->conexion, $sql);
