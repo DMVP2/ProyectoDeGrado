@@ -80,13 +80,21 @@ include_once('routes.php');
 
 <body>
 
+    <!-- Sidenav -->
+
     <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . "sidebar.php";?>
+
+    <!-- Fin Sidenav -->
 
     <!-- Contenido principal -->
 
     <div class="main-content" id="panel">
 
+        <!-- Topnav -->
+
         <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . "topnav.php";?>
+
+        <!-- Fin Topnav -->
 
         <!-- Header -->
 
@@ -504,20 +512,7 @@ include_once('routes.php');
 
             <!-- Footer -->
 
-            <footer class="footer pt-0">
-                <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-lg-6">
-                        <div class="copyright text-center  text-lg-left  text-muted"> &copy; 2020 <a
-                                href="https://www.creative-tim.com" class="font-weight-bold ml-1"
-                                target="_blank"> Creative Tim </a>
-                        </div>
-                        <div class="copyright text-center  text-lg-left  text-muted"> &copy; 2021 - 2022 <a
-                                href="https://www.creative-tim.com" class="font-weight-bold ml-1"
-                                target="_blank"> Grupo PG_2021-01-01 </a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . "footer.php";?>
 
             <!-- Fin Footer -->
 
@@ -530,24 +525,24 @@ include_once('routes.php');
 
     <!-- Core Scripts -->
 
-    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/js-cookie/js.cookie.js"></script>
-    <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-    <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/jquery/dist/jquery.min.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/js-cookie/js.cookie.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js'?>></script>
 
     <!-- Fin Core Scripts -->
 
     <!-- JavaScript opcional -->
 
-    <script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/chart.js/dist/Chart.min.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/chart.js/dist/Chart.extension.js'?>></script>
 
     <!-- Fin JavaScrtipt opcional -->
 
     <!-- Argon JavaScript -->
 
-    <script src="assets/js/argon.js?v=1.2.0"></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/js/argon.js?v=1.2.0'?>></script>
 
     <!-- Fin Argon JavaScript -->
 
