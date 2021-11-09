@@ -1,21 +1,29 @@
 @charset 'UTF-8';
-/*!
 
-=========================================================
-* Argon Dashboard - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
+/**
+* CSS Principal
+* 
+* Author: Autor del template: Creative Tim
+* Author: Autor del aplicativo/proyecto final: Grupo PG_2021-01-01
+* Copyright: Creado por: Creative Tim
+* Copyright: Codificado por: www.creative-tim.com
+* Copyright: Modificado como: RetoñosApp: Una plataforma de enseñanza virtual para apoyar la enseñanza de la programación en el aula
+* Copyright: Modificado por: Grupo PG_2021-01-01
+* 
+* Version: V 1.2.0
+* See: Página del producto: https://www.creative-tim.com/product/argon-dashboard
+* 
+* Package: Presentacion
+* 
+* El grupo de trabajo PG_2021-01-01 del proyecto "RetoñosApp: Una plataforma de enseñanza virtual para apoyar la enseñanza de la programación en el aula" 
+* del programa de Ingeniería de Sistemas de la Facultad de Ingeniería de la Universidad El Bosque es consciente de la utilización de la plantilla titulada 
+* "Argon Dashboard" como base para el desarrollo de la interfaz gráfica de usuario (GUI) de su proyecto final. Por lo anterior, a través de este mensaje se 
+* hace claridad de la autoría de Creative Tim (www.creative-tim.com) sobre la plantilla utilizada, dándole así el respectivo reconocimiento a su trabajo y 
+* por ende los derechos que tiene sobre este. Igualmente, se hace claridad que la plantilla y todo su contenido fue liberado a través de GitHub para su libre 
+* utilización y modificación siempre y cuando se respeten los derechos de autor, siendo esta libertad bajo la cual trabaja el grupo PG_2021-01-01 para el 
+* desarrollo de su proyecto de grado.
 */
+
 :root
 {
     --blue: #5e72e4;
@@ -6381,8 +6389,8 @@ input[type='button'].btn-block
 .card-img-top,
 .card-img-bottom
 {
-    width: 100%; 
-
+    width: 100%;
+    
     flex-shrink: 0;
 }
 
