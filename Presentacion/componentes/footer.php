@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Componente: Footer
+ * 
  * @author Autor del template: Creative Tim
  * @author Autor del aplicativo/proyecto final: Grupo PG_2021-01-01
  * @copyright Creado por: Creative Tim

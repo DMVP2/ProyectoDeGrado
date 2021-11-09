@@ -80,11 +80,11 @@ include_once('routes.php');
 
 <body>
 
-    <!-- Sidenav -->
+    <!-- Sidebar -->
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . "sidebar.php";?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebar.php';?>
 
-    <!-- Fin Sidenav -->
+    <!-- Fin Sidebar -->
 
     <!-- Contenido principal -->
 
@@ -92,7 +92,7 @@ include_once('routes.php');
 
         <!-- Topnav -->
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . "topnav.php";?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'topnav.php';?>
 
         <!-- Fin Topnav -->
 
@@ -117,11 +117,9 @@ include_once('routes.php');
                             <a href="#" class="btn btn-sm btn-neutral">Filters</a>
                         </div>
                     </div>
-                    <!-- Card stats -->
                     <div class="row">
                         <div class="col-xl-3 col-md-6">
                             <div class="card card-stats">
-                                <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
@@ -144,7 +142,6 @@ include_once('routes.php');
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card card-stats">
-                                <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
@@ -167,7 +164,6 @@ include_once('routes.php');
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card card-stats">
-                                <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
@@ -190,7 +186,6 @@ include_once('routes.php');
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card card-stats">
-                                <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
@@ -218,7 +213,8 @@ include_once('routes.php');
 
         <!-- Fin Header -->
 
-        <!-- Page content -->
+        <!-- Contenido -->
+
         <div class="container-fluid mt--6">
             <div class="row">
                 <div class="col-xl-8">
@@ -512,11 +508,14 @@ include_once('routes.php');
 
             <!-- Footer -->
 
-            <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . "footer.php";?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'footer.php';?>
 
             <!-- Fin Footer -->
 
         </div>
+
+        <!-- Fin contenido -->
+
     </div>
 
     <!-- Fin contenido principal -->
