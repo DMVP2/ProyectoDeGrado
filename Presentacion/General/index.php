@@ -1,8 +1,6 @@
 <?php
 
 /**
- * Clase que constituye el DAO de la clase "Tematica"
- * 
  * @author Autor del template: Creative Tim
  * @author Autor del aplicativo/proyecto final: Grupo PG_2021-01-01
  * @copyright Creado por: Creative Tim

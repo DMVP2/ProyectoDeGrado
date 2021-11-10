@@ -180,7 +180,6 @@ class EstudianteDAO implements DAO
      */
     public function listarEstudiantes()
     {
-ECHO "HI";
 
         $sql = "SELECT * FROM ESTUDIANTE";
 
@@ -193,13 +192,13 @@ ECHO "HI";
 
             $estudiante = new Estudiante();
 
-            $estudiante->setCodigo($row->id_estudiante);
-            $estudiante->setNombre($row->nombre_estudiante);
-            $estudiante->setApellido($row->apellido_estudiante);
-            $estudiante->setEdad($row->edad_estudiante);
-            $estudiante->setCorreoElectronicoPrincipal($row->email_principal);
-            $estudiante->setCorreoElectronicoSecundario($row->email_secundario );
-            $estudiante->setSemestre($row->semestre_estudiante);
+            $estudiante->setCodigo($row["id_estudiante"]);
+            $estudiante->setNombre($row["nombre_estudiante"]);
+            $estudiante->setApellido($row["apellido_estudiante"]);
+            $estudiante->setEdad($row["edad_estudiante"]);
+            $estudiante->setCorreoElectronicoPrincipal($row["email_principal"]);
+            $estudiante->setCorreoElectronicoSecundario($row["email_secundario"]);
+            $estudiante->setSemestre($row["semestre_estudiante"]);
 
             $datos[] = $estudiante;
         }

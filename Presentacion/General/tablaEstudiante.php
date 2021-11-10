@@ -1,8 +1,6 @@
 <?php
 
 /**
- * Clase que constituye el DAO de la clase "Tematica"
- * 
  * @author Autor del template: Creative Tim
  * @author Autor del aplicativo/proyecto final: Grupo PG_2021-01-01
  * @copyright Creado por: Creative Tim
@@ -146,21 +144,46 @@ $listadoEstudiantes = $manejoEstudiante->listarEstudiantes();
                                         <th scope="col">Correo electrónico principal</th>
                                         <th scope="col">Correo electrónico secundario</th>
                                         <th scope="col">Semestre</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody class="list">
                                     <?php
 
-                                    foreach ($listadoEstudiantes as $estudiante) {
+                                    $num_items_by_page = 2;
 
-                                        echo "<tr>";
-                                        echo "<td>" . $title->getNombre() . "</td>";
-                                        echo "<td>" . $title->getApellido() . "</td>";
-                                        echo "<td>" . $title->getEdad() . "</td>";
-                                        echo "<td>" . $title->getCorreoElectronicoPrincipal() . "</td>";
-                                        echo "<td>" . $title->getCorreoElectronicoSecundario() . "</td>";
-                                        echo "<td>" . $title->getSemestre() . "</td>";
-                                        echo "<td class='text-right'>
+                                    $num_total_rows = count($listadoEstudiantes);
+
+                                    if ($num_total_rows > 0) {
+                                        $page = false;
+
+                                        if (isset($_GET["page"])) {
+                                            $page = $_GET["page"];
+                                        }
+
+                                        if (!$page) {
+                                            $start = 0;
+                                            $page = 1;
+                                        } else {
+                                            $start = ($page - 1) * $num_items_by_page;
+                                        }
+
+                                        $total_pages = ceil($num_total_rows / $num_items_by_page);
+
+                                        $numero = 0;
+                                        foreach ($listadoEstudiantes as $estudiante) {
+
+                                            $numero = $numero + 1;
+
+                                            echo "<tr>";
+                                            echo "<td>" . $numero . "</td>";
+                                            echo "<td>" . $estudiante->getNombre() . "</td>";
+                                            echo "<td>" . $estudiante->getApellido() . "</td>";
+                                            echo "<td>" . $estudiante->getEdad() . "</td>";
+                                            echo "<td>" . $estudiante->getCorreoElectronicoPrincipal() . "</td>";
+                                            echo "<td>" . $estudiante->getCorreoElectronicoSecundario() . "</td>";
+                                            echo "<td>" . $estudiante->getSemestre() . "</td>";
+                                            echo "<td class='text-right'>
                                                 <div class='dropdown'>
                                                     <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i></a>
                                                     <div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
@@ -169,98 +192,61 @@ $listadoEstudiantes = $manejoEstudiante->listarEstudiantes();
                                                     </div>
                                                 </div>
                                                 </td>";
-                                        echo "</tr>";
+                                            echo "</tr>";
+                                        }
+
+                                        echo '<nav aria-label="...">';
+                                        echo '<ul class="pagination justify-content-end mb-0">';
+
+                                        if ($total_pages > 1) 
+                                        {
+                                            if ($page != 1) 
+                                            {
+                                                echo '<li class="page-item"><a class="page-link" href="index.php?page='. ($page - 1) .'"><span aria-hidden="true">&laquo;</span></a></li>';
+                                            }
+
+                                            for ($i = 1; $i <= $total_pages; $i++) 
+                                            {
+                                                if ($page == $i) 
+                                                {
+                                                    echo '<li class="page-item active"><a class="page-link" href="#">'. $page .'</a></li>';
+                                                } 
+                                                else 
+                                                {
+                                                    echo '<li class="page-item"><a class="page-link" href="index.php?page='.$i.'">'.$i.'</a></li>';
+                                                }
+                                            }
+
+                                            if ($page != $total_pages) {
+
+
+                                                echo '<li class="page-item"><a class="page-link" href="index.php?page='. ($page + 1) .'"><span aria-hidden="true">&raquo;</span></a></li>';
+                                            }
+                                        }
+                                        echo '</ul>';
+                                        echo '</nav>';
                                     }
                                     ?>
-                                    <td class="budget">
-                                        $2500 USD
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-dot mr-4">
-                                            <i class="bg-warning"></i>
-                                            <span class="status">pending</span>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div class="avatar-group">
-                                            <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                                <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg">
-                                            </a>
-                                            <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                                <img alt="Image placeholder" src="../assets/img/theme/team-2.jpg">
-                                            </a>
-                                            <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                                <img alt="Image placeholder" src="../assets/img/theme/team-3.jpg">
-                                            </a>
-                                            <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                                <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="completion mr-2">60%</span>
-                                            <div>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-                                            </div>
-                                        </div>
-                                    </td>
                                 </tbody>
                             </table>
                         </div>
-                        <!-- Card footer -->
-                        <div class="card-footer py-4">
-                            <nav aria-label="...">
-                                <ul class="pagination justify-content-end mb-0">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1">
-                                            <i class="fas fa-angle-left"></i>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item active">
-                                        <a class="page-link" href="#">1</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">
-                                            <i class="fas fa-angle-right"></i>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+
+                        </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-
-            <!-- Footer -->
-
-            <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'footer.php'; ?>
-
-            <!-- Fin Footer -->
-
         </div>
 
-        <!-- Fin contenido -->
+        <!-- Footer -->
+
+        <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'footer.php'; ?>
+
+        <!-- Fin Footer -->
+
+    </div>
+
+    <!-- Fin contenido -->
 
     </div>
 
