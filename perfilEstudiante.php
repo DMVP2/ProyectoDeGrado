@@ -272,28 +272,24 @@ switch ($i) {
 
     <!-- Core Scripts -->
 
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/jquery/dist/jquery.min.js'?>></script>
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js'?>>
-    </script>
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/js-cookie/js.cookie.js'?>></script>
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js'?>>
-    </script>
-    <script
-        src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js'?>>
-    </script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/jquery/dist/jquery.min.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/bootstrap/dist/js/bootstrap.bundle.min.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/js-cookie/js.cookie.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/jquery.scrollbar/jquery.scrollbar.min.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js'?>></script>
 
     <!-- Fin Core Scripts -->
 
     <!-- JavaScript opcional -->
 
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/chart.js/dist/Chart.min.js'?>></script>
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/vendor/chart.js/dist/Chart.extension.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/chart.js/dist/Chart.min.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/chart.js/dist/Chart.extension.js'?>></script>
 
     <!-- Fin JavaScrtipt opcional -->
 
     <!-- Argon JavaScript -->
 
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'assets/js/argon.js?v=1.2.0'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'js/argon.js?v=1.2.0'?>></script>
 
     <!-- Fin Argon JavaScript -->
 
