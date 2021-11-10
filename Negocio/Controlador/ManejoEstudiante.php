@@ -56,10 +56,10 @@ class ManejoEstudiante
      * 
      * @return Array $estudiante 
      */
-    public function listarEstudiantes()
+    public function listarEstudiantes($pInicio, $pNumeroDeItemsPorPagina)
     {
         $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-        return $estudianteDAO->listarEstudiantes();
+        return $estudianteDAO->listarEstudiantes($pInicio, $pNumeroDeItemsPorPagina);
     }
 
      /**
@@ -102,7 +102,7 @@ class ManejoEstudiante
      * 
      * @param int $pCodigo
      */
-    public function activarEstudiante($pIdDocument)
+    public function activarEstudiante($pEstudiante)
     {
         $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
         $estudianteDAO->activarEstudiante($pEstudiante);
@@ -117,6 +117,17 @@ class ManejoEstudiante
     {
         $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
         $estudianteDAO->desactivarEstudiante($pEstudiante);
+    }
+
+    /**
+     * Método que cuenta la cantidad total de estudiantes registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadEstudiantes()
+    {
+        $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
+        return $estudianteDAO->cantidadEstudiantes();
     }
 
      /**
@@ -169,7 +180,7 @@ class ManejoEstudiante
      * 
      * @param int $pCodigo
      */
-    public function activarProgreso($pIdDocument)
+    public function activarProgreso($pProgreso)
     {
         $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
         $progresoDAO->activarProgreso($pProgreso);

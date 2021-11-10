@@ -178,10 +178,10 @@ class EstudianteDAO implements DAO
      * @param int $pCodigo
      * @return Estudiante $datos
      */
-    public function listarEstudiantes()
+    public function listarEstudiantes($pInicio, $pNumeroDeItemsPorPagina)
     {
 
-        $sql = "SELECT * FROM ESTUDIANTE";
+        $sql = "SELECT * FROM ESTUDIANTE ORDER BY id_estudiante ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
@@ -229,6 +229,23 @@ class EstudianteDAO implements DAO
         }
 
         return $datos;
+    }
+
+    /**
+     * Método que cuenta la cantidad total de estudiantes registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadEstudiantes()
+    {
+
+        $sql = "SELECT * FROM ESTUDIANTE";
+
+        $respuesta1 = pg_query($this->conexion, $sql);
+
+        $cantidad = pg_num_rows($respuesta1);
+
+        return $cantidad;
     }
 
     /**

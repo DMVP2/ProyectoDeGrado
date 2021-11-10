@@ -24,9 +24,12 @@
 
 include_once('routes.php');
 
-// Importaciones de clases
+// Conexión
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . 'ConexionSQL.php');
+
+// Importaciones de clases
+
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoEstudiante.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
 
@@ -35,11 +38,9 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Est
 $conexion = ConexionSQL::getInstancia();
 $conexionActual = $conexion->conectarBD();
 
-// Ejecución de métodos
+// Llamado de manejos
 
 $manejoEstudiante = new ManejoEstudiante($conexionActual);
-
-$listadoEstudiantes = $manejoEstudiante->listarEstudiantes();
 
 ?>
 <!DOCTYPE html>
@@ -133,8 +134,10 @@ $listadoEstudiantes = $manejoEstudiante->listarEstudiantes();
                             <h3 class="mb-0">Estudiantes</h3>
                         </div>
                         <div class="table-responsive">
-                            <?php $i ?>
                             <table class="table align-items-center table-flush">
+
+                                <!-- Encabezados de la tabla -->
+
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">No°</th>
@@ -147,30 +150,40 @@ $listadoEstudiantes = $manejoEstudiante->listarEstudiantes();
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
+
+                                <!-- Fin encabezados de la tabla -->
+
                                 <tbody class="list">
                                     <?php
 
-                                    $num_items_by_page = 2;
+                                    $inicio = 0;
 
-                                    $num_total_rows = count($listadoEstudiantes);
+                                    $numeroDeItemsPorPagina = 5;
 
-                                    if ($num_total_rows > 0) {
-                                        $page = false;
+                                    $i;
 
-                                        if (isset($_GET["page"])) {
-                                            $page = $_GET["page"];
+                                    $numeroTotalDeFilas = $manejoEstudiante->cantidadEstudiantes();
+
+                                    if ($numeroTotalDeFilas > 0) {
+                                        $pagina = false;
+
+                                        if (isset($_GET["pagina"])) {
+                                            $pagina = $_GET["pagina"];
                                         }
 
-                                        if (!$page) {
-                                            $start = 0;
-                                            $page = 1;
+                                        if (!$pagina) {
+                                            $inicio = 0;
+                                            $pagina = 1;
                                         } else {
-                                            $start = ($page - 1) * $num_items_by_page;
+                                            $inicio = ($pagina - 1) * $numeroDeItemsPorPagina;
                                         }
 
-                                        $total_pages = ceil($num_total_rows / $num_items_by_page);
+                                        $listadoEstudiantes = $manejoEstudiante->listarEstudiantes($inicio, $numeroDeItemsPorPagina);
+
+                                        $totalPaginas = ceil($numeroTotalDeFilas / $numeroDeItemsPorPagina);
 
                                         $numero = 0;
+
                                         foreach ($listadoEstudiantes as $estudiante) {
 
                                             $numero = $numero + 1;
@@ -194,43 +207,37 @@ $listadoEstudiantes = $manejoEstudiante->listarEstudiantes();
                                                 </td>";
                                             echo "</tr>";
                                         }
-
+                                        echo '<div class="card-footer py-4">';
                                         echo '<nav aria-label="...">';
                                         echo '<ul class="pagination justify-content-end mb-0">';
 
-                                        if ($total_pages > 1) 
-                                        {
-                                            if ($page != 1) 
-                                            {
-                                                echo '<li class="page-item"><a class="page-link" href="index.php?page='. ($page - 1) .'"><span aria-hidden="true">&laquo;</span></a></li>';
+                                        if ($totalPaginas > 1) {
+                                            if ($pagina != 1) {
+                                                echo '<li class="page-item disabled"><a class="page-link" href="tablaEstudiante.php?pagina=' . ($pagina - 1) . '"><i class="fas fa-angle-left"></i></a></li>';
                                             }
 
-                                            for ($i = 1; $i <= $total_pages; $i++) 
-                                            {
-                                                if ($page == $i) 
-                                                {
-                                                    echo '<li class="page-item active"><a class="page-link" href="#">'. $page .'</a></li>';
-                                                } 
-                                                else 
-                                                {
-                                                    echo '<li class="page-item"><a class="page-link" href="index.php?page='.$i.'">'.$i.'</a></li>';
+                                            for ($i = 1; $i <= $totalPaginas; $i++) {
+                                                if ($pagina == $i) {
+                                                    echo '<li class="page-item active"><a class="page-link" href="#">' . $pagina . '</a></li>';
+                                                } else {
+                                                    echo '<li class="page-item"><a class="page-link" href="tablaEstudiante.php?pagina=' . $i . '">' . $i . '</a></li>';
                                                 }
                                             }
 
-                                            if ($page != $total_pages) {
+                                            if ($pagina != $totalPaginas) {
 
 
-                                                echo '<li class="page-item"><a class="page-link" href="index.php?page='. ($page + 1) .'"><span aria-hidden="true">&raquo;</span></a></li>';
+                                                echo '<li class="page-item"><a class="page-link" href="tablaEstudiante.php?pagina=' . ($pagina + 1) . '"><i class="fas fa-angle-right"></i></a></li>';
                                             }
                                         }
                                         echo '</ul>';
                                         echo '</nav>';
+                                        echo '</div>';
                                     }
                                     ?>
                                 </tbody>
                             </table>
                         </div>
-
                         </ul>
                         </nav>
                     </div>
