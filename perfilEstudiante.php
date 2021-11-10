@@ -34,21 +34,20 @@ include_once('routes.php');
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"
-        content="RetoñosApp: Una plataforma de enseñanza virtual para apoyar la enseñanza de la programación en el aula">
+    <meta name="description" content="RetoñosApp: Una plataforma de enseñanza virtual para apoyar la enseñanza de la programación en el aula">
     <meta name="author" content="Creative Tim">
 
     <!-- Fin metadata -->
 
     <!-- Título -->
 
-    <title><?php echo NOMBRE_PROYECTO?></title>
+    <title><?php echo NOMBRE_PROYECTO ?></title>
 
     <!-- Fin título -->
 
     <!-- Favicon -->
 
-    <link rel="icon" href=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/brand/favicon.png'?> type="image/png">
+    <link rel="icon" href=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/brand/favicon.png' ?> type="image/png">
 
     <!-- Fin Favicon -->
 
@@ -60,17 +59,14 @@ include_once('routes.php');
 
     <!-- Iconos -->
 
-    <link rel="stylesheet" href=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/nucleo/css/nucleo.css'?>
-        type="text/css">
-    <link rel="stylesheet"
-        href=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/@fortawesome/fontawesome-free/css/all.min.css'?>
-        type="text/css">
+    <link rel="stylesheet" href=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/nucleo/css/nucleo.css' ?> type="text/css">
+    <link rel="stylesheet" href=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/@fortawesome/fontawesome-free/css/all.min.css' ?> type="text/css">
 
     <!-- Fin iconos -->
 
     <!-- Main CSS -->
 
-    <link rel="stylesheet" href=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'css/argon.css?v=1.2.0'?> type="text/css">
+    <link rel="stylesheet" href=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'css/argon.css?v=1.2.0' ?> type="text/css">
 
     <!-- Fin Main CSS -->
 
@@ -80,7 +76,7 @@ include_once('routes.php');
 
     <!-- Sidebar -->
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebar.php';?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarEstudiante.php'; ?>
 
     <!-- Fin Sidebar -->
 
@@ -90,14 +86,13 @@ include_once('routes.php');
 
         <!-- Topnav -->
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'topnav.php';?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'topnav.php'; ?>
 
         <!-- Fin Topnav -->
 
         <!-- Header -->
 
-        <div class="header pb-6 d-flex align-items-center"
-            style="min-height: 500px; background-image: url(<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/profile-cover.jpg'?>); background-size: cover; background-position: center top;">
+        <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/profile-cover.jpg' ?>); background-size: cover; background-position: center top;">
             <span class="mask bg-gradient-default opacity-8"></span>
             <div class="container-fluid d-flex align-items-center">
                 <div class="row">
@@ -115,41 +110,39 @@ include_once('routes.php');
 
         <?php
 
-$imagenPerfil = 0;
+        $imagenPerfil = 0;
 
-$i = rand(1, 5);
+        $i = rand(1, 5);
 
-switch ($i) {
-    case 1:
-        $imagenPerfil = "Fondo_Geometrico_Verde.jpg";
-        break;
-    case 2:
-        $imagenPerfil = "Fondo_Geometrico_Rojo.jpg";
-        break;
-    case 3:
-        $imagenPerfil = "Fondo_Geometrico_Azul.jpg";
-        break;
-    case 4:
-        $imagenPerfil = "Fondo_Geometrico_Naranja.jpg";
-        break;
-    case 5:
-        $imagenPerfil = "Fondo_Geometrico_Morado.jpg";
-        break;
-}
-?>
+        switch ($i) {
+            case 1:
+                $imagenPerfil = "Fondo_Geometrico_Verde.jpg";
+                break;
+            case 2:
+                $imagenPerfil = "Fondo_Geometrico_Rojo.jpg";
+                break;
+            case 3:
+                $imagenPerfil = "Fondo_Geometrico_Azul.jpg";
+                break;
+            case 4:
+                $imagenPerfil = "Fondo_Geometrico_Naranja.jpg";
+                break;
+            case 5:
+                $imagenPerfil = "Fondo_Geometrico_Morado.jpg";
+                break;
+        }
+        ?>
 
         <div class="container-fluid mt--6">
             <div class="row">
                 <div class="col-xl-4 order-xl-2">
                     <div class="card card-profile">
-                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/' . $imagenPerfil?> height="259"
-                            alt="Image placeholder" class="card-img-top">
+                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/' . $imagenPerfil ?> height="275" alt="Image placeholder" class="card-img-top">
                         <div class="row justify-content-center">
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
-                                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/team-4.jpg'?>
-                                            class="rounded-circle">
+                                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/team-4.jpg' ?> class="rounded-circle">
                                     </a>
                                 </div>
                             </div>
@@ -176,7 +169,6 @@ switch ($i) {
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -186,7 +178,10 @@ switch ($i) {
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h3 class="mb-0">Ajustes del perfil</h3>
+                                    <h3 class="mb-0">Edit profile </h3>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <button type="button" class="btn btn-outline-success">Actualizar perfil</button>
                                 </div>
                             </div>
                         </div>
@@ -198,52 +193,45 @@ switch ($i) {
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-username">Nickname</label>
-                                                <input type="text" id="nickname" class="form-control"
-                                                    placeholder="Ejemplo: User12345">
+                                                <input type="text" id="nickname" class="form-control" placeholder="Ejemplo: User12345">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-city">Nombre</label>
-                                                <input type="text" id="nombre" class="form-control"
-                                                    placeholder="Ejemplo: David Santiago">
+                                                <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: David Santiago">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-country">Apellido</label>
-                                                <input type="text" id="apellido" class="form-control"
-                                                    placeholder="Ejemplo: Agudelo Quinguirejo">
+                                                <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Email
                                                     principal</label>
-                                                <input type="email" id="emailPrincipal" class="form-control"
-                                                    placeholder="user12345@unbosque.edu.co">
+                                                <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Email
                                                     principal</label>
-                                                <input type="email" id="emailSecundario" class="form-control"
-                                                    placeholder="user@tuDominio.com">
+                                                <input type="email" id="emailSecundario" class="form-control" placeholder="user@tuDominio.com">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Semestre</label>
-                                                <input type="number" id="input-email" class="form-control"
-                                                    placeholder="jesse@example.com">
+                                                <input type="number" id="input-email" class="form-control" placeholder="jesse@example.com">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Edad</label>
-                                                <input type="number" id="input-email" class="form-control" value="1"
-                                                    disabled="true">
+                                                <input type="number" id="input-email" class="form-control" value="1" disabled="true">
                                             </div>
                                         </div>
                                     </div>
@@ -256,7 +244,7 @@ switch ($i) {
 
             <!-- Footer -->
 
-            <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'footer.php';?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'footer.php'; ?>
 
             <!-- Fin Footer -->
 
@@ -272,24 +260,26 @@ switch ($i) {
 
     <!-- Core Scripts -->
 
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/jquery/dist/jquery.min.js'?>></script>
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/bootstrap/dist/js/bootstrap.bundle.min.js'?>></script>
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/js-cookie/js.cookie.js'?>></script>
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/jquery.scrollbar/jquery.scrollbar.min.js'?>></script>
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/jquery/dist/jquery.min.js' ?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/bootstrap/dist/js/bootstrap.bundle.min.js' ?>>
+    </script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/js-cookie/js.cookie.js' ?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/jquery.scrollbar/jquery.scrollbar.min.js' ?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js' ?>>
+    </script>
 
     <!-- Fin Core Scripts -->
 
     <!-- JavaScript opcional -->
 
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/chart.js/dist/Chart.min.js'?>></script>
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/chart.js/dist/Chart.extension.js'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/chart.js/dist/Chart.min.js' ?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'vendor/chart.js/dist/Chart.extension.js' ?>></script>
 
     <!-- Fin JavaScrtipt opcional -->
 
     <!-- Argon JavaScript -->
 
-    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'js/argon.js?v=1.2.0'?>></script>
+    <script src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'js/argon.js?v=1.2.0' ?>></script>
 
     <!-- Fin Argon JavaScript -->
 

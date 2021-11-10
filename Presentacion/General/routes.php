@@ -23,7 +23,8 @@ define('RUTA_PERSISTENCIA', '/Persistencia/');
 
 // Rutas capa de negocio
 
-define('RUTA_ENTIDADES', '/Negocio/Entidades/');
+define('RUTA_ENTIDADES', '/Negocio/Entidad/');
+define('RUTA_MANEJOS', '/Negocio/Controlador/');
 
 // Rutas referentes al manejo de sesiones
 

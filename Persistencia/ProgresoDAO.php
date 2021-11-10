@@ -169,7 +169,7 @@ class ProgresoDAO implements DAO
      */
     public function desactivarProgreso($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
         pg_query($this->connection, $sql);
     }
 
@@ -204,31 +204,6 @@ class ProgresoDAO implements DAO
             $progreso->setResumen($row->resumen);
 
             $datos[] = $progreso;
-        }
-
-        return $datos;
-    }
-
-    /**
-     * Método que obtiene la lista de los codigos de los progresos 
-     * 
-     * @param int $pCodigo
-     * @return int $datos
-     */
-    public function listarProgreso($pCodigo)
-    {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
-
-        $datos = array();
-
-        while ($row = pg_fetch_array($result))
-        {
-
-            $id = $row['id_estudiante'];
-
-            $datos[] = $id;
         }
 
         return $datos;

@@ -173,7 +173,7 @@ class EstudianteDAO implements DAO
      */
     public function desactivarEstudiante($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
         pg_query($this->connection, $sql);
     }
 
@@ -216,7 +216,7 @@ class EstudianteDAO implements DAO
      * @param int $pCodigo
      * @return int $datos
      */
-    public function listarEstudiante($pCodigo)
+    public function listarIDEstudiantePorAsignatura($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
 

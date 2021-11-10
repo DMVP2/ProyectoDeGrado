@@ -192,13 +192,13 @@ class Progreso
     }
 
      /**
-     * Método que obtiene la opcion C
+     * Método que obtiene la opcion D
      * 
-     * @return int $opcionC
+     * @return int $opcionD
      */
-    public function getOpcionC()
+    public function getOpcionD()
     {
-        return $this->opcionC;
+        return $this->opcionD;
     }
 
     /**

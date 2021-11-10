@@ -26,7 +26,7 @@ interface DAO
      * @param int $pCodigo
      * @return Object
      */
-    public function search($pCodigo);
+    public function read($pCodigo);
 
     /**
      * Modificar un elemento en específico en la base de datos
