@@ -113,11 +113,36 @@ include_once('routes.php');
 
         <!-- Contenido -->
 
+        <?php
+
+$imagenPerfil = 0;
+
+$i = rand(1, 5);
+
+switch ($i) {
+    case 1:
+        $imagenPerfil = "Fondo_Geometrico_Verde.jpg";
+        break;
+    case 2:
+        $imagenPerfil = "Fondo_Geometrico_Rojo.jpg";
+        break;
+    case 3:
+        $imagenPerfil = "Fondo_Geometrico_Azul.jpg";
+        break;
+    case 4:
+        $imagenPerfil = "Fondo_Geometrico_Naranja.jpg";
+        break;
+    case 5:
+        $imagenPerfil = "Fondo_Geometrico_Morado.jpg";
+        break;
+}
+?>
+
         <div class="container-fluid mt--6">
             <div class="row">
                 <div class="col-xl-4 order-xl-2">
                     <div class="card card-profile">
-                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/img-1-1000x600.jpg'?>
+                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/' . $imagenPerfil?> height="259"
                             alt="Image placeholder" class="card-img-top">
                         <div class="row justify-content-center">
                             <div class="col-lg-3 order-lg-2">
@@ -138,16 +163,20 @@ include_once('routes.php');
                         </div>
                         <div class="card-body pt-0">
                             <div class="text-center">
-                                <h5 class="h3">
-                                    David Mauricio Valoyes Porras<span class="font-weight-light"></span>
-                                </h5>
+                                <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                                    <div class="text-center">
+                                        <h5 class="h3">
+                                            David Mauricio Valoyes Porras<span class="font-weight-light"></span>
+                                        </h5>
+                                        <div class="h5 mt-4">
+                                            <i class="ni business_briefcase-24 mr-2"></i>dvaloyesp@unbosque.edu.co
+                                        </div>
+                                        <div class="h5 mt-4">
+                                            <p style="color:green;">En linea</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <div class="h5 mt-4">
-                                    <i class="ni business_briefcase-24 mr-2"></i>dvaloyesp@unbosque.edu.co
-                                </div>
-                                <div>
-                                    <i class="ni education_hat mr-2"></i>Semestre 1
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -157,7 +186,7 @@ include_once('routes.php');
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h3 class="mb-0">Editar perfil</h3>
+                                    <h3 class="mb-0">Ajustes del perfil</h3>
                                 </div>
                             </div>
                         </div>
@@ -173,21 +202,20 @@ include_once('routes.php');
                                                     placeholder="Ejemplo: User12345">
                                             </div>
                                         </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label class="form-control-label" for="input-city">Nombre</label>
-                                                    <input type="text" id="nombre" class="form-control"
-                                                        placeholder="Ejemplo: David Santiago">
-                                                </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-city">Nombre</label>
+                                                <input type="text" id="nombre" class="form-control"
+                                                    placeholder="Ejemplo: David Santiago">
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label class="form-control-label"
-                                                        for="input-country">Apellido</label>
-                                                    <input type="text" id="apellido" class="form-control"
-                                                        placeholder="Ejemplo: Agudelo Quinguirejo">
-                                                </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-country">Apellido</label>
+                                                <input type="text" id="apellido" class="form-control"
+                                                    placeholder="Ejemplo: Agudelo Quinguirejo">
                                             </div>
+                                        </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Email
@@ -214,7 +242,8 @@ include_once('routes.php');
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Edad</label>
-                                                <input type="number" id="input-email" class="form-control" value="1" disabled="true">
+                                                <input type="number" id="input-email" class="form-control" value="1"
+                                                    disabled="true">
                                             </div>
                                         </div>
                                     </div>

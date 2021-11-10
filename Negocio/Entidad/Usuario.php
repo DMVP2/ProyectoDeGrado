@@ -24,21 +24,21 @@ class Usuario
     private $codigo;
 
     /**
-     * Nickname del Estudiante
+     * Nickname del Usuario
      * 
      * @var String $nickname
      */
     private $nickname;
 
     /**
-     * Password del Estudiante
+     * Password del Usuario
      * 
      * @var String $password
      */
     private $password;
 
     /**
-     * Rol del Estudiante
+     * Rol del Usuario
      * 
      * @var int $rol
      */
