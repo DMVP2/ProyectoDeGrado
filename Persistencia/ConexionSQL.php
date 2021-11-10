@@ -10,7 +10,7 @@
  * @package Persistencia
  */
 
-class Connection
+class ConexionSQL
 {
 
     //----------------------------------
@@ -26,14 +26,14 @@ class Connection
     /**
      * Creación de la conexión a la base de datos
      *
-     * @return Conexion $conexion
+     * @return ConexionSQL $conexion
      */
     public function conectarBD()
     {
         $server = "localhost";
         $user = "postgres";
-        $pass = "1234!";
-        $bd = "public";
+        $pass = "1234";
+        $bd = "retoñosapp";
         $port = "5432";
 
         $argumentosConexion = "host=$server port=$port dbname=$bd user=$user password=$pass";
@@ -46,7 +46,7 @@ class Connection
      * Desconexión a la base de datos
      *
      * @param int $pConexion
-     * @return Conexion $conexion
+     * @return ConexionSQL $conexion
      */
     public function desconectarBD($pConexion)
     {
@@ -59,13 +59,13 @@ class Connection
      * Método que retorna la unica instancia de la clase Conexion (Particular)
      * Este método constituye la implementación del patrón de diseño "Singleton" planteado en el documento SAD
      * 
-     * @return Conexion $conexion
+     * @return ConexionSQL $conexion
      */
     public static function getInstancia()
     {
         if (self::$instance == null) 
         {
-            self::$instance = new Connection();
+            self::$instance = new ConexionSQL();
         }
 
         return self::$instance;

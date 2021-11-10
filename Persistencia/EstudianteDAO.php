@@ -113,7 +113,7 @@ class EstudianteDAO implements DAO
      */
     public function buscarEstudiante($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM ESTUDIANTE WHERE" . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -129,11 +129,6 @@ class EstudianteDAO implements DAO
             $estudiante->setCorreoElectronicoPrincipal($row->email_principal);
             $estudiante->setCorreoElectronicoSecundario($row->email_secundario );
             $estudiante->setSemestre($row->semestre_estudiante);
-
-            $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
-            $auxiliar1 = $progresoDAO->listarIDEstudiantePorAsignatura($row->id_estudiante);
-            $estudiante->setProgreso($auxiliar1);
-
 
         } 
         else
@@ -183,15 +178,17 @@ class EstudianteDAO implements DAO
      * @param int $pCodigo
      * @return Estudiante $datos
      */
-    public function listarEstudiante()
+    public function listarEstudiantes()
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+ECHO "HI";
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        $sql = "SELECT * FROM ESTUDIANTE";
+
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $estudiante = new Estudiante();

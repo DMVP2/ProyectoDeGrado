@@ -139,7 +139,7 @@ class Estudiante
      * 
      * @param String $pApellido
      */
-    public function setApelliod($pApellido)
+    public function setApellido($pApellido)
     {
         $this->apellido = $pApellido;
     }

@@ -41,7 +41,7 @@ $conexionActual = $conexion->conectarBD();
 
 $manejoEstudiante = new ManejoEstudiante($conexionActual);
 
-$listadoEstudiantes = $manejoEstudiante->listarEstudiante();
+$listadoEstudiantes = $manejoEstudiante->listarEstudiantes();
 
 ?>
 <!DOCTYPE html>

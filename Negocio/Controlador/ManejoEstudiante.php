@@ -56,10 +56,10 @@ class ManejoEstudiante
      * 
      * @return Array $estudiante 
      */
-    public function listarEstudiante()
+    public function listarEstudiantes()
     {
         $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-        return $estudianteDAO->listarEstudiante();
+        return $estudianteDAO->listarEstudiantes();
     }
 
      /**
