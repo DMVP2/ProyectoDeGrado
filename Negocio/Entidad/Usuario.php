@@ -44,6 +44,13 @@ class Usuario
      */
     private $rol;
 
+    /**
+     * Estado del Usuario (Es decir si el usuario esta Activo o Inactivo)
+     * 
+     * @var int $status
+     */
+    private $status;
+
     //----------------------------------
     // Constructor
     //----------------------------------
@@ -77,7 +84,7 @@ class Usuario
     }
 
     /**
-     * Método que obtiene el nickname del estudiante
+     * Método que obtiene el nickname del Usuario
      * 
      * @return String $nickname
      */
@@ -87,7 +94,7 @@ class Usuario
     }
 
     /**
-     * Método que establece el nickname del estudiante
+     * Método que establece el nickname del Usuario
      * 
      * @param String $pNickname
      */
@@ -97,7 +104,7 @@ class Usuario
     }
 
     /**
-     * Método que obtiene el password del estudiante
+     * Método que obtiene el password del Usuario
      * 
      * @return String $password
      */
@@ -107,7 +114,7 @@ class Usuario
     }
 
     /**
-     * Método que establece el password del estudiante
+     * Método que establece el password del Usuario
      * 
      * @param String $pPassword
      */
@@ -117,7 +124,7 @@ class Usuario
     }
 
      /**
-     * Método que obtiene el rol del Estudiante
+     * Método que obtiene el rol del Usuario
      * 
      * @return int $rol
      */
@@ -127,13 +134,33 @@ class Usuario
     }
 
     /**
-     * Método que establece el rol del Estudiante
+     * Método que establece el rol del Usuario
      * 
      * @param int $pRol
      */
     public function setRol($pRol)
     {
         $this->rol = $pRol;
+    }
+
+    /**
+     * Método que obtiene el estado de actividad o inactividad del Usuario
+     * 
+     * @return int $rol
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Método que establece el estado de actividad o inactividad del Usuario
+     * 
+     * @param int $pStatus
+     */
+    public function setStatus($pStatus)
+    {
+        $this->status = $pStatus;
     }
 
 }
