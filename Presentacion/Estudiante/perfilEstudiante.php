@@ -24,6 +24,28 @@
 
 include_once('routes.php');
 
+// Conexión
+
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . 'ConexionSQL.php');
+
+// Importaciones de clases
+
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoEstudiante.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
+
+// Creación de la conexión
+
+$conexion = ConexionSQL::getInstancia();
+$conexionActual = $conexion->conectarBD();
+
+// Llamado de manejos
+
+$manejoEstudiante = new ManejoEstudiante($conexionActual);
+
+// Invocación de métodos
+
+$estudiante = $manejoEstudiante->buscarEstudiante(2);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,12 +114,13 @@ include_once('routes.php');
 
         <!-- Header -->
 
-        <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/profile-cover.jpg' ?>); background-size: cover; background-position: center top;">
+        <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/Fondo_Banner_Bosque.jpg' ?>); background-size: cover; background-position: center top;">
             <span class="mask bg-gradient-default opacity-8"></span>
             <div class="container-fluid d-flex align-items-center">
                 <div class="row">
                     <div class="col-lg-7 col-md-10">
-                        <h1 class="display-2 text-white">Hello David</h1>
+                        <h1 class="display-2 text-white">¡Bienvenido!</h1>
+                        <h1 class="display-3 text-white"><?php echo $estudiante->getNombre() . " " . $estudiante->getApellido() ?></h1>
                         <p class="text-white mt-0 mb-5">Esta es tu página personal</p>
                     </div>
                 </div>
@@ -110,25 +133,25 @@ include_once('routes.php');
 
         <?php
 
-        $imagenPerfil = 0;
+        $imagenFondoPerfil = 0;
 
         $i = rand(1, 5);
 
         switch ($i) {
             case 1:
-                $imagenPerfil = "Fondo_Geometrico_Verde.jpg";
+                $imagenFondoPerfil = "Fondo_Geometrico_Verde.jpg";
                 break;
             case 2:
-                $imagenPerfil = "Fondo_Geometrico_Rojo.jpg";
+                $imagenFondoPerfil = "Fondo_Geometrico_Rojo.jpg";
                 break;
             case 3:
-                $imagenPerfil = "Fondo_Geometrico_Azul.jpg";
+                $imagenFondoPerfil = "Fondo_Geometrico_Azul.jpg";
                 break;
             case 4:
-                $imagenPerfil = "Fondo_Geometrico_Naranja.jpg";
+                $imagenFondoPerfil = "Fondo_Geometrico_Naranja.jpg";
                 break;
             case 5:
-                $imagenPerfil = "Fondo_Geometrico_Morado.jpg";
+                $imagenFondoPerfil = "Fondo_Geometrico_Morado.jpg";
                 break;
         }
         ?>
@@ -137,12 +160,12 @@ include_once('routes.php');
             <div class="row">
                 <div class="col-xl-4 order-xl-2">
                     <div class="card card-profile">
-                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/' . $imagenPerfil ?> height="275" alt="Image placeholder" class="card-img-top">
+                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/' . $imagenFondoPerfil ?> height="275" alt="Image placeholder" class="card-img-top">
                         <div class="row justify-content-center">
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
-                                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/team-4.jpg' ?> class="rounded-circle">
+                                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/User.png' ?> class="rounded-circle">
                                     </a>
                                 </div>
                             </div>
@@ -159,10 +182,10 @@ include_once('routes.php');
                                 <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                                     <div class="text-center">
                                         <h5 class="h3">
-                                            David Mauricio Valoyes Porras<span class="font-weight-light"></span>
+                                            <?php echo $estudiante->getNombre() . " " . $estudiante->getApellido() ?><span class="font-weight-light"></span>
                                         </h5>
                                         <div class="h5 mt-4">
-                                            <i class="ni business_briefcase-24 mr-2"></i>dvaloyesp@unbosque.edu.co
+                                            <i class="ni business_briefcase-24 mr-2"></i><?php echo $estudiante->getCorreoElectronicoPrincipal() ?>
                                         </div>
                                         <div class="h5 mt-4">
                                             <p style="color:green;">En linea</p>
@@ -178,7 +201,7 @@ include_once('routes.php');
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h3 class="mb-0">Edit profile </h3>
+                                    <h3 class="mb-0">Edit profile</h3>
                                 </div>
                                 <div class="col-4 text-right">
                                     <button type="button" class="btn btn-outline-success">Actualizar perfil</button>
@@ -193,45 +216,62 @@ include_once('routes.php');
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-username">Nickname</label>
-                                                <input type="text" id="nickname" class="form-control" placeholder="Ejemplo: User12345">
+                                                <input type="text" id="nickname" class="form-control" placeholder="Ejemplo: User12345" value=<?php echo "DMVP2" ?>>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-city">Nombre</label>
-                                                <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: David Santiago">
+                                                <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: David Santiago" value="<?php echo $estudiante->getNombre() ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-country">Apellido</label>
-                                                <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo">
+                                                <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo" value="<?php echo $estudiante->getApellido() ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Email
                                                     principal</label>
-                                                <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co">
+                                                <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co" value=<?php echo $estudiante->getCorreoElectronicoPrincipal() ?>>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Email
                                                     principal</label>
-                                                <input type="email" id="emailSecundario" class="form-control" placeholder="user@tuDominio.com">
+                                                <input type="email" id="emailSecundario" class="form-control" placeholder="user@tuDominio.com" value=<?php echo $estudiante->getCorreoElectronicoSecundario() ?>>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Semestre</label>
-                                                <input type="number" id="input-email" class="form-control" placeholder="jesse@example.com">
+                                                <input type="number" id="input-email" class="form-control" placeholder="jesse@example.com" value=<?php echo $estudiante->getSemestre() ?>>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+
+                                        <?php
+
+                                        list($año, $mes, $dia) = explode("/", $estudiante->getEdad());
+                                        $fechaNacimiento = $año . "-" . $mes . "-" . $dia;
+                                        $fechaNacimiento = new DateTime($fechaNacimiento);
+                                        $diaActual = new DateTime();
+                                        $edad = $diaActual->diff($fechaNacimiento);
+
+                                        ?>
+
+                                        <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Edad</label>
-                                                <input type="number" id="input-email" class="form-control" value="1" disabled="true">
+                                                <input type="number" id="input-email" class="form-control" value=<?php echo $edad->format('%y') ?> disabled="true">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-email">Edad</label>
+                                                <input type="date" id="input-email" class="form-control" value=<?php echo $fechaNacimiento->format('Y-m-d') ?>>
                                             </div>
                                         </div>
                                     </div>
