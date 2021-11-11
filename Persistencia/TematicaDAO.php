@@ -112,7 +112,7 @@ class TematicaDAO implements DAO
      */
     public function buscarTematica($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM ASIGNATURA WHERE id_tematica = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -179,7 +179,7 @@ class TematicaDAO implements DAO
      */
     public function listarTematicas()
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "SELECT * FROM ASIGNATURA ORDER BY id_tematica ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->connection, $sql)) die();
 
@@ -229,6 +229,24 @@ class TematicaDAO implements DAO
 
         return $datos;
     }
+
+    /**
+     * Método que cuenta la cantidad total de las tematicas registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadTematica()
+    {
+
+        $sql = "SELECT * FROM TEMATICA";
+
+        $respuesta1 = pg_query($this->conexion, $sql);
+
+        $cantidad = pg_num_rows($respuesta1);
+
+        return $cantidad;
+    }
+
 
     /**
      * Método que retorna la unica instancia de la clase TematicaDAO

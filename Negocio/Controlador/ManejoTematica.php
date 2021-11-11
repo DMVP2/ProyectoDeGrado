@@ -117,4 +117,15 @@ class ManejoTematica
         $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
         $tematicaDAO->desactivarTematica($pTematica);
     }
+
+    /**
+     * Método que cuenta la cantidad total de las tematicas registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadTematica()
+    {
+        $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
+        return $tematicaDAO->cantidadTematica();
+    }
 }
