@@ -116,7 +116,7 @@ class AsignaturaDAO implements DAO
      */
     public function buscarAsignatura($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM ASIGNATURA WHERE" . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -250,7 +250,7 @@ class AsignaturaDAO implements DAO
      */
     public function listarAsignatura($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM ASIGNATURA ORDER BY id_asignatura ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->connection, $sql)) die();
 
@@ -265,6 +265,23 @@ class AsignaturaDAO implements DAO
         }
 
         return $datos;
+    }
+
+    /**
+     * Método que cuenta la cantidad total de asignaturas registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadAsignatura()
+    {
+
+        $sql = "SELECT * FROM ASIGNATURA";
+
+        $respuesta1 = pg_query($this->conexion, $sql);
+
+        $cantidad = pg_num_rows($respuesta1);
+
+        return $cantidad;
     }
 
     /**
