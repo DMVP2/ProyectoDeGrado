@@ -113,7 +113,7 @@ class DocenteDAO implements DAO
      */
     public function buscarDocente($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM DOCENTE WHERE id_docente = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -182,7 +182,7 @@ class DocenteDAO implements DAO
      */
     public function listarDocente()
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "SELECT * FROM DOCENTE ORDER BY id_docente ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->connection, $sql)) die();
 
@@ -227,6 +227,23 @@ class DocenteDAO implements DAO
         }
 
         return $datos;
+    }
+
+     /**
+     * Método que cuenta la cantidad total de docentes registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadDocentes()
+    {
+
+        $sql = "SELECT * FROM DOCENTE";
+
+        $respuesta1 = pg_query($this->conexion, $sql);
+
+        $cantidad = pg_num_rows($respuesta1);
+
+        return $cantidad;
     }
 
     /**

@@ -119,7 +119,17 @@ class ManejoDocente
         $docenteDAO->desactivarDocente($pDocente);
     }
 
-
+     /**
+     * Método que cuenta la cantidad total de docentes registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadDocente()
+    {
+        $docenteDAO = DocenteDAO::getDocenteDAO($this->conexion);
+        return $docenteDAO->cantidadDocente();
+    }
+s
 
      /**
      * Método que crear un objeto de la clase horario de atencion
