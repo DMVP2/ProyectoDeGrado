@@ -109,6 +109,17 @@ class ManejoAsignatura
         $asignaturaDAO->desactivarAsignatura($pAsignatura);
     }
 
+    /**
+     * Método que cuenta la cantidad total de asignaturas registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadAsignatura()
+    {
+        $asignaturaDAO = AsignaturaDAO::getAsignaturaDAO($this->conexion);
+        return $asignaturaDAO->cantidadAsignatura();
+    }
+
 
     /**
      * Método que crear un objeto de la clase competencia
