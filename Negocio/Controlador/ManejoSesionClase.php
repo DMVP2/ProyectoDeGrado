@@ -122,6 +122,17 @@ class ManejoSesionClase
     }
 
     /**
+     * Método que cuenta la cantidad total de las sesiones de clase registradas en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadSesionClase()
+    {
+        $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
+        return $sesionClaseDAO->cantidadSesionClase();
+    }
+
+    /**
      * Método que crear un objeto de la clase FichaBibliografica
      * 
      * @param FichaBibliografica $pFichaBibliografica

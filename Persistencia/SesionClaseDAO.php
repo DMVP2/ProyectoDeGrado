@@ -113,7 +113,7 @@ class SesionClaseDAO implements DAO
      */
     public function buscarSesionClase($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM SESIONCLASE WHERE id_sesion = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -185,7 +185,7 @@ class SesionClaseDAO implements DAO
      */
     public function listarSesionClase()
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "SELECT * FROM SESIONCLASE ORDER BY id_sesion ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->connection, $sql)) die();
 
@@ -242,6 +242,23 @@ class SesionClaseDAO implements DAO
         }
 
         return $datos;
+    }
+
+    /**
+     * Método que cuenta la cantidad total de las sesiones de clase registradas en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadSesionClase()
+    {
+
+        $sql = "SELECT * FROM SESIONCLASE";
+
+        $respuesta1 = pg_query($this->conexion, $sql);
+
+        $cantidad = pg_num_rows($respuesta1);
+
+        return $cantidad;
     }
 
     /**
