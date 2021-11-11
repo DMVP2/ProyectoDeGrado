@@ -125,7 +125,37 @@ class UsuarioDAO implements DAO
             $usuario->setPassword($row->password_usuario);
             $usuario->setRol($row->rol_usuario);
             
+        } 
+        else
+        {
+            return null;
+        }
 
+        return $usuario;
+    }
+
+    /**
+     * Método que busca el usuario por medio de su código
+     * 
+     * @param int $pNickname
+     * @return Usuario $usuario
+     */
+    public function buscarUsuarioPorNickname($pNickname)
+    {
+        $sql = "SELECT * FROM USUARIO WHERE nickname = " . $pCodigo;
+
+        $respuesta1 = pg_query($this->conexion, $sql);
+
+        if (pg_num_rows($respuesta1) > 0)
+        {
+            $row = pg_fetch_object($respuesta1);
+            $usuario = new Usuario();
+
+            $usuario->setCodigo($row->id_usuario);
+            $usuario->setNickname($row->nickname_usuario);
+            $usuario->setPassword($row->password_usuario);
+            $usuario->setRol($row->rol_usuario);
+            
         } 
         else
         {
@@ -164,7 +194,7 @@ class UsuarioDAO implements DAO
      */
     public function desactivarUsuario($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
         pg_query($this->connection, $sql);
     }
 
@@ -199,14 +229,14 @@ class UsuarioDAO implements DAO
     }
 
     /**
-     * Método que obtiene la lista de los codigos de los usuarios 
+     * Método que obtiene la lista de los códigos de los usuarios 
      * 
      * @param int $pCodigo
      * @return int $datos
      */
-    public function listarUsuario($pCodigo)
+    public function listarIDUsuario()
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "AQUI SE INSERTA EL SQL";
 
         if (!$respuesta1 = pg_query($this->connection, $sql)) die();
 
@@ -224,6 +254,24 @@ class UsuarioDAO implements DAO
     }
 
     /**
+     * Método que obtiene el rol al que pertenece un usuario por medio de el código de dicho usuario
+     * 
+     * @param int $pCodigo
+     * @return int $rol
+     */
+    public function consultarRolUsuario($pCodigo)
+    {
+
+        $sql = "SELECT nombre_rol FROM USUARIO, ROL WHRE USUARIO.id_usuario = " . $pCodigo;
+
+        $respuesta1 = pg_query($this->conexion, $sql);
+
+        $rol = pg_num_rows($respuesta1);
+
+        return $rol;
+    }
+
+    /**
      * Método que retorna la unica instancia de la clase UsuarioDAO
      * Este método constituye la implementación del patrón de diseño "Singleton" planteado en el documento SAD
      * 
@@ -236,7 +284,6 @@ class UsuarioDAO implements DAO
         {
             self::$usuarioDAO = new UsuarioDAO($pConexion);
         }
-
         return self::$usuarioDAO;
     }
 }

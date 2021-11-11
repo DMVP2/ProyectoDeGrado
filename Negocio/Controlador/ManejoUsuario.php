@@ -74,70 +74,15 @@ class ManejoUsuario
     }
 
     /**
-     * Método que actualiza un usuario
+     * Método que busca el usuario por medio de su código
      * 
-     * @param Usuario $pUsuario
-     */
-    public function actualizarUsuario($pUsuario)
-    {
-        $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
-        $usuarioDAO->actualizarUsuario($pUsuario);
-    }
-
-    /**
-     * Método que activa un usuario por medio de su código
-     * 
-     * @param int $pCodigo
-     */
-    public function activarUsuario($pIdDocument)
-    {
-        $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
-        $usuarioDAO->activarUsuario($pUsuario);
-    }
-
-    /**
-     * Método que desactiva un usuario por medio de su código
-     * 
-     * @param int $pCodigo
-     */
-    public function desactivarUsuario($pUsuario)
-    {
-        $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
-        $usuarioDAO->desactivarUsuario($pUsuario);
-    }
-
-     /**
-     * Método que crear un objeto de la clase usuario
-     * 
-     * @param Usuario $pUsuario
-     */
-    public function crearUsuario($pUsuario)
-    {
-        $usuarioDAO = UsuarioDAO::getusuarioDAO($this->conexion);
-        $usuarioDAO->crearUsuario($pUsuario);
-    }
-
-    /**
-     * Método que obtiene la lista el usuario
-     * 
-     * @return Array $usuario
-     */
-    public function listarUsuario()
-    {
-        $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
-        return $usuarioDAO->listarUsuario();
-    }
-
-    /**
-     * Método que busca un usuario por medio de su código
-     * 
-     * @param int $pCodigo
+     * @param int $pNickname
      * @return Usuario $usuario
      */
-    public function buscarUsuario($pCodigo)
+    public function buscarUsuarioPorNickname($pNickname)
     {
         $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
-        return $usuarioDAO->buscarUsuario($pCodigo);
+        return $usuarioDAO->buscarUsuarioPorNickname($pNickname);
     }
 
     /**
@@ -171,5 +116,17 @@ class ManejoUsuario
     {
         $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
         $usuarioDAO->desactivarUsuario($pUsuario);
+    }
+
+    /**
+     * Método que obtiene el rol al que pertenece un usuario por medio de el código de dicho usuario
+     * 
+     * @param int $pCodigo
+     * @return int $rol
+     */
+    public function consultarRolUsuario($pCodigo)
+    {
+        $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
+        return $usuarioDAO->consultarRolUsuario();
     }
 }
