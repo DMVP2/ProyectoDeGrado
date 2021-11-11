@@ -192,7 +192,14 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
                                             echo "<td>" . $numero . "</td>";
                                             echo "<td>" . $estudiante->getNombre() . "</td>";
                                             echo "<td>" . $estudiante->getApellido() . "</td>";
-                                            echo "<td>" . $estudiante->getEdad() . "</td>";
+
+                                            list($año, $mes, $dia) = explode("/", $estudiante->getEdad());
+                                            $fechaNacimiento = $año . "-" . $mes . "-" . $dia;
+                                            $fechaNacimiento = new DateTime($fechaNacimiento);
+                                            $diaActual = new DateTime();
+                                            $edad = $diaActual->diff($fechaNacimiento);
+
+                                            echo "<td>" . $edad->format('%y') . "</td>";
                                             echo "<td>" . $estudiante->getCorreoElectronicoPrincipal() . "</td>";
                                             echo "<td>" . $estudiante->getCorreoElectronicoSecundario() . "</td>";
                                             echo "<td>" . $estudiante->getSemestre() . "</td>";

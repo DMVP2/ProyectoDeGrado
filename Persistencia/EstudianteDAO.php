@@ -113,7 +113,7 @@ class EstudianteDAO implements DAO
      */
     public function buscarEstudiante($pCodigo)
     {
-        $sql = "SELECT * FROM ESTUDIANTE WHERE" . $pCodigo;
+        $sql = "SELECT * FROM ESTUDIANTE WHERE id_estudiante = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
