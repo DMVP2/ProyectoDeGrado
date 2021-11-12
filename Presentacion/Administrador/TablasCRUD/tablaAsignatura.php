@@ -94,7 +94,7 @@ $manejoAsignatura = new ManejoAsignatura($conexionActual);
 
     <!-- Sidebar -->
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarAsignatura.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarAdministrador.php'; ?>
 
     <!-- Fin Sidebar -->
 

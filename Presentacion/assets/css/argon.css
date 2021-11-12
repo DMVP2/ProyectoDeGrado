@@ -49,7 +49,7 @@
     --danger: #f5365c;
     --light: #adb5bd;
     --dark: #212529;
-    --default: #172b4d;
+    --default: #f99d1c;
     --white: #fff;
     --neutral: #fff;
     --darker: black;
@@ -226,7 +226,7 @@ a
 {
     text-decoration: none;
 
-    color: #5e72e4;
+    color: #3e4729;
     background-color: transparent;
 }
 a:hover
@@ -3359,8 +3359,8 @@ fieldset:disabled a.btn
 .btn-primary
 {
     color: #fff;
-    border-color: #5e72e4;
-    background-color: #5e72e4;
+    border-color: #84ae40;
+    background-color: #84ae40;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
 }
 .btn-primary:hover
@@ -3916,16 +3916,16 @@ fieldset:disabled a.btn
 
 .btn-outline-success
 {
-    color: #2dce89;
-    border-color: #2dce89; 
+    color: #84ae40;
+    border-color: #84ae40; 
     background-color: transparent;
     background-image: none;
 }
 .btn-outline-success:hover
 {
     color: #fff;
-    border-color: #2dce89; 
-    background-color: #2dce89;
+    border-color: #84ae40; 
+    background-color: #84ae40;
 }
 .btn-outline-success:focus,
 .btn-outline-success.focus
@@ -3935,7 +3935,7 @@ fieldset:disabled a.btn
 .btn-outline-success.disabled,
 .btn-outline-success:disabled
 {
-    color: #2dce89;
+    color: #84ae40;
     background-color: transparent;
 }
 .btn-outline-success:not(:disabled):not(.disabled):active,
@@ -8881,7 +8881,7 @@ button.bg-dark:focus
 
 .bg-default
 {
-    background-color: #172b4d !important;
+    background-color: #f99d1c !important;
 }
 
 a.bg-default:hover,
@@ -18142,7 +18142,6 @@ a.text-darker:focus
 
     color: #fff;
     border-radius: .375rem;
-    background-color: #adb5bd;
 
     align-items: center;
     justify-content: center;
@@ -21404,8 +21403,8 @@ textarea[resize='horizontal']
 .navbar-vertical .navbar-brand-img,
 .navbar-vertical .navbar-brand > img
 {
-    max-width: 100%;
-    max-height: 2rem;
+    max-width: 200%;
+    max-height: 100rem;
 }
 @media (min-width: 768px)
 {
@@ -24517,7 +24516,7 @@ button.section-darker:focus
 
 .bg-gradient-primary
 {
-    background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+    background: linear-gradient(87deg, #84ae40 0, #84ae40 100%) !important;
 }
 
 .bg-gradient-secondary
@@ -24557,7 +24556,7 @@ button.section-darker:focus
 
 .bg-gradient-default
 {
-    background: linear-gradient(87deg, #172b4d 0, #1a174d 100%) !important;
+    background: linear-gradient(87deg, #84ae40 0, #84ae40 100%) !important;
 }
 
 .bg-gradient-white
@@ -24657,7 +24656,7 @@ button.section-darker:focus
 
 .fill-default
 {
-    fill: #172b4d;
+    fill: #f99d1c;
 }
 
 .stroke-default
@@ -24874,7 +24873,7 @@ button.section-darker:focus
 
 .opacity-8
 {
-    opacity: .9 !important;
+    opacity: .7 !important;
 }
 
 .opacity-10
@@ -25697,7 +25696,7 @@ a.text-gray-dark:focus
 
 .text-light
 {
-    color: #ced4da !important;
+    color: #000000 !important;
 }
 
 a.text-light:hover,

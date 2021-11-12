@@ -30,12 +30,17 @@
     <div class="scrollbar-inner">
         <div class="sidenav-header  align-items-center">
             <a class="navbar-brand" href="javascript:void(0)">
-                <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/brand/blue.png'?> class="navbar-brand-img">
+                <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/brand/Logo_Banner.png' ?> class="navbar-brand-img" width="95%" height="75rem">
             </a>
         </div>
         <div class="navbar-inner">
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                 <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="examples/dashboard.html">
+                            <span class="nav-link-text"></span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="examples/dashboard.html">
                             <i class="ni ni-tv-2 text-primary"></i>

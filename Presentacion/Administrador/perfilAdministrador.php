@@ -30,8 +30,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 
 // Importaciones de clases
 
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoEstudiante.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 // Creación de la conexión
@@ -41,12 +39,9 @@ $conexionActual = $conexion->conectarBD();
 
 // Llamado de manejos
 
-$manejoEstudiante = new ManejoEstudiante($conexionActual);
 $manejoUsuario = new ManejoUsuario($conexionActual);
 
 // Invocación de métodos
-
-$estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
 
 ?>
 <!DOCTYPE html>
@@ -100,7 +95,7 @@ $estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
 
     <!-- Sidebar -->
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarEstudiante.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarAdministrador.php'; ?>
 
     <!-- Fin Sidebar -->
 
@@ -165,7 +160,7 @@ $estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
-                                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/User.png' ?> class="rounded-circle">
+                                        <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/Admin.png' ?> class="rounded-circle">
                                     </a>
                                 </div>
                             </div>
@@ -216,7 +211,7 @@ $estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-username">Nickname</label>
-                                                <input type="text" id="nickname" class="form-control" placeholder="Ejemplo: User12345" value=<?php echo $usuario->getNickname() ?>>
+                                                <input type="text" id="nickname" class="form-control" placeholder="Ejemplo: User12345" value=<?php echo "DMVP2" ?>>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -233,45 +228,15 @@ $estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label class="form-control-label" for="input-email">Correo electrónico
+                                                <label class="form-control-label" for="input-email">Email
                                                     principal</label>
                                                 <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co" value=<?php echo $estudiante->getCorreoElectronicoPrincipal() ?>>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label class="form-control-label" for="input-email">Correo electrónico
-                                                    secundario</label>
+                                                <label class="form-control-label" for="input-email">Teléfono</label>
                                                 <input type="email" id="emailSecundario" class="form-control" placeholder="user@tuDominio.com" value=<?php echo $estudiante->getCorreoElectronicoSecundario() ?>>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-email">Semestre</label>
-                                                <input type="number" id="input-email" class="form-control" placeholder="jesse@example.com" value=<?php echo $estudiante->getSemestre() ?>>
-                                            </div>
-                                        </div>
-
-                                        <?php
-
-                                        list($año, $mes, $dia) = explode("/", $estudiante->getEdad());
-                                        $fechaNacimiento = $año . "-" . $mes . "-" . $dia;
-                                        $fechaNacimiento = new DateTime($fechaNacimiento);
-                                        $diaActual = new DateTime();
-                                        $edad = $diaActual->diff($fechaNacimiento);
-
-                                        ?>
-
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-email">Edad</label>
-                                                <input type="number" id="input-email" class="form-control" value=<?php echo $edad->format('%y') ?> disabled="true">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="input-email">Edad</label>
-                                                <input type="date" id="input-email" class="form-control" value=<?php echo $fechaNacimiento->format('Y-m-d') ?>>
                                             </div>
                                         </div>
                                     </div>
