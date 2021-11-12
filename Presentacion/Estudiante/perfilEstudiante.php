@@ -32,6 +32,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoEstudiante.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 // Creación de la conexión
 
@@ -41,10 +42,11 @@ $conexionActual = $conexion->conectarBD();
 // Llamado de manejos
 
 $manejoEstudiante = new ManejoEstudiante($conexionActual);
+$manejoUsuario = new ManejoUsuario($conexionActual);
 
 // Invocación de métodos
 
-$estudiante = $manejoEstudiante->buscarEstudiante(2);
+$estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
 
 ?>
 <!DOCTYPE html>
@@ -119,9 +121,7 @@ $estudiante = $manejoEstudiante->buscarEstudiante(2);
             <div class="container-fluid d-flex align-items-center">
                 <div class="row">
                     <div class="col-lg-7 col-md-10">
-                        <h1 class="display-2 text-white">¡Bienvenido!</h1>
-                        <h1 class="display-3 text-white"><?php echo $estudiante->getNombre() . " " . $estudiante->getApellido() ?></h1>
-                        <p class="text-white mt-0 mb-5">Esta es tu página personal</p>
+                        <h1 class="display-2 text-white">¡Bienvenid@!</h1>
                     </div>
                 </div>
             </div>

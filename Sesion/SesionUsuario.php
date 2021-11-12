@@ -8,7 +8,7 @@
  * @copyright RetoñosApp: Una plataforma de enseñanza virtual para apoyar la enseñanza de la programación en el aula
  * @copyright Grupo PG_2021-01-01
  * 
- * @package Entidad
+ * @package Sesion
  */
 class SesionUsuario
 {

@@ -138,6 +138,6 @@ class ManejoUsuario
     public function consultarRolUsuario($pCodigo)
     {
         $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
-        return $usuarioDAO->consultarRolUsuario();
+        return $usuarioDAO->consultarRolUsuario($pCodigo);
     }
 }
