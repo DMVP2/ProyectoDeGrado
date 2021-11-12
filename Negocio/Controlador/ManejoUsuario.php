@@ -119,6 +119,17 @@ class ManejoUsuario
     }
 
     /**
+     * Método que cuenta la cantidad total de usuarios registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadUsuario()
+    {
+        $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
+        return $usuarioDAO->cantidadUsuario();
+    }
+
+    /**
      * Método que obtiene el rol al que pertenece un usuario por medio de el código de dicho usuario
      * 
      * @param int $pCodigo

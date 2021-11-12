@@ -111,7 +111,7 @@ class UsuarioDAO implements DAO
      */
     public function buscarUsuario($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM USUARIO WHERE id_usuario = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -206,7 +206,7 @@ class UsuarioDAO implements DAO
      */
     public function listarUsuario()
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "SELECT * FROM USUARIO ORDER BY id_usuario ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->connection, $sql)) die();
 
@@ -269,6 +269,23 @@ class UsuarioDAO implements DAO
         $rol = pg_num_rows($respuesta1);
 
         return $rol;
+    }
+
+    /**
+     * Método que cuenta la cantidad total de usuarios registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadUsuario()
+    {
+
+        $sql = "SELECT * FROM USUARIO";
+
+        $respuesta1 = pg_query($this->conexion, $sql);
+
+        $cantidad = pg_num_rows($respuesta1);
+
+        return $cantidad;
     }
 
     /**
