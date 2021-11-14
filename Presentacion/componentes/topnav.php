@@ -30,59 +30,63 @@ include_once('routes.php');
 
 <?php if (strcasecmp($rol, 'Estudiante') == 0) { ?>
 
-<!-- Bot conversacional -->
+    <!-- Bot conversacional -->
 
-<div class="form-group mb-0">
-    <div class="input-group input-group-alternative input-group-merge">
-        <script src="https://cdn.cai.tools.sap/webchat/webchat.js" channelId="d591c8f4-b4d9-4599-bbc2-2952833f7edf"
-            token="9b0604565a714e593dc80074d1041120" id="cai-webchat">
-        </script>
+    <div class="form-group mb-0">
+        <div class="input-group input-group-alternative input-group-merge">
+            <script src="https://cdn.cai.tools.sap/webchat/webchat.js" channelId="d591c8f4-b4d9-4599-bbc2-2952833f7edf" token="9b0604565a714e593dc80074d1041120" id="cai-webchat">
+            </script>
+        </div>
     </div>
-</div>
 
-<!-- Fin bot conversacional -->
+    <!-- Fin bot conversacional -->
 
 <?php } ?>
 
 <nav class="navbar navbar-top navbar-expand navbar-dark bg-default border-bottom">
     <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav align-items-center  ml-md-auto ">
-
-            </ul>
-            <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
-                <li class="nav-item dropdown">
-                    <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        <div class="media align-items-center">
-                            <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder" src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/User.png'?>>
-                            </span>
-                            <div class="media-body  ml-2  d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold"><?php echo $usuario->getNickname() ?></span>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu  dropdown-menu-right ">
-                        <div class="dropdown-header noti-title">
-                            <h6 class="text-overflow m-0">¡Bienvenid@!</h6>
-                        </div>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ni ni-single-02"></i>
-                            <span>Mi perfil (Home)</span>
-                        </a>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ni ni-support-16"></i>
-                            <span>Ayuda</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'closeSession.php' ?>" class="dropdown-item">
-                            <i class="ni ni-user-run"></i>
-                            <span>Cerrar sesión</span>
-                        </a>
+        <ul class="navbar-nav align-items-center  ml-md-auto ">
+            <li class="nav-item d-xl-none">
+                <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                    <div class="sidenav-toggler-inner">
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
                     </div>
-                </li>
-            </ul>
-        </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+            <li class="nav-item dropdown">
+                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="media align-items-center">
+                        <span class="avatar avatar-sm rounded-circle">
+                            <img alt="Image placeholder" src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/User.png' ?>>
+                        </span>
+                        <div class="media-body  ml-2  d-none d-lg-block">
+                            <span class="mb-0 text-sm  font-weight-bold"><?php echo $usuario->getNickname() ?></span>
+                        </div>
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right ">
+                    <div class="dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">¡Bienvenid@!</h6>
+                    </div>
+                    <a href="#!" class="dropdown-item">
+                        <i class="ni ni-single-02"></i>
+                        <span>Mi perfil (Home)</span>
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                        <i class="ni ni-support-16"></i>
+                        <span>Ayuda</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="<?php echo DIRECTORIO_RAIZ . '/index.php' ?>" class="dropdown-item">
+                        <i class="ni ni-user-run"></i>
+                        <span>Cerrar sesión</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
     </div>
 </nav>

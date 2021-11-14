@@ -8777,7 +8777,7 @@ a.close.disabled
 
 .bg-primary
 {
-    background-color: #5e72e4 !important;
+    background-color: ##f8f9fe !important;
 }
 
 a.bg-primary:hover,
@@ -8881,7 +8881,7 @@ button.bg-dark:focus
 
 .bg-default
 {
-    background-color: #f99d1c !important;
+    background-color: #84ae40 !important;
 }
 
 a.bg-default:hover,
@@ -24531,7 +24531,7 @@ button.section-darker:focus
 
 .bg-gradient-info
 {
-    background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important;
+    background: linear-gradient(87deg, #e17400 0, #f99d1c 100%) !important;
 }
 
 .bg-gradient-warning

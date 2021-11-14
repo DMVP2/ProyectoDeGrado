@@ -24,23 +24,11 @@
 
 include_once('routes.php');
 
-// Conexión
+// Gestión de sesiones (Se busca asegurar que no hay ninguna sesión previa inicializada)
 
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . 'ConexionSQL.php');
-
-// Importaciones de clases
-
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoEstudiante.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
-
-// Creación de la conexión
-
-$conexion = ConexionSQL::getInstancia();
-$conexionActual = $conexion->conectarBD();
-
-// Llamado de manejos
-
-$manejoEstudiante = new ManejoEstudiante($conexionActual);
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . 'SesionUsuario.php');
+$sesionUsuario = SesionUsuario::getSesionUsuario();
+$sesionUsuario->closeSession();
 
 ?>
 <!DOCTYPE html>
@@ -101,7 +89,7 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
     <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
       <div class="separator separator-bottom separator-skew zindex-100">
         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+          <polygon class="fill-default" points="0 0 0 0 0 0"></polygon>
         </svg>
       </div>
     </div>
@@ -121,7 +109,7 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
               <div class="text-center text-muted mb-4">
               <small>Ingrese sus credenciales</small>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'iniciarSesion.php' ?>">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
                 <div class="form-group mb-3">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">

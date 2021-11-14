@@ -15,6 +15,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "Manej
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Usuario.php");
 
 $sesionUsuario = SesionUsuario::getSesionUsuario();
+$sesionUsuario->verifySession();
 
 $usuario = $sesionUsuario->getCurrentUser();
 $rol = $sesionUsuario->getRol();

@@ -30,7 +30,7 @@
     <div class="scrollbar-inner">
         <div class="sidenav-header  align-items-center">
             <a class="navbar-brand" href="javascript:void(0)">
-                <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/brand/Logo_Banner.png' ?> class="navbar-brand-img" width="95%" height="75rem">
+                <img src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/brand/Logo_Banner.png' ?> class="navbar-brand-img" width="100%" height="90rem">
             </a>
         </div>
         <div class="navbar-inner">
@@ -38,7 +38,12 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="examples/dashboard.html">
-                            <span class="nav-link-text"></span>
+                            <span class="nav-link-text"><!-- Este espacio va en blanco --></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="examples/dashboard.html">
+                            <span class="nav-link-text"><!-- Este espacio va en blanco --></span>
                         </a>
                     </li>
                     <li class="nav-item">
