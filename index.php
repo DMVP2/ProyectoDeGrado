@@ -127,7 +127,7 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                     </div>
-                    <input class="form-control" id="user" name="user" placeholder="Nickname">
+                    <input class="form-control" id="user" name="user" placeholder="Nickname" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -135,7 +135,7 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" id="password" name="password" placeholder="Contraseña" type="password">
+                    <input class="form-control" type="password" id="password" name="password" placeholder="Contraseña" required>
                   </div>
                 </div>
                 <div class="text-center">

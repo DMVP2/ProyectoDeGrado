@@ -24,7 +24,11 @@
  * desarrollo de su proyecto de grado.
  */
 
+include_once('routes.php');
+
 ?>
+
+<?php if (strcasecmp($rol, 'Estudiante') == 0) { ?>
 
 <!-- Bot conversacional -->
 
@@ -38,6 +42,8 @@
 
 <!-- Fin bot conversacional -->
 
+<?php } ?>
+
 <nav class="navbar navbar-top navbar-expand navbar-dark bg-default border-bottom">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -50,37 +56,29 @@
                         aria-expanded="false">
                         <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder" src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/team-4.jpg'?>>
+                                <img alt="Image placeholder" src=<?php echo DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/User.png'?>>
                             </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                                <span class="mb-0 text-sm  font-weight-bold"><?php echo $usuario->getNickname() ?></span>
                             </div>
                         </div>
                     </a>
                     <div class="dropdown-menu  dropdown-menu-right ">
                         <div class="dropdown-header noti-title">
-                            <h6 class="text-overflow m-0">Welcome!</h6>
+                            <h6 class="text-overflow m-0">¡Bienvenid@!</h6>
                         </div>
                         <a href="#!" class="dropdown-item">
                             <i class="ni ni-single-02"></i>
                             <span>Mi perfil (Home)</span>
                         </a>
                         <a href="#!" class="dropdown-item">
-                            <i class="ni ni-settings-gear-65"></i>
-                            <span>Settings</span>
-                        </a>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ni ni-calendar-grid-58"></i>
-                            <span>Activity</span>
-                        </a>
-                        <a href="#!" class="dropdown-item">
                             <i class="ni ni-support-16"></i>
-                            <span>Support</span>
+                            <span>Ayuda</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#!" class="dropdown-item">
+                        <a href="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'closeSession.php' ?>" class="dropdown-item">
                             <i class="ni ni-user-run"></i>
-                            <span>Logout</span>
+                            <span>Cerrar sesión</span>
                         </a>
                     </div>
                 </li>

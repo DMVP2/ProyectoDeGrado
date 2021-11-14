@@ -111,7 +111,7 @@ class UsuarioDAO implements DAO
      */
     public function buscarUsuario($pCodigo)
     {
-        $sql = "SELECT * FROM USUARIO WHERE id_usuario = " . $pCodigo;
+        $sql = "SELECT * FROM USUARIO, ROL WHERE id_usuario = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -123,7 +123,7 @@ class UsuarioDAO implements DAO
             $usuario->setCodigo($row->id_usuario);
             $usuario->setNickname($row->nickname_usuario);
             $usuario->setPassword($row->password_usuario);
-            $usuario->setRol($row->rol_usuario);
+            $usuario->setRol($row->nombre_rol);
             
         } 
         else
@@ -142,7 +142,7 @@ class UsuarioDAO implements DAO
      */
     public function buscarUsuarioPorNickname($pNickname)
     {
-        $sql = "SELECT * FROM USUARIO WHERE nickname = " . $pCodigo;
+        $sql = "SELECT * FROM USUARIO, ROL WHERE nickname_usuario = " . "'" . $pNickname . "'";
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -154,7 +154,7 @@ class UsuarioDAO implements DAO
             $usuario->setCodigo($row->id_usuario);
             $usuario->setNickname($row->nickname_usuario);
             $usuario->setPassword($row->password_usuario);
-            $usuario->setRol($row->rol_usuario);
+            $usuario->setRol($row->nombre_rol);
             
         } 
         else
@@ -204,15 +204,16 @@ class UsuarioDAO implements DAO
      * @param int $pCodigo
      * @return Usuario $datos
      */
-    public function listarUsuario()
+    public function listarUsuario($pInicio, $pNumeroDeItemsPorPagina)
     {
-        $sql = "SELECT * FROM USUARIO ORDER BY id_usuario ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
+
+        $sql = "SELECT * FROM USUARIO, ROL ORDER BY id_usuario ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->connection, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $usuario = new Usuario();
@@ -220,7 +221,7 @@ class UsuarioDAO implements DAO
             $usuario->setCodigo($row->id_usuario);
             $usuario->setNickname($row->nickname_usuario);
             $usuario->setPassword($row->password_usuario);
-            $usuario->setRol($row->rol_usuario);
+            $usuario->setRol($row->nombre_rol);
 
             $datos[] = $usuario;
         }
@@ -242,7 +243,7 @@ class UsuarioDAO implements DAO
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $id = $row['id_usuario'];
@@ -262,11 +263,11 @@ class UsuarioDAO implements DAO
     public function consultarRolUsuario($pCodigo)
     {
 
-        $sql = "SELECT nombre_rol FROM USUARIO, ROL WHRE USUARIO.id_usuario = " . $pCodigo;
+        $sql = "SELECT nombre_rol FROM USUARIO, USUARIO_ROL, ROL WHERE USUARIO.id_usuario = USUARIO_ROL.id_usuario AND USUARIO_ROL.id_rol = ROL.id_rol AND USUARIO.id_usuario = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
-        $rol = pg_num_rows($respuesta1);
+        $rol = $respuesta1;
 
         return $rol;
     }
