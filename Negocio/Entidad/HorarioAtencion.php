@@ -115,6 +115,26 @@ class HorarioAtencion
     }
 
     /**
+     * Método que establece la hora
+     * 
+     * @param String $pMedio
+     */
+    public function setHora($pHora)
+    {
+        $this->hora = $pHora;
+    }
+
+    /**
+     * Método que obtiene el medio
+     * 
+     * @return String $medio
+     */
+    public function getMedio()
+    {
+        return $this->hora;
+    }
+
+    /**
      * Método que establece el medio
      * 
      * @param String $pMedio

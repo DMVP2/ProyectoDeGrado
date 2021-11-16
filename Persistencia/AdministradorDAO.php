@@ -166,11 +166,11 @@ class AdministradorDAO implements DAO
 
             $administrador = new Administrador();
 
-            $administrador->setCodigo($row["id_administrador"]);
-            $administrador->setNombre($row["nombre_administrador"]);
-            $administrador->setApellido($row["apellido_administrador"]);
-            $administrador->setTelefono($row["tel_administrador"]);
-            $administrador->setCorreoElectronico($row["email_administrador"]);
+            $administrador->setCodigo($row['id_administrador']);
+            $administrador->setNombre($row['nombre_administrador']);
+            $administrador->setApellido($row['apellido_administrador']);
+            $administrador->setTelefono($row['tel_administrador']);
+            $administrador->setCorreoElectronico($row['email_administrador']);
 
             $datos[] = $administrador;
         }

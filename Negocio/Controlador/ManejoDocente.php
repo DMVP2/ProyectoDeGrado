@@ -141,6 +141,18 @@ class ManejoDocente
     }
 
     /**
+     * Método que obtiene la lista de los horarios de atención de un docente dado
+     * 
+     * @param int $pCodigo
+     * @return Array $HorarioAtencion
+     */
+    public function listarHorariosAtencionPorDocente($pCodigo)
+    {
+        $horarioAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
+        return $horarioAtencionDAO->listarHorariosAtencionPorDocente($pCodigo);
+    }
+
+    /**
      * Método que busca un horario atencion por medio de su código
      * 
      * @param int $pCodigo
