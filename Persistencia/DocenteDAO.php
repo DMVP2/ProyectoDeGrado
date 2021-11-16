@@ -127,8 +127,8 @@ class DocenteDAO implements DAO
             $docente->setApellido($row->apellido_docente);
             $docente->setEmail($row->email_docente);
 
-            $horariosAtencionDAO = HorariosAtencionDAO::getHorariosAtencionDAO($this->conexion);
-            $auxiliar1 = $horariosAtencionDAO->listarIDDocentePorHorarioDeAtencion($row->id_docente);
+            $horariosAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
+            $auxiliar1 = $horariosAtencionDAO->listarHorarioAtencionPorDocente($row->id_docente);
             $docente->sethorariosAtencion($auxiliar1);
 
 
@@ -149,7 +149,7 @@ class DocenteDAO implements DAO
     public function actualizarDocente($pDocente)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pDocente->getCodigo();
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -160,7 +160,7 @@ class DocenteDAO implements DAO
     public function activarDocente($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -170,7 +170,7 @@ class DocenteDAO implements DAO
      */
     public function desactivarDocente($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
         pg_query($this->connection, $sql);
     }
 
@@ -180,15 +180,15 @@ class DocenteDAO implements DAO
      * @param int $pCodigo
      * @return Docente $datos
      */
-    public function listarDocente()
+    public function listarDocentes($pInicio, $pNumeroDeItemsPorPagina)
     {
         $sql = "SELECT * FROM DOCENTE ORDER BY id_docente ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $docente = new Docente();
@@ -198,32 +198,11 @@ class DocenteDAO implements DAO
             $docente->setApellido($row->apellido_docente);
             $docente->setEmail($row->email_docente);
 
+            $horariosAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
+            $auxiliar1 = $horariosAtencionDAO->listarHorarioAtencionPorDocente($row->id_docente);
+            $docente->sethorariosAtencion($auxiliar1);
+
             $datos[] = $docente;
-        }
-
-        return $datos;
-    }
-
-    /**
-     * Método que obtiene la lista de los codigos de los docentes
-     * 
-     * @param int $pCodigo
-     * @return int $datos
-     */
-    public function listarDocente$pCodigo)
-    {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
-
-        $datos = array();
-
-        while ($row = pg_fetch_array($result))
-        {
-
-            $id = $row['id_docente'];
-
-            $datos[] = $id;
         }
 
         return $datos;
@@ -234,7 +213,7 @@ class DocenteDAO implements DAO
      * 
      * @return int $cantidad
      */
-    public function cantidadDocentes()
+    public function cantidadDocente()
     {
 
         $sql = "SELECT * FROM DOCENTE";

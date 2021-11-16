@@ -41,7 +41,7 @@ $conexionActual = $conexion->conectarBD();
 
 // Llamado de manejos
 
-$maenjoAdministradoe = new ManejoAdministrador($conexionActual);
+$manejoAdministrador = new ManejoAdministrador($conexionActual);
 $manejoUsuario = new ManejoUsuario($conexionActual);
 
 // Invocación de métodos
@@ -231,14 +231,14 @@ $administrador = $manejoAdministrador->buscarAdministrador($usuario->getCodigo()
                                                 <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo" value="<?php echo $administrador->getApellido() ?>">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Email
                                                     principal</label>
-                                                <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co" value=<?php echo $administrador->getCorreoElectronicol() ?>>
+                                                <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co" value=<?php echo $administrador->getCorreoElectronico() ?>>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Teléfono</label>
                                                 <input type="email" id="emailSecundario" class="form-control" placeholder="user@tuDominio.com" value=<?php echo $administrador->getTelefono() ?>>

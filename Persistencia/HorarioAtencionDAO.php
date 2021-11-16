@@ -22,7 +22,7 @@ class HorarioAtencionDAO implements DAO
 
     private $conexion;
 
-    private static $HorarioAtencionDAO;
+    private static $horarioAtencionDAO;
 
     //----------------------------------
     // Constructor
@@ -118,7 +118,7 @@ class HorarioAtencionDAO implements DAO
         if (pg_num_rows($respuesta1) > 0)
         {
             $row = pg_fetch_object($respuesta1);
-            $bibliografia = new HorarioAtencion();
+            $horarioAtencion = new HorarioAtencion();
 
             $horarioAtencion->setCodigo($row->id_horario_atencion);
             $horarioAtencion->setDia($row->dia_atencion);
@@ -164,7 +164,7 @@ class HorarioAtencionDAO implements DAO
      */
     public function desactivarHorarioAtencion($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
         pg_query($this->connection, $sql);
     }
 
@@ -176,13 +176,13 @@ class HorarioAtencionDAO implements DAO
      */
     public function listarHorarioAtencion()
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "SELECT * FROM HORARIO_ATENCION";
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $horarioAtencion = new HorarioAtencion();
@@ -205,20 +205,26 @@ class HorarioAtencionDAO implements DAO
      * @param int $pCodigo
      * @return int $datos
      */
-    public function listarHorarioAtencion($pCodigo)
+    public function listarHorarioAtencionPorDocente($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM DOCENTE, HORARIO_ATENCION_DOCENTE, HORARIO_ATENCION WHERE HORARIO_ATENCION.id_horario_atencion = HORARIO_ATENCION_DOCENTE.id_horario_atencion AND HORARIO_ATENCION_DOCENTE.id_docente = DOCENTE.id_docente AND DOCENTE.id_docente = " . $pCodigo;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
-            $id = $row['id_horario_atencion'];
+            $horarioAtencion = new HorarioAtencion();
 
-            $datos[] = $id;
+            $horarioAtencion->setCodigo($row->id_horario_atencion);
+            $horarioAtencion->setDia($row->dia_atencion);
+            $horarioAtencion->setHora($row->hora_atencion);
+            $horarioAtencion->setMedio($row->medio_atencion);
+            $horarioAtencion->setLugar($row->lugar_atencion);
+
+            $datos[] = $horarioAtencion;
         }
 
         return $datos;

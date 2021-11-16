@@ -32,6 +32,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoAdministrador.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Administrador.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 // Creación de la conexión
 
@@ -145,6 +146,7 @@ $manejoAdministrador = new ManejoAdministrador($conexionActual);
                                         <th scope="col">Apellido</th>
                                         <th scope="col">Telefono</th>
                                         <th scope="col">Correo electrónico</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
 

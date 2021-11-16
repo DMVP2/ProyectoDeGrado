@@ -236,7 +236,7 @@ class EstudianteDAO implements DAO
      * 
      * @return int $cantidad
      */
-    public function cantidadEstudiantes()
+    public function cantidadEstudiante()
     {
 
         $sql = "SELECT * FROM ESTUDIANTE";

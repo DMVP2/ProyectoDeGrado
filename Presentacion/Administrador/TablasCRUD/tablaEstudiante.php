@@ -32,6 +32,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoEstudiante.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 // Creación de la conexión
 
@@ -162,7 +163,7 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
 
                                     $i;
 
-                                    $numeroTotalDeFilas = $manejoEstudiante->cantidadEstudiantes();
+                                    $numeroTotalDeFilas = $manejoEstudiante->cantidadEstudiante();
 
                                     if ($numeroTotalDeFilas > 0) {
                                         $pagina = false;

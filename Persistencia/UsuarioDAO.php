@@ -272,11 +272,13 @@ class UsuarioDAO implements DAO
     public function consultarRolUsuario($pCodigo)
     {
 
-        $sql = "SELECT nombre_rol FROM USUARIO, USUARIO_ROL, ROL WHERE USUARIO.id_usuario = USUARIO_ROL.id_usuario AND USUARIO_ROL.id_rol = ROL.id_rol AND USUARIO.id_usuario = " . $pCodigo;
+        $sql = "SELECT * FROM USUARIO, USUARIO_ROL, ROL WHERE USUARIO.id_usuario = USUARIO_ROL.id_usuario AND USUARIO_ROL.id_rol = ROL.id_rol AND USUARIO.id_usuario = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
-        $rol = $respuesta1;
+        $row = pg_fetch_array($respuesta1);
+
+        $rol = $row['nombre_rol'];
 
         return $rol;
     }

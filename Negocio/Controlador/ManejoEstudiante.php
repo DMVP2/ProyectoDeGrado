@@ -124,10 +124,10 @@ class ManejoEstudiante
      * 
      * @return int $cantidad
      */
-    public function cantidadEstudiantes()
+    public function cantidadEstudiante()
     {
         $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-        return $estudianteDAO->cantidadEstudiantes();
+        return $estudianteDAO->cantidadEstudiante();
     }
 
      /**

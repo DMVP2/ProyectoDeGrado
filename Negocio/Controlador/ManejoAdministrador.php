@@ -84,4 +84,14 @@ class ManejoAdministrador
         $administradorDAO->actualizarAdministrador($pAdministrador);
     }
 
+    /**
+     * Método que cuenta la cantidad total de administrador registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadAdministrador()
+    {
+        $administradorDAO = AdministradorDAO::getAdministradorDAO($this->conexion);
+        return $administradorDAO->cantidadAdministrador();
+    }
 }

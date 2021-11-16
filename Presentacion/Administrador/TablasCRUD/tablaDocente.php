@@ -32,6 +32,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoDocente.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Docente.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 // Creación de la conexión
 
@@ -144,6 +145,7 @@ $manejoDocente = new ManejoDocente($conexionActual);
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Apellido</th>
                                         <th scope="col">Email</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -174,7 +176,7 @@ $manejoDocente = new ManejoDocente($conexionActual);
                                             $inicio = ($pagina - 1) * $numeroDeItemsPorPagina;
                                         }
 
-                                        $listadoDocente = $manejoDocente->listarDocente($inicio, $numeroDeItemsPorPagina);
+                                        $listadoDocente = $manejoDocente->listarDocentes($inicio, $numeroDeItemsPorPagina);
 
                                         $totalPaginas = ceil($numeroTotalDeFilas / $numeroDeItemsPorPagina);
 

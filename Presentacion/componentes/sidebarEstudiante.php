@@ -48,13 +48,13 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="examples/dashboard.html">
-                            <i class="ni ni-tv-2 text-primary"></i>
+                            <i class="ni ni-badge text-primary"></i>
                             <span class="nav-link-text">Inicio</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="examples/dashboard.html">
-                            <i class="ni ni-tv-2 text-primary"></i>
+                            <i class="ni ni-book-bookmark text-primary"></i>
                             <span class="nav-link-text">Asignaturas</span>
                         </a>
                     </li>

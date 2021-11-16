@@ -18,6 +18,7 @@ define('RUTA_CSS', '/Presentacion/assets/css/');
 define('RUTA_IMAGENES', '/Presentacion/assets/img/');
 define('RUTA_COMPONENTES', '/Presentacion/componentes/');
 define('RUTA_ADMINISTRADOR', '/Presentacion/Administrador/');
+define('RUTA_CRUD', '/Presentacion/Administrador/TablasCRUD');
 define('RUTA_DOCENTE', '/Presentacion/Docente/');
 define('RUTA_ESTUDIANTE', '/Presentacion/Estudiante/');
 define('RUTA_GENERAL', '/Presentacion/General/');

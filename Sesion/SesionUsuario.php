@@ -89,8 +89,7 @@ class SesionUsuario
     public function closeSession()
     {
 
-        if(!isset($_SESSION))
-        {
+        if (!isset($_SESSION)) {
             session_start();
         }
         session_unset();

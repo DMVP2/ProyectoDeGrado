@@ -84,7 +84,7 @@ class Administrador
     }
 
     /**
-     * Método que obtiene el nombre del administrador
+     * Método que obtiene el nombre del Administrador
      * 
      * @return String $nombre
      */
@@ -94,7 +94,7 @@ class Administrador
     }
 
     /**
-     * Método que establece el nombre del administrador
+     * Método que establece el nombre del Administrador
      * 
      * @param String $pNombre
      */
@@ -104,7 +104,7 @@ class Administrador
     }
 
     /**
-     * Método que obtiene el apellido del administrador
+     * Método que obtiene el apellido del Administrador
      * 
      * @return String $apellido
      */
@@ -114,7 +114,7 @@ class Administrador
     }
 
     /**
-     * Método que establece el apellido del administrador
+     * Método que establece el apellido del Administrador
      * 
      * @param String $pApellido
      */
@@ -134,7 +134,7 @@ class Administrador
     }
 
     /**
-     * Método que establece el telefono del Estudiante
+     * Método que establece el telefono del Administrador
      * 
      * @param int $pTelefono
      */
@@ -144,7 +144,7 @@ class Administrador
     }
 
     /**
-     * Método que obtiene el correo electronico
+     * Método que obtiene el correo electronico del Administrador
      * 
      * @return String $correoElectronico
      */
@@ -154,7 +154,7 @@ class Administrador
     }
 
     /**
-     * Método que establece EL correo electronico
+     * Método que establece eL correo electronico del Administrador
      * 
      * @param String $pCorreoElectronico
      */

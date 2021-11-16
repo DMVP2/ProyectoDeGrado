@@ -56,22 +56,10 @@ class ManejoDocente
      * 
      * @return Array $docente
      */
-    public function listarDocentes()
+    public function listarDocentes($pInicio, $pNumeroDeItemsPorPagina)
     {
         $docenteDAO = DocenteDAO::getDocenteDAO($this->conexion);
-        return $docenteDAO->listarDocentes();
-    }
-
-     /**
-     * Método que obtiene la lista de los codigos de los docentes de una asignatura dada
-     * 
-     * @param int $pCodigo
-     * @return Array $docentes
-     */
-    public function listarIDDocentePorHorarioDeAtencion($pCodigo)
-    {
-        $docenteDAO = DocenteDAO::getEstudianteDAO($this->conexion);
-        return $docenteDAO->listarIDDocentePorHorarioDeAtencion($pCodigo);
+        return $docenteDAO->listarDocentes($pInicio, $pNumeroDeItemsPorPagina);
     }
 
     /**
@@ -102,10 +90,10 @@ class ManejoDocente
      * 
      * @param int $pCodigo
      */
-    public function activarDocente($pIdDocument)
+    public function activarDocente($pCodigo)
     {
-        $docenteDAO = DocenteDAO::getTematicaDAO($this->conexion);
-        $docenteDAO->activarDocente($pDocente);
+        $docenteDAO = DocenteDAO::getDocenteDAO($this->conexion);
+        $docenteDAO->activarDocente($pCodigo);
     }
 
     /**
@@ -129,7 +117,6 @@ class ManejoDocente
         $docenteDAO = DocenteDAO::getDocenteDAO($this->conexion);
         return $docenteDAO->cantidadDocente();
     }
-s
 
      /**
      * Método que crear un objeto de la clase horario de atencion

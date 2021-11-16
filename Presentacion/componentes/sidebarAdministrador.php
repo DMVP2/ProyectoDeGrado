@@ -38,31 +38,73 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="examples/dashboard.html">
-                            <span class="nav-link-text"><!-- Este espacio va en blanco --></span>
+                            <span class="nav-link-text">
+                                <!-- Este espacio va en blanco -->
+                            </span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="examples/dashboard.html">
-                            <span class="nav-link-text"><!-- Este espacio va en blanco --></span>
+                            <span class="nav-link-text">
+                                <!-- Este espacio va en blanco -->
+                            </span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="examples/dashboard.html">
-                            <i class="ni ni-tv-2 text-primary"></i>
-                            <span class="nav-link-text">Inicio</span>
+                            <i class="ni ni-bell-55 text-primary"></i>
+                            <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="examples/dashboard.html">
-                            <i class="ni ni-tv-2 text-primary"></i>
-                            <span class="nav-link-text">Asignaturas</span>
+                            <i class="ni ni-badge text-primary"></i>
+                            <span class="nav-link-text">Perfil</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/dashboard.html">
-                            <i class="ni ni-tv-2 text-primary"></i>
-                            <span class="nav-link-text">Progreso</span>
+                        <a class="nav-link" href="#" data-toggle="dropdown">
+                            <i class="ni ni-settings text-primary"></i>
+                            <span class="nav-link-text">Trazabilidad</span>
                         </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_CRUD . 'tablaAdministrador.php' ?>">
+                                    <i class="ni ni-settings-gear-65 text-primary"></i>
+                                    <span class="nav-link-text">Administradores</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_CRUD . 'tablaDocente.php' ?>">
+                                    <i class="ni ni-settings-gear-65 text-primary"></i>
+                                    <span class="nav-link-text">Docentes</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_CRUD . 'tablaEstudiante.php' ?>">
+                                    <i class="ni ni-settings-gear-65 text-primary"></i>
+                                    <span class="nav-link-text">Estudiantes</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_CRUD . 'tablaAsignaturas.php' ?>">
+                                    <i class="ni ni-settings-gear-65 text-primary"></i>
+                                    <span class="nav-link-text">Asignaturas</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_CRUD . 'tablaUsuario.php' ?>">
+                                    <i class="ni ni-settings-gear-65 text-primary"></i>
+                                    <span class="nav-link-text">Usuario</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_CRUD . 'tablaAuditoria.php' ?>">
+                                    <i class="ni ni-settings-gear-65 text-primary"></i>
+                                    <span class="nav-link-text">Auditoria</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
