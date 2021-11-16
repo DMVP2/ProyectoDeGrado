@@ -28,7 +28,7 @@ class Competencia
      * 
      * @var String $ descripcionCompetencia
      */
-    private $ descripcionCompetencia;
+    private $descripcionCompetencia;
 
     /**
      * Dimension del aprendizaje significativo

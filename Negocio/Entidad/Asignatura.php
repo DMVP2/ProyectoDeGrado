@@ -199,6 +199,26 @@ class Asignatura
         $this->grupo = $pGrupo;
     }
 
+        /**
+     * Método que obtiene el grupo de la asignatura
+     * 
+     * @return String $grupo
+     */
+    public function getNumeroCreditos()
+    {
+        return $this->numeroCreditos;
+    }
+
+    /**
+     * Método que establece el grupo de la asignatura
+     * 
+     * @param String $pGrupo
+     */
+    public function setNumeroCreditos($pNumeroCreditos)
+    {
+        $this->numeroCreditos = $pNumeroCreditos;
+    }
+
     /**
      * Método que obtiene el semestre
      * 
@@ -337,16 +357,6 @@ class Asignatura
     public function setEstudiantes($pEstudiantes)
     {
         $this->estudiantes = $pEstudiantes;
-    }
-
-     /**
-     * Método que establece el arreglo las bibliografias de la asignatura
-     * 
-     * @param Array
-     */
-    public function setBibliografias($pBibliografias)
-    {
-        $this->bibliografias = $pBibliografias;
     }
 
       /**

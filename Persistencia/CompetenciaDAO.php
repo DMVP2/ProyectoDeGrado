@@ -141,7 +141,7 @@ class CompetenciaDAO implements DAO
     public function actualizarCompetencia($pCompetencia)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCompetencia->getCodigo();
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -152,7 +152,7 @@ class CompetenciaDAO implements DAO
     public function activarCompetencia($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -162,8 +162,8 @@ class CompetenciaDAO implements DAO
      */
     public function desactivarCompetencia($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
-        pg_query($this->connection, $sql);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -172,15 +172,15 @@ class CompetenciaDAO implements DAO
      * @param int $pCodigo
      * @return Competencia $datos
      */
-    public function listarCompetencia()
+    public function listarCompetencias()
     {
         $sql = "AQUI SE INSERTA EL SQL";
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $competencia = new Competencia();
@@ -201,20 +201,24 @@ class CompetenciaDAO implements DAO
      * @param int $pCodigo
      * @return int $datos
      */
-    public function listarCompetencia($pCodigo)
+    public function listarCompetenciasPorAsignatura($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM ASIGNATURA, ASIGNATURA_COMPETENCIA, COMPETENCIA WHERE ASIGNATURA.id_asignatura = ASIGNATURA_COMPETENCIA.id_asignatura AND ASIGNATURA_COMPETENCIA.id_competencia = COMPETENCIA.id_competencia AND ASIGNATURA.id_asignatura = " . $pCodigo;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
-            $id = $row['id_competencia'];
+            $competencia = new Competencia();
 
-            $datos[] = $id;
+            $competencia->setCodigo($row['id_competencia']);
+            $competencia->setDescripcionCompetencia($row['competencia']);
+            $competencia->setDimensionAprendizajeSignificativo($row['dimension_aprendizaje_significativo']);
+
+            $datos[] = $competencia;
         }
 
         return $datos;

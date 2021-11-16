@@ -57,10 +57,10 @@ class ManejoAsignatura
      * 
      * @return Array $asignatura
      */
-    public function listarAsignaturas()
+    public function listarAsignaturas($pInicio, $pNumeroDeItemsPorPagina)
     {
         $asignaturaDAO = AsignaturaDAO::getAsignaturaDAO($this->conexion);
-        return $asignaturaDAO->listarAsignaturas();
+        return $asignaturaDAO->listarAsignaturas($pInicio, $pNumeroDeItemsPorPagina);
     }
 
 
@@ -92,9 +92,9 @@ class ManejoAsignatura
      * 
      * @param int $pCodigo
      */
-    public function activarAsignatura($pIdDocument)
+    public function activarAsignatura($pAsignatura)
     {
-        $asignaturaDAO = AsignaturaDAO::getTematicaDAO($this->conexion);
+        $asignaturaDAO = AsignaturaDAO::getAsignaturaDAO($this->conexion);
         $asignaturaDAO->activarAsignatura($pAsignatura);
     }
 
@@ -152,8 +152,8 @@ class ManejoAsignatura
      */
     public function listarCompetenciasPorAsignatura($pCodigo)
     {
-        $asignaturaDAO = AsignaturaDAO::getAsignaturaDAO($this->conexion);
-        return $asignaturaDAO->listarCompetenciasPorAsignatura($pCodigo);
+        $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
+        return $competenciaDAO->listarCompetenciasPorAsignatura($pCodigo);
     }
 
     /**
@@ -184,7 +184,7 @@ class ManejoAsignatura
      * 
      * @param int $pCodigo
      */
-    public function activarCompetencia($pIdDocument)
+    public function activarCompetencia($pCompetencia)
     {
         $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
         $competenciaDAO->activarCompetencia($pCompetencia);
@@ -229,10 +229,10 @@ class ManejoAsignatura
      * @param int $pCodigo
      * @return Array $bibliografias
      */
-    public function listarBibliografiaPorAsignatura($pCodigo)
+    public function listarBibliografiasPorAsignatura($pCodigo)
     {
-        $asignaturaDAO = AsignaturaDAO::getAsignaturaDAO($this->conexion);
-        return $asignaturaDAO->listarBibliografiaPorAsignatura($pCodigo);
+        $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
+        return $bibliografiaDAO->listarBibliografiasPorAsignatura($pCodigo);
     }
 
     /**
@@ -263,7 +263,7 @@ class ManejoAsignatura
      * 
      * @param int $pCodigo
      */
-    public function activarBibliografia($pIdDocument)
+    public function activarBibliografia($pBibliografia)
     {
         $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
         $bibliografiaDAO->activarBibliografia($pBibliografia);

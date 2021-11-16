@@ -169,7 +169,7 @@ class CuestionarioDAO implements DAO
      */
     public function desactivarCuestionario($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
         pg_query($this->connection, $sql);
     }
 
@@ -214,7 +214,7 @@ class CuestionarioDAO implements DAO
      * @param int $pCodigo
      * @return int $datos
      */
-    public function listarCuestionario($pCodigo)
+    public function listarCuestionariosPorSesionClase($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
 
@@ -225,9 +225,19 @@ class CuestionarioDAO implements DAO
         while ($row = pg_fetch_array($result))
         {
 
-            $id = $row['id_pregunta'];
+            $cuestionario = new Cuestionario();
 
-            $datos[] = $id;
+            $cuestionario->setCodigo($row->id_pregunta);
+            $cuestionario->setSesionClase($row->id_sesion);
+            $cuestionario->setPregunta($row->pregunta);
+            $cuestionario->setOpcionA($row->opcion_A);
+            $cuestionario->setOpcionB($row->opcion_B);
+            $cuestionario->setOpcionC($row->opcion_C);
+            $cuestionario->setOpcionD($row->opcion_D);
+            $cuestionario->setOpcionE($row->dopcion_E);
+            $cuestionario->setRespuestaCorrecta($row->respuesta_correcta);
+
+            $datos[] = $cuestionario;
         }
 
         return $datos;

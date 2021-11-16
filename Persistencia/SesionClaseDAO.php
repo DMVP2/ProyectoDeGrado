@@ -173,7 +173,7 @@ class SesionClaseDAO implements DAO
      */
     public function desactivarSesionClase($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
         pg_query($this->connection, $sql);
     }
 
@@ -183,7 +183,7 @@ class SesionClaseDAO implements DAO
      * @param int $pCodigo
      * @return SesionClase $datos
      */
-    public function listarSesionClase()
+    public function listarSesionesClase()
     {
         $sql = "SELECT * FROM SESIONCLASE ORDER BY id_sesion ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 

@@ -139,7 +139,7 @@ class AsignaturaDAO implements DAO
             $asignatura->setCompetencias($auxiliar1);
 
             $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
-            $auxiliar2 = $bibliografiaDAO->listarBibliografiaPorAsignatura($row->id_asignatura);
+            $auxiliar2 = $bibliografiaDAO->listarBibliografiasPorAsignatura($row->id_asignatura);
             $asignatura->setBibliografias($auxiliar2);
 
             $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
@@ -148,9 +148,7 @@ class AsignaturaDAO implements DAO
 
             $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
             $auxiliar4 = $tematicaDAO->listarIDTematicaPorAsignatura($row->id_asignatura);
-            $estudiante->setTematicas($auxiliar4);
-
-
+            $asignatura->setTematicas($auxiliar4);
         } 
         else
         {
@@ -168,7 +166,7 @@ class AsignaturaDAO implements DAO
     public function actualizarAsignatura($pAsignatura)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pAsignatura->getCodigo();
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -179,7 +177,7 @@ class AsignaturaDAO implements DAO
     public function activarAsignatura($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -189,8 +187,8 @@ class AsignaturaDAO implements DAO
      */
     public function desactivarAsignatura($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
-        pg_query($this->connection, $sql);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -199,69 +197,45 @@ class AsignaturaDAO implements DAO
      * @param int $pCodigo
      * @return Asignatura $datos
      */
-    public function listarAsignatura()
+    public function listarAsignaturas($pInicio, $pNumeroDeItemsPorPagina)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "SELECT * FROM ASIGNATURA ORDER BY id_asignatura ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $asignatura = new Asignatura();
 
-            $asignatura->setCodigo($row->id_asignatura);
-            $asignatura->setDocente($row->nombre_asignatura);
-            $asignatura->setGrupo($row->grupo_asignatura);
-            $asignatura->setNumeroCreditos($row->num_creditos);
-            $asignatura->setSemestre($row->semestre_asignatura);
-            $asignatura->setDuracion($row->duracion_asignatura);
-            $asignatura->setDescripcion($row->descripcion_asignatura);
-            $asignatura->setSyllabus($row->syllabus_asignatura);
+            $asignatura->setCodigo($row['id_asignatura']);
+            $asignatura->setDocente($row['nombre_asignatura']);
+            $asignatura->setGrupo($row['grupo_asignatura']);
+            $asignatura->setNumeroCreditos($row['num_creditos']);
+            $asignatura->setSemestre($row['semestre_asignatura']);
+            $asignatura->setDuracion($row['duracion_asignatura']);
+            $asignatura->setDescripcion($row['descripcion_asignatura']);
+            $asignatura->setSyllabus($row['syllabus_asignatura']);
 
             $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
-            $auxiliar1 = $competenciaDAO->listarCompetencias($row->id_asignatura);
+            $auxiliar1 = $competenciaDAO->listarCompetenciasPorAsignatura($row['id_asignatura']);
             $asignatura->setCompetencias($auxiliar1);
 
             $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
-            $auxiliar2 = $bibliografiaDAO->listarBibliografia($row->id_asignatura);
+            $auxiliar2 = $bibliografiaDAO->listarBibliografiasPorAsignatura($row['id_asignatura']);
             $asignatura->setBibliografias($auxiliar2);
 
             $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-            $auxiliar3 = $estudianteDAO->listarIDEstudiante($row->id_asignatura);
+            $auxiliar3 = $estudianteDAO->listarIDEstudiantePorAsignatura($row['id_asignatura']);
             $asignatura->setEstudiantes($auxiliar3);
 
             $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
-            $auxiliar4 = $tematicaDAO->listarIDTematica($row->id_asignatura);
-            $estudiante->setTematicas($auxiliar4);
-            $datos[] = $estudiante;
-        }
+            $auxiliar4 = $tematicaDAO->listarIDTematicaPorAsignatura($row['id_asignatura']);
+            $asignatura->setTematicas($auxiliar4);
 
-        return $datos;
-    }
-
-    /**
-     * Método que obtiene la lista de los codigos de las asignaturas
-     * 
-     * @param int $pCodigo
-     * @return int $datos
-     */
-    public function listarAsignatura($pCodigo)
-    {
-        $sql = "SELECT * FROM ASIGNATURA ORDER BY id_asignatura ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
-
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
-
-        $datos = array();
-
-        while ($row = pg_fetch_array($result))
-        {
-
-            $id = $row['id_asignatura'];
-
-            $datos[] = $id;
+            $datos[] = $asignatura;
         }
 
         return $datos;

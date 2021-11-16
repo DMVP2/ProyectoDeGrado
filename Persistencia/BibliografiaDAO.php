@@ -143,7 +143,7 @@ class BibliografiaDAO implements DAO
     public function actualizarBibliografia($pBibliografia)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pBibliografia->getCodigo();
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -154,7 +154,7 @@ class BibliografiaDAO implements DAO
     public function activarBibliografia($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -164,8 +164,8 @@ class BibliografiaDAO implements DAO
      */
     public function desactivarBibliografia($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
-        pg_query($this->connection, $sql);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -174,15 +174,15 @@ class BibliografiaDAO implements DAO
      * @param int $pCodigo
      * @return Bibliografia $datos
      */
-    public function listarBibliografia()
+    public function listarBibliografias()
     {
         $sql = "AQUI SE INSERTA EL SQL";
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $bibliografia = new Bibliografia();
@@ -205,20 +205,26 @@ class BibliografiaDAO implements DAO
      * @param int $pCodigo
      * @return int $datos
      */
-    public function listarBibliografia($pCodigo)
+    public function listarBibliografiasPorAsignatura($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM ASIGNATURA, ASIGNATURA_BIBLIOGRAFIA, BIBLIOGRAFIA WHERE ASIGNATURA.id_asignatura = ASIGNATURA_BIBLIOGRAFIA.id_asignatura AND ASIGNATURA_BIBLIOGRAFIA.id_bibliografia = BIBLIOGRAFIA.id_bibliografia AND ASIGNATURA.id_asignatura = " . $pCodigo;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
-            $id = $row['id_bibliografia'];
+            $bibliografia = new Bibliografia();
 
-            $datos[] = $id;
+            $bibliografia->setCodigo($row['id_bibliografia']);
+            $bibliografia->setNombreBibliografia($row['nombre_bibliografia']);
+            $bibliografia->setNombreAutor($row['nombre_autor']);
+            $bibliografia->setEditorial($row['editorial_bibliografia']);
+            $bibliografia->setTipo($row['tipo_bibliografia']);
+
+            $datos[] = $bibliografia;
         }
 
         return $datos;

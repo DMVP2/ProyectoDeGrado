@@ -146,7 +146,7 @@ class TematicaDAO implements DAO
     public function actualizarTematica($pTematica)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pTematica->getCodigo();
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -157,7 +157,7 @@ class TematicaDAO implements DAO
     public function activarTematica($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -167,8 +167,8 @@ class TematicaDAO implements DAO
      */
     public function desactivarTematica($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
-        pg_query($this->connection, $sql);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -181,11 +181,11 @@ class TematicaDAO implements DAO
     {
         $sql = "SELECT * FROM ASIGNATURA ORDER BY id_tematica ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $tematica = new Tematica();
@@ -215,11 +215,11 @@ class TematicaDAO implements DAO
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->respuesta1, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $id = $row['id_tematica'];

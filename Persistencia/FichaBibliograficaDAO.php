@@ -163,7 +163,7 @@ class FichaBibliograficaDAO implements DAO
      */
     public function desactivarFichaBibliografica($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo);
+        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
         pg_query($this->connection, $sql);
     }
 

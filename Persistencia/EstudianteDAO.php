@@ -147,7 +147,7 @@ class EstudianteDAO implements DAO
     public function actualizarEstudiante($pEstudiante)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pEstudiante->getCodigo();
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -158,7 +158,7 @@ class EstudianteDAO implements DAO
     public function activarEstudiante($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -169,7 +169,7 @@ class EstudianteDAO implements DAO
     public function desactivarEstudiante($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -214,18 +214,26 @@ class EstudianteDAO implements DAO
      */
     public function listarIDEstudiantePorAsignatura($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM ESTUDIANTE, ASIGNATURA_ESTUDIANTE, ASIGNATURA WHERE ASIGNATURA.id_asignatura = ASIGNATURA_ESTUDIANTE.id_asignatura AND ASIGNATURA_ESTUDIANTE.id_estudiante = ESTUDIANTE.id_estudiante AND ESTUDIANTE.id_estudiante = " . $pCodigo;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
-            $id = $row['id_estudiante'];
+            $estudiante = new Estudiante();
 
-            $datos[] = $id;
+            $estudiante->setCodigo($row['id_estudiante']);
+            $estudiante->setNombre($row['nombre_estudiante']);
+            $estudiante->setApellido($row['apellido_estudiante']);
+            $estudiante->setEdad($row['edad_estudiante']);
+            $estudiante->setCorreoElectronicoPrincipal($row['email_principal']);
+            $estudiante->setCorreoElectronicoSecundario($row['email_secundario']);
+            $estudiante->setSemestre($row['semestre_estudiante']);
+
+            $datos[] = $estudiante;
         }
 
         return $datos;

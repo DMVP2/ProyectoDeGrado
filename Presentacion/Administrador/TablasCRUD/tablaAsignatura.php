@@ -150,7 +150,7 @@ $manejoAsignatura = new ManejoAsignatura($conexionActual);
                                         <th scope="col">Duración</th>
                                         <th scope="col">Descripción</th>
                                         <th scope="col">Syllabus</th>
-
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -181,7 +181,7 @@ $manejoAsignatura = new ManejoAsignatura($conexionActual);
                                             $inicio = ($pagina - 1) * $numeroDeItemsPorPagina;
                                         }
 
-                                        $listadoAsignatura = $manejoAsignatura->listarEstudiantes($inicio, $numeroDeItemsPorPagina);
+                                        $listadoAsignatura = $manejoAsignatura->listarAsignaturas($inicio, $numeroDeItemsPorPagina);
 
                                         $totalPaginas = ceil($numeroTotalDeFilas / $numeroDeItemsPorPagina);
 

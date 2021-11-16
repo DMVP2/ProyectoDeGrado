@@ -196,9 +196,9 @@ class Cuestionario
      * 
      * @return String $opcionC
      */
-    public function getOpcionC()
+    public function getOpcionD()
     {
-        return $this->opcionC;
+        return $this->opcionD;
     }
 
     /**

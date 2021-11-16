@@ -87,7 +87,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_CRUD . 'tablaAsignaturas.php' ?>">
+                                <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_CRUD . 'tablaAsignatura.php' ?>">
                                     <i class="ni ni-settings-gear-65 text-primary"></i>
                                     <span class="nav-link-text">Asignaturas</span>
                                 </a>
