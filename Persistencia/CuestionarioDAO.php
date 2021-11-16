@@ -99,7 +99,7 @@ class CuestionarioDAO implements DAO
      */
     public function crearCuestionario($pCuestionario)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO CUESTIONARIO VALUES " . $pCuestionario->getCodigo() . "," . $pCuestionario->getSesionClase() . "," . $pCuestionario->getPregunta() . "," . $pCuestionario->getOpcionA() . "," . $pCuestionario->getOpcionB() . "," . $pCuestionario->getOpcionC() . "," . $pCuestionario->getOpcionD() . "," . $pCuestionario->getOpcionE() . "," . $pCuestionario->getRespuestaCorrecta();
         pg_query($this->conexion, $sql);
     }
 
@@ -109,9 +109,9 @@ class CuestionarioDAO implements DAO
      * @param int $pCodigo
      * @return Cuestionario $cuestionario
      */
-    public function buscarCuestionarioDAO($pCodigo)
+    public function buscarCuestionario($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM CUESTIONARIO WHERE id_cuestionario = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -120,17 +120,15 @@ class CuestionarioDAO implements DAO
             $row = pg_fetch_object($respuesta1);
             $cuestionario = new Cuestionario();
 
-            $cuestionario->setCodigo($row->id_pregunta);
-            $cuestionario->setSesionClase($row->id_sesion);
-            $cuestionario->setPregunta($row->pregunta);
-            $cuestionario->setOpcionA($row->opcion_A);
-            $cuestionario->setOpcionB($row->opcion_B);
-            $cuestionario->setOpcionC($row->opcion_C);
-            $cuestionario->setOpcionD($row->opcion_D);
-            $cuestionario->setOpcionE($row->dopcion_E);
-            $cuestionario->setRespuestaCorrecta($row->respuesta_correcta);
-          
-
+            $cuestionario->setCodigo($row['id_pregunta']);
+            $cuestionario->setSesionClase($row['id_sesion']);
+            $cuestionario->setPregunta($row['pregunta']);
+            $cuestionario->setOpcionA($row['opcion_A']);
+            $cuestionario->setOpcionB($row['opcion_B']);
+            $cuestionario->setOpcionC($row['opcion_C']);
+            $cuestionario->setOpcionD($row['opcion_D']);
+            $cuestionario->setOpcionE($row['dopcion_E']);
+            $cuestionario->setRespuestaCorrecta($row['respuesta_correcta']);
         } 
         else
         {
@@ -147,7 +145,7 @@ class CuestionarioDAO implements DAO
      */
     public function actualizarCuestionario($pCuestionario)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCuestionario->getCodigo();
+        $sql = "UPDATE CUESTIONARIO SET" . " id_sesion = " . $pCuestionario->getSesionClase() . " pregunta = " . $pCuestionario->getPregunta() . " opcion_A = " . $pCuestionario->getOpcionA() . " opcion_B = " . $pCuestionario->getOpcionB() . " opcion_C = " . $pCuestionario->getOpcionC() . " opcion_D = " . $pCuestionario->getOpcionD() . " opcion_E = " . $pCuestionario->getOpcionE() . " respuesta_correcta = " . $pCuestionario->getRespuestaCorrecta() . " WHERE id_pregunta = " . $pCuestionario->getCodigo();
         pg_query($this->connection, $sql);
     }
 
@@ -179,29 +177,29 @@ class CuestionarioDAO implements DAO
      * @param int $pCodigo
      * @return Cuestionario $datos
      */
-    public function listarCuestionario()
+    public function listarCuestionario($pInicio, $pNumeroDeItemsPorPagina)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "SELECT * FROM CUESTIONARIO ORDER BY id_pregunta ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->connection, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $cuestionario = new Cuestionario();
 
-            $cuestionario->setCodigo($row->id_pregunta);
-            $cuestionario->setSesionClase($row->id_sesion);
-            $cuestionario->setPregunta($row->pregunta);
-            $cuestionario->setOpcionA($row->opcion_A);
-            $cuestionario->setOpcionB($row->opcion_B);
-            $cuestionario->setOpcionC($row->opcion_C);
-            $cuestionario->setOpcionD($row->opcion_D);
-            $cuestionario->setOpcionE($row->dopcion_E);
-            $cuestionario->setRespuestaCorrecta($row->respuesta_correcta);
-
+            $cuestionario->setCodigo($row['id_pregunta']);
+            $cuestionario->setSesionClase($row['id_sesion']);
+            $cuestionario->setPregunta($row['pregunta']);
+            $cuestionario->setOpcionA($row['opcion_A']);
+            $cuestionario->setOpcionB($row['opcion_B']);
+            $cuestionario->setOpcionC($row['opcion_C']);
+            $cuestionario->setOpcionD($row['opcion_D']);
+            $cuestionario->setOpcionE($row['dopcion_E']);
+            $cuestionario->setRespuestaCorrecta($row['respuesta_correcta']);
+          
             $datos[] = $cuestionario;
         }
 
@@ -216,26 +214,26 @@ class CuestionarioDAO implements DAO
      */
     public function listarCuestionariosPorSesionClase($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM CUESTIONARIO WHERE id_sesion = " . $pCodigo;
 
         if (!$respuesta1 = pg_query($this->connection, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $cuestionario = new Cuestionario();
 
-            $cuestionario->setCodigo($row->id_pregunta);
-            $cuestionario->setSesionClase($row->id_sesion);
-            $cuestionario->setPregunta($row->pregunta);
-            $cuestionario->setOpcionA($row->opcion_A);
-            $cuestionario->setOpcionB($row->opcion_B);
-            $cuestionario->setOpcionC($row->opcion_C);
-            $cuestionario->setOpcionD($row->opcion_D);
-            $cuestionario->setOpcionE($row->dopcion_E);
-            $cuestionario->setRespuestaCorrecta($row->respuesta_correcta);
+            $cuestionario->setCodigo($row['id_pregunta']);
+            $cuestionario->setSesionClase($row['id_sesion']);
+            $cuestionario->setPregunta($row['pregunta']);
+            $cuestionario->setOpcionA($row['opcion_A']);
+            $cuestionario->setOpcionB($row['opcion_B']);
+            $cuestionario->setOpcionC($row['opcion_C']);
+            $cuestionario->setOpcionD($row['opcion_D']);
+            $cuestionario->setOpcionE($row['dopcion_E']);
+            $cuestionario->setRespuestaCorrecta($row['respuesta_correcta']);
 
             $datos[] = $cuestionario;
         }

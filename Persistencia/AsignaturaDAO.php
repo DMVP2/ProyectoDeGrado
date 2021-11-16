@@ -104,7 +104,7 @@ class AsignaturaDAO implements DAO
      */
     public function crearAsignatura($pAsignatura)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO ASIGNATURA VALUES " . $pAsignatura->getCodigo() . "," . $pAsignatura->getNombre() . "," . $pAsignatura->getGrupo() . "," . $pAsignatura->numeroCreditos() . "," . $pAsignatura->getSemestre() . "," . $pAsignatura->getDuracion() . "," . $pAsignatura->getDescripcion() . "," . $pAsignatura->getSyllabus();
         pg_query($this->conexion, $sql);
     }
 
@@ -116,7 +116,7 @@ class AsignaturaDAO implements DAO
      */
     public function buscarAsignatura($pCodigo)
     {
-        $sql = "SELECT * FROM ASIGNATURA WHERE" . $pCodigo;
+        $sql = "SELECT * FROM ASIGNATURA WHERE id_asignatura = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -125,29 +125,29 @@ class AsignaturaDAO implements DAO
             $row = pg_fetch_object($respuesta1);
             $asignatura = new Asignatura();
 
-            $asignatura->setCodigo($row->id_asignatura);
-            $asignatura->setDocente($row->nombre_asignatura);
-            $asignatura->setGrupo($row->grupo_asignatura);
-            $asignatura->setNumeroCreditos($row->num_creditos);
-            $asignatura->setSemestre($row->semestre_asignatura);
-            $asignatura->setDuracion($row->duracion_asignatura);
-            $asignatura->setDescripcion($row->descripcion_asignatura);
-            $asignatura->setSyllabus($row->syllabus_asignatura);
+            $asignatura->setCodigo($row['id_asignatura']);
+            $asignatura->setDocente($row['nombre_asignatura']);
+            $asignatura->setGrupo($row['grupo_asignatura']);
+            $asignatura->setNumeroCreditos($row['num_creditos']);
+            $asignatura->setSemestre($row['semestre_asignatura']);
+            $asignatura->setDuracion($row['duracion_asignatura']);
+            $asignatura->setDescripcion($row['descripcion_asignatura']);
+            $asignatura->setSyllabus($row['syllabus_asignatura']);
 
             $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
-            $auxiliar1 = $competenciaDAO->listarCompetenciasPorAsignatura($row->id_asignatura);
+            $auxiliar1 = $competenciaDAO->listarCompetenciasPorAsignatura($row['id_asignatura']);
             $asignatura->setCompetencias($auxiliar1);
 
             $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
-            $auxiliar2 = $bibliografiaDAO->listarBibliografiasPorAsignatura($row->id_asignatura);
+            $auxiliar2 = $bibliografiaDAO->listarBibliografiasPorAsignatura($row['id_asignatura']);
             $asignatura->setBibliografias($auxiliar2);
 
             $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-            $auxiliar3 = $estudianteDAO->listarIDEstudiantePorAsignatura($row->id_asignatura);
+            $auxiliar3 = $estudianteDAO->listarIDEstudiantePorAsignatura($row['id_asignatura']);
             $asignatura->setEstudiantes($auxiliar3);
 
             $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
-            $auxiliar4 = $tematicaDAO->listarIDTematicaPorAsignatura($row->id_asignatura);
+            $auxiliar4 = $tematicaDAO->listarIDTematicaPorAsignatura($row['id_asignatura']);
             $asignatura->setTematicas($auxiliar4);
         } 
         else
@@ -165,7 +165,7 @@ class AsignaturaDAO implements DAO
      */
     public function actualizarAsignatura($pAsignatura)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pAsignatura->getCodigo();
+        $sql = "UPDATE ASIGNATURA SET" . " nombre_asignatura = " . $pAsignatura->getNombre() . ", grupo_asignatura = " . $pAsignatura->getGrupo() . ", numero_creditos = " . $pAsignatura->getNumeroCreditos() . ", semestre_asignatura = " . $pAsignatura->getSemestre() . ", duracion_asignatura = " . $pAsignatura->getDuracion() . ", descripcion_asignatura = " . $pAsignatura->getDescripcion() . ", syllabus_asignatura = " . $pAsignatura->getSyllabus() . " WHERE id_asignatura = " . $pAsignatura->getCodigo();
         pg_query($this->conexion, $sql);
     }
 

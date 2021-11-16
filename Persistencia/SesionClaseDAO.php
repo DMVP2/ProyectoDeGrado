@@ -76,7 +76,7 @@ class SesionClaseDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param SesionClase $pSesionClase
+     * @param SesionClase $pCodigo
      */
     public function delete($pCodigo)
     {
@@ -207,7 +207,7 @@ class SesionClaseDAO implements DAO
             $sesionClase->setFichasBibliograficas($auxiliar1);
 
 
-            $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
+            $sesionClaseDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
             $auxiliar2 = $sesionClaseDAO->listarPreguntas($row->id_sesion);
             $sesionClase->setPreguntas($auxiliar2);
 
@@ -233,7 +233,7 @@ class SesionClaseDAO implements DAO
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $id = $row['id_sesion'];

@@ -99,7 +99,7 @@ class ProgresoDAO implements DAO
      */
     public function crearProgreso($pProgreso)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO PROGRESO VALUES " . $pProgreso->getSesionClase() . "," . $pProgreso->getResuelto() . "," . $pProgreso->getOpcionA() . "," . $pProgreso->getOpcionB() . "," . $pProgreso->getOpcionC() . "," . $pProgreso->getOpcionD() . "," . $pProgreso->getOpcionE() . "," . $pProgreso->getPuntajeObtenido() . "," . $pProgreso->getResumen();
         pg_query($this->conexion, $sql);
     }
 
@@ -141,17 +141,6 @@ class ProgresoDAO implements DAO
     }
 
     /**
-     * Método que actualiza una progreso
-     * 
-     * @param Progreso $pProgreso
-     */
-    public function actualizarProgreso($pProgreso)
-    {
-        $sql = "AQUI SE INSERTA EL SQL" . $pProgreso->getCodigo();
-        pg_query($this->connection, $sql);
-    }
-
-    /**
      * Método que activa (habilita) un progreso
      * 
      * @param int $pCodigo
@@ -159,7 +148,7 @@ class ProgresoDAO implements DAO
     public function activarProgreso($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -170,7 +159,7 @@ class ProgresoDAO implements DAO
     public function desactivarProgreso($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -179,29 +168,29 @@ class ProgresoDAO implements DAO
      * @param int $pCodigo
      * @return Progreso $datos
      */
-    public function listarProgreso()
+    public function listarProgresosPorEstudiante($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "SELECT * FROM PROGRESO WHERE id_estudiante = " . $pCodigo;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $progreso = new Progreso();
 
-            $progreso->setCodigo($row->id_estudiante);
-            $progreso->setSesionClase($row->id_sesion);
-            $progreso->setResuelto($row->resuelto);
-            $progreso->setOpcionA($row->opcion_A);
-            $progreso->setOpcionB($row->opcion_B);
-            $progreso->setOpcionC($row->opcion_C);
-            $progreso->setOpcionD($row->opcion_D);
-            $progreso->setOpcionE($row->dopcion_E);
-            $progreso->setPuntajeObtenido($row->puntaje_obtenido);
-            $progreso->setResumen($row->resumen);
+            $progreso->setCodigo($row['id_estudiante']);
+            $progreso->setSesionClase($row['id_sesion']);
+            $progreso->setResuelto($row['resuelto']);
+            $progreso->setOpcionA($row['opcion_A']);
+            $progreso->setOpcionB($row['opcion_B']);
+            $progreso->setOpcionC($row['opcion_C']);
+            $progreso->setOpcionD($row['opcion_D']);
+            $progreso->setOpcionE($row['dopcion_E']);
+            $progreso->setPuntajeObtenido($row['puntaje_obtenido']);
+            $progreso->setResumen($row['resumen']);
 
             $datos[] = $progreso;
         }

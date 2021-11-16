@@ -99,7 +99,7 @@ class AdministradorDAO implements DAO
      */
     public function crearAdministrador($pAdministrador)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO ADMINISTRADOR VALUES " . $pAdministrador->getCodigo() . "," . $pAdministrador->getNombre() . "," . $pAdministrador->getApellido() . "," . $pAdministrador->getTelefono() . "," . $pAdministrador->getCorreoElectronico();
         pg_query($this->conexion, $sql);
     }
 
@@ -142,7 +142,7 @@ class AdministradorDAO implements DAO
      */
     public function actualizarAdministrador($pAdministrador)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pAdministrador->getCodigo();
+        $sql = "UPDATE ADMINISTRADOR SET" . " nombre_administrador = " . $pAdministrador->getNombre() . " apellido_administrador = " . $pAdministrador->getApellido() . " telefono_administrador = " . $pAdministrador->getTelefono() . " email_administrador = " . $pAdministrador->getCorreoElectronico() . " WHERE id_administrador = " . $pAdministrador->getCodigo();
         pg_query($this->connection, $sql);
     }
 

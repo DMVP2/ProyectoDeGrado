@@ -99,7 +99,7 @@ class CompetenciaDAO implements DAO
      */
     public function crearCompetencia($pCompetencia)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO COMPETENCIA VALUES " . $pCompetencia->getCodigo() . "," . $pCompetencia->getCompentencia() . "," . $pCompetencia->getDimensionAprendizajeSignificativo();
         pg_query($this->conexion, $sql);
     }
 
@@ -111,7 +111,7 @@ class CompetenciaDAO implements DAO
      */
     public function buscarCompetencia($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM COMPETENCIA WHERE id_competencia = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -120,9 +120,9 @@ class CompetenciaDAO implements DAO
             $row = pg_fetch_object($respuesta1);
             $competencia = new Competencia();
 
-            $competencia->setCodigo($row->id_competencia);
-            $competencia->setDescripcionCompetencia($row->descripcion_competencia);
-            $competencia->setDimensionAprendizajeSignificativo($row->dimension_aprendizaje_significativo);
+            $competencia->setCodigo($row['id_competencia']);
+            $competencia->setDescripcionCompetencia($row['descripcion_competencia']);
+            $competencia->setDimensionAprendizajeSignificativo($row['dimension_aprendizaje_significativo']);
 
         } 
         else
@@ -140,7 +140,7 @@ class CompetenciaDAO implements DAO
      */
     public function actualizarCompetencia($pCompetencia)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCompetencia->getCodigo();
+        $sql = "UPDATE ASIGNATURA SET" . " competencia = " . $pCompetencia->getCompetencia() . ", dimension_aprendizaje_significativo = " . $pCompetencia->getDimesionAprendizajeSignificativo() . " WHERE id_competencia = " . $pCompetencia->getCodigo();
         pg_query($this->conexion, $sql);
     }
 
@@ -172,9 +172,9 @@ class CompetenciaDAO implements DAO
      * @param int $pCodigo
      * @return Competencia $datos
      */
-    public function listarCompetencias()
+    public function listarCompetencias($pInicio, $pNumeroDeItemsPorPagina)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT * FROM COMPETENCIA ORDER BY id_competencia ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
@@ -185,9 +185,9 @@ class CompetenciaDAO implements DAO
 
             $competencia = new Competencia();
 
-            $competencia->setCodigo($row->id_competencia);
-            $competencia->setDescripcionCompetencia($row->descripcion_competencia);
-            $competencia->setDimensionAprendizajeSignificativo($row->dimension_aprendizaje_significativo);
+            $competencia->setCodigo($row['id_competencia']);
+            $competencia->setDescripcionCompetencia($row['descripcion_competencia']);
+            $competencia->setDimensionAprendizajeSignificativo($row['dimension_aprendizaje_significativo']);
 
             $datos[] = $competencia;
         }
@@ -222,6 +222,23 @@ class CompetenciaDAO implements DAO
         }
 
         return $datos;
+    }
+
+    /**
+     * Método que cuenta la cantidad total de competencias registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadCompetencia()
+    {
+
+        $sql = "SELECT * FROM COMPETENCIA";
+
+        $respuesta1 = pg_query($this->conexion, $sql);
+
+        $cantidad = pg_num_rows($respuesta1);
+
+        return $cantidad;
     }
 
     /**

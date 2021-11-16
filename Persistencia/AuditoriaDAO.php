@@ -41,7 +41,46 @@ class AuditoriaDAO implements DAO
 
     // Implementación DAO
 
-  
+    /**
+     * Método que implementa el método CREATE de la interfaz DAO
+     * Este método no se utiliza
+     * 
+     * @param Auditoria $pAuditoria
+     */
+    public function create($pAuditoria)
+    {
+    }
+
+    /**
+     * Método que implementa el método READ de la interfaz DAO
+     * Este método no se utiliza
+     * 
+     * @param int $pCodigo
+     */
+    public function read($pCodigo)
+    {
+    }
+
+    /**
+     * Método que implementa el método UPDATE de la interfaz DAO
+     * Este método no se utiliza
+     * 
+     * @param Auditoria $pAuditoria
+     */
+    public function update($pAuditoria)
+    {
+    }
+
+    /**
+     * Método que implementa el método DELETE de la interfaz DAO
+     * Este método no se utiliza
+     * 
+     * @param Auditoria $pCompetencia
+     */
+    public function delete($pCodigo)
+    {
+    }
+
     /**
      * Método que implementa el método LIST de la interfaz DAO
      * Este método no se utiliza
@@ -50,8 +89,9 @@ class AuditoriaDAO implements DAO
      */
     public function list()
     {
-
     }
+
+    // Métodos funcionales
 
     /**
      * Método que obtiene la lista de las auditorias
@@ -73,14 +113,14 @@ class AuditoriaDAO implements DAO
 
             $auditoria = new Auditoria();
 
-            $auditoria->setCodigo($row["id_usuario"]);
-            $auditoria->setNombreTabla($row["nombre_tabla"]);
-            $auditoria->setDireccionIP($row["direccion_ip"]);
-            $auditoria->setOperacionRealizada($row["operacion_realizada"]);
-            $auditoria->setViejoValor($row["viejo_valor"]);
-            $auditoria->setNuevoValor($row["nuevo_valor"]);
-            $auditoria->setFechaOperacion($row["fecha_operacion"]);
-            $auditoria->setHoraOperacion($row["hora_operacion"]);
+            $auditoria->setCodigo($row['id_usuario']);
+            $auditoria->setNombreTabla($row['nombre_tabla']);
+            $auditoria->setDireccionIP($row['direccion_ip']);
+            $auditoria->setOperacionRealizada($row['operacion_realizada']);
+            $auditoria->setViejoValor($row['viejo_valor']);
+            $auditoria->setNuevoValor($row['nuevo_valor']);
+            $auditoria->setFechaOperacion($row['fecha_operacion']);
+            $auditoria->setHoraOperacion($row['hora_operacion']);
 
             $datos[] = $auditoria;
         }

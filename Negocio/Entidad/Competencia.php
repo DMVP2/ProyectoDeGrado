@@ -26,7 +26,7 @@ class Competencia
     /**
      * Descripcion de la competencia
      * 
-     * @var String $ descripcionCompetencia
+     * @var String $ competencia
      */
     private $descripcionCompetencia;
 
@@ -76,7 +76,7 @@ class Competencia
      */
     public function getDescripcionCompetencia()
     {
-        return $this->descripcionCompetencia;
+        return $this->competencia;
     }
 
     /**
@@ -84,9 +84,9 @@ class Competencia
      * 
      * @param String $pDescripcionCompetencia
      */
-    public function setDescripcionCompetencia($pDescripcionCompetencia)
+    public function setDescripcionCompetencia($pCompetencia)
     {
-        $this->descripcionCompetencia = $pDescripcionCompetencia;
+        $this->competencia = $pCompetencia;
     }
 
     /**

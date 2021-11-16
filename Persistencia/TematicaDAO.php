@@ -14,7 +14,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "
  * 
  * @package Persistencia
  */
-
 class TematicaDAO implements DAO
 {
     //----------------------------------
@@ -75,7 +74,7 @@ class TematicaDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Tematica $pTematica
+     * @param int $pCodigo
      */
     public function delete($pCodigo)
     {
@@ -84,8 +83,6 @@ class TematicaDAO implements DAO
     /**
      * Método que implementa el método LIST de la interfaz DAO
      * Este método no se utiliza
-     * 
-     * @param Tematica $pTematica
      */
     public function list()
     {
@@ -94,18 +91,18 @@ class TematicaDAO implements DAO
     // Métodos funcionales
 
     /**
-     * Método que crea un objeto de la clase temática
+     * Método que crea un objeto de la clase Tematica
      * 
      * @param Tematica $pTematica
      */
     public function crearTematica($pTematica)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO TEMATICA VALUES " . $pTematica->getCodigo() . "," . $pTematica->getNombre() . "," . $pTematica->getDuracion() . "," . $pTematica->getDescripcion();
         pg_query($this->conexion, $sql);
     }
 
     /**
-     * Método que busca una tematica por medio de su código
+     * Método que busca un objeto de la clase Tematica por medio de su código
      * 
      * @param int $pCodigo
      * @return Tematica $tematica
@@ -127,7 +124,7 @@ class TematicaDAO implements DAO
             $tematica->setDescripcion($row->descripcion_tematica);
             
             $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
-            $auxiliar1 = $sesionClaseDAO->listarIDSesionClase($row->id_tematica);
+            $auxiliar1 = $sesionClaseDAO->listarIDSesionClasePorTematica($row->id_tematica);
             $tematica->setSesionesClase($auxiliar1);
         } 
         else
@@ -139,18 +136,18 @@ class TematicaDAO implements DAO
     }
 
     /**
-     * Método que actualiza una temática
+     * Método que actualiza un objeto de la clase Tematica
      * 
      * @param Tematica $pTematica
      */
     public function actualizarTematica($pTematica)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pTematica->getCodigo();
+        $sql = "UPDATE TEMATICA SET" . " nombre_tematica = " . $pTematica->getNombre() . " duracion_tematica = " . $pTematica->getDuracion() . " descripcion_tematica = " . $pTematica->getDescripcion() . " WHERE id_tematica = " . $pTematica->getCodigo();
         pg_query($this->conexion, $sql);
     }
 
     /**
-     * Método que activa (habilita) una temática
+     * Método que activa (habilita) un objetio de la clase Tematica
      * 
      * @param int $pCodigo
      */
@@ -161,7 +158,7 @@ class TematicaDAO implements DAO
     }
 
     /**
-     *Método que desactiva (inhabilita) una temática
+     *Método que desactiva (inhabilita) un objetio de la clase Tematica
      * 
      * @param int $pCodigo
      */
@@ -172,12 +169,13 @@ class TematicaDAO implements DAO
     }
 
     /**
-     * Método que obtiene la lista de las tematicas
+     * Método que obtiene la lista de todos los objetos de la clase Tematica
      * 
-     * @param int $pCodigo
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
      * @return Tematica $datos
      */
-    public function listarTematicas()
+    public function listarTematicas($pInicio, $pNumeroDeItemsPorPagina)
     {
         $sql = "SELECT * FROM ASIGNATURA ORDER BY id_tematica ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
@@ -189,14 +187,13 @@ class TematicaDAO implements DAO
         {
 
             $tematica = new Tematica();
-
-            $tematica->setCodigo($row->id_tematica);
-            $tematica->setNombre($row->nombre_tematica);
-            $tematica->setDuracion($row->duracion_tematica);
-            $tematica->setDescripcion($row->descripcion_tematica);
+            $tematica->setCodigo($row['id_tematica']);
+            $tematica->setNombre($row['nombre_tematica']);
+            $tematica->setDuracion($row['duracion_tematica']);
+            $tematica->setDescripcion($row['descripcion_tematica']);
             
             $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
-            $auxiliar1 = $sesionClaseDAO->listarIDSesionClasePorTematica($row->id_tematica);
+            $auxiliar1 = $sesionClaseDAO->listarIDSesionClasePorTematica($row['id_tematica']);
             $tematica->setSesionesClase($auxiliar1);
 
             $datos[] = $tematica;
@@ -206,16 +203,16 @@ class TematicaDAO implements DAO
     }
 
     /**
-     * Método que obtiene la lista de los codigos de las tematicas de una asignatura dada
+     * Método que obtiene la lista de los codigos de todos los objetos de la clase Tematica para un objeto dado de la clase Asignatura
      * 
      * @param int $pCodigo
      * @return int $datos
      */
     public function listarIDTematicaPorAsignatura($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM TEMATICA, ASIGNATURA_TEMATICA, ASIGNATURA WHERE TEMATICA.id_tematica = ASIGNATURA_TEMATICA.id_tematica AND ASIGNATURA_TEMATICA.id_asignatura = ASIGNATURA.id_asignatura AND ASIGNATURA.id_asignatura = " . $pCodigo;
 
-        if (!$respuesta1 = pg_query($this->respuesta1, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 

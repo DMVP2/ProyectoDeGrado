@@ -101,7 +101,7 @@ class EstudianteDAO implements DAO
      */
     public function crearEstudiante($pEstudiante)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO ESTUDIANTE VALUES " . $pEstudiante->getCodigo() . "," . $pEstudiante->getNombre() . "," . $pEstudiante->getApellido() . "," . $pEstudiante->getEdad() . "," . $pEstudiante->getCorreoElectronicoPrincipal() . "," . $pEstudiante->getCorreoElectronicoSecundario() . "," . $pEstudiante->getSemestre();
         pg_query($this->conexion, $sql);
     }
 
@@ -127,9 +127,12 @@ class EstudianteDAO implements DAO
             $estudiante->setApellido($row->apellido_estudiante);
             $estudiante->setEdad($row->edad_estudiante);
             $estudiante->setCorreoElectronicoPrincipal($row->email_principal);
-            $estudiante->setCorreoElectronicoSecundario($row->email_secundario );
+            $estudiante->setCorreoElectronicoSecundario($row->email_secundario);
             $estudiante->setSemestre($row->semestre_estudiante);
 
+            $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
+            $auxiliar1 = $progresoDAO->listarProgresosPorEstudiante($row->id_estudiante);
+            $estudiante->setProgreso($auxiliar1);
         } 
         else
         {
@@ -146,7 +149,7 @@ class EstudianteDAO implements DAO
      */
     public function actualizarEstudiante($pEstudiante)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pEstudiante->getCodigo();
+        $sql = "UPDATE ESTUDIANTE SET" . " nombre_estudiante = " . $pEstudiante->getNombre() . " apellido_estudiante = " . $pEstudiante->getApellido() . " fecha_nacimiento = " . $pEstudiante->getFechaNacimiento() . " email_principal = " . $pEstudiante->getCorreoElectronicoPrincipal() . " email_secundario = " . $pEstudiante->getCorreoElectronicoSecundario() . " semestre_estudiante = " . $pEstudiante->getSemestre() . " WHERE id_estudiante = " . $pEstudiante->getCodigo();
         pg_query($this->conexion, $sql);
     }
 
@@ -200,6 +203,10 @@ class EstudianteDAO implements DAO
             $estudiante->setCorreoElectronicoSecundario($row['email_secundario']);
             $estudiante->setSemestre($row['semestre_estudiante']);
 
+            $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
+            $auxiliar1 = $progresoDAO->listarProgresosPorEstudiante($row['id_estudiante']);
+            $estudiante->setProgreso($auxiliar1);
+
             $datos[] = $estudiante;
         }
 
@@ -232,6 +239,10 @@ class EstudianteDAO implements DAO
             $estudiante->setCorreoElectronicoPrincipal($row['email_principal']);
             $estudiante->setCorreoElectronicoSecundario($row['email_secundario']);
             $estudiante->setSemestre($row['semestre_estudiante']);
+
+            $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
+            $auxiliar1 = $progresoDAO->listarProgresosPorEstudiante($row['id_estudiante']);
+            $estudiante->setProgreso($auxiliar1);
 
             $datos[] = $estudiante;
         }
