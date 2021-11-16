@@ -123,7 +123,7 @@ class AdministradorDAO implements DAO
             $administrador->setCodigo($row->id_administrador);
             $administrador->setNombre($row->nombre_administrador);
             $administrador->setApellido($row->apellido_administrador);
-            $administrador->setTelegono($row->tel_administrador);
+            $administrador->setTelefono($row->tel_administrador);
             $administrador->setCorreoElectronico($row->email_administrador);
 
         } 

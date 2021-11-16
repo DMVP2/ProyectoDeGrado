@@ -111,7 +111,7 @@ class UsuarioDAO implements DAO
      */
     public function buscarUsuario($pCodigo)
     {
-        $sql = "SELECT * FROM USUARIO, ROL WHERE id_usuario = " . $pCodigo;
+        $sql = "SELECT * FROM USUARIO WHERE id_usuario = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -123,7 +123,10 @@ class UsuarioDAO implements DAO
             $usuario->setCodigo($row->id_usuario);
             $usuario->setNickname($row->nickname_usuario);
             $usuario->setPassword($row->password_usuario);
-            $usuario->setRol($row->nombre_rol);
+            $usuario->setStatus($row->status);
+
+            $auxiliar1 = $this->consultarRolUsuario($row->id_usuario);
+            $usuario->setRol($auxiliar1);
             
         } 
         else
@@ -142,7 +145,7 @@ class UsuarioDAO implements DAO
      */
     public function buscarUsuarioPorNickname($pNickname)
     {
-        $sql = "SELECT * FROM USUARIO, ROL WHERE nickname_usuario = " . "'" . $pNickname . "'";
+        $sql = "SELECT * FROM USUARIO WHERE nickname_usuario = " . "'" . $pNickname . "'";
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -154,7 +157,10 @@ class UsuarioDAO implements DAO
             $usuario->setCodigo($row->id_usuario);
             $usuario->setNickname($row->nickname_usuario);
             $usuario->setPassword($row->password_usuario);
-            $usuario->setRol($row->nombre_rol);
+            $usuario->setStatus($row->status);
+
+            $auxiliar1 = $this->consultarRolUsuario($row->id_usuario);
+            $usuario->setRol($auxiliar1);
             
         } 
         else
@@ -207,7 +213,7 @@ class UsuarioDAO implements DAO
     public function listarUsuario($pInicio, $pNumeroDeItemsPorPagina)
     {
 
-        $sql = "SELECT * FROM USUARIO, ROL ORDER BY id_usuario ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
+        $sql = "SELECT * FROM USUARIO ORDER BY id_usuario ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->connection, $sql)) die();
 
@@ -221,7 +227,10 @@ class UsuarioDAO implements DAO
             $usuario->setCodigo($row->id_usuario);
             $usuario->setNickname($row->nickname_usuario);
             $usuario->setPassword($row->password_usuario);
-            $usuario->setRol($row->nombre_rol);
+            $usuario->setStatus($row->status);
+
+            $auxiliar1 = $this->consultarRolUsuario($row->id_usuario);
+            $usuario->setRol($auxiliar1);
 
             $datos[] = $usuario;
         }
@@ -258,7 +267,7 @@ class UsuarioDAO implements DAO
      * Método que obtiene el rol al que pertenece un usuario por medio de el código de dicho usuario
      * 
      * @param int $pCodigo
-     * @return int $rol
+     * @return String $rol
      */
     public function consultarRolUsuario($pCodigo)
     {

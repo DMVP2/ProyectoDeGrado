@@ -40,20 +40,19 @@ $usuarioConsultado = $manejoUsuario->buscarUsuarioPorNickname($user);
 
 if (isset($usuarioConsultado) and strcasecmp($usuarioConsultado->getPassword(), $_POST['password']) == 0) {
     $sesionUsuario->setCurrentUser($usuarioConsultado);
-    $rol = $manejoUsuario->consultarRolUsuario($usuarioConsultado->getCodigo());
 
     if (strcasecmp($usuarioConsultado->getStatus(), 'Inactivo') == 0) {
         header("Location: " . DIRECTORIO_RAIZ . RUTA_PRESENTACION . "index.php?code=2");
     } else {
-        if (strcasecmp($rol, "Estudiante") == 0) {
+        if (strcasecmp($usuarioConsultado->getRol(), "Estudiante") == 0) {
             $sesionUsuario->setRol("Estudiante");
             echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ESTUDIANTE . "perfilEstudiante.php" . "');</script>";
-        } else if (strcasecmp($rol, "Docente") == 0) {
+        } else if (strcasecmp($usuarioConsultado->getRol(), "Docente") == 0) {
             $sesionUsuario->setRol("Docente");
             echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_DOCENTE . "indexDocente.php" . "');</script>";
-        } else if (strcasecmp($rol, "Admin") == 0) {
-            $sesionUsuario->setRol("Admin");
-            echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . "indexAdministrador.php" . "');</script>";
+        } else if (strcasecmp($usuarioConsultado->getRol(), "Administrador") == 0) {
+            $sesionUsuario->setRol("Administrador");
+            echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . "perfilAdministrador.php" . "');</script>";
         }
     }
 } else {

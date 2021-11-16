@@ -30,6 +30,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 
 // Importaciones de clases
 
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoAdministrador.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Administrador.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 // Creación de la conexión
@@ -39,9 +41,12 @@ $conexionActual = $conexion->conectarBD();
 
 // Llamado de manejos
 
+$maenjoAdministradoe = new ManejoAdministrador($conexionActual);
 $manejoUsuario = new ManejoUsuario($conexionActual);
 
 // Invocación de métodos
+
+$administrador = $manejoAdministrador->buscarAdministrador($usuario->getCodigo());
 
 ?>
 <!DOCTYPE html>
@@ -177,10 +182,10 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                                 <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                                     <div class="text-center">
                                         <h5 class="h3">
-                                            <?php echo $estudiante->getNombre() . " " . $estudiante->getApellido() ?><span class="font-weight-light"></span>
+                                            <?php echo $administrador->getNombre() . " " . $administrador->getApellido() ?><span class="font-weight-light"></span>
                                         </h5>
                                         <div class="h5 mt-4">
-                                            <i class="ni business_briefcase-24 mr-2"></i><?php echo $estudiante->getCorreoElectronicoPrincipal() ?>
+                                            <i class="ni business_briefcase-24 mr-2"></i><?php echo $administrador->getCorreoElectronico() ?>
                                         </div>
                                         <div class="h5 mt-4">
                                             <p style="color:green;">En linea</p>
@@ -211,32 +216,32 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-username">Nickname</label>
-                                                <input type="text" id="nickname" class="form-control" placeholder="Ejemplo: User12345" value=<?php echo "DMVP2" ?>>
+                                                <input type="text" id="nickname" class="form-control" placeholder="Ejemplo: User12345" value=<?php echo $usuario->getNickname() ?>>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-city">Nombre</label>
-                                                <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: David Santiago" value="<?php echo $estudiante->getNombre() ?>">
+                                                <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: David Santiago" value="<?php echo $administrador->getNombre() ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-country">Apellido</label>
-                                                <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo" value="<?php echo $estudiante->getApellido() ?>">
+                                                <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo" value="<?php echo $administrador->getApellido() ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Email
                                                     principal</label>
-                                                <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co" value=<?php echo $estudiante->getCorreoElectronicoPrincipal() ?>>
+                                                <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co" value=<?php echo $administrador->getCorreoElectronicol() ?>>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Teléfono</label>
-                                                <input type="email" id="emailSecundario" class="form-control" placeholder="user@tuDominio.com" value=<?php echo $estudiante->getCorreoElectronicoSecundario() ?>>
+                                                <input type="email" id="emailSecundario" class="form-control" placeholder="user@tuDominio.com" value=<?php echo $administrador->getTelefono() ?>>
                                             </div>
                                         </div>
                                     </div>

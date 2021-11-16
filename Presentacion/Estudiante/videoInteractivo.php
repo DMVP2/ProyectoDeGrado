@@ -156,7 +156,7 @@ $estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
                 <div class="col-xl-12">
                     <div class="card">
                         <div style="position: relative; padding-bottom: 56.25%; height: 0; max-width: 100%;">
-                            <iframe src="https://eko.com/tmw/101/embed" title="That Moment When" style="width: 100%; height: 100%; border: 0; position: absolute; left:0; right:0;" allowfullscreen allow="autoplay; fullscreen">
+                            <iframe src="https://video.eko.com/v/M3mo4G/embed" title="Tipos de Datos" style="width: 100%; height: 100%; border: 0; position: absolute; left:0; right:0;" allowfullscreen allow="autoplay; fullscreen">
                             </iframe>
                         </div>
                     </div>
