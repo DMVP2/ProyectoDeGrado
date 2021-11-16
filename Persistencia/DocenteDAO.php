@@ -128,7 +128,7 @@ class DocenteDAO implements DAO
             $docente->setEmail($row->email_docente);
 
             $horariosAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
-            $auxiliar1 = $horariosAtencionDAO->listarHorarioAtencionPorDocente($row->id_docente);
+            $auxiliar1 = $horariosAtencionDAO->listarHorariosAtencionPorDocente($row->id_docente);
             $docente->sethorariosAtencion($auxiliar1);
 
 

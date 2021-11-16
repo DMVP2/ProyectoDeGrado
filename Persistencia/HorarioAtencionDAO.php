@@ -174,7 +174,7 @@ class HorarioAtencionDAO implements DAO
      * @param int $pCodigo
      * @return HorarioAtencion $datos
      */
-    public function listarHorariosAtencion()
+    public function listarHorariosAtencionPorDocente($pCodigo)
     {
         $sql = "SELECT * FROM HORARIO_ATENCION";
 
