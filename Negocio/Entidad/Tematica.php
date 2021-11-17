@@ -17,35 +17,35 @@ class Tematica
     //----------------------------------
 
     /**
-     * ID de la Temática
+     * ID del objeto de la clase Tematica
      * 
      * @var int $codigo
      */
     private $codigo;
 
     /**
-     * Nombre de la Temática
+     * Nombre del objeto de la clase Tematica
      * 
      * @var String $nombre
      */
     private $nombre;
 
     /**
-     * Duración de la Temática
+     * Duración del objeto de la clase Tematica
      * 
      * @var String $duracion
      */
     private $duracion;
 
     /**
-     * Descripción general de la Temática
+     * Descripción del objeto de la clase Tematica
      * 
      * @var String $descripcion
      */
     private $descripcion;
 
     /**
-     * Arreglo que contiene los ID de las Sesiones de Clase que componen la Temática
+     * Arreglo que contiene los ID de los objetos de la clase SesionClase que componen al objeto de la clase Tematica
      * 
      * @var Array $sesionesClase
      */
@@ -64,7 +64,7 @@ class Tematica
     //----------------------------------
 
     /**
-     * Método que obtiene el ID de la Temática
+     * Método que obtiene el ID del objeto de la clase Tematica
      * 
      * @return int $codigo
      */
@@ -74,7 +74,7 @@ class Tematica
     }
 
     /**
-     * Método que establece el ID de la Temática
+     * Método que establece el ID del objeto de la clase Tematica
      * 
      * @param int $pCodigo
      */
@@ -84,7 +84,7 @@ class Tematica
     }
 
     /**
-     * Método que obtiene el nombre la Temática
+     * Método que obtiene el nombre del objeto de la clase Tematica
      * 
      * @return String $nombre
      */
@@ -94,7 +94,7 @@ class Tematica
     }
 
     /**
-     * Método que establece el nombre de la Temática
+     * Método que establece el nombre del objeto de la clase Tematica
      * 
      * @param String $pNombre
      */
@@ -104,7 +104,7 @@ class Tematica
     }
 
     /**
-     * Método que obtiene la duración de la Temática
+     * Método que obtiene la duración del objeto de la clase Tematica
      * 
      * @return String $duracion
      */
@@ -114,7 +114,7 @@ class Tematica
     }
 
     /**
-     * Método que establece la duración de la Temática
+     * Método que establece la duración del objeto de la clase Tematica
      * 
      * @param String $pDuracion
      */
@@ -124,7 +124,7 @@ class Tematica
     }
 
     /**
-     * Método que obtiene la descripción de la Temática
+     * Método que obtiene la descripción del objeto de la clase Tematica
      * 
      * @return String $descripcion
      */
@@ -134,7 +134,7 @@ class Tematica
     }
 
     /**
-     * Método que establece la descripción de la Temática
+     * Método que establece la descripción del objeto de la clase Tematica
      * 
      * @param String $pDescripcion
      */
@@ -144,7 +144,7 @@ class Tematica
     }
 
     /**
-     * Método que obtiene el arreglo con los ID de las Sesiones de Clase que componen la Temática
+     * Método que obtiene el arreglo con los ID de los objetos de la clase SesionClase que componen al objeto de la clase Tematica
      * 
      * @return Array $sesionesClase
      */
@@ -154,7 +154,7 @@ class Tematica
     }
 
     /**
-     * Método que establece el arreglo con los ID de las Sesiones de Clase que componen la Temática
+     * Método que establece el arreglo con los ID de los objetos de la clase SesionClase que componen al objeto de la clase Tematica
      * 
      * @param Array $sesionesClase
      */

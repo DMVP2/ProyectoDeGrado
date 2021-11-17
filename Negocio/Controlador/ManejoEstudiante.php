@@ -52,29 +52,6 @@ class ManejoEstudiante
     }
 
     /**
-     * Método que obtiene la lista de estudiante 
-     * 
-     * @return Array $estudiante 
-     */
-    public function listarEstudiantes($pInicio, $pNumeroDeItemsPorPagina)
-    {
-        $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-        return $estudianteDAO->listarEstudiantes($pInicio, $pNumeroDeItemsPorPagina);
-    }
-
-     /**
-     * Método que obtiene la lista de los codigos de las estudiantes de una asignatura dada
-     * 
-     * @param int $pCodigo
-     * @return Array $estudiantes
-     */
-    public function listarIDEstudiantePorAsignatura($pCodigo)
-    {
-        $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-        return $estudianteDAO->listarIDEstudiantePorAsignatura($pCodigo);
-    }
-
-    /**
      * Método que busca un estudiante por medio de su código
      * 
      * @param int $pCodigo
@@ -120,6 +97,29 @@ class ManejoEstudiante
     }
 
     /**
+     * Método que obtiene la lista de estudiante 
+     * 
+     * @return Array $estudiante 
+     */
+    public function listarEstudiantes($pInicio, $pNumeroDeItemsPorPagina)
+    {
+        $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
+        return $estudianteDAO->listarEstudiantes($pInicio, $pNumeroDeItemsPorPagina);
+    }
+
+     /**
+     * Método que obtiene la lista de los codigos de las estudiantes de una asignatura dada
+     * 
+     * @param int $pCodigo
+     * @return Array $estudiantes
+     */
+    public function listarIDEstudiantesPorAsignatura($pCodigo)
+    {
+        $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
+        return $estudianteDAO->listarIDEstudiantesPorAsignatura($pCodigo);
+    }
+
+    /**
      * Método que cuenta la cantidad total de estudiantes registrados en la base de datos
      * 
      * @return int $cantidad
@@ -141,18 +141,7 @@ class ManejoEstudiante
         $progresoDAO->crearProgreso($pProgreso);
     }
 
-    /**
-     * Método que obtiene la lista el progreso
-     * 
-     * @return Array $progreso 
-     */
-    public function listarProgresos()
-    {
-        $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
-        return $progresoDAO->listarProgresos();
-    }
-
-    /**
+        /**
      * Método que busca un progreso por medio de su código
      * 
      * @param int $pCodigo
@@ -162,17 +151,6 @@ class ManejoEstudiante
     {
         $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
         return $progresoDAO->buscarProgreso($pCodigo);
-    }
-
-    /**
-     * Método que actualiza un progreso
-     * 
-     * @param Progreso $pProgreso
-     */
-    public function actualizarProgreso($pProgreso)
-    {
-        $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
-        $progresoDAO->actualizarProgreso($pProgreso);
     }
 
     /**
@@ -196,4 +174,17 @@ class ManejoEstudiante
         $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
         $progresoDAO->desactivarProgreso($pProgreso);
     }
+
+    /**
+     * Método que obtiene la lista de los progresos de un estudiante dado
+     * 
+     * @param int $pCodigo
+     * @return Array $progreso 
+     */
+    public function listarProgresosPorEstudiante($pCodigo)
+    {
+        $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
+        return $progresoDAO->listarProgresosPorEstudiante($pCodigo);
+    }
+
 }

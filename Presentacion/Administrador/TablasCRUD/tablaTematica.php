@@ -143,8 +143,9 @@ $manejoTematica = new ManejoTematica($conexionActual);
                                     <tr>
                                         <th scope="col">No°</th>
                                         <th scope="col">Nombre</th>
-                                        <th scope="col">Duracion</th>
-                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Duración</th>
+                                        <th scope="col">Descripción</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -175,7 +176,7 @@ $manejoTematica = new ManejoTematica($conexionActual);
                                             $inicio = ($pagina - 1) * $numeroDeItemsPorPagina;
                                         }
 
-                                        $listadoTematica = $manejoTematica->listarTematica($inicio, $numeroDeItemsPorPagina);
+                                        $listadoTematica = $manejoTematica->listarTematicas($inicio, $numeroDeItemsPorPagina);
 
                                         $totalPaginas = ceil($numeroTotalDeFilas / $numeroDeItemsPorPagina);
 

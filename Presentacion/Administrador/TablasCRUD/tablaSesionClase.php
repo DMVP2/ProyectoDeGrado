@@ -144,8 +144,9 @@ $manejoSesionClase = new ManejoSesionClase($conexionActual);
                                         <th scope="col">No°</th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Video</th>
-                                        <th scope="col">Puntuacion</th>
-                                        <th scope="col">Duracion</th>
+                                        <th scope="col">Puntuación</th>
+                                        <th scope="col">Duración</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -176,7 +177,7 @@ $manejoSesionClase = new ManejoSesionClase($conexionActual);
                                             $inicio = ($pagina - 1) * $numeroDeItemsPorPagina;
                                         }
 
-                                        $listadoSesionClase = $manejoSesionClase->listarSesionClase($inicio, $numeroDeItemsPorPagina);
+                                        $listadoSesionClase = $manejoSesionClase->listarSesionesClase($inicio, $numeroDeItemsPorPagina);
 
                                         $totalPaginas = ceil($numeroTotalDeFilas / $numeroDeItemsPorPagina);
 

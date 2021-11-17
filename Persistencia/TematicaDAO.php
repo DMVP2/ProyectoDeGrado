@@ -124,7 +124,7 @@ class TematicaDAO implements DAO
             $tematica->setDescripcion($row->descripcion_tematica);
             
             $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
-            $auxiliar1 = $sesionClaseDAO->listarIDSesionClasePorTematica($row->id_tematica);
+            $auxiliar1 = $sesionClaseDAO->listarIDSesionesClasePorTematica($row->id_tematica);
             $tematica->setSesionesClase($auxiliar1);
         } 
         else
@@ -142,7 +142,7 @@ class TematicaDAO implements DAO
      */
     public function actualizarTematica($pTematica)
     {
-        $sql = "UPDATE TEMATICA SET" . " nombre_tematica = " . $pTematica->getNombre() . " duracion_tematica = " . $pTematica->getDuracion() . " descripcion_tematica = " . $pTematica->getDescripcion() . " WHERE id_tematica = " . $pTematica->getCodigo();
+        $sql = "UPDATE TEMATICA SET" . " nombre_tematica = " . $pTematica->getNombre() . ", duracion_tematica = " . $pTematica->getDuracion() . ", descripcion_tematica = " . $pTematica->getDescripcion() . " WHERE id_tematica = " . $pTematica->getCodigo();
         pg_query($this->conexion, $sql);
     }
 
@@ -193,7 +193,7 @@ class TematicaDAO implements DAO
             $tematica->setDescripcion($row['descripcion_tematica']);
             
             $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
-            $auxiliar1 = $sesionClaseDAO->listarIDSesionClasePorTematica($row['id_tematica']);
+            $auxiliar1 = $sesionClaseDAO->listarIDSesionesClasePorTematica($row['id_tematica']);
             $tematica->setSesionesClase($auxiliar1);
 
             $datos[] = $tematica;
@@ -208,7 +208,7 @@ class TematicaDAO implements DAO
      * @param int $pCodigo
      * @return int $datos
      */
-    public function listarIDTematicaPorAsignatura($pCodigo)
+    public function listarIDTematicasPorAsignatura($pCodigo)
     {
         $sql = "SELECT * FROM TEMATICA, ASIGNATURA_TEMATICA, ASIGNATURA WHERE TEMATICA.id_tematica = ASIGNATURA_TEMATICA.id_tematica AND ASIGNATURA_TEMATICA.id_asignatura = ASIGNATURA.id_asignatura AND ASIGNATURA.id_asignatura = " . $pCodigo;
 

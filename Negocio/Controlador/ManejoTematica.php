@@ -40,7 +40,7 @@ class ManejoTematica
     //---------------------------------
 
     /**
-     * Método que crea un objeto de la clase temática
+     * Método que crea un objeto de la clase Tematica
      * 
      * @param Tematica $pTematica
      */
@@ -51,30 +51,7 @@ class ManejoTematica
     }
 
     /**
-     * Método que obtiene la lista de tematicas
-     * 
-     * @return Array $tematicas
-     */
-    public function listarTematicas()
-    {
-        $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
-        return $tematicaDAO->listarTematicas();
-    }
-
-    /**
-     * Método que obtiene la lista de los codigos de las temáticas de una asignatura dada
-     * 
-     * @param int $pCodigo
-     * @return Array $tematicas
-     */
-    public function listarIDTematicaPorAsignatura($pCodigo)
-    {
-        $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
-        return $tematicaDAO->listarIDTematicaPorAsignatura($pCodigo);
-    }
-
-    /**
-     * Método que busca una tematica por medio de su código
+     * Método que busca un objeto de la clase Tematica por medio de su código
      * 
      * @param int $pCodigo
      * @return Tematica $tematica
@@ -86,7 +63,7 @@ class ManejoTematica
     }
 
     /**
-     * Método que actualiza una tematica
+     * Método que actualiza un objeto de la clase Tematica
      * 
      * @param Tematica $pTematica
      */
@@ -97,18 +74,18 @@ class ManejoTematica
     }
 
     /**
-     * Método que activa una tematica por medio de su código
+     * Método que activa (habilita) un objetio de la clase Tematica
      * 
      * @param int $pCodigo
      */
-    public function activarTematica($pIdDocument)
+    public function activarTematica($pTematica)
     {
         $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
         $tematicaDAO->activarTematica($pTematica);
     }
 
     /**
-     * Método que desactiva una tematica por medio de su código
+     *Método que desactiva (inhabilita) un objetio de la clase Tematica
      * 
      * @param int $pCodigo
      */
@@ -116,6 +93,32 @@ class ManejoTematica
     {
         $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
         $tematicaDAO->desactivarTematica($pTematica);
+    }
+
+
+    /**
+     * Método que obtiene la lista de todos los objetos de la clase Tematica
+     * 
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Tematica $datos
+     */
+    public function listarTematicas($pInicio, $pNumeroDeItemsPorPagina)
+    {
+        $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
+        return $tematicaDAO->listarTematicas($pInicio, $pNumeroDeItemsPorPagina);
+    }
+
+    /**
+     * Método que obtiene la lista de los codigos de todos los objetos de la clase Tematica para un objeto dado de la clase Asignatura
+     * 
+     * @param int $pCodigo
+     * @return int $datos
+     */
+    public function listarIDTematicasPorAsignatura($pCodigo)
+    {
+        $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
+        return $tematicaDAO->listarIDTematicasPorAsignatura($pCodigo);
     }
 
     /**

@@ -95,7 +95,7 @@ $manejoAuditoria = new ManejoAuditoria($conexionActual);
 
     <!-- Sidebar -->
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarAuditoria.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarAdministrador.php'; ?>
 
     <!-- Fin Sidebar -->
 
@@ -142,13 +142,14 @@ $manejoAuditoria = new ManejoAuditoria($conexionActual);
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">No°</th>
-                                        <th scope="col">NombreTabla</th>
-                                        <th scope="col">DireccionIP</th>
-                                        <th scope="col">OperacionRealizada</th>
-                                        <th scope="col">Viejo Valor</th>
-                                        <th scope="col">Nuevo Valor</th>
-                                        <th scope="col">fecha Operacion</th>
-                                        <th scope="col">Hora Operacion</th>
+                                        <th scope="col">Nombre tabla</th>
+                                        <th scope="col">Dirección IP</th>
+                                        <th scope="col">Operacion realizada</th>
+                                        <th scope="col">Viejo valor</th>
+                                        <th scope="col">Nuevo valor</th>
+                                        <th scope="col">fecha operación</th>
+                                        <th scope="col">Hora operación</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -179,7 +180,7 @@ $manejoAuditoria = new ManejoAuditoria($conexionActual);
                                             $inicio = ($pagina - 1) * $numeroDeItemsPorPagina;
                                         }
 
-                                        $listadoAuditoria= $manejoAuditoria->listarAuditoria($inicio, $numeroDeItemsPorPagina);
+                                        $listadoAuditoria= $manejoAuditoria->listarAuditorias($inicio, $numeroDeItemsPorPagina);
 
                                         $totalPaginas = ceil($numeroTotalDeFilas / $numeroDeItemsPorPagina);
 

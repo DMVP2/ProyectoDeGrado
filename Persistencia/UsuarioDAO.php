@@ -99,7 +99,7 @@ class UsuarioDAO implements DAO
      */
     public function crearUsuario($pUsuario)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO USUARIO VALUES " . $pUsuario->getNickname() . "," . $pUsuario->getPassword() . $pUsuario->getStatus();
         pg_query($this->conexion, $sql);
     }
 
@@ -178,8 +178,8 @@ class UsuarioDAO implements DAO
      */
     public function actualizarUsuario($pUsuario)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pUsuario->getCodigo();
-        pg_query($this->connection, $sql);
+        $sql = "UPDATE USAURIO SET" . " nickname_usuario = " . $pUsuario->getNickname() . ", password_usuario = " . $pUsuario->getPassword() . " WHERE id_usuario = " . $pUsuario->getCodigo();
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -190,7 +190,7 @@ class UsuarioDAO implements DAO
     public function activarUsuario($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -201,7 +201,7 @@ class UsuarioDAO implements DAO
     public function desactivarUsuario($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -210,12 +210,12 @@ class UsuarioDAO implements DAO
      * @param int $pCodigo
      * @return Usuario $datos
      */
-    public function listarUsuario($pInicio, $pNumeroDeItemsPorPagina)
+    public function listarUsuarios($pInicio, $pNumeroDeItemsPorPagina)
     {
 
         $sql = "SELECT * FROM USUARIO ORDER BY id_usuario ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
@@ -224,40 +224,15 @@ class UsuarioDAO implements DAO
 
             $usuario = new Usuario();
 
-            $usuario->setCodigo($row->id_usuario);
-            $usuario->setNickname($row->nickname_usuario);
-            $usuario->setPassword($row->password_usuario);
-            $usuario->setStatus($row->status);
+            $usuario->setCodigo($row['id_usuario']);
+            $usuario->setNickname($row['nickname_usuario']);
+            $usuario->setPassword($row['password_usuario']);
+            $usuario->setStatus($row['status']);
 
-            $auxiliar1 = $this->consultarRolUsuario($row->id_usuario);
+            $auxiliar1 = $this->consultarRolUsuario($row['id_usuario']);
             $usuario->setRol($auxiliar1);
 
             $datos[] = $usuario;
-        }
-
-        return $datos;
-    }
-
-    /**
-     * Método que obtiene la lista de los códigos de los usuarios 
-     * 
-     * @param int $pCodigo
-     * @return int $datos
-     */
-    public function listarIDUsuario()
-    {
-        $sql = "AQUI SE INSERTA EL SQL";
-
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
-
-        $datos = array();
-
-        while ($row = pg_fetch_array($respuesta1))
-        {
-
-            $id = $row['id_usuario'];
-
-            $datos[] = $id;
         }
 
         return $datos;

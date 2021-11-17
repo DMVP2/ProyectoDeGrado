@@ -44,9 +44,20 @@ class ManejoAuditoria
      * 
      * @return Array $auditoria 
      */
-    public function listarAuditoria($pInicio, $pNumeroDeItemsPorPagina)
+    public function listarAuditorias($pInicio, $pNumeroDeItemsPorPagina)
     {
         $auditoriaDAO = AuditoriaDAO::getAuditoriaDAO($this->conexion);
-        return $auditoriaDAO->listarAuditoria($pInicio, $pNumeroDeItemsPorPagina);
+        return $auditoriaDAO->listarAuditorias($pInicio, $pNumeroDeItemsPorPagina);
+    }
+
+    /**
+     * Método que cuenta la cantidad total de auditorias registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadAuditoria()
+    {
+        $auditoriaDAO = AuditoriaDAO::getAuditoriaDAO($this->conexion);
+        return $auditoriaDAO->cantidadAuditoria();
     }
 }

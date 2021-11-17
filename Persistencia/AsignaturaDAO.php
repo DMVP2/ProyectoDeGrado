@@ -125,29 +125,29 @@ class AsignaturaDAO implements DAO
             $row = pg_fetch_object($respuesta1);
             $asignatura = new Asignatura();
 
-            $asignatura->setCodigo($row['id_asignatura']);
-            $asignatura->setDocente($row['nombre_asignatura']);
-            $asignatura->setGrupo($row['grupo_asignatura']);
-            $asignatura->setNumeroCreditos($row['num_creditos']);
-            $asignatura->setSemestre($row['semestre_asignatura']);
-            $asignatura->setDuracion($row['duracion_asignatura']);
-            $asignatura->setDescripcion($row['descripcion_asignatura']);
-            $asignatura->setSyllabus($row['syllabus_asignatura']);
+            $asignatura->setCodigo($row->id_asignatura);
+            $asignatura->setDocente($row->nombre_asignatura);
+            $asignatura->setGrupo($row->grupo_asignatura);
+            $asignatura->setNumeroCreditos($row->num_creditos);
+            $asignatura->setSemestre($row->semestre_asignatura);
+            $asignatura->setDuracion($row->duracion_asignatura);
+            $asignatura->setDescripcion($row->descripcion_asignatura);
+            $asignatura->setSyllabus($row->syllabus_asignatura);
 
             $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
-            $auxiliar1 = $competenciaDAO->listarCompetenciasPorAsignatura($row['id_asignatura']);
+            $auxiliar1 = $competenciaDAO->listarCompetenciasPorAsignatura($row->id_asignatura);
             $asignatura->setCompetencias($auxiliar1);
 
             $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
-            $auxiliar2 = $bibliografiaDAO->listarBibliografiasPorAsignatura($row['id_asignatura']);
+            $auxiliar2 = $bibliografiaDAO->listarBibliografiasPorAsignatura($row->id_asignatura);
             $asignatura->setBibliografias($auxiliar2);
 
             $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-            $auxiliar3 = $estudianteDAO->listarIDEstudiantePorAsignatura($row['id_asignatura']);
+            $auxiliar3 = $estudianteDAO->listarIDEstudiantesPorAsignatura($row->id_asignatura);
             $asignatura->setEstudiantes($auxiliar3);
 
             $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
-            $auxiliar4 = $tematicaDAO->listarIDTematicaPorAsignatura($row['id_asignatura']);
+            $auxiliar4 = $tematicaDAO->listarIDTematicasPorAsignatura($row->id_asignatura);
             $asignatura->setTematicas($auxiliar4);
         } 
         else
@@ -228,11 +228,11 @@ class AsignaturaDAO implements DAO
             $asignatura->setBibliografias($auxiliar2);
 
             $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-            $auxiliar3 = $estudianteDAO->listarIDEstudiantePorAsignatura($row['id_asignatura']);
+            $auxiliar3 = $estudianteDAO->listarIDEstudiantesPorAsignatura($row['id_asignatura']);
             $asignatura->setEstudiantes($auxiliar3);
 
             $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
-            $auxiliar4 = $tematicaDAO->listarIDTematicaPorAsignatura($row['id_asignatura']);
+            $auxiliar4 = $tematicaDAO->listarIDTematicasPorAsignatura($row['id_asignatura']);
             $asignatura->setTematicas($auxiliar4);
 
             $datos[] = $asignatura;

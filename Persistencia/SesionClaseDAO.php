@@ -101,7 +101,7 @@ class SesionClaseDAO implements DAO
      */
     public function crearSesionClase($pSesionClase)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO SESION_CLASE VALUES" . $pSesionClase->getNombre() . "," . $pSesionClase->getVideo() . "," . $pSesionClase->getPuntucion() . "," . $pSesionClase->getDuracion();
         pg_query($this->conexion, $sql);
     }
 
@@ -133,7 +133,7 @@ class SesionClaseDAO implements DAO
             $sesionClase->setFichasBibliograficas($auxiliar1);
 
             $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-            $auxiliar2 = $sesionClaseDAO->listarCuestionarioPorSesionClase($row->id_sesion);
+            $auxiliar2 = $cuestionarioDAO->listarCuestionariosPorSesionClase($row->id_sesion);
             $sesionClase->setPreguntas($auxiliar2);
         } 
         else
@@ -151,8 +151,8 @@ class SesionClaseDAO implements DAO
      */
     public function actualizarSesionClase($pSesionClase)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pSesionClase->getCodigo();
-        pg_query($this->connection, $sql);
+        $sql = "UPDATE FICHAS_BIBLIOGRAFICAS SET" . " nombre_sesion = " . $pSesionClase->getNombre . ", video_sesion = " . $pSesionClase->getVideo() . ", puntuacion_sesion = " . $pSesionClase->getPuntuacion() . ", duracion_sesion = " . $pSesionClase->getDuracion() . " WHERE id_sesion = " . $pSesionClase->getCodigo();
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -163,7 +163,7 @@ class SesionClaseDAO implements DAO
     public function activarSesionClase($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -174,7 +174,7 @@ class SesionClaseDAO implements DAO
     public function desactivarSesionClase($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -183,35 +183,32 @@ class SesionClaseDAO implements DAO
      * @param int $pCodigo
      * @return SesionClase $datos
      */
-    public function listarSesionesClase()
+    public function listarSesionesClase($pInicio, $pNumeroDeItemsPorPagina)
     {
         $sql = "SELECT * FROM SESIONCLASE ORDER BY id_sesion ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $sesionClase = new SesionClase();
 
-            $sesionClase->setCodigo($row->id_sesion);
-            $sesionClase->setNombre($row->nombre_sesion);
-            $sesionClase->setVideo($row->video_sesion);
-            $sesionClase->setPuntuacion($row->puntuacion_sesion);
-            $sesionClase->setDuracion($row->duracion_sesion);
+            $sesionClase->setCodigo($row['id_sesion']);
+            $sesionClase->setNombre($row['nombre_sesion']);
+            $sesionClase->setVideo($row['video_sesion']);
+            $sesionClase->setPuntuacion($row['puntuacion_sesion']);
+            $sesionClase->setDuracion($row['duracion_sesion']);
 
             $fichaBibliograficaDAO = FichaBibliograficaDAO::getFichaBibliograficaDAO($this->conexion);
-            $auxiliar1 = $fichaBibliograficaDAO->listarFichasBibliograficas($row->id_sesion);
+            $auxiliar1 = $fichaBibliograficaDAO->listarFichasBibliograficasPorSesionClase($row['id_sesion']);
             $sesionClase->setFichasBibliograficas($auxiliar1);
 
-
-            $sesionClaseDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-            $auxiliar2 = $sesionClaseDAO->listarPreguntas($row->id_sesion);
+            $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
+            $auxiliar2 = $cuestionarioDAO->listarCuestionariosPorSesionClase($row['id_sesion']);
             $sesionClase->setPreguntas($auxiliar2);
-
-
 
             $datos[] = $sesionClase;
         }
@@ -225,11 +222,11 @@ class SesionClaseDAO implements DAO
      * @param int $pCodigo
      * @return int $datos
      */
-    public function listarIDSesionClasePorTematica($pCodigo)
+    public function listarIDSesionesClasePorTematica($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM SESION_CLASE, TEMATICA_SESION_CLASE, TEMATICA WHERE SESION_CLASE.id_sesion = TEMATICA_SESION_CLASE.id_sesion AND TEMATICA_SESION_CLASE.id_tematica = TEMATICA.id_tematica AND TEMATICA.id_tematica = " . $pCodigo;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
@@ -252,7 +249,7 @@ class SesionClaseDAO implements DAO
     public function cantidadSesionClase()
     {
 
-        $sql = "SELECT * FROM SESIONCLASE";
+        $sql = "SELECT * FROM SESION_CLASE";
 
         $respuesta1 = pg_query($this->conexion, $sql);
 

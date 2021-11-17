@@ -142,8 +142,8 @@ class AdministradorDAO implements DAO
      */
     public function actualizarAdministrador($pAdministrador)
     {
-        $sql = "UPDATE ADMINISTRADOR SET" . " nombre_administrador = " . $pAdministrador->getNombre() . " apellido_administrador = " . $pAdministrador->getApellido() . " telefono_administrador = " . $pAdministrador->getTelefono() . " email_administrador = " . $pAdministrador->getCorreoElectronico() . " WHERE id_administrador = " . $pAdministrador->getCodigo();
-        pg_query($this->connection, $sql);
+        $sql = "UPDATE ADMINISTRADOR SET" . " nombre_administrador = " . $pAdministrador->getNombre() . ", apellido_administrador = " . $pAdministrador->getApellido() . ", telefono_administrador = " . $pAdministrador->getTelefono() . ", email_administrador = " . $pAdministrador->getCorreoElectronico() . " WHERE id_administrador = " . $pAdministrador->getCodigo();
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -152,7 +152,7 @@ class AdministradorDAO implements DAO
      * @param int $pCodigo
      * @return Administrador $datos
      */
-    public function listarAdministrador($pInicio, $pNumeroDeItemsPorPagina)
+    public function listarAdministradores($pInicio, $pNumeroDeItemsPorPagina)
     {
 
         $sql = "SELECT * FROM ADMINISTRADOR ORDER BY id_administrador ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;

@@ -51,13 +51,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/dashboard.html">
+                        <a class="nav-link" href="#">
                             <i class="ni ni-bell-55 text-primary"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/dashboard.html">
+                        <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . 'perfilAdministrador.php' ?>">
                             <i class="ni ni-badge text-primary"></i>
                             <span class="nav-link-text">Perfil</span>
                         </a>

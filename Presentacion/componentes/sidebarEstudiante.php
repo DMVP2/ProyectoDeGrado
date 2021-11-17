@@ -37,23 +37,23 @@
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/dashboard.html">
+                        <a class="nav-link" href="#">
                             <span class="nav-link-text"><!-- Este espacio va en blanco --></span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/dashboard.html">
+                        <a class="nav-link" href="#">
                             <span class="nav-link-text"><!-- Este espacio va en blanco --></span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/dashboard.html">
+                        <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_ESTUDIANTE . 'perfilEstudiante.php' ?>">
                             <i class="ni ni-badge text-primary"></i>
                             <span class="nav-link-text">Inicio</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/dashboard.html">
+                        <a class="nav-link" href="#">
                             <i class="ni ni-book-bookmark text-primary"></i>
                             <span class="nav-link-text">Asignaturas</span>
                         </a>

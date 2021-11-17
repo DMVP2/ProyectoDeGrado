@@ -120,11 +120,11 @@ class BibliografiaDAO implements DAO
             $row = pg_fetch_object($respuesta1);
             $bibliografia = new Bibliografia();
 
-            $bibliografia->setCodigo($row['id_bibliografia']);
-            $bibliografia->setNombreBibliografia($row['nombre_bibliografia']);
-            $bibliografia->setNombreAutor($row['nombre_autor']);
-            $bibliografia->setEditorial($row['editorial_bibliografia']);
-            $bibliografia->setTipo($row['tipo_bibliografia']);
+            $bibliografia->setCodigo($row->id_bibliografia);
+            $bibliografia->setNombreBibliografia($row->nombre_bibliografia);
+            $bibliografia->setNombreAutor($row->nombre_autor);
+            $bibliografia->setEditorial($row->editorial_bibliografia);
+            $bibliografia->setTipo($row->tipo_bibliografia);
 
         } 
         else
@@ -142,7 +142,7 @@ class BibliografiaDAO implements DAO
      */
     public function actualizarBibliografia($pBibliografia)
     {
-        $sql = "UPDATE BIBLIOGRAFIA SET" . " nombre_bibliografia = " . $pBibliografia->getNombreBibliografia() . " editorial_bibliografia = " . $pBibliografia->getEditorial() . " tipoBibliografia " . $pBibliografia->getTipo() . " WHERE id_bibliografia" . $pBibliografia->getCodigo();
+        $sql = "UPDATE BIBLIOGRAFIA SET" . " nombre_bibliografia = " . $pBibliografia->getNombreBibliografia() . ", editorial_bibliografia = " . $pBibliografia->getEditorial() . ", tipoBibliografia " . $pBibliografia->getTipo() . " WHERE id_bibliografia" . $pBibliografia->getCodigo();
         pg_query($this->conexion, $sql);
     }
 

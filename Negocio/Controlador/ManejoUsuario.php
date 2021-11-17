@@ -51,17 +51,6 @@ class ManejoUsuario
     }
 
     /**
-     * Método que obtiene la lista del usuario
-     * 
-     * @return Array $usuario
-     */
-    public function listarUsuario()
-    {
-        $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
-        return $usuarioDAO->listarUsuario();
-    }
-
-    /**
      * Método que busca un usuario por medio de su código
      * 
      * @param int $pCodigo
@@ -101,7 +90,7 @@ class ManejoUsuario
      * 
      * @param int $pCodigo
      */
-    public function activarUsuario($pIdDocument)
+    public function activarUsuario($pUsuario)
     {
         $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
         $usuarioDAO->activarUsuario($pUsuario);
@@ -119,14 +108,14 @@ class ManejoUsuario
     }
 
     /**
-     * Método que cuenta la cantidad total de usuarios registrados en la base de datos
+     * Método que obtiene la lista del usuario
      * 
-     * @return int $cantidad
+     * @return Array $usuario
      */
-    public function cantidadUsuario()
+    public function listarUsuarios($pInicio, $pNumeroDeItemsPorPagina)
     {
         $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
-        return $usuarioDAO->cantidadUsuario();
+        return $usuarioDAO->listarUsuarios($pInicio, $pNumeroDeItemsPorPagina);
     }
 
     /**
@@ -139,5 +128,16 @@ class ManejoUsuario
     {
         $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
         return $usuarioDAO->consultarRolUsuario($pCodigo);
+    }
+
+    /**
+     * Método que cuenta la cantidad total de usuarios registrados en la base de datos
+     * 
+     * @return int $cantidad
+     */
+    public function cantidadUsuario()
+    {
+        $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
+        return $usuarioDAO->cantidadUsuario();
     }
 }

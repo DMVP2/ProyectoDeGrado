@@ -51,17 +51,6 @@ class ManejoAdministrador
     }
 
     /**
-     * Método que obtiene la lista de administradores 
-     * 
-     * @return Array $administrador 
-     */
-    public function listarAdministrador($pInicio, $pNumeroDeItemsPorPagina)
-    {
-        $administradorDAO = AdministradorDAO::getAdministradorDAO($this->conexion);
-        return $administradorDAO->listarAdministrador($pInicio, $pNumeroDeItemsPorPagina);
-    }
-
-    /**
      * Método que busca un administrador por medio de su código
      * 
      * @param int $pCodigo
@@ -82,6 +71,17 @@ class ManejoAdministrador
     {
         $administradorDAO = AdministradorDAO::getAdministradorDAO($this->conexion);
         $administradorDAO->actualizarAdministrador($pAdministrador);
+    }
+
+    /**
+     * Método que obtiene la lista de administradores 
+     * 
+     * @return Array $administrador 
+     */
+    public function listarAdministradores($pInicio, $pNumeroDeItemsPorPagina)
+    {
+        $administradorDAO = AdministradorDAO::getAdministradorDAO($this->conexion);
+        return $administradorDAO->listarAdministradores($pInicio, $pNumeroDeItemsPorPagina);
     }
 
     /**

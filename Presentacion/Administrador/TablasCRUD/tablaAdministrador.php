@@ -144,7 +144,7 @@ $manejoAdministrador = new ManejoAdministrador($conexionActual);
                                         <th scope="col">No°</th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Apellido</th>
-                                        <th scope="col">Telefono</th>
+                                        <th scope="col">Teléfono</th>
                                         <th scope="col">Correo electrónico</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
@@ -177,7 +177,7 @@ $manejoAdministrador = new ManejoAdministrador($conexionActual);
                                             $inicio = ($pagina - 1) * $numeroDeItemsPorPagina;
                                         }
 
-                                        $listadoAdministrador = $manejoAdministrador->listarAdministrador($inicio, $numeroDeItemsPorPagina);
+                                        $listadoAdministrador = $manejoAdministrador->listarAdministradores($inicio, $numeroDeItemsPorPagina);
 
                                         $totalPaginas = ceil($numeroTotalDeFilas / $numeroDeItemsPorPagina);
 

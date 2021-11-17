@@ -149,7 +149,7 @@ class EstudianteDAO implements DAO
      */
     public function actualizarEstudiante($pEstudiante)
     {
-        $sql = "UPDATE ESTUDIANTE SET" . " nombre_estudiante = " . $pEstudiante->getNombre() . " apellido_estudiante = " . $pEstudiante->getApellido() . " fecha_nacimiento = " . $pEstudiante->getFechaNacimiento() . " email_principal = " . $pEstudiante->getCorreoElectronicoPrincipal() . " email_secundario = " . $pEstudiante->getCorreoElectronicoSecundario() . " semestre_estudiante = " . $pEstudiante->getSemestre() . " WHERE id_estudiante = " . $pEstudiante->getCodigo();
+        $sql = "UPDATE ESTUDIANTE SET" . " nombre_estudiante = " . $pEstudiante->getNombre() . ", apellido_estudiante = " . $pEstudiante->getApellido() . ", fecha_nacimiento = " . $pEstudiante->getFechaNacimiento() . ", email_principal = " . $pEstudiante->getCorreoElectronicoPrincipal() . ", email_secundario = " . $pEstudiante->getCorreoElectronicoSecundario() . ", semestre_estudiante = " . $pEstudiante->getSemestre() . " WHERE id_estudiante = " . $pEstudiante->getCodigo();
         pg_query($this->conexion, $sql);
     }
 
@@ -219,7 +219,7 @@ class EstudianteDAO implements DAO
      * @param int $pCodigo
      * @return int $datos
      */
-    public function listarIDEstudiantePorAsignatura($pCodigo)
+    public function listarIDEstudiantesPorAsignatura($pCodigo)
     {
         $sql = "SELECT * FROM ESTUDIANTE, ASIGNATURA_ESTUDIANTE, ASIGNATURA WHERE ASIGNATURA.id_asignatura = ASIGNATURA_ESTUDIANTE.id_asignatura AND ASIGNATURA_ESTUDIANTE.id_estudiante = ESTUDIANTE.id_estudiante AND ESTUDIANTE.id_estudiante = " . $pCodigo;
 

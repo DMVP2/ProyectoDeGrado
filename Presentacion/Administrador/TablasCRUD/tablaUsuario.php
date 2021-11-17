@@ -145,6 +145,7 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                                         <th scope="col">Nickname</th>
                                         <th scope="col">Password</th>
                                         <th scope="col">Rol</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -175,7 +176,7 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                                             $inicio = ($pagina - 1) * $numeroDeItemsPorPagina;
                                         }
 
-                                        $listadoUsuario = $manejoUsuario->listarUsuario($inicio, $numeroDeItemsPorPagina);
+                                        $listadoUsuario = $manejoUsuario->listarUsuarios($inicio, $numeroDeItemsPorPagina);
 
                                         $totalPaginas = ceil($numeroTotalDeFilas / $numeroDeItemsPorPagina);
 

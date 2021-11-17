@@ -99,7 +99,7 @@ class AuditoriaDAO implements DAO
      * @param int $pCodigo
      * @return Auditoria $datos
      */
-    public function listarAuditoria($pInicio, $pNumeroDeItemsPorPagina)
+    public function listarAuditorias($pInicio, $pNumeroDeItemsPorPagina)
     {
 
         $sql = "SELECT * FROM AUDITORIA ORDER BY id_usuario ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;

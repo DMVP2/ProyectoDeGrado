@@ -54,29 +54,6 @@ class ManejoSesionClase
     }
 
     /**
-     * Método que obtiene la lista de las sesiones de clase
-     * 
-     * @return Array $SesionesClase
-     */
-    public function listarSesionesClase()
-    {
-        $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
-        return $sesionClaseDAO->listarSesionesClase();
-    }
-
-    /**
-     * Método que obtiene la lista de los codigos de las sesiones de clase de una temática dada
-     * 
-     * @param int $pCodigo
-     * @return Array $sesionesClase
-     */
-    public function listarIDSesionClasePorTematica($pCodigo)
-    {
-        $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
-        return $sesionClaseDAO->listarIDSesionClasePorTematica($pCodigo);
-    }
-
-    /**
      * Método que busca una sesion de clase por medio de su código
      * 
      * @param int $pCodigo
@@ -122,6 +99,29 @@ class ManejoSesionClase
     }
 
     /**
+     * Método que obtiene la lista de las sesiones de clase
+     * 
+     * @return Array $SesionesClase
+     */
+    public function listarSesionesClase($pInicio, $pNumeroDeItemsPorPagina)
+    {
+        $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
+        return $sesionClaseDAO->listarSesionesClase($pInicio, $pNumeroDeItemsPorPagina);
+    }
+
+    /**
+     * Método que obtiene la lista de los codigos de las sesiones de clase de una temática dada
+     * 
+     * @param int $pCodigo
+     * @return Array $sesionesClase
+     */
+    public function listarIDSesionesClasePorTematica($pCodigo)
+    {
+        $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
+        return $sesionClaseDAO->listarIDSesionesClasePorTematica($pCodigo);
+    }
+
+    /**
      * Método que cuenta la cantidad total de las sesiones de clase registradas en la base de datos
      * 
      * @return int $cantidad
@@ -141,17 +141,6 @@ class ManejoSesionClase
     {
         $fichaBibliograficaDAO = FichaBibliograficaDAO::getFichaBibliograficaDAO($this->conexion);
         $fichaBibliograficaDAO->crearFichaBibliografica($pFichaBibliografica);
-    }
-
-    /**
-     * Método que obtiene la lista de las sesiones de clase
-     * 
-     * @return Array $Fichas
-     */
-    public function listarFichasBibliograficas()
-    {
-        $fichaBibliograficaDAO = FichaBibliograficaDAO::getFichaBibliograficaDAO($this->conexion);
-        return $fichasBibliograficas->listarFichasBibliograficas();
     }
 
     /**
@@ -178,25 +167,14 @@ class ManejoSesionClase
     }
 
     /**
-     * Método que borra una ficha bibliografica por medio de su código
-     * 
-     * @param int $pCodigo
-     */
-    public function borrarFichaBibliografica($pIdDocument)
-    {
-        $fichaBibliograficaDAO = FichaBibliograficaDAO::getFichaBibliograficaDAO($this->conexion);
-        $fichaBibliograficaDAO->borrarFichaBibliografica($pFichaBibliografica);
-    }
-
-    /**
      * Método que activa una ficha bibliografica por medio de su código
      * 
      * @param int $pCodigo
      */
-    public function activarFichaBibliografica($pIdDocument)
+    public function activarFichaBibliografica($pCodigo)
     {
         $fichaBibliograficaDAO = FichaBibliograficaDAO::getFichaBibliograficaDAO($this->conexion);
-        $fichaBibliograficaDAO->activarFichaBibliografica($pFichaBibliografica);
+        $fichaBibliograficaDAO->activarFichaBibliografica($pCodigo);
     }
 
     /**
@@ -204,10 +182,33 @@ class ManejoSesionClase
      * 
      * @param int $pCodigo
      */
-    public function desactivaFichaBibliografica($pIdDocument)
+    public function desactivaFichaBibliografica($pCodigo)
     {
         $fichaBibliograficaDAO = FichaBibliograficaDAO::getFichaBibliograficaDAO($this->conexion);
-        $fichaBibliograficaDAO->desactivaFichaBibliografica($pFichaBibliografica);
+        $fichaBibliograficaDAO->desactivarFichaBibliografica($pCodigo);
+    }    
+
+    /**
+     * Método que obtiene la lista de las sesiones de clase
+     * 
+     * @return Array $Fichas
+     */
+    public function listarFichasBibliograficas($pInicio, $pNumeroDeItemsPorPagina)
+    {
+        $fichaBibliograficaDAO = FichaBibliograficaDAO::getFichaBibliograficaDAO($this->conexion);
+        return $fichaBibliograficaDAO->listarFichasBibliograficas($pInicio, $pNumeroDeItemsPorPagina);
+    }
+
+        /**
+     * Método que obtiene la lista de los cuestionarios por una sesion de clase dada
+     * 
+     * @param int $pCodigo
+     * @return Array $Cuestionario
+     */
+    public function listarFichasBibliograficasPorSesionClase($pCodigo)
+    {
+        $fichaBibliograficaDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
+        return $fichaBibliograficaDAO->listarFichasBibliograficasPorSesionClase($pCodigo);
     }
 
     /**
@@ -215,33 +216,22 @@ class ManejoSesionClase
      * 
      * @param Cuestionario $pCuestionario
      */
-    public function crearPregunta($pCuestionario)
+    public function crearCuestionario($pCuestionario)
     {
         $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-        $cuestionarioDAO->crearPregunta($pCuestionario);
+        $cuestionarioDAO->crearCuestionario($pCuestionario);
     }
 
-    /**
-     * Método que obtiene la lista de los cuestionarios
-     * 
-     * @return Array $Cuestionario
-     */
-    public function listarPreguntas()
-    {
-        $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-        return $cuestionarioDAO->listarPreguntas();
-    }
-
-    /**
+        /**
      * Método que busca un cuestionario por medio de su código
      * 
      * @param int $pCodigo
      * @return Cuestionario $cuestionario
      */
-    public function buscarPregunta($pCodigo)
+    public function buscarCuestionario($pCodigo)
     {
         $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-        return $cuestionarioDAO->buscarPregunta($pCodigo);
+        return $cuestionarioDAO->buscarCuestionario($pCodigo);
     }
 
     /**
@@ -249,10 +239,10 @@ class ManejoSesionClase
      * 
      * @param Cuestionario $pCuestionario
      */
-    public function actualizarPregunta($pCuestionario)
+    public function actualizarCuestionario($pCuestionario)
     {
         $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-        $cuestionarioDAO->actualizarPregunta($pCuestionario);
+        $cuestionarioDAO->actualizarCuestionario($pCuestionario);
     }
 
     /**
@@ -260,10 +250,10 @@ class ManejoSesionClase
      * 
      * @param int $pCodigo
      */
-    public function activarPregunta($pIdDocument)
+    public function activarCuestionario($pCuestionario)
     {
         $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-        $cuestionarioDAO->activarPregunta($pCuestionario);
+        $cuestionarioDAO->activarCuestionario($pCuestionario);
     }
 
     /**
@@ -271,12 +261,22 @@ class ManejoSesionClase
      * 
      * @param int $pCodigo
      */
-    public function desactivarPregunta($pIdDocument)
+    public function desactivarCuestionario($pCuestionario)
     {
         $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-        $cuestionarioDAO->activarPregunta($pCuestionario);
+        $cuestionarioDAO->desactivarCuestionario($pCuestionario);
     }
 
+    /**
+     * Método que obtiene la lista de los cuestionarios
+     * 
+     * @return Array $Cuestionario
+     */
+    public function listarCuestionarios($pInicio, $pNumeroDeItemsPorPagina)
+    {
+        $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
+        return $cuestionarioDAO->listarCuestionarios($pInicio, $pNumeroDeItemsPorPagina);
+    }
 
     /**
      * Método que obtiene la lista de los cuestionarios por una sesion de clase dada
@@ -284,22 +284,9 @@ class ManejoSesionClase
      * @param int $pCodigo
      * @return Array $Cuestionario
      */
-    public function listarFichasBibliograficasPorSesion($pCodigo)
+    public function listarCuestionariosPorSesionClase($pCodigo)
     {
         $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-        return $cuestionarioDAO->listarFichasBibliograficasPorSesion($pCodigo);
-    }
-
-
-    /**
-     * Método que obtiene la lista de los cuestionarios por una sesion de clase dada
-     * 
-     * @param int $pCodigo
-     * @return Array $Cuestionario
-     */
-    public function listarCuestionarioPorSesionClase($pCodigo)
-    {
-        $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-        return $cuestionarioDAO->listarCuestionarioPorSesionClase($pCodigo);
+        return $cuestionarioDAO->listarCuestionariosPorSesionClase($pCodigo);
     }
 }

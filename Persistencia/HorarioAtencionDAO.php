@@ -142,8 +142,8 @@ class HorarioAtencionDAO implements DAO
      */
     public function actualizarHorarioAtencion($pHorarioAtencion)
     {
-        $sql = "UPDATE HORARIO_ATENCION SET" . " dia_atencion = " . $pHorarioAtencion->getDia() . " hora_atencion = " . $pHorarioAtencion->getHora() . " medio_atencion = " . $pHorarioAtencion->getMedio() . " lugar_atencion = " . $pHorarioAtencion->getLugar() . $pHorarioAtencion->getCodigo();
-        pg_query($this->connection, $sql);
+        $sql = "UPDATE HORARIO_ATENCION SET" . " dia_atencion = " . $pHorarioAtencion->getDia() . ", hora_atencion = " . $pHorarioAtencion->getHora() . ", medio_atencion = " . $pHorarioAtencion->getMedio() . ", lugar_atencion = " . $pHorarioAtencion->getLugar() . " WHERE id_horario_atencion = ". $pHorarioAtencion->getCodigo();
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -154,7 +154,7 @@ class HorarioAtencionDAO implements DAO
     public function activarHorarioAtencion($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -165,7 +165,7 @@ class HorarioAtencionDAO implements DAO
     public function desactivarHorarioAtencion($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**

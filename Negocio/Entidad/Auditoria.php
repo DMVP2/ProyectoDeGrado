@@ -65,13 +65,6 @@ class Auditoria
      */
     private $fechaOperacion;
 
-    /**
-     * Fecha de operacion de la auditoria
-     * 
-     * @var Date $fechaOperacion
-     */
-    private $fechaOperacion;
-
      /**
      * Hora de operacion de la auditoria
      * 
@@ -246,7 +239,7 @@ class Auditoria
      * 
      * @param int $pHoraOperacion
      */
-    public function setSemestre($pHoraOperacion)
+    public function setHoraOperacion($pHoraOperacion)
     {
         $this->horaOperacion = $pHoraOperacion;
     }

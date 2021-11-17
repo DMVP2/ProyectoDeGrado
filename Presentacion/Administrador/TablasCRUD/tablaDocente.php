@@ -144,7 +144,7 @@ $manejoDocente = new ManejoDocente($conexionActual);
                                         <th scope="col">No°</th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Apellido</th>
-                                        <th scope="col">Email</th>
+                                        <th scope="col">Correo electrónico</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>

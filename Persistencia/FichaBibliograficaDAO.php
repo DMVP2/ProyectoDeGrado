@@ -99,7 +99,7 @@ class FichaBibliograficaDAO implements DAO
      */
     public function crearFichaBibliografica($pFichaBibliografica)
     {
-        $sql = "INSERT INTO FICHA_BIBLIOGRAFICA VALUES " . $pFichaBibliografica->getNombre() . "," . $pFichaBibliografica->getDescripcionFicha() . "," . $pFichaBibliografica->getImagenFicha();
+        $sql = "INSERT INTO FICHAS_BIBLIOGRAFICAS VALUES " . $pFichaBibliografica->getNombre() . "," . $pFichaBibliografica->getDescripcionFicha() . "," . $pFichaBibliografica->getImagenFicha();
         pg_query($this->conexion, $sql);
     }
 
@@ -111,7 +111,7 @@ class FichaBibliograficaDAO implements DAO
      */
     public function buscarFichaBibliografica($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM FICHAS_BIBLIOGRAFICAS WHERE id_ficha = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -141,8 +141,8 @@ class FichaBibliograficaDAO implements DAO
      */
     public function actualizarFichaBibliografica($pFichaBibliografica)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pFichaBibliografica->getCodigo();
-        pg_query($this->connection, $sql);
+        $sql = "UPDATE FICHAS_BIBLIOGRAFICAS SET" . " nombre_ficha = " . $pFichaBibliografica->getNombre() . ", descripcion_ficha = " . $pFichaBibliografica->getDescripcionFicha() . ", imagen_ficha = " . $pFichaBibliografica->getImagenFicha() . " WHERE id_ficha = " . $pFichaBibliografica->getCodigo();
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -153,7 +153,7 @@ class FichaBibliograficaDAO implements DAO
     public function activarFichaBibliografica($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -164,7 +164,7 @@ class FichaBibliograficaDAO implements DAO
     public function desactivarFichaBibliografica($pCodigo)
     {
         $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
-        pg_query($this->connection, $sql);
+        pg_query($this->conexion, $sql);
     }
 
     /**
@@ -173,23 +173,23 @@ class FichaBibliograficaDAO implements DAO
      * @param int $pCodigo
      * @return FichaBibliografica $datos
      */
-    public function listarFichaBibliografica()
+    public function listarFichasBibliograficas($pInicio, $pNumeroDeItemsPorPagina)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "SELECT * FROM FICHAS_BIBLIOGRAFICAS ORDER BY id_ficha ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
             $fichaBibliografica = new FichaBibliografica();
 
-            $fichaBibliografica->setCodigo($row->id_ficha);
-            $fichaBibliografica->setNombre($row->nombre_ficha);
-            $fichaBibliografica->setDescripcionFicha($row->descripcion_ficha);
-            $fichaBibliografica->setImagenFicha($row->imagen_ficha);
+            $fichaBibliografica->setCodigo($row['id_ficha']);
+            $fichaBibliografica->setNombre($row['nombre_ficha']);
+            $fichaBibliografica->setDescripcionFicha($row['descripcion_ficha']);
+            $fichaBibliografica->setImagenFicha($row['imagen_ficha']);
 
             $datos[] = $fichaBibliografica;
         }
@@ -205,18 +205,23 @@ class FichaBibliograficaDAO implements DAO
      */
     public function listarFichasBibliograficasPorSesionClase($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM FICHAS_BIBLIOGRAFICAS, SESION_CLASE_FICHAS_BIBLIOGRAFICAS, SESION_CLASE WHERE SESION_CLASE.id_sesion = SESION_CLASE_FICHAS_BIBLIOGRAFICAS.id_sesion AND SESION_CLASE_FICHAS_BIBLIOGRAFICAS.id_ficha = FICHAS_BIBLIOGRAFICAS.id_ficha AND SESION_CLASE.id_sesion = " . $pCodigo;
 
-        if (!$respuesta1 = pg_query($this->connection, $sql)) die();
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($result))
+        while ($row = pg_fetch_array($respuesta1))
         {
 
-            $id = $row['id_ficha'];
+            $fichaBibliografica = new FichaBibliografica();
 
-            $datos[] = $id;
+            $fichaBibliografica->setCodigo($row['id_ficha']);
+            $fichaBibliografica->setNombre($row['nombre_ficha']);
+            $fichaBibliografica->setDescripcionFicha($row['descripcion_ficha']);
+            $fichaBibliografica->setImagenFicha($row['imagen_ficha']);
+
+            $datos[] = $fichaBibliografica;
         }
 
         return $datos;

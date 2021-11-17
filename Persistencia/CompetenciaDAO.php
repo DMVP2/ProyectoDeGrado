@@ -120,9 +120,9 @@ class CompetenciaDAO implements DAO
             $row = pg_fetch_object($respuesta1);
             $competencia = new Competencia();
 
-            $competencia->setCodigo($row['id_competencia']);
-            $competencia->setDescripcionCompetencia($row['descripcion_competencia']);
-            $competencia->setDimensionAprendizajeSignificativo($row['dimension_aprendizaje_significativo']);
+            $competencia->setCodigo($row->id_competencia);
+            $competencia->setDescripcionCompetencia($row->descripcion_competencia);
+            $competencia->setDimensionAprendizajeSignificativo($row->dimension_aprendizaje_significativo);
 
         } 
         else

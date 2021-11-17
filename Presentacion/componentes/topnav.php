@@ -56,6 +56,19 @@ include_once('routes.php');
                 </div>
             </li>
         </ul>
+
+        <?php
+
+        if (strcasecmp($rol, 'Administrador') == 0) {
+            $rutaPerfil = DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . 'perfilAdministrador.php';
+        } else if (strcasecmp($rol, 'Docente') == 0) {
+            $rutaPerfil = DIRECTORIO_RAIZ . RUTA_DOCENTE . 'perfilDocente.php';
+        } else if (strcasecmp($rol, 'Estudiante') == 0) {
+            $rutaPerfil = DIRECTORIO_RAIZ . RUTA_ESTUDIANTE . 'perfilEstudiante.php';
+        }
+
+        ?>
+
         <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
             <li class="nav-item dropdown">
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,11 +85,11 @@ include_once('routes.php');
                     <div class="dropdown-header noti-title">
                         <h6 class="text-overflow m-0">¡Bienvenid@!</h6>
                     </div>
-                    <a href="#!" class="dropdown-item">
+                    <a href="<?php echo $rutaPerfil ?>" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
                         <span>Mi perfil (Home)</span>
                     </a>
-                    <a href="#!" class="dropdown-item">
+                    <a href="#" class="dropdown-item">
                         <i class="ni ni-support-16"></i>
                         <span>Ayuda</span>
                     </a>

@@ -53,18 +53,6 @@ class ManejoAsignatura
     }
 
     /**
-     * Método que obtiene la lista de asignatura
-     * 
-     * @return Array $asignatura
-     */
-    public function listarAsignaturas($pInicio, $pNumeroDeItemsPorPagina)
-    {
-        $asignaturaDAO = AsignaturaDAO::getAsignaturaDAO($this->conexion);
-        return $asignaturaDAO->listarAsignaturas($pInicio, $pNumeroDeItemsPorPagina);
-    }
-
-
-    /**
      * Método que busca una asignatura por medio de su código
      * 
      * @param int $pCodigo
@@ -110,6 +98,17 @@ class ManejoAsignatura
     }
 
     /**
+     * Método que obtiene la lista de asignatura
+     * 
+     * @return Array $asignatura
+     */
+    public function listarAsignaturas($pInicio, $pNumeroDeItemsPorPagina)
+    {
+        $asignaturaDAO = AsignaturaDAO::getAsignaturaDAO($this->conexion);
+        return $asignaturaDAO->listarAsignaturas($pInicio, $pNumeroDeItemsPorPagina);
+    }
+
+    /**
      * Método que cuenta la cantidad total de asignaturas registrados en la base de datos
      * 
      * @return int $cantidad
@@ -130,30 +129,6 @@ class ManejoAsignatura
     {
         $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
         $competenciaDAO->crearCompetencia($pCompetencia);
-    }
-
-    /**
-     * Método que obtiene la lista de las competencias
-     * 
-     * @return Array $competencias
-     */
-    public function listarCompetencias()
-    {
-        $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
-        return $competenciaDAO->listarCompetencias();
-    }
-
-
-    /**
-     * Método que obtiene la lista de los codigos de las competencias de una asignatura dada
-     * 
-     * @param int $pCodigo
-     * @return Array $competencias
-     */
-    public function listarCompetenciasPorAsignatura($pCodigo)
-    {
-        $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
-        return $competenciaDAO->listarCompetenciasPorAsignatura($pCodigo);
     }
 
     /**
@@ -200,6 +175,30 @@ class ManejoAsignatura
         $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
         $competenciaDAO->desactivarCompetencia($pCompetencia);
     }
+
+    /**
+     * Método que obtiene la lista de las competencias
+     * 
+     * @return Array $competencias
+     */
+    public function listarCompetencias($pInicio, $pNumeroDeItemsPorPagina)
+    {
+        $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
+        return $competenciaDAO->listarCompetencias($pInicio, $pNumeroDeItemsPorPagina);
+    }
+
+
+    /**
+     * Método que obtiene la lista de los codigos de las competencias de una asignatura dada
+     * 
+     * @param int $pCodigo
+     * @return Array $competencias
+     */
+    public function listarCompetenciasPorAsignatura($pCodigo)
+    {
+        $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
+        return $competenciaDAO->listarCompetenciasPorAsignatura($pCodigo);
+    }
     
     /**
      * Método que crear un objeto de la clase bibliografia
@@ -210,29 +209,6 @@ class ManejoAsignatura
     {
         $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
         $bibliografiaDAO->crearBibliografia($pBibliografia);
-    }
-
-    /**
-     * Método que obtiene la lista de las bibliografia
-     * 
-     * @return Array $bibliografia
-     */
-    public function listarBibliografias()
-    {
-        $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
-        return $bibliografiaDAO->listarBibliografias();
-    }
-
-     /**
-     * Método que obtiene la lista de los codigos de las bibliografias de una asignatura dada
-     * 
-     * @param int $pCodigo
-     * @return Array $bibliografias
-     */
-    public function listarBibliografiasPorAsignatura($pCodigo)
-    {
-        $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
-        return $bibliografiaDAO->listarBibliografiasPorAsignatura($pCodigo);
     }
 
     /**
@@ -278,5 +254,28 @@ class ManejoAsignatura
     {
         $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
         $bibliografiaDAO->desactivarBibliografia($pBibliografia);
+    }    
+
+    /**
+     * Método que obtiene la lista de las bibliografia
+     * 
+     * @return Array $bibliografia
+     */
+    public function listarBibliografias($pInicio, $pNumeroDeItemsPorPagina)
+    {
+        $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
+        return $bibliografiaDAO->listarBibliografias($pInicio, $pNumeroDeItemsPorPagina);
+    }
+
+     /**
+     * Método que obtiene la lista de los codigos de las bibliografias de una asignatura dada
+     * 
+     * @param int $pCodigo
+     * @return Array $bibliografias
+     */
+    public function listarBibliografiasPorAsignatura($pCodigo)
+    {
+        $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
+        return $bibliografiaDAO->listarBibliografiasPorAsignatura($pCodigo);
     }
 }
