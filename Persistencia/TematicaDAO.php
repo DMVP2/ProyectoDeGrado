@@ -109,7 +109,7 @@ class TematicaDAO implements DAO
      */
     public function buscarTematica($pCodigo)
     {
-        $sql = "SELECT * FROM ASIGNATURA WHERE id_tematica = " . $pCodigo;
+        $sql = "SELECT * FROM TEMATICA WHERE id_tematica = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -177,7 +177,7 @@ class TematicaDAO implements DAO
      */
     public function listarTematicas($pInicio, $pNumeroDeItemsPorPagina)
     {
-        $sql = "SELECT * FROM ASIGNATURA ORDER BY id_tematica ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
+        $sql = "SELECT * FROM TEMATICA ORDER BY id_tematica ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 

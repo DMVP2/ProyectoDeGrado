@@ -125,73 +125,43 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
 
                         $inicio = 0;
 
-                        $numeroDeItemsPorPagina = 5;
+                        $numeroDeItemsPorPagina = $manejoAsignatura->cantidadAsignatura();
 
-                        $i;
+                        $listadoAsignatura = $manejoAsignatura->listarAsignaturas($inicio, $numeroDeItemsPorPagina);
 
-                        $numeroTotalDeFilas = $manejoAsignatura->cantidadAsignatura();
+                        foreach ($listadoAsignatura as $asignatura) {
 
-                        if ($numeroTotalDeFilas > 0) {
-                            $pagina = false;
+                            $imagenFondoPerfil = 0;
 
-                            if (isset($_GET["pagina"])) {
-                                $pagina = $_GET["pagina"];
+                            $i = rand(1, 5);
+
+                            switch ($i) {
+                                case 1:
+                                    $imagenFondoPerfil = "Fondo_Geometrico_Verde.jpg";
+                                    break;
+                                case 2:
+                                    $imagenFondoPerfil = "Fondo_Geometrico_Rojo.jpg";
+                                    break;
+                                case 3:
+                                    $imagenFondoPerfil = "Fondo_Geometrico_Azul.jpg";
+                                    break;
+                                case 4:
+                                    $imagenFondoPerfil = "Fondo_Geometrico_Naranja.jpg";
+                                    break;
+                                case 5:
+                                    $imagenFondoPerfil = "Fondo_Geometrico_Morado.jpg";
+                                    break;
                             }
 
-                            if (!$pagina) {
-                                $inicio = 0;
-                                $pagina = 1;
-                            } else {
-                                $inicio = ($pagina - 1) * $numeroDeItemsPorPagina;
-                            }
-
-                            $listadoAsignatura = $manejoAsignatura->listarAsignaturas($inicio, $numeroDeItemsPorPagina);
-
-                            $totalPaginas = ceil($numeroTotalDeFilas / $numeroDeItemsPorPagina);
-
-                            $numero = 0;
-
-                            foreach ($listadoAsignatura as $asignatura) {
-
-                                $numero = $numero + 1;
-
-
-                                echo '<div class="col-xl-4 col-md-6">
-                                    <div class="card" style="width: 24rem;">
-                                    <img class="card-img-top" src="../../assets/img/theme/img-1-1000x600.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card content.</p>
-                                        <a href="#" class="btn btn-primary btn-lg btn-block">Go somewhere</a>
-                                    </div>
-                                    </div>
-                                    </div>';
-                            }
-                            echo '<div class="card-footer py-4">';
-                            echo '<nav aria-label="...">';
-                            echo '<ul class="pagination justify-content-end mb-0">';
-
-                            if ($totalPaginas > 1) {
-                                if ($pagina != 1) {
-                                    echo '<li class="page-item disabled"><a class="page-link" href="tablaAdministrador.php?pagina=' . ($pagina - 1) . '"><i class="fas fa-angle-left"></i></a></li>';
-                                }
-
-                                for ($i = 1; $i <= $totalPaginas; $i++) {
-                                    if ($pagina == $i) {
-                                        echo '<li class="page-item active"><a class="page-link" href="#">' . $pagina . '</a></li>';
-                                    } else {
-                                        echo '<li class="page-item"><a class="page-link" href="tablaAdministrador.php?pagina=' . $i . '">' . $i . '</a></li>';
-                                    }
-                                }
-
-                                if ($pagina != $totalPaginas) {
-
-
-                                    echo '<li class="page-item"><a class="page-link" href="tablaAdministrador.php?pagina=' . ($pagina + 1) . '"><i class="fas fa-angle-right"></i></a></li>';
-                                }
-                            }
-                            echo '</ul>';
-                            echo '</nav>';
+                            echo '<div class="col-xl-4 col-md-6">';
+                            echo '<div class="card" style="width: 24rem;">';
+                            echo '<img class="card-img-top" src="' . DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/' . $imagenFondoPerfil . '"height="200" alt="Image placeholder">';
+                            echo '<div class="card-body">';
+                            echo '<h5 class="card-title">' . $asignatura->getNombre() . '</h5>';
+                            echo '<p class="card-text">' . $asignatura->getDescripcion() . '</p>';
+                            echo '<a href="tablaTematicasPorAsignatura.php?id='. $asignatura->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Ir a la asignatura</a>';
+                            echo '</div>';
+                            echo '</div>';
                             echo '</div>';
                         }
                         ?>

@@ -127,7 +127,7 @@ class ProgresoDAO implements DAO
             $progreso->setOpcionB($row->opcion_B);
             $progreso->setOpcionC($row->opcion_C);
             $progreso->setOpcionD($row->opcion_D);
-            $progreso->setOpcionE($row->dopcion_E);
+            $progreso->setOpcionE($row->opcion_E);
             $progreso->setPuntajeObtenido($row->puntaje_obtenido);
             $progreso->setResumen($row->resumen);
 
@@ -172,6 +172,8 @@ class ProgresoDAO implements DAO
     {
         $sql = "SELECT * FROM PROGRESO WHERE id_estudiante = " . $pCodigo;
 
+echo $sql;
+
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
@@ -188,7 +190,7 @@ class ProgresoDAO implements DAO
             $progreso->setOpcionB($row['opcion_B']);
             $progreso->setOpcionC($row['opcion_C']);
             $progreso->setOpcionD($row['opcion_D']);
-            $progreso->setOpcionE($row['dopcion_E']);
+            $progreso->setOpcionE($row['opcion_E']);
             $progreso->setPuntajeObtenido($row['puntaje_obtenido']);
             $progreso->setResumen($row['resumen']);
 

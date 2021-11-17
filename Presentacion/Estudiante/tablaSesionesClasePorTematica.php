@@ -42,11 +42,10 @@ $conexionActual = $conexion->conectarBD();
 // Llamado de manejos
 
 $manejoSesionClase = new ManejoSesionClase($conexionActual);
-$manejoUsuario = new ManejoUsuario($conexionActual);
 
 // Variables pasadas por GET
 
-$codigoSesionClase = $_GET['id'];
+$codigoTematica = $_GET['id'];
 
 ?>
 <!DOCTYPE html>
@@ -100,7 +99,7 @@ $codigoSesionClase = $_GET['id'];
 
     <!-- Sidebar -->
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarEstudiante.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarAdministrador.php'; ?>
 
     <!-- Fin Sidebar -->
 
@@ -124,32 +123,6 @@ $codigoSesionClase = $_GET['id'];
                         <!-- Este espacio se queda en blanco -->
 
                     </div>
-
-                    <?php
-
-$sesionClase = $manejoSesionClase->buscarSesionClase($usuario->getCodigo());
-
-                    ?>
-
-                    <div class="row">
-                        <div class="col-xl-12 col-md-6">
-                            <div class="card card-stats">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Sesion de clase</h5>
-                                            <span class="h2 font-weight-bold mb-0"><?php echo $sesionClase->getNombre() ?></span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                                <i class="ni ni-book-bookmark"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -160,25 +133,69 @@ $sesionClase = $manejoSesionClase->buscarSesionClase($usuario->getCodigo());
 
         <div class="container-fluid mt--6">
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col">
                     <div class="card">
-                        <div style="position: relative; padding-bottom: 56.25%; height: 0; max-width: 100%;">
-                            <iframe src="<?php echo $sesionClase->getVideo() ?>" title="<?php echo $sesionClase->getNombre() ?>" style="width: 100%; height: 100%; border: 0; position: absolute; left:0; right:0;" allowfullscreen allow="autoplay; fullscreen">
-                            </iframe>
+                        <div class="card-header border-0">
+                            <h3 class="mb-0">Sesiones de clase</h3>
                         </div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush">
+
+                                <!-- Encabezados de la tabla -->
+
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">No°</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Puntuación</th>
+                                        <th scope="col">Duración</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+
+                                <!-- Fin encabezados de la tabla -->
+
+                                <tbody class="list">
+                                    <?php
+
+                                    $listadoIDSesiones = $manejoSesionClase->listarIDSesionesClasePorTematica($codigoTematica);
+
+                                    $numero = 0;
+
+                                    foreach ($listadoIDSesiones as $codigoSesionClase) {
+
+                                        $sesionClase = $manejoSesionClase->buscarSesionClase($codigoSesionClase);
+
+                                        $numero = $numero + 1;
+
+                                        echo "<tr>";
+                                        echo "<td>" . $numero . "</td>";
+                                        echo "<td>" . $sesionClase->getNombre() . "</td>";
+                                        echo "<td>" . $sesionClase->getPuntuacion() . "</td>";
+                                        echo "<td>" . $sesionClase->getDuracion() . "</td>";
+                                        echo '<td><a href="videoInteractivo.php?id=' . $sesionClase->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Ver sesion de clase</a></td>';
+                                        echo "</tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-
-            <!-- Footer -->
-
-            <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'footer.php'; ?>
-
-            <!-- Fin Footer -->
-
         </div>
 
-        <!-- Fin contenido -->
+        <!-- Footer -->
+
+        <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'footer.php'; ?>
+
+        <!-- Fin Footer -->
+
+    </div>
+
+    <!-- Fin contenido -->
 
     </div>
 

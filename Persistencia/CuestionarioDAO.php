@@ -111,7 +111,7 @@ class CuestionarioDAO implements DAO
      */
     public function buscarCuestionario($pCodigo)
     {
-        $sql = "SELECT * FROM CUESTIONARIO WHERE id_cuestionario = " . $pCodigo;
+        $sql = "SELECT * FROM CUESTIONARIO WHERE id_pregunta = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -145,7 +145,7 @@ class CuestionarioDAO implements DAO
      */
     public function actualizarCuestionario($pCuestionario)
     {
-        $sql = "UPDATE CUESTIONARIO SET" . " id_sesion = " . $pCuestionario->getSesionClase() . ", pregunta = " . $pCuestionario->getPregunta() . ", opcion_A = " . $pCuestionario->getOpcionA() . ", opcion_B = " . $pCuestionario->getOpcionB() . ", opcion_C = " . $pCuestionario->getOpcionC() . ", opcion_D = " . $pCuestionario->getOpcionD() . ", opcion_E = " . $pCuestionario->getOpcionE() . ", respuesta_correcta = " . $pCuestionario->getRespuestaCorrecta() . " WHERE id_pregunta = " . $pCuestionario->getCodigo();
+        $sql = "UPDATE CUESTIONARIO SET" . " id_pregunta = " . $pCuestionario->getSesionClase() . ", pregunta = " . $pCuestionario->getPregunta() . ", opcion_A = " . $pCuestionario->getOpcionA() . ", opcion_B = " . $pCuestionario->getOpcionB() . ", opcion_C = " . $pCuestionario->getOpcionC() . ", opcion_D = " . $pCuestionario->getOpcionD() . ", opcion_E = " . $pCuestionario->getOpcionE() . ", respuesta_correcta = " . $pCuestionario->getRespuestaCorrecta() . " WHERE id_pregunta = " . $pCuestionario->getCodigo();
         pg_query($this->conexion, $sql);
     }
 
@@ -214,7 +214,7 @@ class CuestionarioDAO implements DAO
      */
     public function listarCuestionariosPorSesionClase($pCodigo)
     {
-        $sql = "SELECT * FROM CUESTIONARIO WHERE id_sesion = " . $pCodigo;
+        $sql = "SELECT * FROM CUESTIONARIO WHERE id_pregunta = " . $pCodigo;
 
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 

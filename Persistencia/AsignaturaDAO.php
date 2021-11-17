@@ -127,6 +127,7 @@ class AsignaturaDAO implements DAO
 
             $asignatura->setCodigo($row->id_asignatura);
             $asignatura->setDocente($row->nombre_asignatura);
+            $asignatura->setNombre($row->nombre_asignatura);
             $asignatura->setGrupo($row->grupo_asignatura);
             $asignatura->setNumeroCreditos($row->num_creditos);
             $asignatura->setSemestre($row->semestre_asignatura);
@@ -212,6 +213,7 @@ class AsignaturaDAO implements DAO
 
             $asignatura->setCodigo($row['id_asignatura']);
             $asignatura->setDocente($row['nombre_asignatura']);
+            $asignatura->setNombre($row['nombre_asignatura']);
             $asignatura->setGrupo($row['grupo_asignatura']);
             $asignatura->setNumeroCreditos($row['num_creditos']);
             $asignatura->setSemestre($row['semestre_asignatura']);

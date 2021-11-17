@@ -113,7 +113,7 @@ class SesionClaseDAO implements DAO
      */
     public function buscarSesionClase($pCodigo)
     {
-        $sql = "SELECT * FROM SESIONCLASE WHERE id_sesion = " . $pCodigo;
+        $sql = "SELECT * FROM SESION_CLASE WHERE id_sesion = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -185,7 +185,7 @@ class SesionClaseDAO implements DAO
      */
     public function listarSesionesClase($pInicio, $pNumeroDeItemsPorPagina)
     {
-        $sql = "SELECT * FROM SESIONCLASE ORDER BY id_sesion ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
+        $sql = "SELECT * FROM SESION_CLASE ORDER BY id_sesion ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
