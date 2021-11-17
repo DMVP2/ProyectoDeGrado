@@ -95,11 +95,11 @@ class FichaBibliograficaDAO implements DAO
     /**
      * Método que crea un objeto de la clase FichaBibliografica
      * 
-     * @param FichaBibliograficaDAO $pFichaBibliografica
+     * @param FichaBibliografica $pFichaBibliografica
      */
     public function crearFichaBibliografica($pFichaBibliografica)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO FICHA_BIBLIOGRAFICA VALUES " . $pFichaBibliografica->getNombre() . "," . $pFichaBibliografica->getDescripcionFicha() . "," . $pFichaBibliografica->getImagenFicha();
         pg_query($this->conexion, $sql);
     }
 

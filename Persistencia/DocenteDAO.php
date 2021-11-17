@@ -101,7 +101,7 @@ class DocenteDAO implements DAO
      */
     public function crearDocente($pDocente)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO DOCENTE VALUES " $pDocente->getCodiog() . "," . $pDocente->getNombre() . "," . $pDocente->getApellido() . "," . $pDocente->getCorreoElectronico();
         pg_query($this->conexion, $sql);
     }
 
@@ -130,8 +130,6 @@ class DocenteDAO implements DAO
             $horariosAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
             $auxiliar1 = $horariosAtencionDAO->listarHorariosAtencionPorDocente($row->id_docente);
             $docente->sethorariosAtencion($auxiliar1);
-
-
         } 
         else
         {
@@ -148,7 +146,7 @@ class DocenteDAO implements DAO
      */
     public function actualizarDocente($pDocente)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pDocente->getCodigo();
+        $sql = "UPDATE DOCENTE SET" . " nombre_docente = " . $pDocente->getNombre() . " apellido_docente = " . $pDocente->getApellido() . " email_docente = " . $pDocente->getCorreoElectronico() . " WHERE id_docente = " . $pDocente->getCodigo();
         pg_query($this->conexion, $sql);
     }
 

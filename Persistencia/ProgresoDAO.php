@@ -99,7 +99,7 @@ class ProgresoDAO implements DAO
      */
     public function crearProgreso($pProgreso)
     {
-        $sql = "INSERT INTO PROGRESO VALUES " . $pProgreso->getSesionClase() . "," . $pProgreso->getResuelto() . "," . $pProgreso->getOpcionA() . "," . $pProgreso->getOpcionB() . "," . $pProgreso->getOpcionC() . "," . $pProgreso->getOpcionD() . "," . $pProgreso->getOpcionE() . "," . $pProgreso->getPuntajeObtenido() . "," . $pProgreso->getResumen();
+        $sql = "INSERT INTO PROGRESO VALUES " . $pProgreso->getEstudiante() . "," .$pProgreso->getSesionClase() . "," . $pProgreso->getResuelto() . "," . $pProgreso->getOpcionA() . "," . $pProgreso->getOpcionB() . "," . $pProgreso->getOpcionC() . "," . $pProgreso->getOpcionD() . "," . $pProgreso->getOpcionE() . "," . $pProgreso->getPuntajeObtenido() . "," . $pProgreso->getResumen();
         pg_query($this->conexion, $sql);
     }
 
@@ -111,7 +111,7 @@ class ProgresoDAO implements DAO
      */
     public function buscarProgreso($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM PROGRESO WHERE id_estudiante = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -120,7 +120,7 @@ class ProgresoDAO implements DAO
             $row = pg_fetch_object($respuesta1);
             $progreso = new Progreso();
 
-            $progreso->setCodigo($row->id_estudiante);
+            $progreso->setEstudiante($row->id_estudiante);
             $progreso->setSesionClase($row->id_sesion);
             $progreso->setResuelto($row->resuelto);
             $progreso->setOpcionA($row->opcion_A);
@@ -181,7 +181,7 @@ class ProgresoDAO implements DAO
 
             $progreso = new Progreso();
 
-            $progreso->setCodigo($row['id_estudiante']);
+            $progreso->setEstudiante($row['id_estudiante']);
             $progreso->setSesionClase($row['id_sesion']);
             $progreso->setResuelto($row['resuelto']);
             $progreso->setOpcionA($row['opcion_A']);

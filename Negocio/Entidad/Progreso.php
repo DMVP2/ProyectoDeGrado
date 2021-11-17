@@ -17,7 +17,14 @@ class Progreso
     //----------------------------------
 
     /**
-     * sesion de clase
+     * Código del estudiante al que corresponde el progreso
+     * 
+     * @var int $sesionClase
+     */
+    private $estudiante;
+
+    /**
+     * sCódigo de la sesión de clase a la que corresponde el progreso
      * 
      * @var int $sesionClase
      */
@@ -65,7 +72,7 @@ class Progreso
      */
     private $opcionE;
 
-     /**
+    /**
      * puntaje obtenido
      * 
      * @var double $puntajeObtenido
@@ -92,7 +99,27 @@ class Progreso
     //----------------------------------
 
     /**
-     * Método que obtiene la sesion de clase
+     * Método que obtiene el codigo del estudiante al que corresponde el progreso
+     * 
+     * @return int $sesionClase
+     */
+    public function getEstudiante()
+    {
+        return $this->sesionClase;
+    }
+
+    /**
+     * Método que establece el codigo del estudiante al que corresponde el progreso
+     * 
+     * @param int $psesionClase
+     */
+    public function setEstudiante($pEstudiante)
+    {
+        $this->estudiante = $pEstudiante;
+    }
+
+    /**
+     * Método que obtiene el codigo de la sesion de clase a la que corresponde el progreso
      * 
      * @return int $sesionClase
      */
@@ -102,7 +129,7 @@ class Progreso
     }
 
     /**
-     * Método que establece la sesion de clase
+     * Método que establece el codigo de la sesion de clase a la que corresponde el progreso
      * 
      * @param int $psesionClase
      */
@@ -131,7 +158,7 @@ class Progreso
         $this->resuelto = $pResuelto;
     }
 
-     /**
+    /**
      * Método que obtiene la opcion A
      * 
      * @return int $opcionA
@@ -151,7 +178,7 @@ class Progreso
         $this->opcionA = $pOpcionA;
     }
 
-      /**
+    /**
      * Método que obtiene la opcion B
      * 
      * @return int $opcionB
@@ -171,7 +198,7 @@ class Progreso
         $this->opcionB = $pOpcionB;
     }
 
-      /**
+    /**
      * Método que obtiene la opcion C
      * 
      * @return int $opcionC
@@ -191,7 +218,7 @@ class Progreso
         $this->opcionC = $pOpcionC;
     }
 
-     /**
+    /**
      * Método que obtiene la opcion D
      * 
      * @return int $opcionD
@@ -211,7 +238,7 @@ class Progreso
         $this->opcionD = $pOpcionD;
     }
 
-     /**
+    /**
      * Método que obtiene la opcion E
      * 
      * @return int $opcionE
@@ -270,6 +297,4 @@ class Progreso
     {
         $this->resumen = $pResumen;
     }
-
 }
-

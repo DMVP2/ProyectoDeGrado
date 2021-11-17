@@ -26,9 +26,9 @@ class FichaBibliografica
     /**
      * Nombre de la ficha bibliografica
      * 
-     * @var String $nombreFicha
+     * @var String $nombre
      */
-    private $nombreFicha;
+    private $nombre;
 
     /**
      * Descripcion de la ficha

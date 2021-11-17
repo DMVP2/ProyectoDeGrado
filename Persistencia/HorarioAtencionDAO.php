@@ -99,7 +99,7 @@ class HorarioAtencionDAO implements DAO
      */
     public function crearHorarioAtencion($pHorarioAtencion)
     {
-        $sql = "AQUI SE INSERTA EL SQL";
+        $sql = "INSERT INTO HORARIO_ATENCIO VALUES" . $pHorarioAtencion->getDia() . "," . $pHorarioAtencion->getHora() . "," . $pHorarioAtencion->getMedio() . "," . $pHorarioAtencion->getLugar();
         pg_query($this->conexion, $sql);
     }
 
@@ -111,7 +111,7 @@ class HorarioAtencionDAO implements DAO
      */
     public function buscarHorarioAtencion($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "SELECT * FROM HORARIO_ATENCION WHERE id_horario_atencion = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
@@ -142,7 +142,7 @@ class HorarioAtencionDAO implements DAO
      */
     public function actualizarHorarioAtencion($pHorarioAtencion)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pHorarioAtencion->getCodigo();
+        $sql = "UPDATE HORARIO_ATENCION SET" . " dia_atencion = " . $pHorarioAtencion->getDia() . " hora_atencion = " . $pHorarioAtencion->getHora() . " medio_atencion = " . $pHorarioAtencion->getMedio() . " lugar_atencion = " . $pHorarioAtencion->getLugar() . $pHorarioAtencion->getCodigo();
         pg_query($this->connection, $sql);
     }
 
@@ -171,12 +171,11 @@ class HorarioAtencionDAO implements DAO
     /**
      * Método que obtiene la lista de los horarios de atencion
      * 
-     * @param int $pCodigo
      * @return HorarioAtencion $datos
      */
-    public function listarHorariosAtencionPorDocente($pCodigo)
+    public function listarHorariosAtencion($pInicio, $pNumeroDeItemsPorPagina)
     {
-        $sql = "SELECT * FROM HORARIO_ATENCION";
+        $sql = "SELECT * FROM HORARIO_ATENCION ORDER BY id_docente ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
@@ -187,11 +186,11 @@ class HorarioAtencionDAO implements DAO
 
             $horarioAtencion = new HorarioAtencion();
 
-            $horarioAtencion->setCodigo($row->id_horario_atencion);
-            $horarioAtencion->setDia($row->dia_atencion);
-            $horarioAtencion->setHora($row->hora_atencion);
-            $horarioAtencion->setMedio($row->medio_atencion);
-            $horarioAtencion->setLugar($row->lugar_atencion);
+            $horarioAtencion->setCodigo($row['id_horario_atencion']);
+            $horarioAtencion->setDia($row['dia_atencion']);
+            $horarioAtencion->setHora($row['hora_atencion']);
+            $horarioAtencion->setMedio($row['medio_atencion']);
+            $horarioAtencion->setLugar($row['lugar_atencion']);
 
             $datos[] = $horarioAtencion;
         }
