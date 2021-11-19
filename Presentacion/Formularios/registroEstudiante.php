@@ -106,7 +106,7 @@ $sesionUsuario->closeSession();
               <div class="text-center text-muted mb-4">
                 <medium>Registro de estudiante</medium>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'CrearEstudiante.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <input class="form-control" id="user" name="user" placeholder="Nickname" required>
@@ -120,7 +120,7 @@ $sesionUsuario->closeSession();
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" class="form-control" placeholder="Usuario de correo electrónico" type="principal" id="principal" name="emprincipalail" aria-label="principal" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" placeholder="Usuario de correo electrónico" type="principal" id="principal" name="principal" aria-label="principal" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                       <span class="input-group-text" id="basic-addon2">@unbosque.edu.co</span>
                     </div>

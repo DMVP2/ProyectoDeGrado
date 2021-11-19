@@ -118,6 +118,7 @@ class SesionUsuario
         if (self::$sesion == null) {
             self::$sesion = new SesionUsuario();
         }
+        
         return self::$sesion;
     }
 }

@@ -1,8 +1,6 @@
 <?php
 
 /**
- * Clase que ejecuta la inicialización de sesión de un usuario
- * 
  * @author Grupo PG_2021-01-01
  * @copyright RetoñosApp: Una plataforma de enseñanza virtual para apoyar la enseñanza de la programación en el aula
  * @copyright Grupo PG_2021-01-01
@@ -20,7 +18,11 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoEstudiante.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_UTILIDADES . "CreacionCodigos.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . 'SesionUsuario.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoUsuario.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Usuario.php");
+
 
 // Creación de la conexión
 
@@ -42,4 +44,24 @@ $password = $_POST['password1'];
 $fechaNacimiento = $_POST['date'];
 $semestre = $_POST['semestre'];
 
-$manejoEstudiante->crearEstudiante();
+$creacionCodigo = new CreacionCodigos();
+
+$codigo = $creacionCodigo->crearID();
+
+$estudiante = new Estudiante();
+
+$estudiante->setCodigo($codigo);
+$estudiante->setNombre($nombre);
+$estudiante->setApellido($apellido);
+$estudiante->setEdad($fechaNacimiento);
+$estudiante->setCorreoElectronicoPrincipal($correoElectronicoPrincipal);
+$estudiante->setCorreoElectronicoSecundario($correoElectronicoSecundario);
+$estudiante->setSemestre($semestre);
+
+$manejoEstudiante->crearEstudiante($estudiante);
+
+$sesionUsuario = SesionUsuario::getSesionUsuario();
+
+$usuario = $sesionUsuario->getCurrentUser();
+
+echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';

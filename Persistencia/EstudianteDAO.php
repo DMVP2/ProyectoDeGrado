@@ -101,7 +101,8 @@ class EstudianteDAO implements DAO
      */
     public function crearEstudiante($pEstudiante)
     {
-        $sql = "INSERT INTO ESTUDIANTE VALUES " . $pEstudiante->getCodigo() . "," . $pEstudiante->getNombre() . "," . $pEstudiante->getApellido() . "," . $pEstudiante->getEdad() . "," . $pEstudiante->getCorreoElectronicoPrincipal() . "," . $pEstudiante->getCorreoElectronicoSecundario() . "," . $pEstudiante->getSemestre();
+        $sql = "INSERT INTO ESTUDIANTE VALUES (" . $pEstudiante->getCodigo() . ",'" . $pEstudiante->getNombre() . "','" . $pEstudiante->getApellido() . "','" . $pEstudiante->getEdad() . "','" . $pEstudiante->getCorreoElectronicoPrincipal() . "','" . $pEstudiante->getCorreoElectronicoSecundario() . "'," . $pEstudiante->getSemestre() . ")";
+
         pg_query($this->conexion, $sql);
     }
 
@@ -113,6 +114,7 @@ class EstudianteDAO implements DAO
      */
     public function buscarEstudiante($pCodigo)
     {
+
         $sql = "SELECT * FROM ESTUDIANTE WHERE id_estudiante = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);

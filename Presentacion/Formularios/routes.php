@@ -33,6 +33,7 @@ define('RUTA_PERSISTENCIA', '/Persistencia/');
 define('RUTA_NEGOCIO', '/Negocio/');
 define('RUTA_ENTIDADES', '/Negocio/Entidad/');
 define('RUTA_MANEJOS', '/Negocio/Controlador/');
+define('RUTA_UTILIDADES', '/Negocio/Utilidades/');
 
 // Rutas referentes al manejo de sesiones
 

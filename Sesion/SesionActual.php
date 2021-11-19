@@ -19,3 +19,6 @@ $sesionUsuario->verifySession();
 
 $usuario = $sesionUsuario->getCurrentUser();
 $rol = $sesionUsuario->getRol();
+
+echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
+print_r($usuario);
