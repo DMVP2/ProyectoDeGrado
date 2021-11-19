@@ -109,6 +109,18 @@ class ManejoAsignatura
     }
 
     /**
+     * Método que obtiene la lista de los codigos de todos los objetos de la clase Asignatura para un objeto dado de la clase Estudiante
+     * 
+     * @param int $pCodigo
+     * @return int $datos
+     */
+    public function listarIDAsignaturasPorEstudiante($pCodigo)
+    {
+        $asignaturaDAO = AsignaturaDAO::getAsignaturaDAO($this->conexion);
+        return $asignaturaDAO->listarIDAsignaturasPorEstudiante($pCodigo);
+    }
+
+    /**
      * Método que cuenta la cantidad total de asignaturas registrados en la base de datos
      * 
      * @return int $cantidad

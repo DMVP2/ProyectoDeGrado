@@ -22,6 +22,7 @@ define('RUTA_CRUD', '/Presentacion/Administrador/TablasCRUD/');
 define('RUTA_DOCENTE', '/Presentacion/Docente/');
 define('RUTA_ESTUDIANTE', '/Presentacion/Estudiante/');
 define('RUTA_GENERAL', '/Presentacion/General/');
+define('RUTA_FORMULARIOS', '/Presentacion/Formularios/');
 
 // Rutas capa de persistencia
 

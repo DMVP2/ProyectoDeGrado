@@ -244,6 +244,31 @@ class AsignaturaDAO implements DAO
     }
 
     /**
+     * Método que obtiene la lista de los codigos de todos los objetos de la clase Tematica para un objeto dado de la clase Asignatura
+     * 
+     * @param int $pCodigo
+     * @return int $datos
+     */
+    public function listarIDAsignaturasPorEstudiante($pCodigo)
+    {
+        $sql = "SELECT * FROM ASIGNATURA, ASIGNATURA_ESTUDIANTE, ESTUDIANTE WHERE ASIGNATURA.id_asignatura = ASIGNATURA_ESTUDIANTE.id_asignatura AND ASIGNATURA_ESTUDIANTE.id_estudiante = ESTUDIANTE.id_estudiante AND ESTUDIANTE.id_estudiante = " . $pCodigo;
+
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
+
+        $datos = array();
+
+        while ($row = pg_fetch_array($respuesta1))
+        {
+
+            $id = $row['id_asignatura'];
+
+            $datos[] = $id;
+        }
+
+        return $datos;
+    }
+
+    /**
      * Método que cuenta la cantidad total de asignaturas registrados en la base de datos
      * 
      * @return int $cantidad

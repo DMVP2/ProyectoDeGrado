@@ -123,11 +123,11 @@ class ProgresoDAO implements DAO
             $progreso->setEstudiante($row->id_estudiante);
             $progreso->setSesionClase($row->id_sesion);
             $progreso->setResuelto($row->resuelto);
-            $progreso->setOpcionA($row->opcion_A);
-            $progreso->setOpcionB($row->opcion_B);
-            $progreso->setOpcionC($row->opcion_C);
-            $progreso->setOpcionD($row->opcion_D);
-            $progreso->setOpcionE($row->opcion_E);
+            $progreso->setOpcionA($row->opcion_a);
+            $progreso->setOpcionB($row->opcion_b);
+            $progreso->setOpcionC($row->opcion_c);
+            $progreso->setOpcionD($row->opcion_d);
+            $progreso->setOpcionE($row->opcion_e);
             $progreso->setPuntajeObtenido($row->puntaje_obtenido);
             $progreso->setResumen($row->resumen);
 
@@ -172,8 +172,6 @@ class ProgresoDAO implements DAO
     {
         $sql = "SELECT * FROM PROGRESO WHERE id_estudiante = " . $pCodigo;
 
-echo $sql;
-
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
@@ -186,11 +184,11 @@ echo $sql;
             $progreso->setEstudiante($row['id_estudiante']);
             $progreso->setSesionClase($row['id_sesion']);
             $progreso->setResuelto($row['resuelto']);
-            $progreso->setOpcionA($row['opcion_A']);
-            $progreso->setOpcionB($row['opcion_B']);
-            $progreso->setOpcionC($row['opcion_C']);
-            $progreso->setOpcionD($row['opcion_D']);
-            $progreso->setOpcionE($row['opcion_E']);
+            $progreso->setOpcionA($row['opcion_a']);
+            $progreso->setOpcionB($row['opcion_b']);
+            $progreso->setOpcionC($row['opcion_c']);
+            $progreso->setOpcionD($row['opcion_d']);
+            $progreso->setOpcionE($row['opcion_e']);
             $progreso->setPuntajeObtenido($row['puntaje_obtenido']);
             $progreso->setResumen($row['resumen']);
 

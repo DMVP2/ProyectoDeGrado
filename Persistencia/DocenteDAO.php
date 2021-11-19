@@ -140,6 +140,40 @@ class DocenteDAO implements DAO
     }
 
     /**
+     * Método que busca el docente de una asignatura por medio del código de una asignatura dada
+     * 
+     * @param int $pCodigo
+     * @return Docente $docente
+     */
+    public function buscarDocentePorAsignatura($pCodigo)
+    {
+        $sql = "SELECT * FROM DOCENTE, DOCENTE_ASIGNATURA, ASIGNATURA WHERE DOCENTE.id_docente = DOCENTE_ASIGNATURA.id_docente AND DOCENTE_ASIGNATURA.id_asignatura = ASIGNATURA.id_asignatura AND ASIGNATURA.id_asignatura = " . $pCodigo;
+
+        $respuesta1 = pg_query($this->conexion, $sql);
+
+        if (pg_num_rows($respuesta1) > 0)
+        {
+            $row = pg_fetch_object($respuesta1);
+            $docente = new Docente();
+
+            $docente->setCodigo($row->id_docente);
+            $docente->setNombre($row->nombre_docente);
+            $docente->setApellido($row->apellido_docente);
+            $docente->setEmail($row->email_docente);
+
+            $horariosAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
+            $auxiliar1 = $horariosAtencionDAO->listarHorariosAtencionPorDocente($row->id_docente);
+            $docente->sethorariosAtencion($auxiliar1);
+        } 
+        else
+        {
+            return null;
+        }
+
+        return $docente;
+    }
+
+    /**
      * Método que actualiza un docente
      * 
      * @param Docente $pDocente
