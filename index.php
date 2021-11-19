@@ -134,10 +134,10 @@ $sesionUsuario->closeSession();
           </div>
           <div class="row mt-3">
             <div class="col-6">
-              <a href="#" class="text-light"><small>Olvidé mi contraseña</small></a>
+              <a href="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>" class="text-light"><small>Olvidé mi contraseña</small></a>
             </div>
             <div class="col-6 text-right">
-              <a href="#" class="text-light"><small>Registrarse</small></a>
+              <a href="<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . 'registroEstudiante.php' ?>" class="text-light"><small>Registrarse</small></a>
             </div>
           </div>
         </div>

@@ -17,12 +17,11 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 // Importaciones de clases
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoEstudiante.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoUsuario.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Usuario.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_UTILIDADES . "CreacionCodigos.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . 'SesionUsuario.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoUsuario.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Usuario.php");
-
 
 // Creación de la conexión
 
@@ -47,6 +46,7 @@ $semestre = $_POST['semestre'];
 $creacionCodigo = new CreacionCodigos();
 
 $codigo = $creacionCodigo->crearID();
+$codigo = sha1($codigo);
 
 $estudiante = new Estudiante();
 
@@ -58,10 +58,15 @@ $estudiante->setCorreoElectronicoPrincipal($correoElectronicoPrincipal);
 $estudiante->setCorreoElectronicoSecundario($correoElectronicoSecundario);
 $estudiante->setSemestre($semestre);
 
-$manejoEstudiante->crearEstudiante($estudiante);
-
-$sesionUsuario = SesionUsuario::getSesionUsuario();
-
-$usuario = $sesionUsuario->getCurrentUser();
-
-echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
+try {
+    $manejoEstudiante->crearEstudiante($estudiante);
+    echo "<script>
+    alert('Registro exitoso');
+    </script>";
+    echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . "/index.php?code=1" . "');</script>";
+} catch (Exception $e) {
+    echo "<script>
+    alert('No se pudo realizar el registro');
+    </script>";
+    echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . "/index.php?code=1" . "');</script>";
+}
