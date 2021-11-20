@@ -128,7 +128,7 @@ class Docente
      * 
      * @return String $email
      */
-    public function getEmail()
+    public function getCorreoElectronico()
     {
         return $this->email;
     }
@@ -138,7 +138,7 @@ class Docente
      * 
      * @param String $pEmail
      */
-    public function setEmail($pEmail)
+    public function setCorreoElectronico($pEmail)
     {
         $this->email = $pEmail;
     }

@@ -101,7 +101,7 @@ class DocenteDAO implements DAO
      */
     public function crearDocente($pDocente)
     {
-        $sql = "INSERT INTO DOCENTE VALUES " . $pDocente->getCodiog() . "," . $pDocente->getNombre() . "," . $pDocente->getApellido() . "," . $pDocente->getCorreoElectronico();
+        $sql = "INSERT INTO DOCENTE VALUES " . $pDocente->getCodigo() . "," . $pDocente->getNombre() . "," . $pDocente->getApellido() . "," . $pDocente->getCorreoElectronico();
         pg_query($this->conexion, $sql);
     }
 
@@ -125,7 +125,7 @@ class DocenteDAO implements DAO
             $docente->setCodigo($row->id_docente);
             $docente->setNombre($row->nombre_docente);
             $docente->setApellido($row->apellido_docente);
-            $docente->setEmail($row->email_docente);
+            $docente->setCorreoElectronico($row->email_docente);
 
             $horariosAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
             $auxiliar1 = $horariosAtencionDAO->listarHorariosAtencionPorDocente($row->id_docente);
@@ -159,7 +159,7 @@ class DocenteDAO implements DAO
             $docente->setCodigo($row->id_docente);
             $docente->setNombre($row->nombre_docente);
             $docente->setApellido($row->apellido_docente);
-            $docente->setEmail($row->email_docente);
+            $docente->setCorreoElectronico($row->email_docente);
 
             $horariosAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
             $auxiliar1 = $horariosAtencionDAO->listarHorariosAtencionPorDocente($row->id_docente);
@@ -228,7 +228,7 @@ class DocenteDAO implements DAO
             $docente->setCodigo($row['id_docente']);
             $docente->setNombre($row['nombre_docente']);
             $docente->setApellido($row['apellido_docente']);
-            $docente->setEmail($row['email_docente']);
+            $docente->setCorreoElectronico($row['email_docente']);
 
             $horarioAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
             $auxiliar1 = $horarioAtencionDAO->listarHorariosAtencionPorDocente($row['id_docente']);
