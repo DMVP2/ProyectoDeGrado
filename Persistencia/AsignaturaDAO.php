@@ -244,7 +244,7 @@ class AsignaturaDAO implements DAO
     }
 
     /**
-     * Método que obtiene la lista de los codigos de todos los objetos de la clase Tematica para un objeto dado de la clase Asignatura
+     * Método que obtiene la lista de los codigos de todos los objetos de la clase Asignatura para un objeto dado de la clase Estudiante
      * 
      * @param int $pCodigo
      * @return int $datos
@@ -252,6 +252,31 @@ class AsignaturaDAO implements DAO
     public function listarIDAsignaturasPorEstudiante($pCodigo)
     {
         $sql = "SELECT * FROM ASIGNATURA, ASIGNATURA_ESTUDIANTE, ESTUDIANTE WHERE ASIGNATURA.id_asignatura = ASIGNATURA_ESTUDIANTE.id_asignatura AND ASIGNATURA_ESTUDIANTE.id_estudiante = ESTUDIANTE.id_estudiante AND ESTUDIANTE.id_estudiante = " . $pCodigo;
+
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
+
+        $datos = array();
+
+        while ($row = pg_fetch_array($respuesta1))
+        {
+
+            $id = $row['id_asignatura'];
+
+            $datos[] = $id;
+        }
+
+        return $datos;
+    }
+
+        /**
+     * Método que obtiene la lista de los codigos de todos los objetos de la clase Asignatura para un objeto dado de la clase Docente
+     * 
+     * @param int $pCodigo
+     * @return int $datos
+     */
+    public function listarIDAsignaturasPorDocente($pCodigo)
+    {
+        $sql = "SELECT * FROM ASIGNATURA, DOCENTE_ASIGNATURA, DOCENTE WHERE ASIGNATURA.id_asignatura = DOCENTE_ASIGNATURA.id_asignatura AND DOCENTE_ASIGNATURA.id_docente = DOCENTE.id_docente AND DOCENTE.id_docente = " . $pCodigo;
 
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 

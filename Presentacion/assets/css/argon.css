@@ -41,7 +41,7 @@
     --gray-dark: #32325d;
     --light: #ced4da;
     --lighter: #e9ecef;
-    --primary: #5e72e4;
+    --primary: #84ae40;
     --secondary: #f7fafc;
     --success: #2dce89;
     --info: #11cdef;
@@ -233,7 +233,7 @@ a:hover
 {
     text-decoration: none; 
 
-    color: #233dd2;
+    color: #84ae40;
 }
 
 a:not([href])
@@ -3366,8 +3366,8 @@ fieldset:disabled a.btn
 .btn-primary:hover
 {
     color: #fff;
-    border-color: #5e72e4; 
-    background-color: #5e72e4;
+    border-color: #7a9a01; 
+    background-color: #7a9a01;
 }
 .btn-primary:focus,
 .btn-primary.focus
@@ -17757,7 +17757,7 @@ button.bg-darker:focus
 
 .text-primary
 {
-    color: #5e72e4 !important;
+    color: #f5841f !important;
 }
 
 a.text-primary:hover,

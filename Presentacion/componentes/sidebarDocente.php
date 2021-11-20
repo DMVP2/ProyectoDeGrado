@@ -53,9 +53,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_ESTUDIANTE . 'asignaturas.php' ?>">
+                        <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_DOCENTE . 'asignaturas.php' ?>">
                             <i class="ni ni-book-bookmark text-primary"></i>
                             <span class="nav-link-text">Asignaturas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="ni ni-book-bookmark text-primary"></i>
+                            <span class="nav-link-text">Reportes</span>
                         </a>
                     </li>
                 </ul>
