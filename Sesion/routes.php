@@ -18,10 +18,11 @@ define('RUTA_CSS', '/Presentacion/assets/css/');
 define('RUTA_IMAGENES', '/Presentacion/assets/img/');
 define('RUTA_COMPONENTES', '/Presentacion/componentes/');
 define('RUTA_ADMINISTRADOR', '/Presentacion/Administrador/');
-define('RUTA_CRUD', '/Presentacion/Administrador/TablasCRUD');
+define('RUTA_CRUD', '/Presentacion/Administrador/TablasCRUD/');
 define('RUTA_DOCENTE', '/Presentacion/Docente/');
 define('RUTA_ESTUDIANTE', '/Presentacion/Estudiante/');
 define('RUTA_GENERAL', '/Presentacion/General/');
+define('RUTA_FORMULARIOS', '/Presentacion/Formularios/');
 
 // Rutas capa de persistencia
 
@@ -32,6 +33,7 @@ define('RUTA_PERSISTENCIA', '/Persistencia/');
 define('RUTA_NEGOCIO', '/Negocio/');
 define('RUTA_ENTIDADES', '/Negocio/Entidad/');
 define('RUTA_MANEJOS', '/Negocio/Controlador/');
+define('RUTA_UTILIDADES', '/Negocio/Utilidades/');
 
 // Rutas referentes al manejo de sesiones
 

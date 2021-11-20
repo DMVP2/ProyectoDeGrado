@@ -100,44 +100,68 @@ $sesionUsuario->closeSession();
 
     <div class="container mt--8 pb-5">
       <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7">
+        <div class="col-lg-8 col-md-7">
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <medium>Bienvenido a RetoñosApp</medium>
+                <medium>Registro de estudiante</medium>
               </div>
-              <div class="text-center text-muted mb-4">
-              <small>Ingrese sus credenciales</small>
-              </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
-                <div class="form-group mb-3">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'CrearEstudiante.php' ?>">
+                <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                    </div>
                     <input class="form-control" id="user" name="user" placeholder="Nickname" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" aria-label="nombre" class="form-control">
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" aria-label="apellido" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input type="text" class="form-control" placeholder="Usuario de correo electrónico" type="principal" id="principal" name="principal" aria-label="principal" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2">@unbosque.edu.co</span>
                     </div>
-                    <input class="form-control" type="password" id="password" name="password" placeholder="Contraseña" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" type="secundario" id="secundario" name="secundario" placeholder="Correo electrónico secundario" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" type="password" id="password1" name="password1" placeholder="Contraseña" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" type="password" id="password2" name="password2" placeholder="Repetir contraseña" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" type="date" id="date" name="date" id="example-date-input">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <select class="form-control" type="semestre" id="semestre" name="semestre">
+                      <option>Semestre</option>
+                      <option value='1'>1</option>
+                      <option value='2'>2</option>
+                      <option value='3'>3</option>
+                      <option value='4'>4</option>
+                      <option value='5'>5</option>
+                    </select>
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Iniciar sesión</button>
+                  <button type="submit" class="btn btn-primary my-4">Registrar</button>
                 </div>
               </form>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <a href="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>" class="text-light"><small>Olvidé mi contraseña</small></a>
-            </div>
-            <div class="col-6 text-right">
-              <a href="<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . 'registroEstudiante.php' ?>" class="text-light"><small>Registrarse</small></a>
             </div>
           </div>
         </div>

@@ -100,44 +100,44 @@ $sesionUsuario->closeSession();
 
     <div class="container mt--8 pb-5">
       <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7">
+        <div class="col-lg-8 col-md-7">
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <medium>Bienvenido a RetoñosApp</medium>
-              </div>
-              <div class="text-center text-muted mb-4">
-              <small>Ingrese sus credenciales</small>
+                <medium>Creación de asignatura</medium>
               </div>
               <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
-                <div class="form-group mb-3">
+                <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                    </div>
-                    <input class="form-control" id="user" name="user" placeholder="Nickname" required>
+                    <input class="form-control" id="nombre" name="nombre" placeholder="Nombre de la asignatura" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                    </div>
-                    <input class="form-control" type="password" id="password" name="password" placeholder="Contraseña" required>
+                    <input type="text" id="grupo" name="grupo" placeholder="Grupo de la asignatura" aria-label="grupo" class="form-control">
+                    <input type="number" id="creditos" name="creditos" placeholder="Número de créditos" aria-label="creditos" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input type="text" id="duración" name="duración" placeholder="Duración de la asignatura" aria-label="duración" class="form-control">
+                    <input type="number" id="semestre" name="semestre" placeholder="Semestre de la asignatura" aria-label="semestre" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <textarea class="form-control" type="descripcion" id="descripcion" name="descripcion" placeholder="Descripción de la asignatura (máximo 1000 carácteres)" maxlength="1000" required></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input type="file" class="form-control" type="syllabus" id="syllabus" name="syllabus" placeholder="Syllabus de la asignatura" required>
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Iniciar sesión</button>
+                  <button type="submit" class="btn btn-primary my-4">Crear asignatura</button>
                 </div>
               </form>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <a href="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>" class="text-light"><small>Olvidé mi contraseña</small></a>
-            </div>
-            <div class="col-6 text-right">
-              <a href="<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . 'registroEstudiante.php' ?>" class="text-light"><small>Registrarse</small></a>
             </div>
           </div>
         </div>

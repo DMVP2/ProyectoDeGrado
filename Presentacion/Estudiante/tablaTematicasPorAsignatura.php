@@ -99,7 +99,7 @@ $codigoAsignatura = $_GET['id'];
 
     <!-- Sidebar -->
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarAdministrador.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarEstudiante.php'; ?>
 
     <!-- Fin Sidebar -->
 
@@ -123,6 +123,70 @@ $codigoAsignatura = $_GET['id'];
                         <!-- Este espacio se queda en blanco -->
 
                     </div>
+                    <div class="row">
+                        <?php
+
+                        $listadoIDTematicas = $manejoTematica->listarIDTematicasPorAsignatura($codigoAsignatura);
+
+                        foreach ($listadoIDTematicas as $codigoTematica) {
+
+                            $imagenFondoPerfil = 0;
+
+                            $i = rand(1, 5);
+
+                            switch ($i) {
+                                case 1:
+                                    $imagenFondoPerfil = "Fondo_Geometrico_Verde.jpg";
+                                    break;
+                                case 2:
+                                    $imagenFondoPerfil = "Fondo_Geometrico_Rojo.jpg";
+                                    break;
+                                case 3:
+                                    $imagenFondoPerfil = "Fondo_Geometrico_Azul.jpg";
+                                    break;
+                                case 4:
+                                    $imagenFondoPerfil = "Fondo_Geometrico_Naranja.jpg";
+                                    break;
+                                case 5:
+                                    $imagenFondoPerfil = "Fondo_Geometrico_Morado.jpg";
+                                    break;
+                            }
+
+                            $tematica = $manejoTematica->buscarTematica($codigoTematica);
+
+                            echo '<div class="col-xl-4 col-md-6">';
+                            echo '<div class="card" style="width: 24rem;">';
+                            echo '<img class="card-img-top" src="' . DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/' . $imagenFondoPerfil . '"height="200" alt="Image placeholder">';
+                            echo '<div class="card-body">';
+                            echo '<h5 class="card-title"> Temática: ' . $tematica->getNombre() . '</h5>';
+                            echo '<h5 class="card-title"> Duración: ' . $tematica->getDuracion() . '</h5>';
+                            echo '<ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+                                    <li class="nav-item dropup">
+                                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="media align-items-center">
+                                                <span class="avatar avatar-sm rounded-circle">
+                                                    <img alt="Image placeholder" src=' . DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/Descripcion.png' . '>
+                                                </span>
+                                                <div class="media-body  ml-2  d-none d-lg-block">
+                                                    <span class="mb-0 text-sm  font-weight-bold"></span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <div class="col-xl-12 col-md-12">
+                                                <h6 class="text-overflow m-0" align="justify">' . $tematica->getDescripcion() . ' </h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>';
+                            echo '<br>';
+                            echo '<a href="tablaSesionesClasePorTematica.php?id=' . $tematica->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Ver sesiones de clase</a>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,71 +195,13 @@ $codigoAsignatura = $_GET['id'];
 
         <!-- Contenido -->
 
-        <div class="container-fluid mt--6">
-            <div class="row">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header border-0">
-                            <h3 class="mb-0">Tematicas</h3>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table align-items-center table-flush">
-
-                                <!-- Encabezados de la tabla -->
-
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">No°</th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Duración</th>
-                                        <th scope="col">Descripción</th>
-                                        <th scope="col">Sesiones</th>
-                                    </tr>
-                                </thead>
-
-                                <!-- Fin encabezados de la tabla -->
-
-                                <tbody class="list">
-                                    <?php
-
-                                    $listadoIDTematicas = $manejoTematica->listarIDTematicasPorAsignatura($codigoAsignatura);
-
-                                    $numero = 0;
-
-                                    foreach ($listadoIDTematicas as $codigoTematica) {
-
-                                        $tematica = $manejoTematica->buscarTematica($codigoTematica);
-
-                                        $numero = $numero + 1;
-
-                                        echo "<tr>";
-                                        echo "<td>" . $numero . "</td>";
-                                        echo "<td>" . $tematica->getNombre() . "</td>";
-                                        echo "<td>" . $tematica->getDuracion() . "</td>";
-                                        echo "<td>" . $tematica->getDescripcion() . "</td>";
-                                        echo '<td><a href="tablaSesionesClasePorTematica.php?id=' . $tematica->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Ver sesiones</a></td>';
-                                        echo "</tr>";
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Footer -->
 
         <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'footer.php'; ?>
 
         <!-- Fin Footer -->
 
-    </div>
-
-    <!-- Fin contenido -->
+        <!-- Fin contenido -->
 
     </div>
 

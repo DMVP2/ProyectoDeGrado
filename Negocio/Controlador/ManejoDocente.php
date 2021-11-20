@@ -51,7 +51,7 @@ class ManejoDocente
         $docenteDAO->crearDocente($pDocente);
     }
 
-        /**
+    /**
      * Método que busca un docente por medio de su código
      * 
      * @param int $pCodigo
@@ -61,6 +61,18 @@ class ManejoDocente
     {
         $docenteDAO = DocenteDAO::getDocenteDAO($this->conexion);
         return $docenteDAO->buscarDocente($pCodigo);
+    }
+
+    /**
+     * Método que busca el docente de una asignatura por medio del código de una asignatura dada
+     * 
+     * @param int $pCodigo
+     * @return Docente $docente
+     */
+    public function buscarDocentePorAsignatura($pCodigo)
+    {
+        $docenteDAO = DocenteDAO::getDocenteDAO($this->conexion);
+        return $docenteDAO->buscarDocentePorAsignatura($pCodigo);
     }
 
     /**

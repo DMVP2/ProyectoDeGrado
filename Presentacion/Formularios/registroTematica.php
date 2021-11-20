@@ -100,44 +100,32 @@ $sesionUsuario->closeSession();
 
     <div class="container mt--8 pb-5">
       <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7">
+        <div class="col-lg-8 col-md-7">
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <medium>Bienvenido a RetoñosApp</medium>
-              </div>
-              <div class="text-center text-muted mb-4">
-              <small>Ingrese sus credenciales</small>
+                <medium>Creación de temática</medium>
               </div>
               <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
-                <div class="form-group mb-3">
+                <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                    </div>
-                    <input class="form-control" id="user" name="user" placeholder="Nickname" required>
+                    <input class="form-control" id="nombre" name="nombre" placeholder="Nombre de la temática" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                    </div>
-                    <input class="form-control" type="password" id="password" name="password" placeholder="Contraseña" required>
+                    <textarea class="form-control" type="descripcion" id="descripcion" name="descripcion" placeholder="Descripción de la temática (máximo 1000 carácteres)" maxlength="1000" required></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                  <input type="text" id="duracion" name="duracion" placeholder="Duración de la temática" aria-label="duracion" class="form-control">
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Iniciar sesión</button>
+                  <button type="submit" class="btn btn-primary my-4">Crear temática</button>
                 </div>
               </form>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <a href="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>" class="text-light"><small>Olvidé mi contraseña</small></a>
-            </div>
-            <div class="col-6 text-right">
-              <a href="<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . 'registroEstudiante.php' ?>" class="text-light"><small>Registrarse</small></a>
             </div>
           </div>
         </div>
