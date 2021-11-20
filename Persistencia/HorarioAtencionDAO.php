@@ -64,7 +64,7 @@ class HorarioAtencionDAO implements DAO
      * Método que implementa el método UPDATE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param HorarioAtencion $pHorarioAtencionDAO
+     * @param HorarioAtencion $pHorarioAtencion
      */
     public function update($pHorarioAtencion)
     {
@@ -74,7 +74,7 @@ class HorarioAtencionDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param HorarioAtencion $pHorarioAtencion
+     * @param HorarioAtencion $pCodigo
      */
     public function delete($pCodigo)
     {
@@ -107,7 +107,7 @@ class HorarioAtencionDAO implements DAO
      * Método que busca el horario de atencion por medio de su código
      * 
      * @param int $pCodigo
-     * @return HorarioAtencion $horarioAtencionD
+     * @return HorarioAtencion $horarioAtencion
      */
     public function buscarHorarioAtencion($pCodigo)
     {
@@ -171,8 +171,11 @@ class HorarioAtencionDAO implements DAO
     /**
      * Método que obtiene la lista de los horarios de atencion
      * 
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
      * @return HorarioAtencion $datos
      */
+
     public function listarHorariosAtencion($pInicio, $pNumeroDeItemsPorPagina)
     {
         $sql = "SELECT * FROM HORARIO_ATENCION ORDER BY id_docente ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;

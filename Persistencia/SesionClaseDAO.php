@@ -145,7 +145,7 @@ class SesionClaseDAO implements DAO
     }
 
     /**
-     * Método que actualiza una sesio de clase
+     * Método que actualiza una sesion de clase
      * 
      * @param SesionClase $pSesionClase
      */
@@ -180,7 +180,8 @@ class SesionClaseDAO implements DAO
     /**
      * Método que obtiene la lista de las sesiones de clase
      * 
-     * @param int $pCodigo
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
      * @return SesionClase $datos
      */
     public function listarSesionesClase($pInicio, $pNumeroDeItemsPorPagina)
@@ -263,7 +264,7 @@ class SesionClaseDAO implements DAO
      * Este método constituye la implementación del patrón de diseño "Singleton" planteado en el documento SAD
      * 
      * @param int $pConexion
-     * @return SesionClaseDAO $tematicaDAO
+     * @return SesionClaseDAO $sesionClaseDAO
      */
     public static function getSesionClaseDAO($pConexion)
     {

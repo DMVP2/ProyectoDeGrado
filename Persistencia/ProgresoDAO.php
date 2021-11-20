@@ -74,7 +74,7 @@ class ProgresoDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Progreso $pProgreso
+     * @param Progreso $pCodigo
      */
     public function delete($pCodigo)
     {
