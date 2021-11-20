@@ -151,7 +151,7 @@ class Docente
      */
     public function getHorariosAtencion()
     {
-        return $this->horarioAtencion;
+        return $this->horariosAtencion;
     }
 
     /**

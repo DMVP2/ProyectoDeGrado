@@ -50,7 +50,7 @@ if (isset($usuarioConsultado) and strcasecmp($usuarioConsultado->getPassword(), 
             echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ESTUDIANTE . "perfilEstudiante.php" . "');</script>";
         } else if (strcasecmp($usuarioConsultado->getRol(), "Docente") == 0) {
             $sesionUsuario->setRol("Docente");
-            echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_DOCENTE . "indexDocente.php" . "');</script>";
+            echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_DOCENTE . "perfilDocente.php" . "');</script>";
         } else if (strcasecmp($usuarioConsultado->getRol(), "Administrador") == 0) {
             $sesionUsuario->setRol("Administrador");
             echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . "perfilAdministrador.php" . "');</script>";
