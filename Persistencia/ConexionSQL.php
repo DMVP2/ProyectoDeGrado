@@ -30,10 +30,10 @@ class ConexionSQL
      */
     public function conectarBD()
     {
-        $server = "localhost";
-        $user = "postgres";
-        $pass = "1234";
-        $bd = "RetoñosApp";
+        $server = "proyectodegrado.postgres.database.azure.com";
+        $user = "dmvp2@proyectodegrado";
+        $pass = "#2Arrow#2Arrow";
+        $bd = "proyectodegrado";
         $port = "5432";
 
         $argumentosConexion = "host=$server port=$port dbname=$bd user=$user password=$pass";
