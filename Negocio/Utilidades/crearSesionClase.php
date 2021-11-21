@@ -42,7 +42,6 @@ $duracion = $_POST['duracion'];
 $creacionCodigo = new CreacionCodigos();
 
 $codigo = $creacionCodigo->crearID();
-$codigo = sha1($codigo);
 
 $sesionClase = new SesionClase();
 

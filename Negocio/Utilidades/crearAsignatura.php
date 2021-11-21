@@ -45,7 +45,6 @@ $syllabus = $_POST['syllabus'];
 $creacionCodigo = new CreacionCodigos();
 
 $codigo = $creacionCodigo->crearID();
-$codigo = sha1($codigo);
 
 $asignatura = new Asignatura();
 
