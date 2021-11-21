@@ -127,7 +127,7 @@ $codigoSesionClase = $_GET['id'];
 
                     <?php
 
-$sesionClase = $manejoSesionClase->buscarSesionClase($usuario->getCodigo());
+                    $sesionClase = $manejoSesionClase->buscarSesionClase($codigoSesionClase);
 
                     ?>
 

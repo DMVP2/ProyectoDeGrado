@@ -42,6 +42,7 @@ $correoElectronico = $_POST['principal'];
 $creacionCodigo = new CreacionCodigos();
 
 $codigo = $creacionCodigo->crearID();
+$codigo = sha1($codigo);
 
 $docente = new Docente();
 

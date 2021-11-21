@@ -131,6 +131,26 @@ class Cuestionario
         $this->sesionClase = $pSesionClase;
     }
 
+    /**
+     * Método que obtiene la pregunta
+     * 
+     * @return String $pregunta
+     */
+    public function getPregunta()
+    {
+        return $this->pregunta;
+    }
+
+    /**
+     * Método que establece la pregunta
+     * 
+     * @param String $pPregunta
+     */
+    public function setPregunta($pPregunta)
+    {
+        $this->pregunta = $pPregunta;
+    }
+
      /**
      * Método que obtiene la opcion A
      * 

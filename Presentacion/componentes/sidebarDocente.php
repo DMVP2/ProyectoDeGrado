@@ -47,7 +47,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_ESTUDIANTE . 'perfilEstudiante.php' ?>">
+                        <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_DOCENTE . 'perfilDocente.php' ?>">
                             <i class="ni ni-badge text-primary"></i>
                             <span class="nav-link-text">Inicio</span>
                         </a>

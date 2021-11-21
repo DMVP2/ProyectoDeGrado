@@ -33,7 +33,7 @@ class ConexionSQL
         $server = "localhost";
         $user = "postgres";
         $pass = "1234";
-        $bd = "retoñosapp";
+        $bd = "RetoñosApp";
         $port = "5432";
 
         $argumentosConexion = "host=$server port=$port dbname=$bd user=$user password=$pass";

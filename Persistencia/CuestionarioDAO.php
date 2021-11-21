@@ -111,23 +111,24 @@ class CuestionarioDAO implements DAO
      */
     public function buscarCuestionario($pCodigo)
     {
-        $sql = "SELECT * FROM CUESTIONARIO WHERE id_pregunta = " . $pCodigo;
+        $sql = "SELECT * FROM CUESTIONARIO WHERE pregunta = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
         if (pg_num_rows($respuesta1) > 0)
         {
             $row = pg_fetch_object($respuesta1);
+            
             $cuestionario = new Cuestionario();
 
             $cuestionario->setCodigo($row->id_pregunta);
             $cuestionario->setSesionClase($row->id_sesion);
             $cuestionario->setPregunta($row->pregunta);
-            $cuestionario->setOpcionA($row->opcion_A);
-            $cuestionario->setOpcionB($row->opcion_B);
-            $cuestionario->setOpcionC($row->opcion_C);
-            $cuestionario->setOpcionD($row->opcion_D);
-            $cuestionario->setOpcionE($row->dopcion_E);
+            $cuestionario->setOpcionA($row->opcion_a);
+            $cuestionario->setOpcionB($row->opcion_b);
+            $cuestionario->setOpcionC($row->opcion_c);
+            $cuestionario->setOpcionD($row->opcion_d);
+            $cuestionario->setOpcionE($row->opcion_e);
             $cuestionario->setRespuestaCorrecta($row->respuesta_correcta);
         } 
         else
@@ -193,11 +194,11 @@ class CuestionarioDAO implements DAO
             $cuestionario->setCodigo($row['id_pregunta']);
             $cuestionario->setSesionClase($row['id_sesion']);
             $cuestionario->setPregunta($row['pregunta']);
-            $cuestionario->setOpcionA($row['opcion_A']);
-            $cuestionario->setOpcionB($row['opcion_B']);
-            $cuestionario->setOpcionC($row['opcion_C']);
-            $cuestionario->setOpcionD($row['opcion_D']);
-            $cuestionario->setOpcionE($row['dopcion_E']);
+            $cuestionario->setOpcionA($row['opcion_a']);
+            $cuestionario->setOpcionB($row['opcion_b']);
+            $cuestionario->setOpcionC($row['opcion_c']);
+            $cuestionario->setOpcionD($row['opcion_d']);
+            $cuestionario->setOpcionE($row['opcion_e']);
             $cuestionario->setRespuestaCorrecta($row['respuesta_correcta']);
           
             $datos[] = $cuestionario;
@@ -207,14 +208,14 @@ class CuestionarioDAO implements DAO
     }
 
     /**
-     * Método que obtiene la lista de los codigos de los cuestionarios 
+     * Método que obtiene la lista de los codigos de los cuestionarios por una sesion de clasedada
      * 
      * @param int $pCodigo
      * @return int $datos
      */
     public function listarCuestionariosPorSesionClase($pCodigo)
     {
-        $sql = "SELECT * FROM CUESTIONARIO WHERE id_pregunta = " . $pCodigo;
+        $sql = "SELECT * FROM CUESTIONARIO WHERE id_sesion = " . $pCodigo;
 
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
@@ -228,13 +229,13 @@ class CuestionarioDAO implements DAO
             $cuestionario->setCodigo($row['id_pregunta']);
             $cuestionario->setSesionClase($row['id_sesion']);
             $cuestionario->setPregunta($row['pregunta']);
-            $cuestionario->setOpcionA($row['opcion_A']);
-            $cuestionario->setOpcionB($row['opcion_B']);
-            $cuestionario->setOpcionC($row['opcion_C']);
-            $cuestionario->setOpcionD($row['opcion_D']);
-            $cuestionario->setOpcionE($row['dopcion_E']);
+            $cuestionario->setOpcionA($row['opcion_a']);
+            $cuestionario->setOpcionB($row['opcion_b']);
+            $cuestionario->setOpcionC($row['opcion_c']);
+            $cuestionario->setOpcionD($row['opcion_d']);
+            $cuestionario->setOpcionE($row['opcion_e']);
             $cuestionario->setRespuestaCorrecta($row['respuesta_correcta']);
-
+          
             $datos[] = $cuestionario;
         }
 

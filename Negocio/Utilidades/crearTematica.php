@@ -41,6 +41,7 @@ $descripcion = $_POST['descripcion'];
 $creacionCodigo = new CreacionCodigos();
 
 $codigo = $creacionCodigo->crearID();
+$codigo = sha1($codigo);
 
 $tematica = new Tematica();
 

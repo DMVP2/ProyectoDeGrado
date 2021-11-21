@@ -46,6 +46,7 @@ $semestre = $_POST['semestre'];
 $creacionCodigo = new CreacionCodigos();
 
 $codigo = $creacionCodigo->crearID();
+$codigo = sha1($codigo);
 
 $estudiante = new Estudiante();
 

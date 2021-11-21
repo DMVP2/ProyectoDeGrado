@@ -173,7 +173,7 @@ $codigoTematica = $_GET['id'];
                                         echo "<td>" . $sesionClase->getNombre() . "</td>";
                                         echo "<td>" . $sesionClase->getPuntuacion() . "</td>";
                                         echo "<td>" . $sesionClase->getDuracion() . "</td>";
-                                        echo '<td><a href="videoInteractivo.php?id=' . $sesionClase->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Editar sesion de clase</a></td>';
+                                        echo '<td><a href="#' . $sesionClase->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Editar sesion de clase</a></td>';
                                         echo "</tr>";
                                     }
                                     ?>
