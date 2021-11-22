@@ -57,7 +57,7 @@ class ManejoSesionClase
      * Método que busca una sesion de clase por medio de su código
      * 
      * @param int $pCodigo
-     * @return Tematica $sesionClaseDAO
+     * @return SesionClase $sesionClaseDAO
      */
     public function buscarSesionClase($pCodigo)
     {
