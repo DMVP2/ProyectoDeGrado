@@ -205,7 +205,7 @@ class Auditoria
     }
 
     /**
-     * Método que obtiene la fecha de operacion
+     * Método que obtiene la fecha de operacion de la auditoria
      * 
      * @return Date $fechaOperacion
      */
@@ -215,7 +215,7 @@ class Auditoria
     }
 
     /**
-     * Método que establece la fecha de operacion
+     * Método que establece la fecha de operacion de la auditoria
      * 
      * @param Date $pFechaOperacion
      */
@@ -225,7 +225,7 @@ class Auditoria
     }
 
      /**
-     * Método que obtiene la hora de operacion
+     * Método que obtiene la hora de operacion de la auditoria
      * 
      * @return int $horaOperacion
      */
@@ -235,7 +235,7 @@ class Auditoria
     }
 
     /**
-     * Método que establece la hora de operacion
+     * Método que establece la hora de operacion de la auditoria
      * 
      * @param int $pHoraOperacion
      */

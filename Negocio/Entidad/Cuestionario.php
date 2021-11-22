@@ -124,7 +124,7 @@ class Cuestionario
     /**
      * Método que establece la sesion de clase
      * 
-     * @param int $psesionClase
+     * @param int $pSesionClase
      */
     public function setSesionClase($pSesionClase)
     {
@@ -164,7 +164,7 @@ class Cuestionario
     /**
      * Método que establece la opcion A
      * 
-     * @param String $popcionA
+     * @param String $pOpcionA
      */
     public function setOpcionA($pOpcionA)
     {
@@ -184,7 +184,7 @@ class Cuestionario
     /**
      * Método que establece la opcion B
      * 
-     * @param String $popcionB
+     * @param String $pOpcionB
      */
     public function setOpcionB($pOpcionB)
     {
@@ -204,7 +204,7 @@ class Cuestionario
     /**
      * Método que establece la opcion C
      * 
-     * @param String $popcionC
+     * @param String $pOpcionC
      */
     public function setOpcionC($pOpcionC)
     {
@@ -212,9 +212,9 @@ class Cuestionario
     }
 
      /**
-     * Método que obtiene la opcion C
+     * Método que obtiene la opcion D
      * 
-     * @return String $opcionC
+     * @return String $opcionD
      */
     public function getOpcionD()
     {
@@ -224,7 +224,7 @@ class Cuestionario
     /**
      * Método que establece la opcion D
      * 
-     * @param String $popcionD
+     * @param String $pOpcionD
      */
     public function setOpcionD($pOpcionD)
     {
@@ -244,7 +244,7 @@ class Cuestionario
     /**
      * Método que establece la opcion E
      * 
-     * @param String $popcionE
+     * @param String $pOpcionE
      */
     public function setOpcionE($pOpcionE)
     {
@@ -258,7 +258,7 @@ class Cuestionario
      */
     public function getRespuestaCorrecta()
     {
-        return $this->resumen;
+        return $this->respuestaCorrecta;
     }
 
     /**

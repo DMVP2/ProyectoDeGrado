@@ -190,7 +190,7 @@ class SesionClase
     /**
      * Método que establece el arreglo con los ID de las preguntas
      * 
-     * @param Array
+     * @param Array $pPreguntas
      */
     public function setPreguntas($pPreguntas)
     {
@@ -210,7 +210,7 @@ class SesionClase
     /**
      * Método que establece el arreglo con los ID de las fichas bibliograficas
      * 
-     * @param Array
+     * @param Array $pFichasBibliograficas
      */
     public function setFichasBibliograficas($pFichasBibliograficas)
     {

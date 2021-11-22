@@ -54,7 +54,7 @@ class ManejoTematica
      * Método que busca un objeto de la clase Tematica por medio de su código
      * 
      * @param int $pCodigo
-     * @return Tematica $tematica
+     * @return Tematica $tematicaDAO
      */
     public function buscarTematica($pCodigo)
     {
@@ -76,7 +76,7 @@ class ManejoTematica
     /**
      * Método que activa (habilita) un objetio de la clase Tematica
      * 
-     * @param int $pCodigo
+     * @param int $pTematica
      */
     public function activarTematica($pTematica)
     {
@@ -87,7 +87,7 @@ class ManejoTematica
     /**
      *Método que desactiva (inhabilita) un objetio de la clase Tematica
      * 
-     * @param int $pCodigo
+     * @param int $pTematica
      */
     public function desactivarTematica($pTematica)
     {
@@ -101,7 +101,7 @@ class ManejoTematica
      * 
      * @param int $pNumeroDeItemsPorPagina
      * @param int $pInicio
-     * @return Tematica $datos
+     * @return Tematica $tematicaDAO
      */
     public function listarTematicas($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -113,7 +113,7 @@ class ManejoTematica
      * Método que obtiene la lista de los codigos de todos los objetos de la clase Tematica para un objeto dado de la clase Asignatura
      * 
      * @param int $pCodigo
-     * @return int $datos
+     * @return int $tematicaDAO
      */
     public function listarIDTematicasPorAsignatura($pCodigo)
     {
@@ -124,7 +124,7 @@ class ManejoTematica
     /**
      * Método que cuenta la cantidad total de las tematicas registrados en la base de datos
      * 
-     * @return int $cantidad
+     * @return int $tematicaDAO
      */
     public function cantidadTematica()
     {

@@ -79,7 +79,7 @@ class ManejoSesionClase
     /**
      * Método que activa una sesion de clase por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pIdDocument
      */
     public function activarSesionClase($pIdDocument)
     {
@@ -90,7 +90,7 @@ class ManejoSesionClase
     /**
      * Método que desactiva una sesion de clase por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pSesionClase
      */
     public function desactivarSesionClase($pSesionClase)
     {
@@ -101,7 +101,9 @@ class ManejoSesionClase
     /**
      * Método que obtiene la lista de las sesiones de clase
      * 
-     * @return Array $SesionesClase
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Array $sesionClaseDAO
      */
     public function listarSesionesClase($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -113,7 +115,7 @@ class ManejoSesionClase
      * Método que obtiene la lista de los codigos de las sesiones de clase de una temática dada
      * 
      * @param int $pCodigo
-     * @return Array $sesionesClase
+     * @return Array $sesionClaseDAO
      */
     public function listarIDSesionesClasePorTematica($pCodigo)
     {
@@ -124,7 +126,7 @@ class ManejoSesionClase
     /**
      * Método que cuenta la cantidad total de las sesiones de clase registradas en la base de datos
      * 
-     * @return int $cantidad
+     * @return int $sesionClaseDAO
      */
     public function cantidadSesionClase()
     {
@@ -147,7 +149,7 @@ class ManejoSesionClase
      * Método que busca una ficha bibliografica por medio de su código
      * 
      * @param int $pCodigo
-     * @return FichaBibliografica $fichaBibliografica
+     * @return FichaBibliografica $fichaBibliograficaDAO
      */
     public function buscarFichaBibliografica($pCodigo)
     {
@@ -191,7 +193,9 @@ class ManejoSesionClase
     /**
      * Método que obtiene la lista de las sesiones de clase
      * 
-     * @return Array $Fichas
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Array $fichaBibliograficaDAO
      */
     public function listarFichasBibliograficas($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -203,7 +207,7 @@ class ManejoSesionClase
      * Método que obtiene la lista de los cuestionarios por una sesion de clase dada
      * 
      * @param int $pCodigo
-     * @return Array $Cuestionario
+     * @return Array $fichaBibliograficaDAO
      */
     public function listarFichasBibliograficasPorSesionClase($pCodigo)
     {
@@ -226,7 +230,7 @@ class ManejoSesionClase
      * Método que busca un cuestionario por medio de su código
      * 
      * @param int $pCodigo
-     * @return Cuestionario $cuestionario
+     * @return Cuestionario $cuestionarioDAO
      */
     public function buscarCuestionario($pCodigo)
     {
@@ -248,7 +252,7 @@ class ManejoSesionClase
     /**
      * Método que activa un cuestionario por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pCuestionario
      */
     public function activarCuestionario($pCuestionario)
     {
@@ -259,7 +263,7 @@ class ManejoSesionClase
     /**
      * Método que desactiva un cuestionario por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pCuestionario
      */
     public function desactivarCuestionario($pCuestionario)
     {
@@ -269,8 +273,10 @@ class ManejoSesionClase
 
     /**
      * Método que obtiene la lista de los cuestionarios
-     * 
-     * @return Array $Cuestionario
+     *
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Array $cuestionarioDAO
      */
     public function listarCuestionarios($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -282,7 +288,7 @@ class ManejoSesionClase
      * Método que obtiene la lista de los cuestionarios por una sesion de clase dada
      * 
      * @param int $pCodigo
-     * @return Array $Cuestionario
+     * @return Array $cuestionarioDAO
      */
     public function listarCuestionariosPorSesionClase($pCodigo)
     {

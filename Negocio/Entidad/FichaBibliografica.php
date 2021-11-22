@@ -97,7 +97,7 @@ class FichaBibliografica
     }
 
     /**
-     * Método que obtiene la descripcion de la ficha
+     * Método que obtiene la descripcion de la ficha bibliografica
      * 
      * @return String $descripcionFicha
      */
@@ -107,7 +107,7 @@ class FichaBibliografica
     }
 
     /**
-     * Método que establece la descripcion de la ficha
+     * Método que establece la descripcion de la ficha bibliografica
      * 
      * @param String $pDescripcionFicha
      */
@@ -117,7 +117,7 @@ class FichaBibliografica
     }
 
     /**
-     * Método que obtiene la imagen de la ficha
+     * Método que obtiene la imagen de la ficha bibliografica
      * 
      * @return String $imagenFicha
      */
@@ -127,7 +127,7 @@ class FichaBibliografica
     }
 
     /**
-     * Método que establece la imagen de la ficha
+     * Método que establece la imagen de la ficha bibliografica
      * 
      * @param String $pImagenFicha
      */

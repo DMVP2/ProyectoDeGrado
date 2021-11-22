@@ -55,7 +55,7 @@ class ManejoEstudiante
      * Método que busca un estudiante por medio de su código
      * 
      * @param int $pCodigo
-     * @return Estudiante $estudiante
+     * @return Estudiante $estudianteDAO
      */
     public function buscarEstudiante($pCodigo)
     {
@@ -77,7 +77,7 @@ class ManejoEstudiante
     /**
      * Método que activa un estudiante por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pEstudiante
      */
     public function activarEstudiante($pEstudiante)
     {
@@ -88,7 +88,7 @@ class ManejoEstudiante
     /**
      * Método que desactiva un estudiante por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pEstudiante
      */
     public function desactivarEstudiante($pEstudiante)
     {
@@ -99,7 +99,9 @@ class ManejoEstudiante
     /**
      * Método que obtiene la lista de estudiante 
      * 
-     * @return Array $estudiante 
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Array $estudianteDAO
      */
     public function listarEstudiantes($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -111,7 +113,7 @@ class ManejoEstudiante
      * Método que obtiene la lista de los codigos de las estudiantes de una asignatura dada
      * 
      * @param int $pCodigo
-     * @return Array $estudiantes
+     * @return Array $estudianteDAO
      */
     public function listarIDEstudiantesPorAsignatura($pCodigo)
     {
@@ -122,7 +124,7 @@ class ManejoEstudiante
     /**
      * Método que cuenta la cantidad total de estudiantes registrados en la base de datos
      * 
-     * @return int $cantidad
+     * @return int $estudianteDAO
      */
     public function cantidadEstudiante()
     {
@@ -145,7 +147,7 @@ class ManejoEstudiante
      * Método que busca un progreso por medio de su código
      * 
      * @param int $pCodigo
-     * @return Progreso $progreso
+     * @return Progreso $progresoDAO
      */
     public function buscarProgreso($pCodigo)
     {
@@ -156,7 +158,7 @@ class ManejoEstudiante
     /**
      * Método que activa un progreso por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pProgreso
      */
     public function activarProgreso($pProgreso)
     {
@@ -167,7 +169,7 @@ class ManejoEstudiante
     /**
      * Método que desactiva un progreso por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pProgreso
      */
     public function desactivarProgreso($pProgreso)
     {
@@ -179,7 +181,7 @@ class ManejoEstudiante
      * Método que obtiene la lista de los progresos de un estudiante dado
      * 
      * @param int $pCodigo
-     * @return Array $progreso 
+     * @return Array $progresoDAO
      */
     public function listarProgresosPorEstudiante($pCodigo)
     {

@@ -104,7 +104,7 @@ class Bibliografia
     }
 
     /**
-     * Método que obtiene la editorial
+     * Método que obtiene la editorial de la Bibliografia
      * 
      * @return String $editorial
      */
@@ -114,7 +114,7 @@ class Bibliografia
     }
 
     /**
-     * Método que establece la editorial
+     * Método que establece la editorial de la Bibliografia
      * 
      * @param String $pEditorial
      */
@@ -124,7 +124,7 @@ class Bibliografia
     }
 
     /**
-     * Método que obtiene el tipo
+     * Método que obtiene el tipo de la Bibliografia
      * 
      * @return String $tipo
      */
@@ -134,7 +134,7 @@ class Bibliografia
     }
 
     /**
-     * Método que establece el tipo
+     * Método que establece el tipo de la Bibliografia
      * 
      * @param String $pTipo
      */
@@ -144,7 +144,7 @@ class Bibliografia
     }
 
     /**
-     * Método que obtiene el nombre del autor
+     * Método que obtiene el nombre del autor de la Bibliografia
      * 
      * @return String $nombreAutor
      */
@@ -154,7 +154,7 @@ class Bibliografia
     }
 
     /**
-     * Método que establece el nombre del autor
+     * Método que establece el nombre del autor de la Bibliografia
      * 
      * @param String $pNombreAutor
      */

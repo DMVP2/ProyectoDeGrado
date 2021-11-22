@@ -45,14 +45,14 @@ class Asignatura
     private $grupo;
 
     /**
-     * numero creditos
+     * numero creditos de la asignatura
      * 
      * @var int $numeroCreditos
      */
     private $numeroCreditos;
 
     /**
-     * semestre
+     * semestre de la asignatura
      * 
      * @var int $semestre
      */
@@ -160,7 +160,7 @@ class Asignatura
     }
 
     /**
-     * Método que obtiene el nombre la asignatura
+     * Método que obtiene el nombre de la asignatura
      * 
      * @return String $nombre
      */
@@ -200,9 +200,9 @@ class Asignatura
     }
 
         /**
-     * Método que obtiene el grupo de la asignatura
+     * Método que obtiene el numero de creditos de la asignatura
      * 
-     * @return String $grupo
+     * @return String $numeroCreditos
      */
     public function getNumeroCreditos()
     {
@@ -210,9 +210,9 @@ class Asignatura
     }
 
     /**
-     * Método que establece el grupo de la asignatura
+     * Método que establece el numero de creditos de la asignatura
      * 
-     * @param String $pGrupo
+     * @param String $pNumeroCreditos
      */
     public function setNumeroCreditos($pNumeroCreditos)
     {
@@ -220,7 +220,7 @@ class Asignatura
     }
 
     /**
-     * Método que obtiene el semestre
+     * Método que obtiene el semestre de la asignatura
      * 
      * @return int $semestre
      */
@@ -230,7 +230,7 @@ class Asignatura
     }
 
     /**
-     * Método que establece el semestre
+     * Método que establece el semestre de la asignatura
      * 
      * @param int $pSemestre
      */
@@ -312,7 +312,7 @@ class Asignatura
     /**
      * Método que establece el arreglo las competencias de la asignatura
      * 
-     * @param Array
+     * @param Array $pCompetencias
      */
     public function setCompetencias($pCompetencias)
     {
@@ -332,7 +332,7 @@ class Asignatura
     /**
      * Método que establece el arreglo las bibliografias de la asignatura
      * 
-     * @param Array
+     * @param Array $pBibliografias
      */
     public function setBibliografias($pBibliografias)
     {
@@ -352,7 +352,7 @@ class Asignatura
     /**
      * Método que establece el arreglo los estudiantes de la asignatura
      * 
-     * @param Array
+     * @param Array $pEstudiantes
      */
     public function setEstudiantes($pEstudiantes)
     {
@@ -372,7 +372,7 @@ class Asignatura
     /**
      * Método que establece el arreglo las tematicas de la asignatura
      * 
-     * @param Array
+     * @param Array $pTematicas
      */
     public function setTematicas($pTematicas)
     {

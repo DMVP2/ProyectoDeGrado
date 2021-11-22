@@ -38,7 +38,7 @@ class Administrador
     private $apellido;
 
     /**
-     * Edad del Telefono
+     * Telefono del Administrador
      * 
      * @var int $telefono
      */
@@ -138,7 +138,7 @@ class Administrador
      * 
      * @param int $pTelefono
      */
-    public function setTelefono($pTelefono  )
+    public function setTelefono($pTelefono)
     {
         $this->telefono = $pTelefono;
     }

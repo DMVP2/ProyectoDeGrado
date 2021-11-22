@@ -106,7 +106,7 @@ class Docente
     /**
      * Método que obtiene el apellido Docente
      * 
-     * @return String $nombre
+     * @return String $apellido
      */
     public function getApellido()
     {
@@ -157,7 +157,7 @@ class Docente
     /**
      * Método que establece el arreglo con los ID de las Sesiones de Clase que componen al Docente
      * 
-     * @param Array
+     * @param Array $pHorariosAtencion
      */
     public function setHorariosAtencion($pHorariosAtencion)
     {

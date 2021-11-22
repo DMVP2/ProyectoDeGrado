@@ -55,7 +55,7 @@ class ManejoDocente
      * Método que busca un docente por medio de su código
      * 
      * @param int $pCodigo
-     * @return Docente $docente
+     * @return Docente $docenteDAO
      */
     public function buscarDocente($pCodigo)
     {
@@ -67,7 +67,7 @@ class ManejoDocente
      * Método que busca el docente de una asignatura por medio del código de una asignatura dada
      * 
      * @param int $pCodigo
-     * @return Docente $docente
+     * @return Docente $docenteDAO
      */
     public function buscarDocentePorAsignatura($pCodigo)
     {
@@ -100,7 +100,7 @@ class ManejoDocente
     /**
      * Método que desactiva un docente por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pDocente
      */
     public function desactivarDocente($pDocente)
     {
@@ -111,7 +111,9 @@ class ManejoDocente
     /**
      * Método que obtiene la lista de docentes
      * 
-     * @return Array $docente
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Array $docenteDAO
      */
     public function listarDocentes($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -122,7 +124,7 @@ class ManejoDocente
      /**
      * Método que cuenta la cantidad total de docentes registrados en la base de datos
      * 
-     * @return int $cantidad
+     * @return int $docenteDAO
      */
     public function cantidadDocente()
     {
@@ -133,7 +135,7 @@ class ManejoDocente
      /**
      * Método que crear un objeto de la clase horario de atencion
      * 
-     * @param HorarioAtencion $HorarioAtencion
+     * @param HorarioAtencion $pHorarioAtencion
      */
     public function crearHorarioAtencion($pHorarioAtencion)
     {
@@ -145,7 +147,7 @@ class ManejoDocente
      * Método que busca un horario atencion por medio de su código
      * 
      * @param int $pCodigo
-     * @return BuscarHorarioAtencion $buscarHorarioAtencion
+     * @return BuscarHorarioAtencion $horarioAtencionDAO
      */
     public function buscarHorarioAtencion($pCodigo)
     {
@@ -167,7 +169,7 @@ class ManejoDocente
     /**
      * Método que activa un horario de atencion por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pIdDocument
      */
     public function activarHorarioAtencion($pIdDocument)
     {
@@ -178,7 +180,7 @@ class ManejoDocente
     /**
      * Método que desactiva un docente por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pHorarioAtencion
      */
     public function desactivarHorarioAtencion($pHorarioAtencion)
     {
@@ -189,7 +191,7 @@ class ManejoDocente
     /**
      * Método que obtiene la lista de horario de atencion
      * 
-     * @return Array $HorarioAtencion
+     * @return Array $horarioAtencionDAO
      */
     public function listarHorariosAtencion()
     {
@@ -201,7 +203,7 @@ class ManejoDocente
      * Método que obtiene la lista de los horarios de atención de un docente dado
      * 
      * @param int $pCodigo
-     * @return Array $HorarioAtencion
+     * @return Array $horarioAtencionDAO
      */
     public function listarHorariosAtencionPorDocente($pCodigo)
     {

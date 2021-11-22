@@ -195,7 +195,7 @@ class Estudiante
     }
 
     /**
-     * Método que establece EL correo electronico secundario
+     * Método que establece el correo electronico secundario
      * 
      * @param String $pCorreoElectronicoSecundario
      */
@@ -205,7 +205,7 @@ class Estudiante
     }
 
      /**
-     * Método que obtiene l semestre  del Estudiante
+     * Método que obtiene el semestre  del Estudiante
      * 
      * @return int $semestre
      */
@@ -237,7 +237,7 @@ class Estudiante
     /**
      * Método que establece el arreglo con los ID del progeso del estudiante
      * 
-     * @param Array
+     * @param Array $pProgreso
      */
     public function setProgreso($pProgreso)
     {

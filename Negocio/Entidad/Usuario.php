@@ -146,7 +146,7 @@ class Usuario
     /**
      * Método que obtiene el estado de actividad o inactividad del Usuario
      * 
-     * @return int $rol
+     * @return int $status
      */
     public function getStatus()
     {

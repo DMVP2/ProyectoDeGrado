@@ -26,7 +26,7 @@ class Competencia
     /**
      * Descripcion de la competencia
      * 
-     * @var String $ competencia
+     * @var String $descripcionCompetencia
      */
     private $descripcionCompetencia;
 
@@ -60,7 +60,7 @@ class Competencia
     }
 
     /**
-     * Método que establece el ID de la Temática
+     * Método que establece el ID de la Competencia
      * 
      * @param int $pCodigo
      */
@@ -76,7 +76,7 @@ class Competencia
      */
     public function getDescripcionCompetencia()
     {
-        return $this->competencia;
+        return $this->descripcionCompetencia;
     }
 
     /**
@@ -84,9 +84,9 @@ class Competencia
      * 
      * @param String $pDescripcionCompetencia
      */
-    public function setDescripcionCompetencia($pCompetencia)
+    public function setDescripcionCompetencia($pDescripcionCompetencia)
     {
-        $this->competencia = $pCompetencia;
+        $this->competencia = $pDescripcionCompetencia;
     }
 
     /**

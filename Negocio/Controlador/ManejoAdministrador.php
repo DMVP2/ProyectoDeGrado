@@ -54,7 +54,7 @@ class ManejoAdministrador
      * Método que busca un administrador por medio de su código
      * 
      * @param int $pCodigo
-     * @return Administrador $administrador
+     * @return Administrador $administradorDAO
      */
     public function buscarAdministrador($pCodigo)
     {
@@ -76,7 +76,9 @@ class ManejoAdministrador
     /**
      * Método que obtiene la lista de administradores 
      * 
-     * @return Array $administrador 
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Array $administradorDAO
      */
     public function listarAdministradores($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -87,7 +89,7 @@ class ManejoAdministrador
     /**
      * Método que cuenta la cantidad total de administrador registrados en la base de datos
      * 
-     * @return int $cantidad
+     * @return int $administradorDAO
      */
     public function cantidadAdministrador()
     {

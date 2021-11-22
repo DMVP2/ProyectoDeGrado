@@ -54,7 +54,7 @@ class ManejoUsuario
      * Método que busca un usuario por medio de su código
      * 
      * @param int $pCodigo
-     * @return Usuario $usuario
+     * @return Usuario $usuarioDAO
      */
     public function buscarUsuario($pCodigo)
     {
@@ -66,7 +66,7 @@ class ManejoUsuario
      * Método que busca el usuario por medio de su código
      * 
      * @param int $pNickname
-     * @return Usuario $usuario
+     * @return Usuario $usuarioDAO
      */
     public function buscarUsuarioPorNickname($pNickname)
     {
@@ -88,7 +88,7 @@ class ManejoUsuario
     /**
      * Método que activa un usuario por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pUsuario
      */
     public function activarUsuario($pUsuario)
     {
@@ -99,7 +99,7 @@ class ManejoUsuario
     /**
      * Método que desactiva un usuario por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pUsuario
      */
     public function desactivarUsuario($pUsuario)
     {
@@ -110,7 +110,9 @@ class ManejoUsuario
     /**
      * Método que obtiene la lista del usuario
      * 
-     * @return Array $usuario
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Array $usuarioDAO
      */
     public function listarUsuarios($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -122,7 +124,7 @@ class ManejoUsuario
      * Método que obtiene el rol al que pertenece un usuario por medio de el código de dicho usuario
      * 
      * @param int $pCodigo
-     * @return int $rol
+     * @return int $usuarioDAO
      */
     public function consultarRolUsuario($pCodigo)
     {
@@ -133,7 +135,7 @@ class ManejoUsuario
     /**
      * Método que cuenta la cantidad total de usuarios registrados en la base de datos
      * 
-     * @return int $cantidad
+     * @return int $usuarioDAO
      */
     public function cantidadUsuario()
     {

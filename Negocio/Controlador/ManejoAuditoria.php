@@ -42,7 +42,9 @@ class ManejoAuditoria
     /**
      * Método que obtiene la lista de Auditoria
      * 
-     * @return Array $auditoria 
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Array $auditoriaDAO
      */
     public function listarAuditorias($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -53,7 +55,7 @@ class ManejoAuditoria
     /**
      * Método que cuenta la cantidad total de auditorias registrados en la base de datos
      * 
-     * @return int $cantidad
+     * @return int $auditoriaDAO
      */
     public function cantidadAuditoria()
     {

@@ -19,7 +19,7 @@ class Progreso
     /**
      * Código del estudiante al que corresponde el progreso
      * 
-     * @var int $sesionClase
+     * @var int $estudiante
      */
     private $estudiante;
 
@@ -111,7 +111,7 @@ class Progreso
     /**
      * Método que establece el codigo del estudiante al que corresponde el progreso
      * 
-     * @param int $psesionClase
+     * @param int $pEstudiante
      */
     public function setEstudiante($pEstudiante)
     {
@@ -131,7 +131,7 @@ class Progreso
     /**
      * Método que establece el codigo de la sesion de clase a la que corresponde el progreso
      * 
-     * @param int $psesionClase
+     * @param int $pSesionClase
      */
     public function setSesionClase($pSesionClase)
     {
@@ -151,7 +151,7 @@ class Progreso
     /**
      * Método que establece le resuelto
      * 
-     * @param Boolean $presuelto
+     * @param Boolean $pResuelto
      */
     public function setResuelto($pResuelto)
     {
@@ -171,7 +171,7 @@ class Progreso
     /**
      * Método que establece la opcion A
      * 
-     * @param int $popcionA
+     * @param int $pOpcionA
      */
     public function setOpcionA($pOpcionA)
     {
@@ -191,7 +191,7 @@ class Progreso
     /**
      * Método que establece la opcion B
      * 
-     * @param int $popcionB
+     * @param int $pOpcionB
      */
     public function setOpcionB($pOpcionB)
     {
@@ -211,7 +211,7 @@ class Progreso
     /**
      * Método que establece la opcion C
      * 
-     * @param int $popcionC
+     * @param int $pOpcionC
      */
     public function setOpcionC($pOpcionC)
     {
@@ -231,7 +231,7 @@ class Progreso
     /**
      * Método que establece la opcion D
      * 
-     * @param int $popcionD
+     * @param int $pOpcionD
      */
     public function setOpcionD($pOpcionD)
     {
@@ -251,7 +251,7 @@ class Progreso
     /**
      * Método que establece la opcion E
      * 
-     * @param int $popcionE
+     * @param int $pOpcionE
      */
     public function setOpcionE($pOpcionE)
     {

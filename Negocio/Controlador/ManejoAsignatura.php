@@ -56,7 +56,7 @@ class ManejoAsignatura
      * Método que busca una asignatura por medio de su código
      * 
      * @param int $pCodigo
-     * @return Asignatura $asignatura
+     * @return Asignatura $asignaturaDAO
      */
     public function buscarAsignatura($pCodigo)
     {
@@ -78,7 +78,7 @@ class ManejoAsignatura
     /**
      * Método que activa una tematica por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pAsignatura
      */
     public function activarAsignatura($pAsignatura)
     {
@@ -89,7 +89,7 @@ class ManejoAsignatura
     /**
      * Método que desactiva una asignatura por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pAsignatura
      */
     public function desactivarAsignatura($pAsignatura)
     {
@@ -100,7 +100,9 @@ class ManejoAsignatura
     /**
      * Método que obtiene la lista de asignatura
      * 
-     * @return Array $asignatura
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Array $asignaturaDAO
      */
     public function listarAsignaturas($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -112,7 +114,7 @@ class ManejoAsignatura
      * Método que obtiene la lista de los codigos de todos los objetos de la clase Asignatura para un objeto dado de la clase Estudiante
      * 
      * @param int $pCodigo
-     * @return int $datos
+     * @return int $asignaturaDAO
      */
     public function listarIDAsignaturasPorEstudiante($pCodigo)
     {
@@ -124,7 +126,7 @@ class ManejoAsignatura
      * Método que obtiene la lista de los codigos de todos los objetos de la clase Asignatura para un objeto dado de la clase Docente
      * 
      * @param int $pCodigo
-     * @return int $datos
+     * @return int $asignaturaDAO
      */
     public function listarIDAsignaturasPorDocente($pCodigo)
     {
@@ -135,7 +137,7 @@ class ManejoAsignatura
     /**
      * Método que cuenta la cantidad total de asignaturas registrados en la base de datos
      * 
-     * @return int $cantidad
+     * @return int $asignaturaDAO
      */
     public function cantidadAsignatura()
     {
@@ -159,7 +161,7 @@ class ManejoAsignatura
      * Método que busca una competencia por medio de su código
      * 
      * @param int $pCodigo
-     * @return Competencia $competencia
+     * @return Competencia $competenciaDAO
      */
     public function buscarCompetencia($pCodigo)
     {
@@ -181,7 +183,7 @@ class ManejoAsignatura
     /**
      * Método que activa una competencia por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pCompetencia
      */
     public function activarCompetencia($pCompetencia)
     {
@@ -192,7 +194,7 @@ class ManejoAsignatura
     /**
      * Método que desactiva una competencia por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pCompetencia
      */
     public function desactivarCompetencia($pCompetencia)
     {
@@ -203,7 +205,9 @@ class ManejoAsignatura
     /**
      * Método que obtiene la lista de las competencias
      * 
-     * @return Array $competencias
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Array $competenciaDAO
      */
     public function listarCompetencias($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -216,7 +220,7 @@ class ManejoAsignatura
      * Método que obtiene la lista de los codigos de las competencias de una asignatura dada
      * 
      * @param int $pCodigo
-     * @return Array $competencias
+     * @return Array $competenciaDAO
      */
     public function listarCompetenciasPorAsignatura($pCodigo)
     {
@@ -239,7 +243,7 @@ class ManejoAsignatura
      * Método que busca una bibliografia por medio de su código
      * 
      * @param int $pCodigo
-     * @return Bibliografia $bibliografia
+     * @return Bibliografia $bibliografiaDAO
      */
     public function buscarBibliografia($pCodigo)
     {
@@ -250,7 +254,7 @@ class ManejoAsignatura
     /**
      * Método que actualiza una bibliografia
      * 
-     * @param Bibliografia $bibliografia
+     * @param Bibliografia $pBibliografia
      */
     public function actualizarBibliografia($pBibliografia)
     {
@@ -261,7 +265,7 @@ class ManejoAsignatura
     /**
      * Método que activa una bibliografia por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pBibliografia
      */
     public function activarBibliografia($pBibliografia)
     {
@@ -272,7 +276,7 @@ class ManejoAsignatura
     /**
      * Método que desactiva una bibliografia por medio de su código
      * 
-     * @param int $pCodigo
+     * @param int $pBibliografia
      */
     public function desactivarBibliografia($pBibliografia)
     {
@@ -283,7 +287,9 @@ class ManejoAsignatura
     /**
      * Método que obtiene la lista de las bibliografia
      * 
-     * @return Array $bibliografia
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
+     * @return Array $bibliografiaDAO
      */
     public function listarBibliografias($pInicio, $pNumeroDeItemsPorPagina)
     {
@@ -295,7 +301,7 @@ class ManejoAsignatura
      * Método que obtiene la lista de los codigos de las bibliografias de una asignatura dada
      * 
      * @param int $pCodigo
-     * @return Array $bibliografias
+     * @return Array $bibliografiaDAO
      */
     public function listarBibliografiasPorAsignatura($pCodigo)
     {

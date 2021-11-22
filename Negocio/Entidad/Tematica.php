@@ -156,7 +156,7 @@ class Tematica
     /**
      * Método que establece el arreglo con los ID de los objetos de la clase SesionClase que componen al objeto de la clase Tematica
      * 
-     * @param Array $sesionesClase
+     * @param Array $pSesionesClase
      */
     public function setSesionesClase($pSesionesClase)
     {

@@ -65,7 +65,7 @@ class HorarioAtencion
     //----------------------------------
 
     /**
-     * Método que obtiene el ID de la Temática
+     * Método que obtiene el código
      * 
      * @return int $codigo
      */
@@ -75,7 +75,7 @@ class HorarioAtencion
     }
 
     /**
-     * Método que establece el ID de la Temática
+     * Método que establece el código 
      * 
      * @param int $pCodigo
      */
@@ -85,7 +85,7 @@ class HorarioAtencion
     }
 
     /**
-     * Método que obtiene el nombre la Temática
+     * Método que obtiene el dia 
      * 
      * @return String $dia
      */
@@ -117,7 +117,7 @@ class HorarioAtencion
     /**
      * Método que establece la hora
      * 
-     * @param String $pMedio
+     * @param String $pHora
      */
     public function setHora($pHora)
     {
@@ -131,7 +131,7 @@ class HorarioAtencion
      */
     public function getMedio()
     {
-        return $this->hora;
+        return $this->medio;
     }
 
     /**
