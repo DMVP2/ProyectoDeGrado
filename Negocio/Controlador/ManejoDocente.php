@@ -147,7 +147,7 @@ class ManejoDocente
      * Método que busca un horario atencion por medio de su código
      * 
      * @param int $pCodigo
-     * @return BuscarHorarioAtencion $horarioAtencionDAO
+     * @return HorarioAtencion $horarioAtencionDAO
      */
     public function buscarHorarioAtencion($pCodigo)
     {
