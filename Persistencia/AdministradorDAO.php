@@ -74,7 +74,7 @@ class AdministradorDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Administrador $pAdministrador
+     * @param int $pCodigo
      */
     public function delete($pCodigo)
     {
@@ -84,7 +84,6 @@ class AdministradorDAO implements DAO
      * Método que implementa el método LIST de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Administrador $pAdministrador
      */
     public function list()
     {
@@ -149,7 +148,8 @@ class AdministradorDAO implements DAO
     /**
      * Método que obtiene la lista de los administradores
      * 
-     * @param int $pCodigo
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
      * @return Administrador $datos
      */
     public function listarAdministradores($pInicio, $pNumeroDeItemsPorPagina)

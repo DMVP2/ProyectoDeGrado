@@ -74,7 +74,7 @@ class BibliografiaDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Bibliografia $pBibliografia
+     * @param int $pCodigo
      */
     public function delete($pCodigo)
     {
@@ -84,7 +84,6 @@ class BibliografiaDAO implements DAO
      * Método que implementa el método LIST de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Bibliografia $pBibliografia
      */
     public function list()
     {
@@ -171,7 +170,8 @@ class BibliografiaDAO implements DAO
     /**
      * Método que obtiene la lista de las bibliografias
      * 
-     * @param int $pCodigo
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
      * @return Bibliografia $datos
      */
     public function listarBibliografias($pInicio, $pNumeroDeItemsPorPagina)

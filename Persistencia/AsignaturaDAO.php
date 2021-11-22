@@ -79,7 +79,7 @@ class AsignaturaDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Asignatura $pAsignatura
+     * @param int $pCodigo
      */
     public function delete($pCodigo)
     {
@@ -89,7 +89,6 @@ class AsignaturaDAO implements DAO
      * Método que implementa el método LIST de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Asignatura $pAsignatura
      */
     public function list()
     {
@@ -195,7 +194,8 @@ class AsignaturaDAO implements DAO
     /**
      * Método que obtiene la lista de las Asignaturas
      * 
-     * @param int $pCodigo
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
      * @return Asignatura $datos
      */
     public function listarAsignaturas($pInicio, $pNumeroDeItemsPorPagina)

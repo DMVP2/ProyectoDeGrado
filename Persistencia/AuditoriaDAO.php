@@ -75,7 +75,7 @@ class AuditoriaDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Auditoria $pCompetencia
+     * @param int $pCodigo
      */
     public function delete($pCodigo)
     {
@@ -85,7 +85,6 @@ class AuditoriaDAO implements DAO
      * Método que implementa el método LIST de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Auditoria $pAuditoria
      */
     public function list()
     {
@@ -96,7 +95,8 @@ class AuditoriaDAO implements DAO
     /**
      * Método que obtiene la lista de las auditorias
      * 
-     * @param int $pCodigo
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
      * @return Auditoria $datos
      */
     public function listarAuditorias($pInicio, $pNumeroDeItemsPorPagina)

@@ -59,7 +59,7 @@ class ConexionSQL
      * Método que retorna la unica instancia de la clase Conexion (Particular)
      * Este método constituye la implementación del patrón de diseño "Singleton" planteado en el documento SAD
      * 
-     * @return ConexionSQL $conexion
+     * @return ConexionSQL $instance
      */
     public static function getInstancia()
     {

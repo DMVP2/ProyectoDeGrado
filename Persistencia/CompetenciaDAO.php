@@ -74,7 +74,7 @@ class CompetenciaDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Competencia $pCompetencia
+     * @param int $pCodigo
      */
     public function delete($pCodigo)
     {
@@ -84,7 +84,6 @@ class CompetenciaDAO implements DAO
      * Método que implementa el método LIST de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Competencia $pCompetencia
      */
     public function list()
     {
@@ -169,7 +168,8 @@ class CompetenciaDAO implements DAO
     /**
      * Método que obtiene la lista de las Competencias
      * 
-     * @param int $pCodigo
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
      * @return Competencia $datos
      */
     public function listarCompetencias($pInicio, $pNumeroDeItemsPorPagina)
@@ -246,7 +246,7 @@ class CompetenciaDAO implements DAO
      * Este método constituye la implementación del patrón de diseño "Singleton" planteado en el documento SAD
      * 
      * @param int $pConexion
-     * @return CompetenciaDAO $CompetenciaDAO
+     * @return CompetenciaDAO $competenciaDAO
      */
     public static function getCompetenciaDAO($pConexion)
     {

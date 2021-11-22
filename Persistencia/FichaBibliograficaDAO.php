@@ -74,7 +74,7 @@ class FichaBibliograficaDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param FichaBibliografica $pFichaBibliografica
+     * @param int $pCodigo
      */
     public function delete($pCodigo)
     {
@@ -84,7 +84,6 @@ class FichaBibliograficaDAO implements DAO
      * Método que implementa el método LIST de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param FichaBibliografica $pFichaBibliografica
      */
     public function list()
     {
@@ -170,7 +169,8 @@ class FichaBibliograficaDAO implements DAO
     /**
      * Método que obtiene la lista de las ficha bibliografica
      * 
-     * @param int $pCodigo
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
      * @return FichaBibliografica $datos
      */
     public function listarFichasBibliograficas($pInicio, $pNumeroDeItemsPorPagina)

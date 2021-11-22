@@ -74,7 +74,7 @@ class CuestionarioDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Cuestionario $pCuestionario
+     * @param int $pCodigo
      */
     public function delete($pCodigo)
     {
@@ -84,7 +84,6 @@ class CuestionarioDAO implements DAO
      * Método que implementa el método LIST de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Cuestionario $pCuestionario
      */
     public function list()
     {
@@ -175,7 +174,8 @@ class CuestionarioDAO implements DAO
     /**
      * Método que obtiene la lista de los cuestionarios
      * 
-     * @param int $pCodigo
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
      * @return Cuestionario $datos
      */
     public function listarCuestionarios($pInicio, $pNumeroDeItemsPorPagina)

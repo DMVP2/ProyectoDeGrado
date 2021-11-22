@@ -76,7 +76,7 @@ class EstudianteDAO implements DAO
      * Método que implementa el método DELETE de la interfaz DAO
      * Este método no se utiliza
      * 
-     * @param Estudiante $pEstudiante
+     * @param int $pCodigo
      */
     public function delete($pCodigo)
     {
@@ -85,8 +85,6 @@ class EstudianteDAO implements DAO
     /**
      * Método que implementa el método LIST de la interfaz DAO
      * Este método no se utiliza
-     * 
-     * @param Estudiante $pEstudiante
      */
     public function list()
     {
@@ -180,7 +178,8 @@ class EstudianteDAO implements DAO
     /**
      * Método que obtiene la lista de los estudiantes
      * 
-     * @param int $pCodigo
+     * @param int $pNumeroDeItemsPorPagina
+     * @param int $pInicio
      * @return Estudiante $datos
      */
     public function listarEstudiantes($pInicio, $pNumeroDeItemsPorPagina)
