@@ -8,7 +8,7 @@ define('NOMBRE_PROYECTO_UEB', 'RetoñosApp - Universidad El Bosque');
 
 // Directorio raiz
 
-define('DIRECTORIO_RAIZ', '');
+define('DIRECTORIO_RAIZ', '/ProyectoDeGradoRepositorio');
 
 // Rutas capa de presentación
 
