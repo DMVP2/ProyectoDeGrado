@@ -143,7 +143,7 @@ class AsignaturaDAO implements DAO
             $asignatura->setBibliografias($auxiliar2);
 
             $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-            $auxiliar3 = $estudianteDAO->listarIDEstudiantesPorAsignatura($row->id_asignatura);
+            $auxiliar3 = $estudianteDAO->listarEstudiantesPorAsignatura($row->id_asignatura);
             $asignatura->setEstudiantes($auxiliar3);
 
             $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);

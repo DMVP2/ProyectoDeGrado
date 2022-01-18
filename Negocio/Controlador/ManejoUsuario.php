@@ -44,10 +44,10 @@ class ManejoUsuario
      * 
      * @param Usuario $pUsuario
      */
-    public function crearUsuario($pUsuario)
+    public function crearUsuario($pUsuario, $pRol)
     {
         $usuarioDAO = UsuarioDAO::getUsuarioDAO($this->conexion);
-        $usuarioDAO->crearUsuario($pUsuario);
+        $usuarioDAO->crearUsuario($pUsuario, $pRol);
     }
 
     /**

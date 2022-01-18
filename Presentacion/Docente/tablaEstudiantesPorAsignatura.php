@@ -30,10 +30,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 
 // Importaciones de clases
 
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoAsignatura.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoDocente.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Asignatura.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Docente.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoEstudiante.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 // Creación de la conexión
@@ -43,9 +41,11 @@ $conexionActual = $conexion->conectarBD();
 
 // Llamado de manejos
 
-$manejoAsignatura = new ManejoAsignatura($conexionActual);
-$manejoDocente = new ManejoDocente($conexionActual);
-$manejoUsuario = new ManejoUsuario($conexionActual);
+$manejoEstudiante = new ManejoEstudiante($conexionActual);
+
+// Variables pasadas por GET
+
+$codigoAsignatura = $_GET['id'];
 
 ?>
 <!DOCTYPE html>
@@ -123,77 +123,6 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                         <!-- Este espacio se queda en blanco -->
 
                     </div>
-                    <div class="row">
-                        <?php
-
-                        $inicio = 0;
-
-                        $numeroDeItemsPorPagina = $manejoAsignatura->cantidadAsignatura();
-
-                        $listadoIDAsignaturas = $manejoAsignatura->listarIDAsignaturasPorDocente($usuario->getCodigo());
-
-                        foreach ($listadoIDAsignaturas as $codigoAsignatura) {
-
-                            $imagenFondoPerfil = 0;
-
-                            $i = rand(1, 5);
-
-                            switch ($i) {
-                                case 1:
-                                    $imagenFondoPerfil = "Fondo_Geometrico_Verde.jpg";
-                                    break;
-                                case 2:
-                                    $imagenFondoPerfil = "Fondo_Geometrico_Rojo.jpg";
-                                    break;
-                                case 3:
-                                    $imagenFondoPerfil = "Fondo_Geometrico_Azul.jpg";
-                                    break;
-                                case 4:
-                                    $imagenFondoPerfil = "Fondo_Geometrico_Naranja.jpg";
-                                    break;
-                                case 5:
-                                    $imagenFondoPerfil = "Fondo_Geometrico_Morado.jpg";
-                                    break;
-                            }
-
-                            $asignatura = $manejoAsignatura->buscarAsignatura($codigoAsignatura);
-
-                            echo '<div class="col-xl-4 col-md-6">';
-                            echo '<div class="card" style="width: 24rem;">';
-                            echo '<img class="card-img-top" src="' . DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/' . $imagenFondoPerfil . '"height="200" alt="Image placeholder">';
-                            echo '<div class="card-body">';
-                            echo '<h5 class="card-title">Asignatura: ' . $asignatura->getNombre() . '</h5>';
-                            echo '<h5 class="card-title">Grupo: ' . $asignatura->getGrupo() . '</h5>';
-                            echo '<h5 class="card-title">Sementre: ' . $asignatura->getSemestre() . '</h5>';
-                            echo '<h5 class="card-title">Duración: ' . $asignatura->getDuracion() . '</h5>';
-                            echo '<ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
-                                    <li class="nav-item dropup">
-                                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <div class="media align-items-center">
-                                                <span class="avatar avatar-sm rounded-circle">
-                                                    <img alt="Image placeholder" src=' . DIRECTORIO_RAIZ . RUTA_ASSETS . 'img/theme/Descripcion.png' . '>
-                                                </span>
-                                                <div class="media-body  ml-2  d-none d-lg-block">
-                                                    <span class="mb-0 text-sm  font-weight-bold"></span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <div class="col-xl-12 col-md-12">
-                                                <h6 class="text-overflow m-0" align="justify">' . $asignatura->getDescripcion() . ' </h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>';
-                            echo '<br>';
-                            echo '<a href="tablaTematicasPorAsignatura.php?id=' . $asignatura->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Ir a la asignatura</a>';
-                            echo '<a href="tablaEstudiantesPorAsignatura.php?id=' . $asignatura->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Ver estudiantes matriculados</a>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
-                        }
-                        ?>
-                    </div>
                 </div>
             </div>
         </div>
@@ -202,13 +131,90 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
 
         <!-- Contenido -->
 
+        <div class="container-fluid mt--6">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header border-0">
+                            <h3 class="mb-0">Estudiantes matriculados en la asignatura</h3>
+                            <br>
+                            <a href="#" class="text-light"><small>Matricular a un estudiante</small></a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush">
+
+                                <!-- Encabezados de la tabla -->
+
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">No°</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Apellido</th>
+                                        <th scope="col">Edad</th>
+                                        <th scope="col">Correo electrónico principal</th>
+                                        <th scope="col">Correo electrónico secundario</th>
+                                        <th scope="col">Semestre</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+
+                                <!-- Fin encabezados de la tabla -->
+
+                                <tbody class="list">
+                                    <?php
+
+                                    $listadoIDEstudiantes = $manejoEstudiante->listarEstudiantesPorAsignatura($codigoAsignatura);
+
+                                    $numero = 0;
+
+                                    foreach ($listadoIDEstudiantes as $estudiante) {
+
+                                        $numero = $numero + 1;
+
+                                        echo "<tr>";
+                                        echo "<td>" . $numero . "</td>";
+                                        echo "<td>" . $estudiante->getNombre() . "</td>";
+                                        echo "<td>" . $estudiante->getApellido() . "</td>";
+
+                                        $fechaNacimiento = new DateTime($estudiante->getEdad());
+                                        $diaActual = new DateTime();
+                                        $edad = $diaActual->diff($fechaNacimiento);
+
+                                        echo "<td>" . $edad->format('%y') . "</td>";
+                                        echo "<td>" . $estudiante->getCorreoElectronicoPrincipal() . "</td>";
+                                        echo "<td>" . $estudiante->getCorreoElectronicoSecundario() . "</td>";
+                                        echo "<td>" . $estudiante->getSemestre() . "</td>";
+                                        echo "<td class='text-right'>
+                                            <div class='dropdown'>
+                                                <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i></a>
+                                                <div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
+                                                    <a class='dropdown-item' href='#'>Ver progreso estudiante</a>
+                                                    <a class='dropdown-item' href='#'>Dar de baja</a>
+                                                </div>
+                                            </div>
+                                            </td>";
+                                        echo "</tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Footer -->
 
         <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'footer.php'; ?>
 
         <!-- Fin Footer -->
 
-        <!-- Fin contenido -->
+    </div>
+
+    <!-- Fin contenido -->
 
     </div>
 

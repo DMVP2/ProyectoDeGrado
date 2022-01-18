@@ -220,7 +220,7 @@ class EstudianteDAO implements DAO
      * @param int $pCodigo
      * @return int $datos
      */
-    public function listarIDEstudiantesPorAsignatura($pCodigo)
+    public function listarEstudiantesPorAsignatura($pCodigo)
     {
         $sql = "SELECT * FROM ESTUDIANTE, ASIGNATURA_ESTUDIANTE, ASIGNATURA WHERE ASIGNATURA.id_asignatura = ASIGNATURA_ESTUDIANTE.id_asignatura AND ASIGNATURA_ESTUDIANTE.id_estudiante = ESTUDIANTE.id_estudiante AND ESTUDIANTE.id_estudiante = " . $pCodigo;
 

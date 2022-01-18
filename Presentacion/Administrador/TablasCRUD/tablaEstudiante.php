@@ -194,9 +194,7 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
                                             echo "<td>" . $estudiante->getNombre() . "</td>";
                                             echo "<td>" . $estudiante->getApellido() . "</td>";
 
-                                            list($año, $mes, $dia) = explode("/", $estudiante->getEdad());
-                                            $fechaNacimiento = $año . "-" . $mes . "-" . $dia;
-                                            $fechaNacimiento = new DateTime($fechaNacimiento);
+                                            $fechaNacimiento = new DateTime($estudiante->getEdad());
                                             $diaActual = new DateTime();
                                             $edad = $diaActual->diff($fechaNacimiento);
 

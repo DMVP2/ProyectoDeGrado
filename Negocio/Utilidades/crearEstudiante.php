@@ -68,7 +68,7 @@ $usuario->setStatus("Activo");
 
 try {
     $manejoEstudiante->crearEstudiante($estudiante);
-    $manejoUsuario->crearUsuario($usuario);
+    $manejoUsuario->crearUsuario($usuario, "Estudiante");
     echo "<script>
     alert('Registro exitoso');
     </script>";

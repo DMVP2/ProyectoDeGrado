@@ -115,10 +115,10 @@ class ManejoEstudiante
      * @param int $pCodigo
      * @return Array $estudianteDAO
      */
-    public function listarIDEstudiantesPorAsignatura($pCodigo)
+    public function listarEstudiantesPorAsignatura($pCodigo)
     {
         $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-        return $estudianteDAO->listarIDEstudiantesPorAsignatura($pCodigo);
+        return $estudianteDAO->listarEstudiantesPorAsignatura($pCodigo);
     }
 
     /**

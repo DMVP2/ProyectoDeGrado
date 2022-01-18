@@ -97,12 +97,20 @@ class UsuarioDAO implements DAO
      * 
      * @param Usuario $pUsuario
      */
-    public function crearUsuario($pUsuario)
+    public function crearUsuario($pUsuario, $pRol)
     {
         $sql = "INSERT INTO USUARIO VALUES (" . $pUsuario->getCodigo() . ",'" . $pUsuario->getNickname() . "','" . $pUsuario->getPassword() . "','" . $pUsuario->getStatus() . "')";
         pg_query($this->conexion, $sql);
-        $sql = "INSERT INTO USUARIO_ROL VALUES (" . $pUsuario->getCodigo() . "," . 3 . ")";
-        pg_query($this->conexion, $sql);
+        if (strcasecmp($pRol, "Estudiante") == 0) {
+            $sql = "INSERT INTO USUARIO_ROL VALUES (" . $pUsuario->getCodigo() . "," . 3 . ")";
+            pg_query($this->conexion, $sql);
+        } else if (strcasecmp($pRol, "Docente") == 0) {
+            $sql = "INSERT INTO USUARIO_ROL VALUES (" . $pUsuario->getCodigo() . "," . 2 . ")";
+            pg_query($this->conexion, $sql);
+        } else if (strcasecmp($pRol, "Administrador") == 0) {
+            $sql = "INSERT INTO USUARIO_ROL VALUES (" . $pUsuario->getCodigo() . "," . 1 . ")";
+            pg_query($this->conexion, $sql);
+        }
     }
 
     /**
@@ -117,8 +125,7 @@ class UsuarioDAO implements DAO
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
-        if (pg_num_rows($respuesta1) > 0)
-        {
+        if (pg_num_rows($respuesta1) > 0) {
             $row = pg_fetch_object($respuesta1);
             $usuario = new Usuario();
 
@@ -129,10 +136,7 @@ class UsuarioDAO implements DAO
 
             $auxiliar1 = $this->consultarRolUsuario($row->id_usuario);
             $usuario->setRol($auxiliar1);
-            
-        } 
-        else
-        {
+        } else {
             return null;
         }
 
@@ -151,8 +155,7 @@ class UsuarioDAO implements DAO
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
-        if (pg_num_rows($respuesta1) > 0)
-        {
+        if (pg_num_rows($respuesta1) > 0) {
             $row = pg_fetch_object($respuesta1);
             $usuario = new Usuario();
 
@@ -163,10 +166,7 @@ class UsuarioDAO implements DAO
 
             $auxiliar1 = $this->consultarRolUsuario($row->id_usuario);
             $usuario->setRol($auxiliar1);
-            
-        } 
-        else
-        {
+        } else {
             return null;
         }
 
@@ -221,8 +221,7 @@ class UsuarioDAO implements DAO
 
         $datos = array();
 
-        while ($row = pg_fetch_array($respuesta1))
-        {
+        while ($row = pg_fetch_array($respuesta1)) {
 
             $usuario = new Usuario();
 
@@ -286,8 +285,7 @@ class UsuarioDAO implements DAO
      */
     public static function getUsuarioDAO($pConexion)
     {
-        if (self::$usuarioDAO == null) 
-        {
+        if (self::$usuarioDAO == null) {
             self::$usuarioDAO = new UsuarioDAO($pConexion);
         }
         return self::$usuarioDAO;
