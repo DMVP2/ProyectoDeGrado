@@ -24,11 +24,29 @@
 
 include_once('routes.php');
 
-// Gestión de sesiones (Se busca asegurar que no hay ninguna sesión previa inicializada)
+// Conexión
 
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . 'SesionUsuario.php');
-$sesionUsuario = SesionUsuario::getSesionUsuario();
-$sesionUsuario->closeSession();
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . 'ConexionSQL.php');
+
+// Importaciones de clases
+
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoEstudiante.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
+
+// Creación de la conexión
+
+$conexion = ConexionSQL::getInstancia();
+$conexionActual = $conexion->conectarBD();
+
+// Llamado de manejos
+
+$manejoEstudiante = new ManejoEstudiante($conexionActual);
+$manejoUsuario = new ManejoUsuario($conexionActual);
+
+// Invocación de métodos
+
+$estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
 
 ?>
 <!DOCTYPE html>
@@ -104,23 +122,18 @@ $sesionUsuario->closeSession();
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <medium>Registro de estudiante</medium>
+                <medium>Editar datos del estudiante</medium>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'CrearEstudiante.php' ?>">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'EditarEstudiante.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" id="user" name="user" placeholder="Nickname" required>
+                    <input type="text" id="nombre" value=<?php echo $estudiante->getNombre() ?> name="nombre" placeholder="Nombre" aria-label="nombre" class="form-control">
+                    <input type="text" id="apellido" value=<?php echo $estudiante->getApellido() ?> name="apellido" placeholder="Apellido" aria-label="apellido" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" aria-label="nombre" class="form-control">
-                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" aria-label="apellido" class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" class="form-control" placeholder="Usuario de correo electrónico" id="principal" name="principal" aria-label="principal" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" value=<?php echo $estudiante->getCorreoElectronicoPrincipal() ?> placeholder="Usuario de correo electrónico" id="principal" name="principal" aria-label="principal" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                       <span class="input-group-text" id="basic-addon2">@unbosque.edu.co</span>
                     </div>
@@ -128,33 +141,23 @@ $sesionUsuario->closeSession();
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" type="secundario" id="secundario" name="secundario" placeholder="Correo electrónico secundario" required>
+                    <input class="form-control" type="text" value=<?php echo $estudiante->getCorreoElectronicoSecundario() ?> id="secundario" name="secundario" placeholder="Correo electrónico secundario" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" type="password" id="password1" name="password1" placeholder="Contraseña" required>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" type="password" id="password2" name="password2" placeholder="Repetir contraseña" required>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" type="date" id="date" name="date" id="example-date-input">
+                    <input class="form-control" type="date" value=<?php echo $estudiante->getEdad() ?> id="date" name="date" id="example-date-input">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <select class="form-control" type="semestre" id="semestre" name="semestre">
                       <option>Semestre</option>
-                      <option value='1'>1</option>
-                      <option value='2'>2</option>
-                      <option value='3'>3</option>
-                      <option value='4'>4</option>
-                      <option value='5'>5</option>
+                      <option value='1' <?php if ($estudiante->getSemestre() == 1) : ?> selected="selected" <?php endif; ?>>1</option>
+                      <option value='2' <?php if ($estudiante->getSemestre() == 2) : ?> selected="selected" <?php endif; ?>>2</option>
+                      <option value='3' <?php if ($estudiante->getSemestre() == 3) : ?> selected="selected" <?php endif; ?>>3</option>
+                      <option value='4' <?php if ($estudiante->getSemestre() == 4) : ?> selected="selected" <?php endif; ?>>4</option>
+                      <option value='5' <?php if ($estudiante->getSemestre() == 5) : ?> selected="selected" <?php endif; ?>>5</option>
                     </select>
                   </div>
                 </div>

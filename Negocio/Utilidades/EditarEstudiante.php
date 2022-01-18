@@ -20,8 +20,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "Manej
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoUsuario.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Usuario.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_UTILIDADES . "CreacionCodigos.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . 'SesionUsuario.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 // Creación de la conexión
 
@@ -35,19 +34,13 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
 
 // Ejecución de métodos
 
-$nickname = $_POST['user'];
+$codigo = $usuario->getCodigo();
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
 $correoElectronicoPrincipal = $_POST['principal'];
 $correoElectronicoSecundario = $_POST['secundario'];
-$password = $_POST['password1'];
 $fechaNacimiento = $_POST['date'];
 $semestre = $_POST['semestre'];
-
-$creacionCodigo = new CreacionCodigos();
-
-$codigo = $creacionCodigo->crearID();
-$password = sha1($password);
 
 $estudiante = new Estudiante();
 
@@ -59,23 +52,19 @@ $estudiante->setCorreoElectronicoPrincipal($correoElectronicoPrincipal);
 $estudiante->setCorreoElectronicoSecundario($correoElectronicoSecundario);
 $estudiante->setSemestre($semestre);
 
-$usuario = new Usuario();
-
-$usuario->setCodigo($codigo);
-$usuario->setNickname($nickname);
-$usuario->setPassword($password);
-$usuario->setStatus("Activo");
-
 try {
-    $manejoEstudiante->crearEstudiante($estudiante);
-    $manejoUsuario->crearUsuario($usuario);
+    $manejoEstudiante->actualizarEstudiante($estudiante);
     echo "<script>
-    alert('Registro exitoso');
+    alert('Actualización exitosa');
     </script>";
-    echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . "/index.php?code=1" . "');</script>";
+    if (strcasecmp($usuario->getRol(), "Estudiante") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ESTUDIANTE . "perfilEstudiante.php" . "');</script>";
+    } else if (strcasecmp($usuario->getRol(), "Administrador") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . "perfilAdministrador.php" . "');</script>";
+    }
 } catch (Exception $e) {
     echo "<script>
-    alert('No se pudo realizar el registro');
+    alert('No se pudo realizar la actualización');
     </script>";
     echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . "/index.php?code=1" . "');</script>";
 }

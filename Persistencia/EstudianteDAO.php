@@ -99,7 +99,7 @@ class EstudianteDAO implements DAO
      */
     public function crearEstudiante($pEstudiante)
     {
-        $sql = "INSERT INTO ESTUDIANTE VALUES (" . $pEstudiante->getCodigo() . ",'" . $pEstudiante->getNombre() . "','" . $pEstudiante->getApellido() . "','" . $pEstudiante->getEdad() . "','" . $pEstudiante->getCorreoElectronicoPrincipal() . "','" . $pEstudiante->getCorreoElectronicoSecundario() . "'," . $pEstudiante->getSemestre() . ")";
+        $sql = "INSERT INTO ESTUDIANTE VALUES (" . $pEstudiante->getCodigo() . ",'" . $pEstudiante->getNombre() . "','" . $pEstudiante->getApellido() . "','" . $pEstudiante->getEdad() . "','" . $pEstudiante->getCorreoElectronicoPrincipal() . "','" . $pEstudiante->getCorreoElectronicoSecundario() . "'," . $pEstudiante->getSemestre() . ", 'Activo'" . ")";
 
         pg_query($this->conexion, $sql);
     }
@@ -149,7 +149,7 @@ class EstudianteDAO implements DAO
      */
     public function actualizarEstudiante($pEstudiante)
     {
-        $sql = "UPDATE ESTUDIANTE SET" . " nombre_estudiante = " . $pEstudiante->getNombre() . ", apellido_estudiante = " . $pEstudiante->getApellido() . ", fecha_nacimiento = " . $pEstudiante->getFechaNacimiento() . ", email_principal = " . $pEstudiante->getCorreoElectronicoPrincipal() . ", email_secundario = " . $pEstudiante->getCorreoElectronicoSecundario() . ", semestre_estudiante = " . $pEstudiante->getSemestre() . " WHERE id_estudiante = " . $pEstudiante->getCodigo();
+        $sql = "UPDATE ESTUDIANTE SET" . " nombre_estudiante = " . "'" . $pEstudiante->getNombre() . "'" . ", apellido_estudiante = " . "'" . $pEstudiante->getApellido() . "'" . ", edad_estudiante = " . "'" . $pEstudiante->getEdad() . "'" . ", email_principal = " . "'" . $pEstudiante->getCorreoElectronicoPrincipal() . "'" . ", email_secundario = " . "'" . $pEstudiante->getCorreoElectronicoSecundario() . "'" . ", semestre_estudiante = " . $pEstudiante->getSemestre() . " WHERE id_estudiante = " . $pEstudiante->getCodigo();
         pg_query($this->conexion, $sql);
     }
 

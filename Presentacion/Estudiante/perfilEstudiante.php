@@ -204,7 +204,9 @@ $estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
                                     <h3 class="mb-0">Perfil del usuario</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <button type="button" class="btn btn-outline-success">Actualizar perfil</button>
+                                    <form method="POST" action=<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . "editarEstudiante.php"?>>
+                                        <button type="submit" class="btn btn-outline-success">Actualizar perfil</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -216,47 +218,45 @@ $estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-username">Nickname</label>
-                                                <input type="text" id="nickname" class="form-control" placeholder="Ejemplo: User12345" value=<?php echo $usuario->getNickname() ?>>
+                                                <input type="text" id="nickname" class="form-control" placeholder="Ejemplo: User12345" value=<?php echo $usuario->getNickname() ?> disabled="true">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-city">Nombre</label>
-                                                <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: David Santiago" value="<?php echo $estudiante->getNombre() ?>">
+                                                <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: David Santiago" value="<?php echo $estudiante->getNombre() ?>" disabled="true">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-country">Apellido</label>
-                                                <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo" value="<?php echo $estudiante->getApellido() ?>">
+                                                <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo" value="<?php echo $estudiante->getApellido() ?>" disabled="true">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Correo electrónico
                                                     principal</label>
-                                                <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co" value=<?php echo $estudiante->getCorreoElectronicoPrincipal() ?>>
+                                                <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co" value=<?php echo $estudiante->getCorreoElectronicoPrincipal() ?> disabled="true">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Correo electrónico
                                                     secundario</label>
-                                                <input type="email" id="emailSecundario" class="form-control" placeholder="user@tuDominio.com" value=<?php echo $estudiante->getCorreoElectronicoSecundario() ?>>
+                                                <input type="email" id="emailSecundario" class="form-control" placeholder="user@tuDominio.com" value=<?php echo $estudiante->getCorreoElectronicoSecundario() ?> disabled="true">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Semestre</label>
-                                                <input type="number" id="input-email" class="form-control" placeholder="jesse@example.com" value=<?php echo $estudiante->getSemestre() ?>>
+                                                <input type="number" id="input-email" class="form-control" placeholder="jesse@example.com" value=<?php echo $estudiante->getSemestre() ?> disabled="true">
                                             </div>
                                         </div>
 
                                         <?php
 
-                                        list($año, $mes, $dia) = explode("/", $estudiante->getEdad());
-                                        $fechaNacimiento = $año . "-" . $mes . "-" . $dia;
-                                        $fechaNacimiento = new DateTime($fechaNacimiento);
+                                        $fechaNacimiento = new DateTime($estudiante->getEdad());
                                         $diaActual = new DateTime();
                                         $edad = $diaActual->diff($fechaNacimiento);
 
@@ -271,7 +271,7 @@ $estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Edad</label>
-                                                <input type="date" id="input-email" class="form-control" value=<?php echo $fechaNacimiento->format('Y-m-d') ?>>
+                                                <input type="date" id="input-email" class="form-control" value=<?php echo $fechaNacimiento->format('Y-m-d') ?> disabled="true">
                                             </div>
                                         </div>
                                     </div>

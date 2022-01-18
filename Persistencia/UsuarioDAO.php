@@ -99,7 +99,9 @@ class UsuarioDAO implements DAO
      */
     public function crearUsuario($pUsuario)
     {
-        $sql = "INSERT INTO USUARIO VALUES " . $pUsuario->getNickname() . "," . $pUsuario->getPassword() . $pUsuario->getStatus();
+        $sql = "INSERT INTO USUARIO VALUES (" . $pUsuario->getCodigo() . ",'" . $pUsuario->getNickname() . "','" . $pUsuario->getPassword() . "','" . $pUsuario->getStatus() . "')";
+        pg_query($this->conexion, $sql);
+        $sql = "INSERT INTO USUARIO_ROL VALUES (" . $pUsuario->getCodigo() . "," . 3 . ")";
         pg_query($this->conexion, $sql);
     }
 
@@ -178,7 +180,7 @@ class UsuarioDAO implements DAO
      */
     public function actualizarUsuario($pUsuario)
     {
-        $sql = "UPDATE USAURIO SET" . " nickname_usuario = " . $pUsuario->getNickname() . ", password_usuario = " . $pUsuario->getPassword() . " WHERE id_usuario = " . $pUsuario->getCodigo();
+        $sql = "UPDATE USUARIO SET" . " nickname_usuario = " . "'" . $pUsuario->getNickname() . "'" . ", password_usuario = " . "'" . $pUsuario->getPassword() . "'" . " WHERE id_usuario = " . $pUsuario->getCodigo();
         pg_query($this->conexion, $sql);
     }
 
