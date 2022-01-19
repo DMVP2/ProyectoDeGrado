@@ -133,7 +133,7 @@ class SesionClaseDAO implements DAO
             $sesionClase->setFichasBibliograficas($auxiliar1);
 
             $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-            $auxiliar2 = $cuestionarioDAO->listarCuestionariosPorSesionClase($row->id_sesion);
+            $auxiliar2 = $cuestionarioDAO->listarCuestionarioPorSesionClase($row->id_sesion);
             $sesionClase->setPreguntas($auxiliar2);
         } 
         else

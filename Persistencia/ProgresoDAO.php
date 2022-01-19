@@ -99,7 +99,7 @@ class ProgresoDAO implements DAO
      */
     public function crearProgreso($pProgreso)
     {
-        $sql = "INSERT INTO PROGRESO VALUES " . $pProgreso->getEstudiante() . "," .$pProgreso->getSesionClase() . "," . $pProgreso->getResuelto() . "," . $pProgreso->getOpcionA() . "," . $pProgreso->getOpcionB() . "," . $pProgreso->getOpcionC() . "," . $pProgreso->getOpcionD() . "," . $pProgreso->getOpcionE() . "," . $pProgreso->getPuntajeObtenido() . "," . $pProgreso->getResumen();
+        $sql = "INSERT INTO PROGRESO VALUES (" . $pProgreso->getEstudiante() . "," .$pProgreso->getSesionClase() . "," . $pProgreso->getResuelto() . "," . $pProgreso->getOpcionA() . "," . $pProgreso->getOpcionB() . "," . $pProgreso->getOpcionC() . "," . $pProgreso->getOpcionD() . "," . $pProgreso->getOpcionE() . "," . $pProgreso->getPuntajeObtenido() . ",'" . $pProgreso->getResumen() . "')";
         pg_query($this->conexion, $sql);
     }
 

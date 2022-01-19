@@ -290,9 +290,9 @@ class ManejoSesionClase
      * @param int $pCodigo
      * @return Array $cuestionarioDAO
      */
-    public function listarCuestionariosPorSesionClase($pCodigo)
+    public function listarCuestionarioPorSesionClase($pCodigo)
     {
         $cuestionarioDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
-        return $cuestionarioDAO->listarCuestionariosPorSesionClase($pCodigo);
+        return $cuestionarioDAO->listarCuestionarioPorSesionClase($pCodigo);
     }
 }

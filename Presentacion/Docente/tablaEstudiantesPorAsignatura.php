@@ -137,8 +137,6 @@ $codigoAsignatura = $_GET['id'];
                     <div class="card">
                         <div class="card-header border-0">
                             <h3 class="mb-0">Estudiantes matriculados en la asignatura</h3>
-                            <br>
-                            <a href="#" class="text-light"><small>Matricular a un estudiante</small></a>
                         </div>
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush">

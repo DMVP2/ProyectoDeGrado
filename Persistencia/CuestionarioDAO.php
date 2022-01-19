@@ -213,7 +213,7 @@ class CuestionarioDAO implements DAO
      * @param int $pCodigo
      * @return int $datos
      */
-    public function listarCuestionariosPorSesionClase($pCodigo)
+    public function listarCuestionarioPorSesionClase($pCodigo)
     {
         $sql = "SELECT * FROM CUESTIONARIO WHERE id_sesion = " . $pCodigo;
 

@@ -169,6 +169,76 @@ $codigoSesionClase = $_GET['id'];
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="text-center">
+                            <br>
+                            <form>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Resolver cuestionario</button>
+                            </form>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+
+            <?php
+
+            $pregunta = $sesionClase->getPreguntas()[0];
+
+            ?>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <form method="POST" action=<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . "ValidarCuestionario.php" ?>>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Cuestionario: <?php echo $sesionClase->getNombre() ?></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="pregresp">
+                                    <div><?php echo $pregunta->getPregunta() ?></div>
+                                    <br>
+                                    <div class="respuestas">
+                                        <input type="hidden" name="id" value='<?php echo $codigoSesionClase ?>'>
+                                        <input type="hidden" name="respuesta" value='<?php echo $pregunta->getRespuestaCorrecta() ?>'>
+                                        <input type="hidden" name="opcionA" value='<?php echo $pregunta->getOpcionA() ?>'>
+                                        <input type="hidden" name="opcionB" value='<?php echo $pregunta->getOpcionB() ?>'>
+                                        <input type="hidden" name="opcionC" value='<?php echo $pregunta->getOpcionC() ?>'>
+                                        <input type="hidden" name="opcionD" value='<?php echo $pregunta->getOpcionD() ?>'>
+                                        <input type="hidden" name="opcionE" value='<?php echo $pregunta->getOpcionE() ?>'>
+                                        <input type="radio" name="opcion" value='<?php echo $pregunta->getOpcionA() ?>' /><?php echo " " . $pregunta->getOpcionA() ?><br />
+                                        <input type="radio" name="opcion" value='<?php echo $pregunta->getOpcionB() ?>' /><?php echo " " . $pregunta->getOpcionB() ?><br />
+                                        <input type="radio" name="opcion" value='<?php echo $pregunta->getOpcionC() ?>' /><?php echo " " . $pregunta->getOpcionC() ?><br />
+                                        <input type="radio" name="opcion" value='<?php echo $pregunta->getOpcionD() ?>' /><?php echo " " . $pregunta->getOpcionD() ?><br />
+                                        <input type="radio" name="opcion" value='<?php echo $pregunta->getOpcionE() ?>' /><?php echo " " . $pregunta->getOpcionE() ?><br />
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <div>Realice un resumen de máximo 1500 caracteres de lo visto en la sesión de clase:</div>
+                                        <br>
+                                        <div class="input-group input-group-merge input-group-alternative">
+                                            <textarea class="form-control" type="resumen" id="resumen" name="resumen" placeholder="Resumen de la sesión de clase (máximo 1500 carácteres)" maxlength="1000" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Fin modal -->
 
             <!-- Footer -->
 
