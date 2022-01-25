@@ -109,11 +109,23 @@ class ManejoEstudiante
         return $estudianteDAO->listarEstudiantes($pInicio, $pNumeroDeItemsPorPagina);
     }
 
-     /**
-     * Método que obtiene la lista de los codigos de las estudiantes de una asignatura dada
+    /**
+     * Método que obtiene la lista de todos los estudiantes que no estan matriculados en una asignatura
      * 
      * @param int $pCodigo
-     * @return Array $estudianteDAO
+     * @return Estudiante $datos
+     */
+    public function listarEstudiantesMatricula($pCodigo)
+    {
+        $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
+        return $estudianteDAO->listarEstudiantesMatricula($pCodigo);
+    }
+
+    /**
+     * Método que obtiene la lista de los codigos de todos los estudiantes que estan matriculados en una asignatura
+     * 
+     * @param int $pCodigo
+     * @return Array $datos
      */
     public function listarEstudiantesPorAsignatura($pCodigo)
     {
@@ -130,6 +142,19 @@ class ManejoEstudiante
     {
         $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
         return $estudianteDAO->cantidadEstudiante();
+    }
+
+    /**
+     * Método que cuenta matricula un estudiante en particular en una asignatura dada
+     * 
+     * @param int $pAsignatura
+     * @param int $pEstudiante
+     */
+    public function matricularEstudiante($pAsignatura, $pEstudiante)
+    {
+
+        $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
+        return $estudianteDAO->matricularEstudiante($pAsignatura, $pEstudiante);
     }
 
      /**

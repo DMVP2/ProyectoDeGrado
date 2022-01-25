@@ -221,7 +221,7 @@ $codigoSesionClase = $_GET['id'];
                                     </div>
                                     <hr>
                                     <div class="form-group">
-                                        <div>Realice un resumen de máximo 1500 caracteres de lo visto en la sesión de clase:</div>
+                                        <div style="text-align: justify">Realice un resumen de máximo 1500 caracteres de lo visto en la sesión de clase:</div>
                                         <br>
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <textarea class="form-control" type="resumen" id="resumen" name="resumen" placeholder="Resumen de la sesión de clase (máximo 1500 carácteres)" maxlength="1000" required></textarea>

@@ -215,14 +215,52 @@ class EstudianteDAO implements DAO
     }
 
     /**
-     * Método que obtiene la lista de los codigos de los estudiantes
+     * Método que obtiene la lista de todos los estudiantes que no estan matriculados en una asignatura
      * 
      * @param int $pCodigo
-     * @return int $datos
+     * @return Estudiante $datos
+     */
+    public function listarEstudiantesMatricula($pCodigo)
+    {
+
+        $sql = "SELECT * FROM ESTUDIANTE, ASIGNATURA_ESTUDIANTE, ASIGNATURA WHERE ASIGNATURA.id_asignatura = ASIGNATURA_ESTUDIANTE.id_asignatura AND ASIGNATURA_ESTUDIANTE.id_estudiante = ESTUDIANTE.id_estudiante AND ASIGNATURA.id_asignatura != " . $pCodigo . " ORDER BY ESTUDIANTE.id_estudiante ASC";
+
+        if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
+
+        $datos = array();
+
+        while ($row = pg_fetch_array($respuesta1))
+        {
+
+            $estudiante = new Estudiante();
+
+            $estudiante->setCodigo($row['id_estudiante']);
+            $estudiante->setNombre($row['nombre_estudiante']);
+            $estudiante->setApellido($row['apellido_estudiante']);
+            $estudiante->setEdad($row['edad_estudiante']);
+            $estudiante->setCorreoElectronicoPrincipal($row['email_principal']);
+            $estudiante->setCorreoElectronicoSecundario($row['email_secundario']);
+            $estudiante->setSemestre($row['semestre_estudiante']);
+
+            $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
+            $auxiliar1 = $progresoDAO->listarProgresosPorEstudiante($row['id_estudiante']);
+            $estudiante->setProgreso($auxiliar1);
+
+            $datos[] = $estudiante;
+        }
+
+        return $datos;
+    }
+
+    /**
+     * Método que obtiene la lista de los codigos de todos los estudiantes que estan matriculados en una asignatura
+     * 
+     * @param int $pCodigo
+     * @return Array $datos
      */
     public function listarEstudiantesPorAsignatura($pCodigo)
     {
-        $sql = "SELECT * FROM ESTUDIANTE, ASIGNATURA_ESTUDIANTE, ASIGNATURA WHERE ASIGNATURA.id_asignatura = ASIGNATURA_ESTUDIANTE.id_asignatura AND ASIGNATURA_ESTUDIANTE.id_estudiante = ESTUDIANTE.id_estudiante AND ESTUDIANTE.id_estudiante = " . $pCodigo;
+        $sql = "SELECT * FROM ESTUDIANTE, ASIGNATURA_ESTUDIANTE, ASIGNATURA WHERE ASIGNATURA.id_asignatura = ASIGNATURA_ESTUDIANTE.id_asignatura AND ASIGNATURA_ESTUDIANTE.id_estudiante = ESTUDIANTE.id_estudiante AND ASIGNATURA.id_asignatura = " . $pCodigo . " ORDER BY ESTUDIANTE.id_estudiante ASC";
 
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
@@ -266,6 +304,19 @@ class EstudianteDAO implements DAO
         $cantidad = pg_num_rows($respuesta1);
 
         return $cantidad;
+    }
+
+    /**
+     * Método que cuenta matricula un estudiante en particular en una asignatura dada
+     * 
+     * @param int $pAsignatura
+     * @param int $pEstudiante
+     */
+    public function matricularEstudiante($pAsignatura, $pEstudiante)
+    {
+
+        $sql = "INSERT INTO ASIGNATURA_ESTUDIANTE VALUES (" . $pAsignatura . "," . $pEstudiante . ")";
+        pg_query($this->conexion, $sql);
     }
 
     /**
