@@ -66,5 +66,9 @@ try {
     echo "<script>
     alert('No se pudo realizar la actualización');
     </script>";
-    echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . "/index.php?code=1" . "');</script>";
+    if (strcasecmp($usuario->getRol(), "Estudiante") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ESTUDIANTE . "perfilEstudiante.php" . "');</script>";
+    } else if (strcasecmp($usuario->getRol(), "Administrador") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . "perfilAdministrador.php" . "');</script>";
+    }
 }

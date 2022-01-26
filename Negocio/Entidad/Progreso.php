@@ -105,7 +105,7 @@ class Progreso
      */
     public function getEstudiante()
     {
-        return $this->sesionClase;
+        return $this->estudiante;
     }
 
     /**

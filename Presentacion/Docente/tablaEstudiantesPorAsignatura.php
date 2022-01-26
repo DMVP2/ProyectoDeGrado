@@ -137,8 +137,7 @@ $codigoAsignatura = $_GET['id'];
                     <div class="card">
                         <div class="card-header border-0">
                             <h3 class="mb-0">Estudiantes matriculados en la asignatura</h3>
-                            <br>
-                            <a href="#" class="text-light"><small>Matricular a un estudiante</small></a>
+                            <button type="button" class="btn btn-outline-success btn-sm" style="float: right;" data-toggle="modal" data-target="#exampleModal">Matricular estudiante</button>
                         </div>
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush">
@@ -163,11 +162,11 @@ $codigoAsignatura = $_GET['id'];
                                 <tbody class="list">
                                     <?php
 
-                                    $listadoIDEstudiantes = $manejoEstudiante->listarEstudiantesPorAsignatura($codigoAsignatura);
+                                    $listadoEstudiantes = $manejoEstudiante->listarEstudiantesPorAsignatura($codigoAsignatura);
 
                                     $numero = 0;
 
-                                    foreach ($listadoIDEstudiantes as $estudiante) {
+                                    foreach ($listadoEstudiantes as $estudiante) {
 
                                         $numero = $numero + 1;
 
@@ -205,6 +204,56 @@ $codigoAsignatura = $_GET['id'];
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+
+        <?php
+
+        $listadoEstudiantesNoMatriculados = $manejoEstudiante->listarEstudiantesMatricula($codigoAsignatura);
+
+        ?>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <form method="POST" action=<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . "MatricularEstudianteEnAsignatura.php" ?>>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Matricular estudiante</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div style="text-align: justify">Seleccione/indique el estudiante que desea matricular en la asignatura:</div>
+                                <br>
+                                <input type="hidden" name="id" value='<?php echo $codigoAsignatura ?>'>
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <select class="form-control" type="opcion" id="opcion" name="opcion">
+                                        <option>Seleccionar estudiante</option>
+
+                                        <?php
+
+                                        foreach ($listadoEstudiantesNoMatriculados as $estudianteNoMatriculado) {
+
+                                            echo "<option value=" . "'" . $estudianteNoMatriculado->getCodigo() . "'" . ">" . $estudianteNoMatriculado->getNombre() . " " . $estudianteNoMatriculado->getApellido() . " " . "(" . $estudianteNoMatriculado->getCorreoElectronicoPrincipal() . ")" . "</option>";
+                                        }
+
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Matricular</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Fin modal -->
 
         <!-- Footer -->
 
