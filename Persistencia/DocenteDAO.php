@@ -3,7 +3,6 @@
 require_once 'DAO.php';
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Docente.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "HorarioAtencionDAO.php");
 
 
 /**
@@ -125,10 +124,6 @@ class DocenteDAO implements DAO
             $docente->setNombre($row->nombre_docente);
             $docente->setApellido($row->apellido_docente);
             $docente->setCorreoElectronico($row->email_docente);
-
-            $horariosAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
-            $auxiliar1 = $horariosAtencionDAO->listarHorariosAtencionPorDocente($row->id_docente);
-            $docente->sethorariosAtencion($auxiliar1);
         } 
         else
         {
@@ -159,10 +154,6 @@ class DocenteDAO implements DAO
             $docente->setNombre($row->nombre_docente);
             $docente->setApellido($row->apellido_docente);
             $docente->setCorreoElectronico($row->email_docente);
-
-            $horariosAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
-            $auxiliar1 = $horariosAtencionDAO->listarHorariosAtencionPorDocente($row->id_docente);
-            $docente->sethorariosAtencion($auxiliar1);
         } 
         else
         {
@@ -229,10 +220,6 @@ class DocenteDAO implements DAO
             $docente->setNombre($row['nombre_docente']);
             $docente->setApellido($row['apellido_docente']);
             $docente->setCorreoElectronico($row['email_docente']);
-
-            $horarioAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
-            $auxiliar1 = $horarioAtencionDAO->listarHorariosAtencionPorDocente($row['id_docente']);
-            $docente->setHorariosAtencion($auxiliar1);
 
             $datos[] = $docente;
         }

@@ -24,9 +24,33 @@
 
 include_once('routes.php');
 
+// Conexión
+
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . 'ConexionSQL.php');
+
 // Gestión de sesiones (Se busca asegurar que no hay ninguna sesión previa inicializada)
 
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoSesionClase.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "SesionClase.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
+
+// Creación de la conexión
+
+$conexion = ConexionSQL::getInstancia();
+$conexionActual = $conexion->conectarBD();
+
+// Llamado de manejos
+
+$manejoSesionClase = new ManejoSesionClase($conexionActual);
+$manejoUsuario = new ManejoUsuario($conexionActual);
+
+// Variables pasadas por GET
+
+$codigoSesionClase = $_GET['id'];
+
+// Invocación de métodos
+
+$sesionClase = $manejoSesionClase->buscarSesionClase($codigoSesionClase);
 
 ?>
 <!DOCTYPE html>
@@ -102,26 +126,27 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "Sesion
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <medium>Creación de la temática</medium>
+                <medium>Editar datos de la sesión de clase</medium>
               </div>
               <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" id="nombre" name="nombre" placeholder="Nombre de la temática" required>
+                    <input class="form-control" id="nombre" value=<?php echo $sesionClase->getNombre() ?> name="nombre" placeholder="Nombre de la asignatura" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <textarea class="form-control" type="descripcion" id="descripcion" name="descripcion" placeholder="Descripción de la temática (máximo 1000 carácteres)" maxlength="1000" required></textarea>
+                    <input class="form-control" id="url" value=<?php echo $sesionClase->getVideo() ?> name="url" placeholder="URL del video de la asignatura" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                  <input type="text" id="duracion" name="duracion" placeholder="Duración de la temática" aria-label="duracion" class="form-control">
+                    <input type="text" id="duracion" value=<?php echo  $sesionClase->getDuracion() ?> name="duracion" placeholder="Duración de la sesión" aria-label="duracion" class="form-control">
+                    <input type="number" id="puntuacion" value=<?php echo  $sesionClase->getPuntuacion() ?> name="puntuacion" placeholder="Puntuación de la sesión" aria-label="puntuacion" class="form-control">
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Registrar</button>
+                  <button type="submit" class="btn btn-primary my-4">Actualizar</button>
                 </div>
               </form>
             </div>

@@ -162,7 +162,7 @@ $estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Registrar</button>
+                  <button type="submit" class="btn btn-primary my-4">Actualizar</button>
                 </div>
               </form>
             </div>

@@ -117,8 +117,7 @@ class EstudianteDAO implements DAO
 
         $respuesta1 = pg_query($this->conexion, $sql);
 
-        if (pg_num_rows($respuesta1) > 0)
-        {
+        if (pg_num_rows($respuesta1) > 0) {
             $row = pg_fetch_object($respuesta1);
             $estudiante = new Estudiante();
 
@@ -133,9 +132,7 @@ class EstudianteDAO implements DAO
             $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
             $auxiliar1 = $progresoDAO->listarProgresosPorEstudiante($row->id_estudiante);
             $estudiante->setProgreso($auxiliar1);
-        } 
-        else
-        {
+        } else {
             return null;
         }
 
@@ -191,8 +188,7 @@ class EstudianteDAO implements DAO
 
         $datos = array();
 
-        while ($row = pg_fetch_array($respuesta1))
-        {
+        while ($row = pg_fetch_array($respuesta1)) {
 
             $estudiante = new Estudiante();
 
@@ -215,22 +211,20 @@ class EstudianteDAO implements DAO
     }
 
     /**
-     * Método que obtiene la lista de todos los estudiantes que no estan matriculados en una asignatura
+     * Método que obtiene la lista de los estudiantes
      * 
-     * @param int $pCodigo
      * @return Estudiante $datos
      */
-    public function listarEstudiantesMatricula($pCodigo)
+    public function listarEstudiantesSinPaginacion()
     {
 
-        $sql = "SELECT * FROM ESTUDIANTE, ASIGNATURA_ESTUDIANTE, ASIGNATURA WHERE ASIGNATURA.id_asignatura = ASIGNATURA_ESTUDIANTE.id_asignatura AND ASIGNATURA_ESTUDIANTE.id_estudiante = ESTUDIANTE.id_estudiante AND ASIGNATURA.id_asignatura != " . $pCodigo . " ORDER BY ESTUDIANTE.id_estudiante ASC";
+        $sql = "SELECT * FROM ESTUDIANTE ORDER BY id_estudiante ASC";
 
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
         $datos = array();
 
-        while ($row = pg_fetch_array($respuesta1))
-        {
+        while ($row = pg_fetch_array($respuesta1)) {
 
             $estudiante = new Estudiante();
 
@@ -266,8 +260,7 @@ class EstudianteDAO implements DAO
 
         $datos = array();
 
-        while ($row = pg_fetch_array($respuesta1))
-        {
+        while ($row = pg_fetch_array($respuesta1)) {
 
             $estudiante = new Estudiante();
 
@@ -284,6 +277,45 @@ class EstudianteDAO implements DAO
             $estudiante->setProgreso($auxiliar1);
 
             $datos[] = $estudiante;
+        }
+
+        return $datos;
+    }
+
+    /**
+     * Método que obtiene la lista de todos los estudiantes que no estan matriculados en una asignatura
+     * 
+     * @param int $pCodigo
+     * @return Estudiante $datos
+     */
+    public function listarEstudiantesMatricula($pCodigo)
+    {
+
+        $listadoEstudiantes = $this->listarEstudiantesSinPaginacion();
+        $listadoEstudiantesMatriculados = $this->listarEstudiantesPorAsignatura($pCodigo);
+
+        $datos = array();
+
+        $existe = false;
+
+        foreach ($listadoEstudiantes as $estudianteDisponible) {
+
+            foreach ($listadoEstudiantesMatriculados as $estudianteMatriculado) {
+
+                if($estudianteMatriculado->getCodigo() == $estudianteDisponible->getCodigo())
+                {
+                    $existe = true;
+                }
+            }
+
+            if($existe == false)
+            {
+                $datos[] = $estudianteDisponible;
+            }
+            else if($existe == true)
+            {
+                $existe = false;
+            }
         }
 
         return $datos;
@@ -328,8 +360,7 @@ class EstudianteDAO implements DAO
      */
     public static function getEstudianteDAO($pConexion)
     {
-        if (self::$estudianteDAO == null) 
-        {
+        if (self::$estudianteDAO == null) {
             self::$estudianteDAO = new EstudianteDAO($pConexion);
         }
 

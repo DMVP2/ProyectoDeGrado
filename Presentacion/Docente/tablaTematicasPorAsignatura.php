@@ -118,9 +118,14 @@ $codigoAsignatura = $_GET['id'];
         <div class="header bg-primary pb-6">
             <div class="container-fluid">
                 <div class="header-body">
+                    <div class="nav-wrapper position-relative end-0">
+                        <div class="col-4 text-right" style="float: right;">
+                            <a href="#" class="btn btn-success">Crear nueva temática</a>
+                        </div>
+                    </div>
                     <div class="row align-items-center py-4">
 
-                        <!-- Este espacio se queda en blanco -->
+                        <!-- Esta sección se deja en blanco -->
 
                     </div>
                     <div class="row">
@@ -181,6 +186,7 @@ $codigoAsignatura = $_GET['id'];
                                 </ul>';
                             echo '<br>';
                             echo '<a href="tablaSesionesClasePorTematica.php?id=' . $tematica->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Ver sesiones de clase</a>';
+                            echo '<a href="#" class="btn btn-primary btn-lg btn-block">Editar temática</a>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';

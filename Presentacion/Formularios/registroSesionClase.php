@@ -24,9 +24,22 @@
 
 include_once('routes.php');
 
+// Conexión
+
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . 'ConexionSQL.php');
+
 // Gestión de sesiones (Se busca asegurar que no hay ninguna sesión previa inicializada)
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
+
+// Creación de la conexión
+
+$conexion = ConexionSQL::getInstancia();
+$conexionActual = $conexion->conectarBD();
+
+// Llamado de manejos
+
+$manejoUsuario = new ManejoUsuario($conexionActual);
 
 ?>
 <!DOCTYPE html>
@@ -102,22 +115,23 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "Sesion
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <medium>Creación de la temática</medium>
+                <medium>Creación de la sesión de clase</medium>
               </div>
               <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" id="nombre" name="nombre" placeholder="Nombre de la temática" required>
+                    <input class="form-control" id="nombre" name="nombre" placeholder="Nombre de la asignatura" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <textarea class="form-control" type="descripcion" id="descripcion" name="descripcion" placeholder="Descripción de la temática (máximo 1000 carácteres)" maxlength="1000" required></textarea>
+                    <input class="form-control" id="nombre" name="nombre" placeholder="URL del video de la asignatura" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                  <input type="text" id="duracion" name="duracion" placeholder="Duración de la temática" aria-label="duracion" class="form-control">
+                    <input type="text" id="duracion" name="duracion" placeholder="Duración de la sesión" aria-label="duracion" class="form-control">
+                    <input type="number" id="puntuacion" name="puntuacion" placeholder="Puntuación de la sesión" aria-label="puntuacion" class="form-control">
                   </div>
                 </div>
                 <div class="text-center">

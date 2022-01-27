@@ -1,7 +1,6 @@
 <?php
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "DocenteDAO.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "HorarioAtencionDAO.php");
 
 /**
  * Clase que constituye el controlador "ManejoDocente"
@@ -130,84 +129,5 @@ class ManejoDocente
     {
         $docenteDAO = DocenteDAO::getDocenteDAO($this->conexion);
         return $docenteDAO->cantidadDocente();
-    }
-
-     /**
-     * Método que crear un objeto de la clase horario de atencion
-     * 
-     * @param HorarioAtencion $pHorarioAtencion
-     */
-    public function crearHorarioAtencion($pHorarioAtencion)
-    {
-        $horarioAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
-        $horarioAtencionDAO->crearHorarioAtencion($pHorarioAtencion);
-    }
-
-        /**
-     * Método que busca un horario atencion por medio de su código
-     * 
-     * @param int $pCodigo
-     * @return HorarioAtencion $horarioAtencionDAO
-     */
-    public function buscarHorarioAtencion($pCodigo)
-    {
-        $horarioAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
-        return $horarioAtencionDAO->buscarHorarioAtencion($pCodigo);
-    }
-
-    /**
-     * Método que actualiza un horario de atencion
-     * 
-     * @param HorarioAtencion $pHorarioAtencion
-     */
-    public function actualizarHorarioAtencion($pHorarioAtencion)
-    {
-        $horarioAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
-        $horarioAtencionDAO->actualizarHorarioAtencion($pHorarioAtencion);
-    }
-
-    /**
-     * Método que activa un horario de atencion por medio de su código
-     * 
-     * @param int $pIdDocument
-     */
-    public function activarHorarioAtencion($pIdDocument)
-    {
-        $horarioAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
-        $horarioAtencionDAO->activarHorarioAtencion($pHorarioAtencion);
-    }
-
-    /**
-     * Método que desactiva un docente por medio de su código
-     * 
-     * @param int $pHorarioAtencion
-     */
-    public function desactivarHorarioAtencion($pHorarioAtencion)
-    {
-        $HorarioAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
-        $HorarioAtencionDAO->desactivarHorarioAtencion($pHorarioAtencion);
-    }
-
-    /**
-     * Método que obtiene la lista de horario de atencion
-     * 
-     * @return Array $horarioAtencionDAO
-     */
-    public function listarHorariosAtencion()
-    {
-        $horarioAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
-        return $horarioAtencionDAO->listarHorariosAtencion();
-    }
-
-    /**
-     * Método que obtiene la lista de los horarios de atención de un docente dado
-     * 
-     * @param int $pCodigo
-     * @return Array $horarioAtencionDAO
-     */
-    public function listarHorariosAtencionPorDocente($pCodigo)
-    {
-        $horarioAtencionDAO = HorarioAtencionDAO::getHorarioAtencionDAO($this->conexion);
-        return $horarioAtencionDAO->listarHorariosAtencionPorDocente($pCodigo);
     }
 }

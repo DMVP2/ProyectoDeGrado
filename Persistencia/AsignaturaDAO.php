@@ -3,8 +3,6 @@
 require_once 'DAO.php';
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Asignatura.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "CompetenciaDAO.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "BibliografiaDAO.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "EstudianteDAO.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . "TematicaDAO.php");
 
@@ -103,7 +101,7 @@ class AsignaturaDAO implements DAO
      */
     public function crearAsignatura($pAsignatura)
     {
-        $sql = "INSERT INTO ASIGNATURA VALUES " . $pAsignatura->getCodigo() . "," . $pAsignatura->getNombre() . "," . $pAsignatura->getGrupo() . "," . $pAsignatura->numeroCreditos() . "," . $pAsignatura->getSemestre() . "," . $pAsignatura->getDuracion() . "," . $pAsignatura->getDescripcion() . "," . $pAsignatura->getSyllabus();
+        $sql = "INSERT INTO ASIGNATURA VALUES " . $pAsignatura->getCodigo() . "," . $pAsignatura->getNombre() . "," . $pAsignatura->getGrupo() . "," . $pAsignatura->getNumeroCreditos() . "," . $pAsignatura->getSemestre() . "," . $pAsignatura->getDuracion() . "," . $pAsignatura->getDescripcion();
         pg_query($this->conexion, $sql);
     }
 
@@ -132,15 +130,6 @@ class AsignaturaDAO implements DAO
             $asignatura->setSemestre($row->semestre_asignatura);
             $asignatura->setDuracion($row->duracion_asignatura);
             $asignatura->setDescripcion($row->descripcion_asignatura);
-            $asignatura->setSyllabus($row->syllabus_asignatura);
-
-            $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
-            $auxiliar1 = $competenciaDAO->listarCompetenciasPorAsignatura($row->id_asignatura);
-            $asignatura->setCompetencias($auxiliar1);
-
-            $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
-            $auxiliar2 = $bibliografiaDAO->listarBibliografiasPorAsignatura($row->id_asignatura);
-            $asignatura->setBibliografias($auxiliar2);
 
             $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
             $auxiliar3 = $estudianteDAO->listarEstudiantesPorAsignatura($row->id_asignatura);
@@ -165,7 +154,7 @@ class AsignaturaDAO implements DAO
      */
     public function actualizarAsignatura($pAsignatura)
     {
-        $sql = "UPDATE ASIGNATURA SET" . " nombre_asignatura = " . $pAsignatura->getNombre() . ", grupo_asignatura = " . $pAsignatura->getGrupo() . ", numero_creditos = " . $pAsignatura->getNumeroCreditos() . ", semestre_asignatura = " . $pAsignatura->getSemestre() . ", duracion_asignatura = " . $pAsignatura->getDuracion() . ", descripcion_asignatura = " . $pAsignatura->getDescripcion() . ", syllabus_asignatura = " . $pAsignatura->getSyllabus() . " WHERE id_asignatura = " . $pAsignatura->getCodigo();
+        $sql = "UPDATE ASIGNATURA SET" . " nombre_asignatura = " . $pAsignatura->getNombre() . ", grupo_asignatura = " . $pAsignatura->getGrupo() . ", numero_creditos = " . $pAsignatura->getNumeroCreditos() . ", semestre_asignatura = " . $pAsignatura->getSemestre() . ", duracion_asignatura = " . $pAsignatura->getDuracion() . ", descripcion_asignatura = " . $pAsignatura->getDescripcion() . " WHERE id_asignatura = " . $pAsignatura->getCodigo();
         pg_query($this->conexion, $sql);
     }
 
@@ -219,15 +208,6 @@ class AsignaturaDAO implements DAO
             $asignatura->setSemestre($row['semestre_asignatura']);
             $asignatura->setDuracion($row['duracion_asignatura']);
             $asignatura->setDescripcion($row['descripcion_asignatura']);
-            $asignatura->setSyllabus($row['syllabus_asignatura']);
-
-            $competenciaDAO = CompetenciaDAO::getCompetenciaDAO($this->conexion);
-            $auxiliar1 = $competenciaDAO->listarCompetenciasPorAsignatura($row['id_asignatura']);
-            $asignatura->setCompetencias($auxiliar1);
-
-            $bibliografiaDAO = BibliografiaDAO::getBibliografiaDAO($this->conexion);
-            $auxiliar2 = $bibliografiaDAO->listarBibliografiasPorAsignatura($row['id_asignatura']);
-            $asignatura->setBibliografias($auxiliar2);
 
             $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
             $auxiliar3 = $estudianteDAO->listarIDEstudiantesPorAsignatura($row['id_asignatura']);

@@ -110,15 +110,14 @@ class ManejoEstudiante
     }
 
     /**
-     * Método que obtiene la lista de todos los estudiantes que no estan matriculados en una asignatura
+     * Método que obtiene la lista de los estudiantes
      * 
-     * @param int $pCodigo
      * @return Estudiante $datos
      */
-    public function listarEstudiantesMatricula($pCodigo)
+    public function listarEstudiantesSinPaginacion()
     {
         $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
-        return $estudianteDAO->listarEstudiantesMatricula($pCodigo);
+        return $estudianteDAO->listarEstudiantesSinPaginacion();
     }
 
     /**
@@ -131,6 +130,18 @@ class ManejoEstudiante
     {
         $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
         return $estudianteDAO->listarEstudiantesPorAsignatura($pCodigo);
+    }
+
+    /**
+     * Método que obtiene la lista de todos los estudiantes que no estan matriculados en una asignatura
+     * 
+     * @param int $pCodigo
+     * @return Estudiante $datos
+     */
+    public function listarEstudiantesMatricula($pCodigo)
+    {
+        $estudianteDAO = EstudianteDAO::getEstudianteDAO($this->conexion);
+        return $estudianteDAO->listarEstudiantesMatricula($pCodigo);
     }
 
     /**

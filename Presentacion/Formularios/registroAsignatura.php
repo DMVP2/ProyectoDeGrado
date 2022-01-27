@@ -26,9 +26,7 @@ include_once('routes.php');
 
 // Gestión de sesiones (Se busca asegurar que no hay ninguna sesión previa inicializada)
 
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . 'SesionUsuario.php');
-$sesionUsuario = SesionUsuario::getSesionUsuario();
-$sesionUsuario->closeSession();
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 ?>
 <!DOCTYPE html>
@@ -104,7 +102,7 @@ $sesionUsuario->closeSession();
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <medium>Creación de asignatura</medium>
+                <medium>Creación de la asignatura</medium>
               </div>
               <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
                 <div class="form-group">
@@ -129,13 +127,8 @@ $sesionUsuario->closeSession();
                     <textarea class="form-control" type="descripcion" id="descripcion" name="descripcion" placeholder="Descripción de la asignatura (máximo 1000 carácteres)" maxlength="1000" required></textarea>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <input type="file" class="form-control" type="syllabus" id="syllabus" name="syllabus" placeholder="Syllabus de la asignatura" required>
-                  </div>
-                </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Crear asignatura</button>
+                  <button type="submit" class="btn btn-primary my-4">Registrar</button>
                 </div>
               </form>
             </div>

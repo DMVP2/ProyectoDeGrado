@@ -280,66 +280,6 @@ class Asignatura
     }
 
     /**
-     * Método que obtiene el syllabus de la asignatura
-     * 
-     * @return String $syllabus
-     */
-    public function getSyllabus()
-    {
-        return $this->syllabus;
-    }
-
-    /**
-     * Método que establece el syllabus de la asignatura
-     * 
-     * @param String $pSyllabus
-     */
-    public function setSyllabus($pSyllabus)
-    {
-        $this->syllabus = $pSyllabus;
-    } 
-
-    /**
-     * Método que obtiene las competencias de la asignatura
-     * 
-     * @return Array $competencias
-     */
-    public function getCompetencias()
-    {
-        return $this->competencias;
-    }
-
-    /**
-     * Método que establece el arreglo las competencias de la asignatura
-     * 
-     * @param Array $pCompetencias
-     */
-    public function setCompetencias($pCompetencias)
-    {
-        $this->competencias = $pCompetencias;
-    }
-
-     /**
-     * Método que obtiene las bibliografias de la asignatura
-     * 
-     * @return Array $bibliografias
-     */
-    public function getBibliografias()
-    {
-        return $this->bibliografias;
-    }
-
-    /**
-     * Método que establece el arreglo las bibliografias de la asignatura
-     * 
-     * @param Array $pBibliografias
-     */
-    public function setBibliografias($pBibliografias)
-    {
-        $this->bibliografias = $pBibliografias;
-    }
-
-      /**
      * Método que obtiene los estudiantes de la asignatura
      * 
      * @return Array $estudiantes
