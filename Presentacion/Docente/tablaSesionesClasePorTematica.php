@@ -120,7 +120,7 @@ $codigoTematica = $_GET['id'];
                 <div class="header-body">
                     <div class="nav-wrapper position-relative end-0">
                         <div class="col-4 text-right" style="float: right;">
-                            <a href="#" class="btn btn-success">Crear nueva sesión de clase</a>
+                            <a href="<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . 'registroSesionClase.php' ?>" class="btn btn-success">Crear nueva sesión de clase</a>
                         </div>
                     </div>
                     <div class="row align-items-center py-4">
@@ -178,7 +178,7 @@ $codigoTematica = $_GET['id'];
                                         echo "<td>" . $sesionClase->getNombre() . "</td>";
                                         echo "<td>" . $sesionClase->getPuntuacion() . "</td>";
                                         echo "<td>" . $sesionClase->getDuracion() . "</td>";
-                                        echo '<td><a href="#' . $sesionClase->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Editar sesion de clase</a></td>';
+                                        echo '<td><a href="' . DIRECTORIO_RAIZ . RUTA_FORMULARIOS . "editarSesionClase.php" . "?id=" . $sesionClase->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Editar sesión de clase</a></td>';
                                         echo "</tr>";
                                     }
                                     ?>

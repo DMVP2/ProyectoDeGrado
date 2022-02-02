@@ -224,13 +224,13 @@ $estudiante = $manejoEstudiante->buscarEstudiante($usuario->getCodigo());
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-city">Nombre</label>
-                                                <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: David Santiago" value="<?php echo $estudiante->getNombre() ?>" disabled="true">
+                                                <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: David Santiago" value=<?php echo $estudiante->getNombre() ?> disabled="true">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-country">Apellido</label>
-                                                <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo" value="<?php echo $estudiante->getApellido() ?>" disabled="true">
+                                                <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo" value=<?php echo $estudiante->getApellido() ?> disabled="true">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">

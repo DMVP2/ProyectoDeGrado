@@ -120,7 +120,7 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                 <div class="header-body">
                     <div class="nav-wrapper position-relative end-0">
                         <div class="col-4 text-right" style="float: right;">
-                            <a href="#" class="btn btn-success">Crear nueva asignatura</a>
+                            <a href="<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . 'registroAsignatura.php' ?>" class="btn btn-success">Crear nueva asignatura</a>
                         </div>
                     </div>
                     <div class="row align-items-center py-4">
@@ -194,7 +194,7 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                             echo '<br>';
                             echo '<a href="tablaTematicasPorAsignatura.php?id=' . $asignatura->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Ir a la asignatura</a>';
                             echo '<a href="tablaEstudiantesPorAsignatura.php?id=' . $asignatura->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Ver estudiantes matriculados</a>';
-                            echo '<a href="#" class="btn btn-primary btn-lg btn-block">Editar asignatura</a>';
+                            echo '<a href="' . DIRECTORIO_RAIZ . RUTA_FORMULARIOS . "editarAsignatura.php" . "?id=" . $asignatura->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Editar asignatura</a>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
