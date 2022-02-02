@@ -28,15 +28,11 @@ include_once('routes.php');
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . 'ConexionSQL.php');
 
-// Importaciones de clases
+// Gestión de sesiones (Se busca asegurar que no hay ninguna sesión previa inicializada)
 
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoSesionClase.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoUsuario.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "SesionClase.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Usuario.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_UTILIDADES . "CreacionCodigos.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . 'SesionUsuario.php');
-
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoAsignatura.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Asignatura.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 // Creación de la conexión
 
@@ -45,12 +41,16 @@ $conexionActual = $conexion->conectarBD();
 
 // Llamado de manejos
 
-$manejoSesionClase = new ManejoSesionClase($conexionActual);
+$manejoAsignatura = new ManejoAsignatura($conexionActual);
 $manejoUsuario = new ManejoUsuario($conexionActual);
+
+// Variables pasadas por GET
+
+$codigoAsignatura = $_GET['id'];
 
 // Invocación de métodos
 
-$sesionClase = $manejoSesionClase->buscarSesionClase($usuario->getCodigo());
+$asignatura = $manejoAsignatura->buscarAsignatura($codigoAsignatura);
 
 ?>
 <!DOCTYPE html>
@@ -126,27 +126,33 @@ $sesionClase = $manejoSesionClase->buscarSesionClase($usuario->getCodigo());
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <medium>Editar datos de la sesión de clase</medium>
+                <medium>Editar datos de la asignatura</medium>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'EditarSesionClase.php' ?>">
-              <div class="form-group">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
+                <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" id="nombre" name="nombre" placeholder="Nombre de la asignatura" required>
+                    <input class="form-control" id="nombre" value=<?php echo $asignatura->getNombre() ?> name="nombre" placeholder="Nombre de la asignatura" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" id="nombre" name="nombre" placeholder="URL del video de la asignatura" required>
+                    <input type="text" id="grupo" value=<?php echo $asignatura->getGrupo() ?> name="grupo" placeholder="Grupo de la asignatura" aria-label="grupo" class="form-control">
+                    <input type="number" id="creditos" value=<?php echo $asignatura->getNumeroCreditos() ?> name="creditos" placeholder="Número de créditos" aria-label="creditos" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" id="duracion" name="duracion" placeholder="Duración de la sesión" aria-label="duracion" class="form-control">
-                    <input type="number" id="puntuacion" name="puntuacion" placeholder="Puntuación de la sesión" aria-label="puntuacion" class="form-control">
+                    <input type="text" id="duración" value=<?php echo $asignatura->getDuracion() ?> name="duración" placeholder="Duración de la asignatura" aria-label="duración" class="form-control">
+                    <input type="number" id="semestre" value=<?php echo $asignatura->getSemestre() ?> name="semestre" placeholder="Semestre de la asignatura" aria-label="semestre" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <textarea class="form-control" type="descripcion" id="descripcion" name="descripcion" placeholder="Descripción de la asignatura (máximo 1000 carácteres)" maxlength="1000" rows="8" required><?php echo $asignatura->getDescripcion() ?></textarea>
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Registrar</button>
+                  <button type="submit" class="btn btn-primary my-4">Actualizar</button>
                 </div>
               </form>
             </div>

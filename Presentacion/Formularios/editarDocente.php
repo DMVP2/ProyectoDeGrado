@@ -30,13 +30,9 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 
 // Importaciones de clases
 
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoAsignatura.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoUsuario.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Asignatura.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Usuario.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_UTILIDADES . "CreacionCodigos.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . 'SesionUsuario.php');
-
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoDocente.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Docente.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 // Creación de la conexión
 
@@ -45,12 +41,13 @@ $conexionActual = $conexion->conectarBD();
 
 // Llamado de manejos
 
-$manejoAsignatura = new ManejoAsignatura($conexionActual);
+$manejoDocente = new ManejoDocente($conexionActual);
 $manejoUsuario = new ManejoUsuario($conexionActual);
 
 // Invocación de métodos
 
-$asignatura = $manejoAsignatura->buscarAsignatura($usuario->getCodigo());
+$docente = $manejoDocente->buscarDocente($usuario->getCodigo());
+
 
 ?>
 <!DOCTYPE html>
@@ -126,34 +123,21 @@ $asignatura = $manejoAsignatura->buscarAsignatura($usuario->getCodigo());
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <medium>Editar datos de la asignatura</medium>
+                <medium>Registro de docente</medium>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'EditarAsignatura.php' ?>">
-              <div class="form-group">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'CrearDocente.php' ?>">
+                <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" id="nombre" name="nombre" placeholder="Nombre de la asignatura" required>
+                    <input type="text" id="nombre" value=<?php echo $docente->getNombre() ?> name="nombre" placeholder="Nombre" aria-label="nombre" class="form-control">
+                    <input type="text" id="apellido" value=<?php echo $docente->getApellido() ?> name="apellido" placeholder="Apellido" aria-label="apellido" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" id="grupo" name="grupo" placeholder="Grupo de la asignatura" aria-label="grupo" class="form-control">
-                    <input type="number" id="creditos" name="creditos" placeholder="Número de créditos" aria-label="creditos" class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" id="duración" name="duración" placeholder="Duración de la asignatura" aria-label="duración" class="form-control">
-                    <input type="number" id="semestre" name="semestre" placeholder="Semestre de la asignatura" aria-label="semestre" class="form-control">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <textarea class="form-control" type="descripcion" id="descripcion" name="descripcion" placeholder="Descripción de la asignatura (máximo 1000 carácteres)" maxlength="1000" required></textarea>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <input type="file" class="form-control" type="syllabus" id="syllabus" name="syllabus" placeholder="Syllabus de la asignatura" required>
+                    <input type="text" class="form-control" placeholder="Usuario de correo electrónico" id="principal" value=<?php echo $docente->getCorreoElectronico() ?> name="principal" aria-label="principal" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2">@unbosque.edu.co</span>
+                    </div>
                   </div>
                 </div>
                 <div class="text-center">
