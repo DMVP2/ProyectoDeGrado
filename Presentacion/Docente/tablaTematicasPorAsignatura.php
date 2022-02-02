@@ -120,7 +120,7 @@ $codigoAsignatura = $_GET['id'];
                 <div class="header-body">
                     <div class="nav-wrapper position-relative end-0">
                         <div class="col-4 text-right" style="float: right;">
-                            <a href="<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . 'registroTematica.php' ?>" class="btn btn-success">Crear nueva temática</a>
+                            <a href="<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . 'registroTematica.php?id=' . $codigoAsignatura ?>" class="btn btn-success">Crear nueva temática</a>
                         </div>
                     </div>
                     <div class="row align-items-center py-4">

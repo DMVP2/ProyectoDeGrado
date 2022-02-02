@@ -128,7 +128,7 @@ $tematica = $manejoTematica->buscarTematica($codigoTematica);
               <div class="text-center text-muted mb-4">
                 <medium>Editar datos de la temática</medium>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'EditarTematica.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <input class="form-control" id="nombre" value=<?php echo $tematica->getNombre() ?> name="nombre" placeholder="Nombre de la temática" required>

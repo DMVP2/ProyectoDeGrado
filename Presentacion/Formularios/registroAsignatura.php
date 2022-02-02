@@ -104,7 +104,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "Sesion
               <div class="text-center text-muted mb-4">
                 <medium>Creación de la asignatura</medium>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'CrearAsignatura.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <input class="form-control" id="nombre" name="nombre" placeholder="Nombre de la asignatura" required>

@@ -95,9 +95,11 @@ class TematicaDAO implements DAO
      * 
      * @param Tematica $pTematica
      */
-    public function crearTematica($pTematica)
+    public function crearTematica($pTematica, $idAsignatura)
     {
-        $sql = "INSERT INTO TEMATICA VALUES " . $pTematica->getCodigo() . "," . $pTematica->getNombre() . "," . $pTematica->getDuracion() . "," . $pTematica->getDescripcion();
+        $sql = "INSERT INTO TEMATICA VALUES (" . $pTematica->getCodigo() . ",'" . $pTematica->getNombre() . "','" . $pTematica->getDuracion() . "','" . $pTematica->getDescripcion() . "')";
+        pg_query($this->conexion, $sql);
+        $sql = "INSERT INTO ASIGNATURA_TEMATICA VALUES (" . $idAsignatura . "," . $pTematica->getCodigo() . ")";
         pg_query($this->conexion, $sql);
     }
 

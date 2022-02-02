@@ -44,10 +44,10 @@ class ManejoTematica
      * 
      * @param Tematica $pTematica
      */
-    public function crearTematica($pTematica)
+    public function crearTematica($pTematica, $idAsignatura)
     {
         $tematicaDAO = TematicaDAO::getTematicaDAO($this->conexion);
-        $tematicaDAO->crearTematica($pTematica);
+        $tematicaDAO->crearTematica($pTematica, $idAsignatura);
     }
 
     /**

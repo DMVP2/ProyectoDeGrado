@@ -101,7 +101,9 @@ class AsignaturaDAO implements DAO
      */
     public function crearAsignatura($pAsignatura)
     {
-        $sql = "INSERT INTO ASIGNATURA VALUES " . $pAsignatura->getCodigo() . "," . $pAsignatura->getNombre() . "," . $pAsignatura->getGrupo() . "," . $pAsignatura->getNumeroCreditos() . "," . $pAsignatura->getSemestre() . "," . $pAsignatura->getDuracion() . "," . $pAsignatura->getDescripcion();
+        $sql = "INSERT INTO ASIGNATURA VALUES (" . $pAsignatura->getCodigo() . ",'" . $pAsignatura->getNombre() . "','" . $pAsignatura->getGrupo() . "'," . $pAsignatura->getNumeroCreditos() . "," . $pAsignatura->getSemestre() . ",'" . $pAsignatura->getDuracion() . "','" . $pAsignatura->getDescripcion() . "')";
+        pg_query($this->conexion, $sql);
+        $sql = "INSERT INTO DOCENTE_ASIGNATURA VALUES (" . $pAsignatura->getDocente() . "," . $pAsignatura->getCodigo() . ")";
         pg_query($this->conexion, $sql);
     }
 

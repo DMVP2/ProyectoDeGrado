@@ -28,6 +28,10 @@ include_once('routes.php');
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
+// Variables pasadas por GET
+
+$codigoTematica = $_GET['id'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -104,7 +108,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "Sesion
               <div class="text-center text-muted mb-4">
                 <medium>Creación de la temática</medium>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'CrearTematica.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <input class="form-control" id="nombre" name="nombre" placeholder="Nombre de la temática" required>
@@ -123,6 +127,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "Sesion
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Registrar</button>
                 </div>
+                <input type="hidden" name="id" value='<?php echo $codigoTematica ?>'>
               </form>
             </div>
           </div>

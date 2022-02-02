@@ -21,7 +21,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "Manej
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Tematica.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Usuario.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_UTILIDADES . "CreacionCodigos.php");
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . 'SesionUsuario.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . 'SesionActual.php');
 
 // Creación de la conexión
 
@@ -34,6 +34,7 @@ $manejoTematica = new ManejoTematica($conexionActual);
 
 // Ejecución de métodos
 
+$idAsignatura = $_POST['id'];
 $nombre = $_POST['nombre'];
 $duracion = $_POST['duracion'];
 $descripcion = $_POST['descripcion'];
@@ -41,7 +42,6 @@ $descripcion = $_POST['descripcion'];
 $creacionCodigo = new CreacionCodigos();
 
 $codigo = $creacionCodigo->crearID();
-$codigo = sha1($codigo);
 
 $tematica = new Tematica();
 
@@ -51,14 +51,22 @@ $tematica->setDuracion($duracion);
 $tematica->setDescripcion($descripcion);
 
 try {
-    $manejoTematica->crearTematica($tematica);
+    $manejoTematica->crearTematica($tematica, $idAsignatura);
     echo "<script>
-    alert('Registro exitoso');
-    </script>";
-    echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . "/index.php?code=1" . "');</script>";
+        alert('Actualización exitosa');
+        </script>";
+    if (strcasecmp($usuario->getRol(), "Docente") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_DOCENTE . "perfilDocente.php" . "');</script>";
+    } else if (strcasecmp($usuario->getRol(), "Administrador") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . "perfilAdministrador.php" . "');</script>";
+    }
 } catch (Exception $e) {
     echo "<script>
-    alert('No se pudo realizar el registro');
-    </script>";
-    echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . "/index.php?code=1" . "');</script>";
+        alert('No se pudo realizar la actualización');
+        </script>";
+    if (strcasecmp($usuario->getRol(), "Docente") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_DOCENTE . "perfilDocente.php" . "');</script>";
+    } else if (strcasecmp($usuario->getRol(), "Administrador") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . "perfilAdministrador.php" . "');</script>";
+    }
 }
