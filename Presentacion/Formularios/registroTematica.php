@@ -30,7 +30,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "Sesion
 
 // Variables pasadas por GET
 
-$codigoTematica = $_GET['id'];
+$codigoAsignatura = $_GET['id'];
 
 ?>
 <!DOCTYPE html>
@@ -124,10 +124,10 @@ $codigoTematica = $_GET['id'];
                   <input type="text" id="duracion" name="duracion" placeholder="Duración de la temática" aria-label="duracion" class="form-control">
                   </div>
                 </div>
+                <input type="hidden" name="id" value='<?php echo $codigoAsignatura ?>'>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Registrar</button>
                 </div>
-                <input type="hidden" name="id" value='<?php echo $codigoTematica ?>'>
               </form>
             </div>
           </div>

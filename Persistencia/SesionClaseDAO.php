@@ -99,9 +99,11 @@ class SesionClaseDAO implements DAO
      * 
      * @param SesionClase $pSesionClase
      */
-    public function crearSesionClase($pSesionClase)
+    public function crearSesionClase($pSesionClase, $idTematica)
     {
-        $sql = "INSERT INTO SESION_CLASE VALUES" . $pSesionClase->getNombre() . "," . $pSesionClase->getVideo() . "," . $pSesionClase->getPuntucion() . "," . $pSesionClase->getDuracion();
+        $sql = "INSERT INTO SESION_CLASE VALUES (" . $pSesionClase->getCodigo() . ",'" . $pSesionClase->getNombre() . "','" . $pSesionClase->getVideo() . "'," . $pSesionClase->getPuntuacion() . ",'" . $pSesionClase->getDuracion() . "')";
+        pg_query($this->conexion, $sql);
+        $sql = "INSERT INTO TEMATICA_SESION_CLASE VALUES (" . $idTematica . "," . $pSesionClase->getCodigo() . ")";
         pg_query($this->conexion, $sql);
     }
 

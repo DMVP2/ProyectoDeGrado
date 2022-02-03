@@ -47,10 +47,10 @@ class ManejoSesionClase
      * 
      * @param SesionClase $pSesionClase
      */
-    public function crearSesionClase($pSesionClase)
+    public function crearSesionClase($pSesionClase, $idTematica)
     {
         $sesionClaseDAO = SesionClaseDAO::getSesionClaseDAO($this->conexion);
-        $sesionClaseDAO->crearSesionClase($pSesionClase);
+        $sesionClaseDAO->crearSesionClase($pSesionClase, $idTematica);
     }
 
     /**

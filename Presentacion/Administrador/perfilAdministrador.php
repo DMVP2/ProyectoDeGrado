@@ -216,32 +216,32 @@ $administrador = $manejoAdministrador->buscarAdministrador($usuario->getCodigo()
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-username">Nickname</label>
-                                                <input type="text" id="nickname" class="form-control" placeholder="Ejemplo: User12345" value=<?php echo $usuario->getNickname() ?>>
+                                                <input type="text" id="nickname" class="form-control" placeholder="Ejemplo: User12345" value=<?php echo $usuario->getNickname() ?> disabled="true">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-city">Nombre</label>
-                                                <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: David Santiago" value="<?php echo $administrador->getNombre() ?>">
+                                                <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: David Santiago" value=<?php echo $administrador->getNombre() ?> disabled="true">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-country">Apellido</label>
-                                                <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo" value="<?php echo $administrador->getApellido() ?>">
+                                                <input type="text" id="apellido" class="form-control" placeholder="Ejemplo: Agudelo Quinguirejo" value=<?php echo $administrador->getApellido() ?> disabled="true">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Email
                                                     principal</label>
-                                                <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co" value=<?php echo $administrador->getCorreoElectronico() ?>>
+                                                <input type="email" id="emailPrincipal" class="form-control" placeholder="user12345@unbosque.edu.co" value=<?php echo $administrador->getCorreoElectronico() ?> disabled="true">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Teléfono</label>
-                                                <input type="email" id="emailSecundario" class="form-control" placeholder="user@tuDominio.com" value=<?php echo $administrador->getTelefono() ?>>
+                                                <input type="email" id="emailSecundario" class="form-control" placeholder="user@tuDominio.com" value=<?php echo $administrador->getTelefono() ?> disabled="true">
                                             </div>
                                         </div>
                                     </div>

@@ -149,7 +149,6 @@ $manejoAsignatura = new ManejoAsignatura($conexionActual);
                                         <th scope="col">Semestre</th>
                                         <th scope="col">Duración</th>
                                         <th scope="col">Descripción</th>
-                                        <th scope="col">Syllabus</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
@@ -200,7 +199,6 @@ $manejoAsignatura = new ManejoAsignatura($conexionActual);
                                             echo "<td>" . $asignatura->getSemestre() . "</td>";
                                             echo "<td>" . $asignatura->getDuracion() . "</td>";
                                             echo "<td>" . $asignatura->getDescripcion() . "</td>";
-                                            echo "<td>" . $asignatura->getSyllabus() . "</td>";
                                             echo "<td class='text-right'>
                                                 <div class='dropdown'>
                                                     <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i></a>

@@ -141,8 +141,8 @@ $sesionClase = $manejoSesionClase->buscarSesionClase($codigoSesionClase);
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" id="duracion" value=<?php echo  $sesionClase->getDuracion() ?> name="duracion" placeholder="Duración de la sesión" aria-label="duracion" class="form-control">
-                    <input type="number" id="puntuacion" value=<?php echo  $sesionClase->getPuntuacion() ?> name="puntuacion" placeholder="Puntuación de la sesión" aria-label="puntuacion" class="form-control">
+                    <input type="text" id="duracion" value=<?php echo $sesionClase->getDuracion() ?> name="duracion" placeholder="Duración de la sesión" aria-label="duracion" class="form-control">
+                    <input type="number" id="puntuacion" value=<?php echo $sesionClase->getPuntuacion() ?> name="puntuacion" placeholder="Puntuación de la sesión" aria-label="puntuacion" class="form-control">
                   </div>
                 </div>
                 <div class="text-center">

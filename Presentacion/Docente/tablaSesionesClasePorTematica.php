@@ -120,7 +120,7 @@ $codigoTematica = $_GET['id'];
                 <div class="header-body">
                     <div class="nav-wrapper position-relative end-0">
                         <div class="col-4 text-right" style="float: right;">
-                            <a href="<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . 'registroSesionClase.php' ?>" class="btn btn-success">Crear nueva sesión de clase</a>
+                            <a href="<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . 'registroSesionClase.php?id=' . $codigoTematica ?>" class="btn btn-success">Crear nueva sesión de clase</a>
                         </div>
                     </div>
                     <div class="row align-items-center py-4">

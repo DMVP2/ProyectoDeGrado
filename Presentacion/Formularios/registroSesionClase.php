@@ -24,22 +24,13 @@
 
 include_once('routes.php');
 
-// Conexión
-
-include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . 'ConexionSQL.php');
-
 // Gestión de sesiones (Se busca asegurar que no hay ninguna sesión previa inicializada)
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
-// Creación de la conexión
+// Variables pasadas por GET
 
-$conexion = ConexionSQL::getInstancia();
-$conexionActual = $conexion->conectarBD();
-
-// Llamado de manejos
-
-$manejoUsuario = new ManejoUsuario($conexionActual);
+$codigoTematica = $_GET['id'];
 
 ?>
 <!DOCTYPE html>
@@ -117,7 +108,7 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
               <div class="text-center text-muted mb-4">
                 <medium>Creación de la sesión de clase</medium>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'CrearSesionClase.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <input class="form-control" id="nombre" name="nombre" placeholder="Nombre de la asignatura" required>
@@ -134,6 +125,7 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                     <input type="number" id="puntuacion" name="puntuacion" placeholder="Puntuación de la sesión" aria-label="puntuacion" class="form-control">
                   </div>
                 </div>
+                <input type="hidden" name="id" value='<?php echo $codigoTematica ?>'>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Registrar</button>
                 </div>
