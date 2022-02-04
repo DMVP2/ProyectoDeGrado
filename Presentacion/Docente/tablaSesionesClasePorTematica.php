@@ -178,7 +178,14 @@ $codigoTematica = $_GET['id'];
                                         echo "<td>" . $sesionClase->getNombre() . "</td>";
                                         echo "<td>" . $sesionClase->getPuntuacion() . "</td>";
                                         echo "<td>" . $sesionClase->getDuracion() . "</td>";
-                                        echo '<td><a href="' . DIRECTORIO_RAIZ . RUTA_FORMULARIOS . "editarSesionClase.php" . "?id=" . $sesionClase->getCodigo() . '" class="btn btn-primary btn-lg btn-block">Editar sesión de clase</a></td>';
+                                        echo "<td class='text-right'>
+                                                <div class='dropdown'>
+                                                    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i></a>
+                                                    <div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
+                                                        <a class='dropdown-item' href='" . DIRECTORIO_RAIZ . RUTA_FORMULARIOS . "editarSesionClase.php" . "?id=" . $sesionClase->getCodigo() . "'>Editar sesión de clase</a>
+                                                    </div>
+                                                </div>
+                                                </td>";
                                         echo "</tr>";
                                     }
                                     ?>
