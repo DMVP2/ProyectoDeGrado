@@ -153,7 +153,7 @@ class SesionClaseDAO implements DAO
      */
     public function actualizarSesionClase($pSesionClase)
     {
-        $sql = "UPDATE FICHAS_BIBLIOGRAFICAS SET" . " nombre_sesion = " . $pSesionClase->getNombre . ", video_sesion = " . $pSesionClase->getVideo() . ", puntuacion_sesion = " . $pSesionClase->getPuntuacion() . ", duracion_sesion = " . $pSesionClase->getDuracion() . " WHERE id_sesion = " . $pSesionClase->getCodigo();
+        $sql = "UPDATE SESION_CLASE SET" . " nombre_sesion = " . "'" . $pSesionClase->getNombre() . "'" . ", video_sesion = " . "'" . $pSesionClase->getVideo() . "'" . ", puntuacion_sesion = " . $pSesionClase->getPuntuacion() . ", duracion_sesion = " . "'" . $pSesionClase->getDuracion() . "'" . " WHERE id_sesion = " . $pSesionClase->getCodigo();
         pg_query($this->conexion, $sql);
     }
 

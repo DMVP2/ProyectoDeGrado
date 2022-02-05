@@ -99,7 +99,7 @@ class DocenteDAO implements DAO
      */
     public function crearDocente($pDocente)
     {
-        $sql = "INSERT INTO DOCENTE VALUES " . $pDocente->getCodigo() . "," . $pDocente->getNombre() . "," . $pDocente->getApellido() . "," . $pDocente->getCorreoElectronico();
+        $sql = "INSERT INTO DOCENTE VALUES (" . $pDocente->getCodigo() . ",'" . $pDocente->getNombre() . "','" . $pDocente->getApellido() . "','" . $pDocente->getCorreoElectronico() . "'," . "'Activo'" . ")";
         pg_query($this->conexion, $sql);
     }
 
@@ -170,7 +170,7 @@ class DocenteDAO implements DAO
      */
     public function actualizarDocente($pDocente)
     {
-        $sql = "UPDATE DOCENTE SET" . " nombre_docente = " . $pDocente->getNombre() . ", apellido_docente = " . $pDocente->getApellido() . ", email_docente = " . $pDocente->getCorreoElectronico() . " WHERE id_docente = " . $pDocente->getCodigo();
+        $sql = "UPDATE DOCENTE SET" . " nombre_docente = " . "'" . $pDocente->getNombre() . "'" . ", apellido_docente = " . "'" . $pDocente->getApellido() . "'" . ", email_docente = " . "'" . $pDocente->getCorreoElectronico() . "'" . " WHERE id_docente = " . $pDocente->getCodigo();
         pg_query($this->conexion, $sql);
     }
 

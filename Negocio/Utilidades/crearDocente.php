@@ -31,6 +31,7 @@ $conexionActual = $conexion->conectarBD();
 // Llamado de manejos
 
 $manejoDocente = new ManejoDocente($conexionActual);
+$manejoUsuario = new ManejoUsuario($conexionActual);
 
 // Ejecución de métodos
 
@@ -38,11 +39,12 @@ $nickname = $_POST['user'];
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
 $correoElectronico = $_POST['principal'];
+$password = $_POST['password1'];
 
 $creacionCodigo = new CreacionCodigos();
 
 $codigo = $creacionCodigo->crearID();
-$codigo = sha1($codigo);
+$password = sha1($password);
 
 $docente = new Docente();
 
@@ -51,8 +53,16 @@ $docente->setNombre($nombre);
 $docente->setApellido($apellido);
 $docente->setCorreoElectronico($correoElectronico);
 
+$usuario = new Usuario();
+
+$usuario->setCodigo($codigo);
+$usuario->setNickname($nickname);
+$usuario->setPassword($password);
+$usuario->setStatus("Activo");
+
 try {
     $manejoDocente->crearDocente($docente);
+    $manejoUsuario->crearUsuario($usuario, "Docente");
     echo "<script>
     alert('Registro exitoso');
     </script>";

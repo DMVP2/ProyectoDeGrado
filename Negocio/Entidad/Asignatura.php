@@ -73,27 +73,6 @@ class Asignatura
     private $descripcion;
 
     /**
-     * syllabus de la asignatura
-     * 
-     * @var String $syllabus
-     */
-    private $syllabus;
-
-    /**
-     * Arreglo que contiene los ID de la competencia de la asignatura
-     * 
-     * @var array $competencias
-     */
-    private $competencias;
-
-    /**
-     * Arreglo que contiene los ID de la bibliografia de la asignatura
-     * 
-     * @var array $bibliografias
-     */
-    private $bibliografias;
-
-    /**
      * Arreglo que contiene los ID de los estudiantes de la asignatura
      * 
      * @var array $estudiantes

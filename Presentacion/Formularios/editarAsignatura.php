@@ -128,21 +128,21 @@ $asignatura = $manejoAsignatura->buscarAsignatura($codigoAsignatura);
               <div class="text-center text-muted mb-4">
                 <medium>Editar datos de la asignatura</medium>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'EditarAsignatura.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" id="nombre" value=<?php echo $asignatura->getNombre() ?> name="nombre" placeholder="Nombre de la asignatura" required>
+                    <input class="form-control" id="nombre" value="<?php echo $asignatura->getNombre() ?>" name="nombre" placeholder="Nombre de la asignatura" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" id="grupo" value=<?php echo $asignatura->getGrupo() ?> name="grupo" placeholder="Grupo de la asignatura" aria-label="grupo" class="form-control">
+                    <input type="text" id="grupo" value="<?php echo $asignatura->getGrupo() ?>" name="grupo" placeholder="Grupo de la asignatura" aria-label="grupo" class="form-control">
                     <input type="number" id="creditos" value=<?php echo $asignatura->getNumeroCreditos() ?> name="creditos" placeholder="Número de créditos" aria-label="creditos" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" id="duración" value=<?php echo $asignatura->getDuracion() ?> name="duración" placeholder="Duración de la asignatura" aria-label="duración" class="form-control">
+                    <input type="text" id="duracion" value="<?php echo $asignatura->getDuracion() ?>" name="duracion" placeholder="Duración de la asignatura" aria-label="duracion" class="form-control">
                     <input type="number" id="semestre" value=<?php echo $asignatura->getSemestre() ?> name="semestre" placeholder="Semestre de la asignatura" aria-label="semestre" class="form-control">
                   </div>
                 </div>
@@ -151,6 +151,7 @@ $asignatura = $manejoAsignatura->buscarAsignatura($codigoAsignatura);
                     <textarea class="form-control" type="descripcion" id="descripcion" name="descripcion" placeholder="Descripción de la asignatura (máximo 1000 carácteres)" maxlength="1000" rows="8" required><?php echo $asignatura->getDescripcion() ?></textarea>
                   </div>
                 </div>
+                <input type="hidden" name="id" value='<?php echo $codigoAsignatura ?>'>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Actualizar</button>
                 </div>

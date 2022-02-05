@@ -144,7 +144,7 @@ class TematicaDAO implements DAO
      */
     public function actualizarTematica($pTematica)
     {
-        $sql = "UPDATE TEMATICA SET" . " nombre_tematica = " . $pTematica->getNombre() . ", duracion_tematica = " . $pTematica->getDuracion() . ", descripcion_tematica = " . $pTematica->getDescripcion() . " WHERE id_tematica = " . $pTematica->getCodigo();
+        $sql = "UPDATE TEMATICA SET" . " nombre_tematica = " . "'" . $pTematica->getNombre() . "'" . ", duracion_tematica = " . "'" . $pTematica->getDuracion() . "'" . ", descripcion_tematica = " . "'" . $pTematica->getDescripcion() . "'" . " WHERE id_tematica = " . $pTematica->getCodigo();
         pg_query($this->conexion, $sql);
     }
 

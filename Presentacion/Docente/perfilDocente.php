@@ -204,7 +204,7 @@ $docente = $manejoDocente->buscarDocente($usuario->getCodigo());
                                     <h3 class="mb-0">Perfil del usuario</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <form method="POST" action=<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . "editarDocente.php" ?>>
+                                    <form method="POST" action=<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . "editarDocente.php?id=" . $usuario->getCodigo() ?>>
                                         <button type="submit" class="btn btn-outline-success">Actualizar perfil</button>
                                     </form>
                                 </div>

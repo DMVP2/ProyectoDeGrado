@@ -124,6 +124,16 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "Sesion
                     </div>
                   </div>
                 </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" type="password" id="password1" name="password1" placeholder="Contraseña" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" type="password" id="password2" name="password2" placeholder="Repetir contraseña" required>
+                  </div>
+                </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Registrar</button>
                 </div>

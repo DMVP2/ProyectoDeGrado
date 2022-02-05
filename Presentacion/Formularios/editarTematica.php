@@ -131,7 +131,7 @@ $tematica = $manejoTematica->buscarTematica($codigoTematica);
               <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'EditarTematica.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" id="nombre" value=<?php echo $tematica->getNombre() ?> name="nombre" placeholder="Nombre de la temática" required>
+                    <input class="form-control" id="nombre" value="<?php echo $tematica->getNombre() ?>" name="nombre" placeholder="Nombre de la temática" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -141,9 +141,10 @@ $tematica = $manejoTematica->buscarTematica($codigoTematica);
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                  <input type="text" id="duracion" value=<?php echo $tematica->getDuracion() ?> name="duracion" placeholder="Duración de la temática" aria-label="duracion" class="form-control">
+                  <input type="text" id="duracion" value="<?php echo $tematica->getDuracion() ?>" name="duracion" placeholder="Duración de la temática" aria-label="duracion" class="form-control">
                   </div>
                 </div>
+                <input type="hidden" name="id" value='<?php echo $codigoTematica ?>'>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Actualizar</button>
                 </div>

@@ -128,23 +128,24 @@ $sesionClase = $manejoSesionClase->buscarSesionClase($codigoSesionClase);
               <div class="text-center text-muted mb-4">
                 <medium>Editar datos de la sesión de clase</medium>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'EditarSesionClase.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" id="nombre" value=<?php echo $sesionClase->getNombre() ?> name="nombre" placeholder="Nombre de la asignatura" required>
+                    <input class="form-control" id="nombre" value="<?php echo $sesionClase->getNombre() ?>" name="nombre" placeholder="Nombre de la asignatura" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input class="form-control" id="url" value=<?php echo $sesionClase->getVideo() ?> name="url" placeholder="URL del video de la asignatura" required>
+                    <input class="form-control" id="url" value="<?php echo $sesionClase->getVideo() ?>" name="url" placeholder="URL del video de la asignatura" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" id="duracion" value=<?php echo $sesionClase->getDuracion() ?> name="duracion" placeholder="Duración de la sesión" aria-label="duracion" class="form-control">
+                    <input type="text" id="duracion" value="<?php echo $sesionClase->getDuracion() ?>" name="duracion" placeholder="Duración de la sesión" aria-label="duracion" class="form-control">
                     <input type="number" id="puntuacion" value=<?php echo $sesionClase->getPuntuacion() ?> name="puntuacion" placeholder="Puntuación de la sesión" aria-label="puntuacion" class="form-control">
                   </div>
                 </div>
+                <input type="hidden" name="id" value='<?php echo $codigoSesionClase ?>'>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Actualizar</button>
                 </div>

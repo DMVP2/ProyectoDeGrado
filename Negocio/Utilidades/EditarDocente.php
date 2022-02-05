@@ -32,17 +32,17 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
 
 // Ejecución de métodos
 
-$codigo = $usuario->getCodigo();
+$codigo = $_POST['id'];
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
-$correoElectronicoPrincipal = $_POST['principal'];
+$correoElectronico = $_POST['principal'];
 
 $docente = new Docente();
 
 $docente->setCodigo($codigo);
 $docente->setNombre($nombre);
 $docente->setApellido($apellido);
-$docente->setCorreoElectronicoPrincipal($correoElectronicoPrincipal);
+$docente->setCorreoElectronico($correoElectronico);
 
 
 try {

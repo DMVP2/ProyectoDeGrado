@@ -31,17 +31,9 @@ $conexionActual = $conexion->conectarBD();
 $manejoTematica = new ManejoTematica($conexionActual);
 $manejoUsuario = new ManejoUsuario($conexionActual);
 
-// Variables pasadas por GET
-
-$codigoTematica = $_GET['id'];
-
-// Invocación de métodos
-
-$tematica = $manejoTematica->buscarTematica($codigoTematica);
-
 // Ejecución de métodos
 
-$codigo = $usuario->getCodigo();
+$codigo = $_POST['id'];
 $nombre = $_POST['nombre'];
 $descripcion = $_POST['descripcion'];
 $duracion = $_POST['duracion'];
@@ -58,8 +50,8 @@ try {
     echo "<script>
     alert('Actualización exitosa');
     </script>";
-    if (strcasecmp($usuario->getRol(), "Tematica") == 0) {
-        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_TEMATICA . "perfilTematica.php" . "');</script>";
+    if (strcasecmp($usuario->getRol(), "Docente") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_DOCENTE . "perfilDocente.php" . "');</script>";
     } else if (strcasecmp($usuario->getRol(), "Administrador") == 0) {
         echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . "perfilAdministrador.php" . "');</script>";
     }
@@ -67,8 +59,8 @@ try {
     echo "<script>
     alert('No se pudo realizar la actualización');
     </script>";
-    if (strcasecmp($usuario->getRol(), "Tematica") == 0) {
-        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_TEMATICA . "perfilTematica.php" . "');</script>";
+    if (strcasecmp($usuario->getRol(), "Docente") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_DOCENTE . "perfilDocente.php" . "');</script>";
     } else if (strcasecmp($usuario->getRol(), "Administrador") == 0) {
         echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . "perfilAdministrador.php" . "');</script>";
     }

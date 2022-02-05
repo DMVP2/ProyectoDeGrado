@@ -32,7 +32,7 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
 
 // Ejecución de métodos
 
-$codigo = $usuario->getCodigo();
+$codigo = $_POST['id'];
 $nombre = $_POST['nombre'];
 $grupo = $_POST['grupo'];
 $creditos = $_POST['creditos'];
@@ -45,7 +45,7 @@ $asignatura = new Asignatura();
 $asignatura->setCodigo($codigo);
 $asignatura->setNombre($nombre);
 $asignatura->setGrupo($grupo);
-$asignatura->setCreditos($creditos);
+$asignatura->setNumeroCreditos($creditos);
 $asignatura->setDuracion($duracion);
 $asignatura->setSemestre($semestre);
 $asignatura->setDescripcion($descripcion);
@@ -56,8 +56,8 @@ try {
     echo "<script>
     alert('Actualización exitosa');
     </script>";
-    if (strcasecmp($usuario->getRol(), "Asignatura") == 0) {
-        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ASIGNATURA . "perfilAsignatura.php" . "');</script>";
+    if (strcasecmp($usuario->getRol(), "Docente") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_DOCENTE . "perfilDocente.php" . "');</script>";
     } else if (strcasecmp($usuario->getRol(), "Administrador") == 0) {
         echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . "perfilAdministrador.php" . "');</script>";
     }
@@ -65,8 +65,8 @@ try {
     echo "<script>
     alert('No se pudo realizar la actualización');
     </script>";
-    if (strcasecmp($usuario->getRol(), "Asignatura") == 0) {
-        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ASIGNATURA . "perfilAsignatura.php" . "');</script>";
+    if (strcasecmp($usuario->getRol(), "Docente") == 0) {
+        echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_DOCENTE . "perfilDocente.php" . "');</script>";
     } else if (strcasecmp($usuario->getRol(), "Administrador") == 0) {
         echo "<script>window.location.replace('" . DIRECTORIO_RAIZ . RUTA_ADMINISTRADOR . "perfilAdministrador.php" . "');</script>";
     }

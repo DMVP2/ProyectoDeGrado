@@ -44,9 +44,13 @@ $conexionActual = $conexion->conectarBD();
 $manejoDocente = new ManejoDocente($conexionActual);
 $manejoUsuario = new ManejoUsuario($conexionActual);
 
+// Variables pasadas por GET
+
+$codigoDocente = $_GET['id'];
+
 // Invocación de métodos
 
-$docente = $manejoDocente->buscarDocente($usuario->getCodigo());
+$docente = $manejoDocente->buscarDocente($codigoDocente);
 
 
 ?>
@@ -123,25 +127,26 @@ $docente = $manejoDocente->buscarDocente($usuario->getCodigo());
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <medium>Registro de docente</medium>
+                <medium>Editar datos del docente</medium>
               </div>
-              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'CrearDocente.php' ?>">
+              <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'EditarDocente.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" id="nombre" value=<?php echo $docente->getNombre() ?> name="nombre" placeholder="Nombre" aria-label="nombre" class="form-control">
-                    <input type="text" id="apellido" value=<?php echo $docente->getApellido() ?> name="apellido" placeholder="Apellido" aria-label="apellido" class="form-control">
+                    <input type="text" id="nombre" value="<?php echo $docente->getNombre() ?>" name="nombre" placeholder="Nombre" aria-label="nombre" class="form-control">
+                    <input type="text" id="apellido" value="<?php echo $docente->getApellido() ?>" name="apellido" placeholder="Apellido" aria-label="apellido" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
-                    <input type="text" class="form-control" placeholder="Usuario de correo electrónico" id="principal" value=<?php echo $docente->getCorreoElectronico() ?> name="principal" aria-label="principal" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" placeholder="Usuario de correo electrónico" id="principal" value="<?php echo substr($docente->getCorreoElectronico(), 0, -16) ?>" name="principal" aria-label="principal" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                       <span class="input-group-text" id="basic-addon2">@unbosque.edu.co</span>
                     </div>
                   </div>
                 </div>
+                <input type="hidden" name="id" value='<?php echo $codigoDocente ?>'>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Registrar</button>
+                  <button type="submit" class="btn btn-primary my-4">Actualizar</button>
                 </div>
               </form>
             </div>

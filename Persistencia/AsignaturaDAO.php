@@ -156,7 +156,7 @@ class AsignaturaDAO implements DAO
      */
     public function actualizarAsignatura($pAsignatura)
     {
-        $sql = "UPDATE ASIGNATURA SET" . " nombre_asignatura = " . $pAsignatura->getNombre() . ", grupo_asignatura = " . $pAsignatura->getGrupo() . ", numero_creditos = " . $pAsignatura->getNumeroCreditos() . ", semestre_asignatura = " . $pAsignatura->getSemestre() . ", duracion_asignatura = " . $pAsignatura->getDuracion() . ", descripcion_asignatura = " . $pAsignatura->getDescripcion() . " WHERE id_asignatura = " . $pAsignatura->getCodigo();
+        $sql = "UPDATE ASIGNATURA SET" . " nombre_asignatura = " . "'" . $pAsignatura->getNombre() . "'" . ", grupo_asignatura = " . "'" . $pAsignatura->getGrupo() . "'" . ", numero_creditos = " . $pAsignatura->getNumeroCreditos() . ", semestre_asignatura = " . $pAsignatura->getSemestre() . ", duracion_asignatura = " . "'" . $pAsignatura->getDuracion() . "'" . ", descripcion_asignatura = " . "'" . $pAsignatura->getDescripcion() . "'" . " WHERE id_asignatura = " . $pAsignatura->getCodigo();
         pg_query($this->conexion, $sql);
     }
 
