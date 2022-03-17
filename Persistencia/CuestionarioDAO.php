@@ -98,7 +98,7 @@ class CuestionarioDAO implements DAO
      */
     public function crearCuestionario($pCuestionario)
     {
-        $sql = "INSERT INTO CUESTIONARIO VALUES " . $pCuestionario->getCodigo() . "," . $pCuestionario->getSesionClase() . "," . $pCuestionario->getPregunta() . "," . $pCuestionario->getOpcionA() . "," . $pCuestionario->getOpcionB() . "," . $pCuestionario->getOpcionC() . "," . $pCuestionario->getOpcionD() . "," . $pCuestionario->getOpcionE() . "," . $pCuestionario->getRespuestaCorrecta();
+        $sql = "INSERT INTO CUESTIONARIO VALUES (" . $pCuestionario->getCodigo() . "," . $pCuestionario->getSesionClase() . ",'" . $pCuestionario->getPregunta() . "','" . $pCuestionario->getOpcionA() . "','" . $pCuestionario->getOpcionB() . "','" . $pCuestionario->getOpcionC() . "','" . $pCuestionario->getOpcionD() . "','" . $pCuestionario->getOpcionE() . "','" . $pCuestionario->getRespuestaCorrecta() . "')";
         pg_query($this->conexion, $sql);
     }
 
@@ -110,7 +110,7 @@ class CuestionarioDAO implements DAO
      */
     public function buscarCuestionario($pCodigo)
     {
-        $sql = "SELECT * FROM CUESTIONARIO WHERE pregunta = " . $pCodigo;
+        $sql = "SELECT * FROM CUESTIONARIO WHERE id_sesion = " . $pCodigo;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 

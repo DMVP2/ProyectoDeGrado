@@ -6977,8 +6977,8 @@ a.badge:focus
 .alert-primary
 {
     color: #fff;
-    border-color: #7889e8;
-    background-color: #7889e8;
+    border-color: #84ae40;
+    background-color: #84ae40;
 }
 .alert-primary a
 {
@@ -7102,8 +7102,8 @@ a.badge:focus
 .alert-danger
 {
     color: #fff;
-    border-color: #f75676;
-    background-color: #f75676;
+    border-color: #bf2e25;
+    background-color: #bf2e25;
 }
 .alert-danger a
 {

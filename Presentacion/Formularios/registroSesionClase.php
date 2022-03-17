@@ -108,6 +108,10 @@ $codigoTematica = $_GET['id'];
               <div class="text-center text-muted mb-4">
                 <medium>Creación de la sesión de clase</medium>
               </div>
+              <hr>
+              <div class="text-center text-muted mb-4">
+                <medium>Datos de la sesión de clase</medium>
+              </div>
               <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_UTILIDADES . 'CrearSesionClase.php' ?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
@@ -125,6 +129,54 @@ $codigoTematica = $_GET['id'];
                     <input type="number" id="puntuacion" name="puntuacion" placeholder="Puntuación de la sesión" aria-label="puntuacion" class="form-control">
                   </div>
                 </div>
+                <hr>
+                <div class="text-center text-muted mb-4">
+                  <medium>Datos del cuestionario de la sesión</medium>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" id="pregunta" name="pregunta" placeholder="Pregunta para responder" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" id="opcionA" name="opcionA" placeholder="Opción A" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" id="opcionB" name="opcionB" placeholder="Opción B" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" id="opcionC" name="opcionC" placeholder="Opción C" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" id="opcionD" name="opcionD" placeholder="Opción D" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <input class="form-control" id="opcionE" name="opcionE" placeholder="Opción E" required>
+                  </div>
+                </div>
+                <div class="respuestas">
+                  <p>Respuesta correcta:</p>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="opcion" value='A' /> Opción A
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="opcion" value='B' /> Opción B
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="opcion" value='C' /> Opción C
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="opcion" value='D' /> Opción D
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="opcion" value='E' /> Opción E
+                </div>
+                <br>
                 <input type="hidden" name="id" value='<?php echo $codigoTematica ?>'>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Registrar</button>

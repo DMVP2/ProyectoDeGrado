@@ -185,10 +185,10 @@ class ManejoEstudiante
      * @param int $pCodigo
      * @return Progreso $progresoDAO
      */
-    public function buscarProgreso($pCodigo)
+    public function buscarProgreso($pCodigoEstudiante, $pCodigoSesionClase)
     {
         $progresoDAO = ProgresoDAO::getProgresoDAO($this->conexion);
-        return $progresoDAO->buscarProgreso($pCodigo);
+        return $progresoDAO->buscarProgreso($pCodigoEstudiante, $pCodigoSesionClase);
     }
 
     /**

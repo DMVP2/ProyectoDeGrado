@@ -31,7 +31,10 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 // Importaciones de clases
 
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoSesionClase.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoSesionClase.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoEstudiante.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "SesionClase.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Estudiante.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . "SesionActual.php");
 
 // Creación de la conexión
@@ -42,6 +45,7 @@ $conexionActual = $conexion->conectarBD();
 // Llamado de manejos
 
 $manejoSesionClase = new ManejoSesionClase($conexionActual);
+$manejoEstudiante = new ManejoEstudiante($conexionActual);
 $manejoUsuario = new ManejoUsuario($conexionActual);
 
 // Variables pasadas por GET
@@ -128,6 +132,7 @@ $codigoSesionClase = $_GET['id'];
                     <?php
 
                     $sesionClase = $manejoSesionClase->buscarSesionClase($codigoSesionClase);
+                    $progreso = $manejoEstudiante->buscarProgreso($usuario->getCodigo(), $codigoSesionClase);
 
                     ?>
 
@@ -169,19 +174,32 @@ $codigoSesionClase = $_GET['id'];
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="text-center">
-                            <br>
-                            <form>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Resolver cuestionario</button>
-                            </form>
-                            <br>
+
+            <?php
+
+            if ($progreso == null) {
+
+            ?>
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="text-center">
+                                <br>
+                                <form>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Resolver cuestionario</button>
+                                </form>
+                                <br>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            <?php
+
+            }
+
+            ?>
 
             <!-- Modal -->
 

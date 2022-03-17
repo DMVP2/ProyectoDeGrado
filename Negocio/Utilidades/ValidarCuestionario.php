@@ -69,19 +69,19 @@ if ($opcionD == $respuestaSeleccionada) {
 if ($opcionE == $respuestaSeleccionada) {
     $opcionE = 1;
 }
-if ($opcionA != $respuestaSeleccionada) {
+if ($opcionA != $respuestaSeleccionada AND $opcionA != 1) {
     $opcionA = 0;
 }
-if ($opcionB != $respuestaSeleccionada) {
+if ($opcionB != $respuestaSeleccionada AND $opcionB != 1) {
     $opcionB = 0;
 }
-if ($opcionC != $respuestaSeleccionada) {
+if ($opcionC != $respuestaSeleccionada AND $opcionC != 1) {
     $opcionC = 0;
 }
-if ($opcionD != $respuestaSeleccionada) {
+if ($opcionD != $respuestaSeleccionada AND $opcionD != 1) {
     $opcionD = 0;
 }
-if ($opcionE != $respuestaSeleccionada) {
+if ($opcionE != $respuestaSeleccionada AND $opcionE != 1) {
     $opcionE = 0;
 }
 

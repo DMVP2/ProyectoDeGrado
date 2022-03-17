@@ -1,0 +1,279 @@
+Date;Hour;Log;Language;Intent;Confidence;Description
+2021/10/25;13:30:34;Hol;en;"";N/A;""
+2021/10/25;13:30:39;Diagrama;en;"";N/A;""
+2021/10/25;13:30:45;Diagrama de clases;en;"";N/A;""
+2021/10/25;13:30:52;Que es un diagrama de clases;en;"";N/A;""
+2021/10/25;14:11:24;d;en;saludos;0.61;
+2021/10/25;14:11:29;iagrama;es;saludos;0.6;
+2021/10/25;14:11:35;iagrama clases;es;"";N/A;""
+2021/10/25;14:11:42;iagrama de clases;es;"";N/A;""
+2021/10/25;14:11:46;diagrama clases;es;"";N/A;""
+2021/10/25;14:12:09;que iagrama de clases;es;"";N/A;""
+2021/10/25;14:12:14;ques es;es;saludos;0.55;
+2021/10/25;14:12:22;en que consiste un modelo de clases;es;definicion-diagrama-de-clases;0.82;
+2021/10/25;15:04:45;ejemplo diagrama clases;es;"";N/A;""
+2021/10/25;15:04:51;ejemplo de diagrama clases;es;"";N/A;""
+2021/10/25;18:12:49;ejemplo de un diagram de clase;es;ejemplo-diagrama-de-clases;0.71;
+2021/10/25;18:17:20;diagrama de clases ejmplo dar;es;"";N/A;""
+2021/10/25;18:17:28;diagrama de clases ejemplo;es;"";N/A;""
+2021/10/25;18:25:59;que es un diagrama de class;ca;definicion-diagrama-de-clases;0.54;
+2021/10/25;18:26:13;en que consiste un diagrama de clases;es;definicion-diagrama-de-clases;0.99;
+2021/10/25;21:32:25;ejemplo del diagrama de clases;es;"";N/A;""
+2021/10/25;21:50:04;como creo construyo un diagrama de clases;es;construccion-diagrama-de-clases;0.93;
+2021/10/25;21:50:52;construccion diagrama clas;es;"";N/A;""
+2021/10/25;21:51:01;construccion de diagrama clas;es;construccion-diagrama-de-clases;0.66;
+2021/10/26;13:47:35;ejemplo de diagramas de clase;es;ejemplo-diagrama-de-clases;0.73;
+2021/10/26;13:50:03;2;es;despedidas;0.5;
+2021/10/26;13:51:21;Hola, esta es la respuesta;es;saludos;0.8;
+2021/10/26;14:06:14;construccion crear de un diagrama de clases;ca;construccion-diagrama-de-clases;0.87;
+2021/10/26;14:06:17;sghhhhhhhhhhhhhh;es;saludos;0.59;
+2021/10/26;15:35:09;construccion diagrama de clases;es;construccion-diagrama-de-clases;0.87;
+2021/10/26;15:47:03;construcción diagrama de clases;es;construccion-diagrama-de-clases;0.9;
+2021/10/26;16:38:10;explicación de los ejemplos de diagrama de clase;es;explicacion-ejemplos-diagrama-de-clases;0.94;
+2021/10/26;16:48:34;explicacion ejemplos diagrama de clases;es;explicacion-ejemplos-diagrama-de-clases;0.62;
+2021/10/26;16:56:21;ejemplo de un diagrama de clases;es;ejemplo-diagrama-de-clases;0.99;
+2021/10/26;16:58:33;Ejemplo de diagrama de clases;es;ejemplo-diagrama-de-clases;0.62;
+2021/10/26;18:32:17;ejemplos diagrama de clases;es;ejemplo-diagrama-de-clases;0.99;
+2021/10/26;18:32:53;1;es;"";N/A;""
+2021/10/26;18:43:02;ejemplo diagrama de clase;es;ejemplo-diagrama-de-clases;0.62;
+2021/10/26;18:43:49;explanation of classes diagram;en;despedidas;0.58;
+2021/10/26;18:44:00;examples of classes diagram;en;despedidas;0.58;
+2021/10/26;18:55:52;ejemplo diagrama de clases;es;ejemplo-diagrama-de-clases;0.99;
+2021/10/26;20:24:22;ejemplo de diagrama de clase;es;ejemplo-diagrama-de-clases;0.53;
+2021/10/26;20:33:49;ejemplo diagrama de clasess};es;ejemplo-diagrama-de-clases;0.63;
+2021/10/26;20:36:09;ejemplo diagrama de clasess;es;ejemplo-diagrama-de-clases;0.63;
+2021/10/26;21:57:28;ejemplo de diagrama de clases;es;ejemplo-diagrama-de-clases;0.66;
+2021/10/26;21:57:32;No, no necesito explicación;es;"";N/A;""
+2021/10/27;13:42:19;que es un diagrama deeee clases;es;definicion-diagrama-de-clases;0.7;
+2021/10/27;13:42:50;me podrias dar un ejemplo de un diagrama de clases?;es;ejemplo-diagrama-de-clases;0.9;
+2021/10/27;13:43:49;pero como puedo construir un diagrama de clases?;es;construccion-diagrama-de-clases;0.88;
+2021/10/27;17:39:51;quiero una explicación del ejemplo específico de diagrama de clases;es;explicacion-ejemplos-diagrama-de-clases;0.61;
+2021/10/27;17:42:34;explicacion;es;saludos;0.55;
+2021/10/27;17:42:39;explicación diagrama de clases;es;construccion-diagrama-de-clases;0.53;
+2021/10/27;17:43:05;explicación de ejemplos diagrama de clases;es;explicacion-ejemplos-diagrama-de-clases;0.76;
+2021/10/27;17:43:47;explicación del segundo ejemplo del diagrama de clases;es;explicacion-ejemplos-diagrama-de-clases;0.95;
+2021/10/27;17:43:59;explicación del primer ejemplo de diagrama de clases;es;explicacion-ejemplos-diagrama-de-clases;0.93;
+2021/10/27;18:17:23;explicación de los ejemplos de diagrama de clases;es;explicacion-ejemplos-diagrama-de-clases;0.94;
+2021/10/28;16:19:18;explicacion diagrama de clases;es;construccion-diagrama-de-clases;0.53;
+2021/10/29;21:15:54;que es diagrama de clases;es;definicion-diagrama-de-clases;0.61;
+2021/10/29;21:16:10;podrias darme un ejemplo de un diagrama de clases?;es;ejemplo-diagrama-de-clases;0.82;
+2021/10/29;21:19:47;explicacion del segundo ejemplo de diagrama de clasessss;es;explicacion-ejemplos-diagrama-de-clases;0.96;
+2021/11/03;18:31:55;ejemplos de diagrama de clases;es;ejemplo-diagrama-de-clases;0.6;
+2021/11/03;18:50:40;Deseo tener una explicación del primer ejemplo;es;explicacion-ejemplos-diagrama-de-clases;0.91;
+2021/11/03;18:56:55;explicación ejemplos diagrama de clase;es;explicacion-ejemplos-diagrama-de-clases;0.74;
+2021/11/03;19:01:53;explicación ejemplos diagrama de clases;es;explicacion-ejemplos-diagrama-de-clases;0.61;
+2021/11/04;23:04:47;definicion programar;ca;definicion-programar;0.8;
+2021/11/04;23:04:55;programar;es;definicion-programar;0.7;
+2021/11/04;23:05:01;definicion;es;saludos;0.52;
+2021/11/05;12:05:35;Ejemplos de diagrama de clases;es;ejemplo-diagrama-de-clases;0.61;
+2021/11/05;16:42:30;que es programar;es;definicion-programar;0.99;
+2021/11/05;21:31:23;Que es la programacion;es;definicion-programacion;0.99;
+2021/11/05;21:32:46;ejemplos de diagrama de clase;es;"";N/A;""
+2021/11/09;23:05:57;podrias darme un ejemplo de un diagrama de clases???;es;ejemplo-diagrama-de-clases;0.8;
+2021/11/09;23:06:31;porque santiago es un mamon;es;despedidas;0.8;
+2021/11/12;23:52:28;que es programación;es;definicion-programacion;0.92;
+2021/11/12;23:54:01;Que es programar;es;definicion-programar;0.99;
+2021/11/13;16:25:01;Quiubo perro;es;saludos;0.82;
+2021/11/13;16:29:53;Parce, que mas?;es;saludos;0.64;
+2021/11/13;16:30:03;diagramas de clase;es;"";N/A;""
+2021/11/13;16:31:41;hello;es;saludos;0.55;
+2021/11/13;16:32:03;diagrama de clases;es;construccion-diagrama-de-clases;0.64;
+2021/11/13;16:33:48;diagrama de clases UML;es;"";N/A;""
+2021/11/13;16:34:23;class diagram;es;saludos;0.53;
+2021/11/16;23:19:25;que es programacion;es;definicion-programacion;0.68;
+2021/11/18;00:09:43;diagramas de clase que es;es;diagramas-de-clase;0.89;
+2021/11/18;14:51:29;que es un diagrama de clasessssssss;es;"";N/A;""
+2021/11/18;14:56:07;ejemplo de diagramas de clases;es;"";N/A;""
+2021/11/18;14:56:46;ejemplos de diagramas de clases;es;"";N/A;""
+2021/11/18;14:57:20;podrias darme un ejemplo de un diagrama de clase;es;ejemplo-diagrama-de-clases;0.65;
+2021/11/18;14:57:52;podrias darme un ejemplo de un diagrama de clases;es;ejemplo-diagrama-de-clases;0.79;
+2021/11/18;23:20:11;me podrias dar un ejemplo de un diagrama de clase;es;ejemplo-diagrama-de-clases;0.77;
+2021/11/18;23:20:26;Sí, necesito explicación de los anteriores ejemplos de diagrama de clases;es;explicacion-ejemplos-diagrama-de-clases;0.99;
+2021/11/18;23:20:28;Deseo tener una explicación del segundo ejemplo;es;explicacion-ejemplos-diagrama-de-clases;0.92;
+2021/11/22;23:14:38;que es un diagrama de clases;es;definicion-diagrama-de-clases;0.99;
+2021/11/22;23:18:29;que es programar;ca;definicion-programar;0.99;
+2021/11/23;10:32:05;Que es el tipado debil;es;tipado-de-un-lenguaje-de-programacion;0.99;
+2021/11/23;10:32:21;A que hace referencia el tipado debil;es;tipado-de-un-lenguaje-de-programacion;0.89;
+2021/11/23;10:32:35;Podrias explicarme que es el tipado debil;es;explicacion-tipos-de-tipado;0.99;
+2021/11/23;10:33:00;podrias explicarme que es el tipado;es;explicacion-tipos-de-tipado;0.8;
+2021/11/23;10:33:13;¿Podrías explicarme que es el tipado fuerte?;es;explicacion-tipos-de-tipado;0.99;
+2021/11/23;10:38:42;podrias explicarme que significa que un lenguaje sea fuertemente tipado?;es;explicacion-tipos-de-tipado;0.85;
+2021/11/23;10:38:47;tipado;es;"";N/A;""
+2021/11/23;10:47:06;que es el tipado;es;tipado-de-un-lenguaje-de-programacion;0.83;
+2021/11/23;10:47:14;¿Podrías explicarme que significa que un lenguaje de programación sea fuertemente tipado?;es;explicacion-tipos-de-tipado;0.95;
+2021/11/23;11:10:29;Que tipos de datos existen;es;tipos-de-datos;0.99;
+2021/11/23;11:35:43;tipos de datos;es;"";N/A;""
+2021/11/23;11:36:12;¿Podrías explicarme los tipos de datos primitivos?;es;explicacion-tipos-de-datos;0.84;
+2021/11/23;11:36:20;ejemplos de tipos de datos;es;ejemplos-de-tipos-de-datos;0.68;
+2021/11/23;12:05:36;asgfasg;de;"";N/A;""
+2021/11/23;12:24:49;gracias;es;agradecimientos;0.99;
+2021/11/23;13:52:14;tipo booleano;it;"";N/A;""
+2021/11/23;13:52:19;tipo de dato booleano;es;boolean;0.5;
+2021/11/23;13:54:31;cuales tipos de datos existen;es;tipos-de-datos;0.87;
+2021/11/23;14:07:48;Ejemplos de tipos de datos;es;ejemplos-de-tipos-de-datos;0.68;
+2021/11/23;14:08:14;que es un tipo de dato primitivo;es;definicion-tipos-de-datos;0.51;
+2021/11/23;14:08:30;que tipos de datos existen;es;tipos-de-datos;0.99;
+2021/11/23;14:09:32;tipo de dato string;es;string;0.87;
+2021/11/23;14:16:53;Qué es un dato?;fr;"";N/A;""
+2021/11/23;14:16:55;Cuál es la diferencia entre datos primitivos y compuestos?;es;explicacion-tipos-de-datos;0.83;
+2021/11/23;14:17:14;ole bot, conteste xd;en;despedidas;0.69;
+2021/11/23;14:17:16;¿Qué es un tipo de dato?;es;definicion-tipos-de-datos;0.99;
+2021/11/23;14:17:29;tipo de datos?;es;"";N/A;""
+2021/11/23;14:17:36;me puede brindar un ejemplo de los tipos de datos;es;ejemplos-de-tipos-de-datos;0.65;
+2021/11/23;14:17:37;Definición de dato;es;"";N/A;""
+2021/11/23;14:17:53;como se utilizan los tipos de datos en la programación;es;definicion-programacion;0.76;
+2021/11/23;14:17:56;Qué es un tipo de dato?;en;despedidas;0.56;
+2021/11/23;14:18:10;¿Que es un tipo de dato?;es;definicion-tipos-de-datos;0.99;
+2021/11/23;14:18:15;para que sirven los tipos de datos;es;utilidad-tipos-de-datos;0.99;
+2021/11/23;14:18:28;que es un dato primitivo ?;es;"";N/A;""
+2021/11/23;14:18:28;Para que sirve usar los datos primitivos;es;explicacion-tipos-de-datos;0.55;
+2021/11/23;14:18:28;Los datos primitivos son variables?;es;explicacion-tipos-de-datos;0.83;
+2021/11/23;14:18:33;ª;es;"";N/A;""
+2021/11/23;14:18:41;¿Que permite saber un tipo de dato?;es;definicion-tipos-de-datos;0.72;
+2021/11/23;14:18:53;¿Cómo se clasifican los datos?;es;"";N/A;""
+2021/11/23;14:19:03;¿Como se clasifican los tipos de datos?;es;"";N/A;""
+2021/11/23;14:19:15;que es un dato primitivo;es;"";N/A;""
+2021/11/23;14:19:29;clasificación de datos;es;"";N/A;""
+2021/11/23;14:19:30;cuales son los datos object?;es;explicacion-tipos-de-datos;0.5;
+2021/11/23;14:19:37;¿Que son datos compuestos?;es;explicacion-tipos-de-datos;0.84;
+2021/11/23;14:19:53;jaja ya lo corche pendejo;en;despedidas;0.79;
+2021/11/23;14:20:09;Que es el tipo de dato float?;es;definicion-tipos-de-datos;0.83;
+2021/11/23;14:20:33;Que hace float?;es;"";N/A;""
+2021/11/23;14:20:42;¿Qué tamaño tienen los datos tipo boolean?;en;despedidas;0.69;
+2021/11/23;14:20:54;Que es el ascii;es;"";N/A;""
+2021/11/23;14:21:07;Cuánto es la cantidad máxima de un tipo entero byte;en;despedidas;0.69;
+2021/11/23;14:21:13;"como que datos irian incluidos en la parte de ""otros""  en los datos compuestos";es;explicacion-tipos-de-datos;0.85;
+2021/11/23;14:21:13;holi;en;despedidas;0.56;
+2021/11/23;14:21:15;Cuales son los tipos de datos;en;despedidas;0.56;
+2021/11/23;14:21:26;¿Que son objetos?;es;"";N/A;""
+2021/11/23;14:21:48;bot?;en;despedidas;0.56;
+2021/11/23;14:21:49;que tipos de datos hay;en;despedidas;0.69;
+2021/11/23;14:21:49;¿Qué función tiene un objeto en Poo?;es;"";N/A;""
+2021/11/23;14:21:59;Que es java?;en;despedidas;0.68;
+2021/11/23;14:22:11;Que es un dato primitivo?;es;"";N/A;""
+2021/11/23;14:22:15;char;en;despedidas;0.56;
+2021/11/23;14:22:39;¿Qué es un vector?;es;"";N/A;""
+2021/11/23;14:22:46;http://prntscr.com/20n7hh5;en;despedidas;0.56;
+2021/11/23;14:23:17;que es un dato compuestos;es;"";N/A;""
+2021/11/23;14:23:21;cual es la longitud de los datos;es;utilidad-tipos-de-datos;0.88;
+2021/11/23;14:23:21;¿Qué hora es?;en;despedidas;0.56;
+2021/11/23;14:23:30;que es una matriz;pt;"";N/A;""
+2021/11/23;14:23:34;SAP;en;despedidas;0.56;
+2021/11/23;14:23:39;¿Que tipos de objetos hay?;es;"";N/A;""
+2021/11/23;14:23:50;Que es una lista;es;"";N/A;""
+2021/11/23;14:24:19;Si;en;despedidas;0.56;
+2021/11/23;14:24:36;¿Cuales son los datos primitivos?;en;despedidas;0.56;
+2021/11/23;14:24:41;que es la matriz;es;"";N/A;""
+2021/11/23;14:24:41;¿Que son bases de datos?;es;explicacion-tipos-de-datos;0.57;
+2021/11/23;14:24:42;¿Cuál es el rango de los short?;es;utilidad-tipos-de-datos;0.78;
+2021/11/23;14:24:50;ola 🤠;fi;"";N/A;""
+2021/11/23;14:24:53;¿Cuál es el tamaño de los boolean?;en;despedidas;0.69;
+2021/11/23;14:24:59;¿Como te llamas?;en;despedidas;0.56;
+2021/11/23;14:25:09;¿Qué tipo de datos existen?;es;tipos-de-datos;0.74;
+2021/11/23;14:25:14;que tipo de datos son las matrizes;es;definicion-tipos-de-datos;0.62;
+2021/11/23;14:25:23;matriz;es;"";N/A;""
+2021/11/23;14:25:25;What is diagram class;en;diagramas-de-clase;0.78;
+2021/11/23;14:25:26;Cuál sería el uso de los tipos de datos lógicos?;es;utilidad-tipos-de-datos;0.9;
+2021/11/23;14:25:31;¿Podrías explicarme que y cuales son los tipos de datos compuestos?;es;explicacion-tipos-de-datos;0.99;
+2021/11/23;14:25:32;Que es un char;en;despedidas;0.56;
+2021/11/23;14:25:34;Qué es un tipo de dato Boolean?;en;despedidas;0.69;
+2021/11/23;14:25:35;¿Cuál es el valor por defecto de una variable de tipo boolean?;es;boolean;0.92;
+2021/11/23;14:25:36;en que consiste un arreglo multidimensional;es;"";N/A;""
+2021/11/23;14:25:40;tipos de lenguajes de programación;es;definicion-programacion;0.89;
+2021/11/23;14:25:49;que tamaño tiene  un boolean ?;es;boolean;0.88;
+2021/11/23;14:26:19;la clasificacion de un tipo de dato;es;"";N/A;""
+2021/11/23;14:26:35;false hace parte de que dato primitivo >;es;definicion-tipos-de-datos;0.52;
+2021/11/23;14:26:47;que es un arreglo de arreglo;es;"";N/A;""
+2021/11/23;14:26:49;Que es un arregla;es;"";N/A;""
+2021/11/23;14:26:55;¿Qué es un ciclo?;en;despedidas;0.56;
+2021/11/23;14:26:58;¿Qué es el Long?;es;"";N/A;""
+2021/11/23;14:27:09;¿que es el disco duro?;en;despedidas;0.56;
+2021/11/23;14:27:12;Tipos de datos;en;despedidas;0.56;
+2021/11/23;14:27:13;datos compuestos;es;explicacion-tipos-de-datos;0.99;
+2021/11/23;14:27:15;que es un arreglo;es;"";N/A;""
+2021/11/23;14:27:23;Cuál es el tamaño de un Byte?;es;"";N/A;""
+2021/11/23;14:27:37;vectores;es;"";N/A;""
+2021/11/23;14:27:44;que es un arreglo multidimensional;es;"";N/A;""
+2021/11/23;14:27:44;¿Qué es un tipo de dato Int?;es;definicion-tipos-de-datos;0.61;
+2021/11/23;14:27:59;Tipos de datos;es;explicacion-tipos-de-datos;0.59;
+2021/11/23;14:28:18;¿Cómo manejo un arreglo tridimencional?;es;saludos;0.6;
+2021/11/23;14:28:34;¿Qué es un tipo de dato?;en;despedidas;0.69;
+2021/11/23;14:28:42;poo;es;"";N/A;""
+2021/11/23;14:28:42;¿Tipos de datos primitivos?;es;explicacion-tipos-de-datos;0.99;
+2021/11/23;14:28:48;¿Cómo se llama el tipo de dato en la Programación Orientada a Objetos?;es;definicion-programacion;0.62;
+2021/11/23;14:29:11;En que casos puedo usar un tipo de dato;es;definicion-tipos-de-datos;0.69;
+2021/11/23;14:29:17;qué clase de tipo de datos pertenece el tipo integer?;es;definicion-tipos-de-datos;0.89;
+2021/11/23;14:29:18;Que tipos de datos hay?;es;tipos-de-datos;0.52;
+2021/11/23;14:29:19;¿Que es un tipo de dato?;en;despedidas;0.69;
+2021/11/23;14:29:25;que es un arreglo?;es;"";N/A;""
+2021/11/23;14:29:32;que es matriz;es;"";N/A;""
+2021/11/23;14:29:33;¿A cuánto equivale 1TB en bits?;en;despedidas;0.78;
+2021/11/23;14:29:38;¿Podrías explicarme que y cuales son los tipos de datos primitivos?;es;explicacion-tipos-de-datos;0.99;
+2021/11/23;14:29:39;Que es un dato;es;"";N/A;""
+2021/11/23;14:30:27;Un ejemplo de un dato Primitivo;es;ejemplo-diagrama-de-clases;0.51;
+2021/11/23;14:30:48;que tipos de arreglos hay?;es;"";N/A;""
+2021/11/23;14:31:01;Muchas gracias;es;agradecimientos;0.99;
+2021/11/23;14:31:03;Me podrias dar algunos ejemplos;es;"";N/A;""
+2021/11/23;14:31:11;Hola;es;saludos;0.99;
+2021/11/23;14:31:35;tienes el ejemplo de un dato primitivo?;es;"";N/A;""
+2021/11/23;14:31:41;que es un dato?;es;"";N/A;""
+2021/11/23;14:32:16;Que hora es?;en;despedidas;0.56;
+2021/11/23;14:32:24;que son los datos primitivos;es;explicacion-tipos-de-datos;0.78;
+2021/11/23;14:32:24;¿Cómo manejo un arreglo de datos unidimensional?;es;construccion-diagrama-de-clases;0.63;
+2021/11/23;14:32:39;que es un dato;es;"";N/A;""
+2021/11/23;14:32:40;¿Qué es un dato?;es;"";N/A;""
+2021/11/23;14:32:48;Qué es un arreglo?;en;despedidas;0.56;
+2021/11/23;14:32:53;Que tipos de datos existen?;en;despedidas;0.69;
+2021/11/23;14:33:01;que arreglos hay;es;saludos;0.7;
+2021/11/23;14:35:09;que son las bases de datos relacionales;es;explicacion-tipos-de-datos;0.52;
+2021/11/23;14:35:21;que es un tipo de dato?;es;definicion-tipos-de-datos;0.99;
+2021/11/23;14:37:10;HOLA;en;despedidas;0.55;
+2021/11/23;14:39:54;cuando se fundo el palacio de justicia?;en;despedidas;0.69;
+2021/11/23;14:40:53;¿Quién fue el primer ingeniero de sistemas ?;en;despedidas;0.69;
+2021/11/23;14:41:55;CUANDO SE FUNDO EL PALACIO DE JUSTICIA;es;"";N/A;""
+2021/11/23;14:43:05;Hola;en;despedidas;0.55;
+2021/11/23;14:44:28;hello;en;saludos;0.99;
+2021/11/23;14:45:05;hola;en;despedidas;0.55;
+2021/11/23;14:45:17;que son los tipos de datos compuestos;en;despedidas;0.56;
+2021/11/23;14:46:48;que son los tipos de datos primitivos?;en;despedidas;0.56;
+2021/11/23;14:47:54;arreglos;es;"";N/A;""
+2021/11/23;14:48:46;que es string;es;string;0.85;
+2021/11/23;14:49:18;que es Integer;es;"";N/A;""
+2021/11/27;00:10:10;que es un diagrama de clase?;es;diagramas-de-clase;0.72;
+2021/11/27;00:11:44;podrias darme ejemplos de tipos de datos?;es;ejemplos-de-tipos-de-datos;0.9;
+2021/11/27;00:12:43;adios;es;despedidas;0.99;
+2021/11/27;00:13:19;muchas gracias;es;agradecimientos;0.99;
+2021/12/15;18:45:13;que es un string;en;despedidas;0.56;
+2021/12/15;18:45:16;string+;en;despedidas;0.56;
+2021/12/15;18:45:21;que es un dato de tipo string;en;despedidas;0.56;
+2021/12/15;18:47:36;que es un dato de tipo string;it;string;0.87;
+2021/12/15;19:14:37;que es un dato de tipo integer;es;integer;0.99;
+2021/12/15;19:15:28;que es un integer;ca;integer;0.99;
+2021/12/15;19:15:31;que es un string;es;string;0.99;
+2021/12/15;19:15:35;que es un char;es;character;0.99;
+2021/12/15;19:16:05;dato de tipo integer;it;integer;0.85;
+2021/12/15;19:16:33;dato de tipo integer;es;integer;0.85;
+2021/12/15;19:16:40;dato de tipo char;es;character;0.83;
+2021/12/16;18:23:10;adios;ca;despedidas;0.99;
+2021/12/16;18:23:14;hola;es;saludos;0.99;
+2021/12/16;18:23:28;integer;es;integer;0.54;
+2021/12/16;18:23:37;atring;es;"";N/A;""
+2021/12/16;18:23:39;string;es;string;0.99;
+2021/12/16;18:38:44;tamaño del integer;es;integer;0.81;
+2021/12/16;18:47:31;tipos de datos short;es;short;0.6;
+2021/12/16;19:05:47;tipos de datos byte;es;byte;0.51;
+2021/12/16;19:06:06;datos byte;es;byte;0.55;
+2021/12/16;19:17:38;datos de tipo double;pt;double;0.81;
+2022/01/12;17:43:43;Tipo de dato string;es;string;0.9;
+2022/01/12;17:45:55;tipo de dato long;es;long;0.99;
+2022/01/13;18:05:54;tipo de dato byte;it;byte;0.99;
+2022/01/19;18:05:59;object;ca;object;0.99;
+2022/02/04;12:43:29;tipo de dato double;pt;double;0.99;
+2022/02/17;00:43:46;que es un double;fr;double;0.86;
+2022/02/17;00:45:32;tipos de datos primitivos;es;explicacion-tipos-de-datos;0.99;
+2022/02/24;00:41:48;Que es un tipo de datooo???;es;"";N/A;""
+2022/02/24;00:42:49;tipo de datos;es;"";N/A;""
+2022/02/24;00:43:06;que es un tipo de dato;es;definicion-tipos-de-datos;0.99;
+2022/02/24;00:44:00;que es un diagrama de clase;es;diagramas-de-clase;0.72;
+2022/02/24;00:44:12;como hago un diagrama de clase;es;diagramas-de-clase;0.64;
+2022/03/02;19:54:06;que son los tipos de datos;es;definicion-tipos-de-datos;0.99;

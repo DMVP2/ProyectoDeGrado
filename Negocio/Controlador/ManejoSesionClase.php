@@ -211,7 +211,7 @@ class ManejoSesionClase
      */
     public function listarFichasBibliograficasPorSesionClase($pCodigo)
     {
-        $fichaBibliograficaDAO = CuestionarioDAO::getCuestionarioDAO($this->conexion);
+        $fichaBibliograficaDAO = FichaBibliograficaDAO::getFichaBibliograficaDAO($this->conexion);
         return $fichaBibliograficaDAO->listarFichasBibliograficasPorSesionClase($pCodigo);
     }
 

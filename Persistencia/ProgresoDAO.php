@@ -109,9 +109,9 @@ class ProgresoDAO implements DAO
      * @param int $pCodigo
      * @return Progreso $progreso
      */
-    public function buscarProgreso($pCodigo)
+    public function buscarProgreso($pCodigoEstudiante, $pCodigoSesionClase)
     {
-        $sql = "SELECT * FROM PROGRESO WHERE id_estudiante = " . $pCodigo;
+        $sql = "SELECT * FROM PROGRESO WHERE id_estudiante = " . $pCodigoEstudiante . " AND " . "id_sesion = " . $pCodigoSesionClase;
 
         $respuesta1 = pg_query($this->conexion, $sql);
 

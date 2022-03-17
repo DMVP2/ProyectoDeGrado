@@ -19,6 +19,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_PERSISTENCIA . '
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoSesionClase.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_MANEJOS . "ManejoUsuario.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "SesionClase.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Cuestionario.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_ENTIDADES . "Usuario.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_UTILIDADES . "CreacionCodigos.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_SESION . 'SesionActual.php');
@@ -39,6 +40,34 @@ $nombre = $_POST['nombre'];
 $video = $_POST['nombre'];
 $puntuacion = $_POST['puntuacion'];
 $duracion = $_POST['duracion'];
+$pregunta = $_POST['pregunta'];
+$opcionA = $_POST['opcionA'];
+$opcionB = $_POST['opcionB'];
+$opcionC = $_POST['opcionC'];
+$opcionD = $_POST['opcionD'];
+$opcionE = $_POST['opcionE'];
+$respuestaCorrecta = $_POST['opcion'];
+
+if($respuestaCorrecta == "A")
+{
+    $respuestaCorrecta = $opcionA;
+}
+if($respuestaCorrecta == "B")
+{
+    $respuestaCorrecta = $opcionA;
+}
+if($respuestaCorrecta == "C")
+{
+    $respuestaCorrecta = $opcionA;
+}
+if($respuestaCorrecta == "D")
+{
+    $respuestaCorrecta = $opcionA;
+}
+if($respuestaCorrecta == "E")
+{
+    $respuestaCorrecta = $opcionA;
+}
 
 $creacionCodigo = new CreacionCodigos();
 
@@ -52,8 +81,21 @@ $sesionClase->setVideo($video);
 $sesionClase->setPuntuacion($puntuacion);
 $sesionClase->setDuracion($duracion);
 
+$cuestionario = new Cuestionario();
+
+$cuestionario->setCodigo($codigo);
+$cuestionario->setSesionClase($codigo);
+$cuestionario->setPregunta($pregunta);
+$cuestionario->setOpcionA($opcionA);
+$cuestionario->setOpcionB($opcionB);
+$cuestionario->setOpcionC($opcionC);
+$cuestionario->setOpcionD($opcionD);
+$cuestionario->setOpcionE($opcionE);
+$cuestionario->setRespuestaCorrecta($respuestaCorrecta);
+
 try {
     $manejoSesionClase->crearSesionClase($sesionClase, $idTematica);
+    $manejoSesionClase->crearCuestionario($cuestionario);
     echo "<script>
             alert('Actualización exitosa');
             </script>";
