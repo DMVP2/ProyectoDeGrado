@@ -39,4 +39,8 @@ define('RUTA_UTILIDADES', '/Negocio/Utilidades/');
 
 define('RUTA_SESION', '/Sesion/');
 
+// Rutas sistema de recomendación
+
+define('SISTEMA_RECOMENDACION', '/SistemaRecomendador/');
+
 ?>

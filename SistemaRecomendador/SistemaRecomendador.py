@@ -1,10 +1,8 @@
-import csv
 from rake_nltk import Rake
 import nltk
 nltk.download('stopwords')
 nltk.download('punkt')
 import pandas as pd
-import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 import warnings
@@ -14,10 +12,7 @@ warnings.filterwarnings("ignore")
 
 def lecturaArchivoCSV(pArchivo):
     # Lectura del archivo CSV
-    print("Leyendo el archivo CSV")
-    print("\n")
     df = pd.read_csv(pArchivo, sep=";", encoding ='latin1')
-    print(df)
     return df
 
 def analisisGeneralArchivoCSV(pDataframe):
@@ -69,7 +64,6 @@ def preprocesamientoDatos(pDataframe):
         r.extract_keywords_from_text(str(row['Explicación']))
         key_words_dict_scores = r.get_word_degrees()
         row['Key_words_Explicacion'] = list(key_words_dict_scores.keys())
-    print(df)
     return df
 
 # Representación de las palabras
@@ -96,7 +90,6 @@ def matrizSimilaridad(pDataframe):
     count_matrix = count.fit_transform(df['Bag_of_words'])
     count_matrix
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
-    print(cosine_sim)
     return cosine_sim
 
 def recomendar(pTema, pCosine_sim, pDataframe):
@@ -104,8 +97,6 @@ def recomendar(pTema, pCosine_sim, pDataframe):
     cosine_sim = pCosine_sim
     df = pDataframe
     indices = pd.Series(df['Tema'])
-    print(indices[:5])
-    print(len(indices))
     recomendaciones = []
     idx = indices[indices == tema].index[0]
     score_series = pd.Series(cosine_sim[idx]).sort_values(ascending = False)
@@ -117,9 +108,6 @@ def recomendar(pTema, pCosine_sim, pDataframe):
     return recomendaciones
 
 df = lecturaArchivoCSV('D:\Archivos de programa\Xampp\htdocs\ProyectoDeGradoRepositorio\SistemaRecomendador\Dataset-RecommenderSystem.csv')
-analisisGeneralArchivoCSV(df)
 df = preprocesamientoDatos(df)
 df = bolsaPalabras(df)
 similaridad = matrizSimilaridad(df)
-
-print(recomendar('Búsqueda binaria', similaridad, df))

@@ -59,7 +59,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_DOCENTE . 'reportes.php' ?>">
                             <i class="ni ni-book-bookmark text-primary"></i>
                             <span class="nav-link-text">Reportes</span>
                         </a>
