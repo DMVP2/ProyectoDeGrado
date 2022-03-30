@@ -109,7 +109,7 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
 
     <!-- Sidebar -->
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarEstudiante.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . DIRECTORIO_RAIZ . RUTA_COMPONENTES . 'sidebarAdministrador.php'; ?>
 
     <!-- Fin Sidebar -->
 
@@ -172,7 +172,6 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                     <div class="row">
                         <div class="col-xl-3 col-md-6">
                             <div class="card card-stats">
-                                <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
@@ -193,7 +192,6 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card card-stats">
-                                <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
@@ -214,7 +212,6 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card card-stats">
-                                <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
@@ -235,7 +232,6 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card card-stats">
-                                <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
