@@ -15,7 +15,7 @@ class PDF extends FPDF
     // Movernos a la derecha
     $this->Cell(60);
     // Título
-    $this->Cell(215, 65, $resultadoPython, 0, 0, 'C');
+    $this->Cell(215, 65, "", 0, 0, 'C');
     // Salto de línea
     $this->Ln(42);
     }
@@ -45,7 +45,12 @@ class PDF extends FPDF
 
     $tematicas = explode(",", $arreglo1);
 
-    $pdf->MultiCell(195, 5, utf8_decode("Considerando que se tiene principalmente dificultad en la temática: ") . utf8_decode($tematicas[0]) . utf8_decode(" se recomienda afianzar complementariamente los siguientes subtemas: "), 1, 'J');
+    $pdf->MultiCell(195, 5, utf8_decode("A nivel general se tienen dificultades en las siguientes temáticas: " . utf8_decode($tematicas[0]) . ", " . utf8_decode($tematicas[1]) . ", " . utf8_decode($tematicas[2]) . " para lo cual, aparte de la tematica en sí, se recomienda reforzar tambien las siguientes subtemáticas:" ), 0, 'J');
+
+    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
+    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
+
+    $pdf->MultiCell(195, 5, utf8_decode("Temática 1: ") . utf8_decode($tematicas[0]), 0, 'J');
 
     $i = 1;
 
@@ -54,7 +59,51 @@ class PDF extends FPDF
         $tematica = ltrim($tematicas[$i], "'");
         $tematica = rtrim($tematica, "'");
 
-        $pdf->Cell(195, 5, $i . ". " . utf8_decode($tematica), 1, 1, 'L', 0);
+        $pdf->Cell(195, 5, $i . ". " . utf8_decode($tematica), 0, 1, 'L', 0);
+        
+        $i++;
+    }
+
+    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
+    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
+
+    $arreglo2 = substr($arreglos[1], 0, -1);
+    $arreglo2 = substr($arreglo2, 1);
+
+    $tematicas = explode(",", $arreglo2);
+
+    $pdf->MultiCell(195, 5, utf8_decode("Temática 2: ") . utf8_decode($tematicas[1]), 0, 'J');
+
+    $i = 1;
+
+    while($i < 6)
+    {
+        $tematica = ltrim($tematicas[$i], "'");
+        $tematica = rtrim($tematica, "'");
+
+        $pdf->Cell(195, 5, $i . ". " . utf8_decode($tematica), 0, 1, 'L', 0);
+        
+        $i++;
+    }
+
+    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
+    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
+
+    $arreglo3 = substr($arreglos[2], 0, -1);
+    $arreglo3 = substr($arreglo3, 1);
+
+    $tematicas = explode(",", $arreglo3);
+
+    $pdf->MultiCell(195, 5, utf8_decode("Temática 3: ") . utf8_decode($tematicas[2]), 0, 'J');
+
+    $i = 1;
+
+    while($i < 6)
+    {
+        $tematica = ltrim($tematicas[$i], "'");
+        $tematica = rtrim($tematica, "'");
+
+        $pdf->Cell(195, 5, $i . ". " . utf8_decode($tematica), 0, 1, 'L', 0);
         
         $i++;
     }

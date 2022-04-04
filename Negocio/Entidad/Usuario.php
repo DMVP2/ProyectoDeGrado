@@ -162,5 +162,4 @@ class Usuario
     {
         $this->status = $pStatus;
     }
-
 }

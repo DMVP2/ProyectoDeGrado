@@ -124,6 +124,7 @@ class DocenteDAO implements DAO
             $docente->setNombre($row->nombre_docente);
             $docente->setApellido($row->apellido_docente);
             $docente->setCorreoElectronico($row->email_docente);
+            $docente->setStatus($row->status);
         } 
         else
         {
@@ -181,7 +182,7 @@ class DocenteDAO implements DAO
      */
     public function activarDocente($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "UPDATE DOCENTE SET" . " status = " . "'" . "Activo" . "'" . " WHERE id_docente = " . $pCodigo;
         pg_query($this->conexion, $sql);
     }
 
@@ -192,7 +193,7 @@ class DocenteDAO implements DAO
      */
     public function desactivarDocente($pCodigo)
     {
-        $sql = "AQUI SE INSERTA EL SQL" . $pCodigo;
+        $sql = "UPDATE DOCENTE SET" . " status = " . "'" . "Inactivo" . "'" . " WHERE id_docente = " . $pCodigo;
         pg_query($this->conexion, $sql);
     }
 

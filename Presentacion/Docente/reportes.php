@@ -129,11 +129,9 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
             <div class="container-fluid">
                 <div class="header-body">
                     <div class="nav-wrapper position-relative end-0">
-
                         <div class="col-4 text-right" style="float: right;">
                             <a href="<?php echo DIRECTORIO_RAIZ . RUTA_DOCENTE . 'reporteGeneral.php' ?>" class="btn btn-success">Reporte general</a>
                         </div>
-
                     </div>
                     <div class="row align-items-center py-4">
 

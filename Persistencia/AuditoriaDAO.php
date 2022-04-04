@@ -102,7 +102,7 @@ class AuditoriaDAO implements DAO
     public function listarAuditorias($pInicio, $pNumeroDeItemsPorPagina)
     {
 
-        $sql = "SELECT * FROM AUDITORIA ORDER BY id_usuario ASC LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
+        $sql = "SELECT * FROM AUDITORIA LIMIT " . $pNumeroDeItemsPorPagina . " OFFSET " . $pInicio;
 
         if (!$respuesta1 = pg_query($this->conexion, $sql)) die();
 
@@ -113,7 +113,6 @@ class AuditoriaDAO implements DAO
 
             $auditoria = new Auditoria();
 
-            $auditoria->setCodigo($row['id_usuario']);
             $auditoria->setNombreTabla($row['nombre_tabla']);
             $auditoria->setDireccionIP($row['direccion_ip']);
             $auditoria->setOperacionRealizada($row['operacion_realizada']);

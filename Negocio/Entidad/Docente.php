@@ -44,12 +44,12 @@ class Docente
      */
     private $email;
 
-   /**
-     * Arreglo que contiene los ID de las Sesiones de Clase que componen el docente
+    /**
+     * Status del Docente
      * 
-     * @var Array $horariosAtencion
+     * @var String $status
      */
-    private $horariosAtencion;
+    private $status;
 
     //----------------------------------
     // Constructor
@@ -143,24 +143,23 @@ class Docente
         $this->email = $pEmail;
     }
 
-
     /**
-     * Método que obtiene el arreglo con los ID de las Sesiones de Clase que componen al Docente
+     * Método que obtiene el status del Docente
      * 
-     * @return Array $horariosAtencion
+     * @return String $status
      */
-    public function getHorariosAtencion()
+    public function getStatus()
     {
-        return $this->horariosAtencion;
+        return $this->status;
     }
 
     /**
-     * Método que establece el arreglo con los ID de las Sesiones de Clase que componen al Docente
+     * Método que establece el status del Docente
      * 
-     * @param Array $pHorariosAtencion
+     * @param String $pStatus
      */
-    public function setHorariosAtencion($pHorariosAtencion)
+    public function setStatus($pStatus)
     {
-        $this->horariosAtencion = $pHorariosAtencion;
+        $this->status = $pStatus;
     }
 }

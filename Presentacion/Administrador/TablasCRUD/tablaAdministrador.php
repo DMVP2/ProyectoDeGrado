@@ -197,8 +197,7 @@ $manejoAdministrador = new ManejoAdministrador($conexionActual);
                                                 <div class='dropdown'>
                                                     <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i></a>
                                                     <div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
-                                                        <a class='dropdown-item' href='#'>Editar</a>
-                                                        <a class='dropdown-item' href='#'>Activar/Desactivar</a>
+                                                        <a class='dropdown-item' href='" . DIRECTORIO_RAIZ . RUTA_FORMULARIOS . "editarAdministrador.php" . "?id=" . $administrador->getCodigo() . "'>Editar</a>
                                                     </div>
                                                 </div>
                                                 </td>";

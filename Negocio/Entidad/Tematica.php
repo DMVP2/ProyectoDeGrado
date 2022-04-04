@@ -51,6 +51,13 @@ class Tematica
      */
     private $sesionesClase;
 
+    /**
+     * Status de la temática
+     * 
+     * @var String $status
+     */
+    private $status;
+
     //----------------------------------
     // Constructor
     //----------------------------------
@@ -161,5 +168,25 @@ class Tematica
     public function setSesionesClase($pSesionesClase)
     {
         $this->sesionesClase = $pSesionesClase;
+    }
+
+    /**
+     * Método que obtiene el status de la temática
+     * 
+     * @return String $status
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Método que establece el status de la temática
+     * 
+     * @param String $pStatus
+     */
+    public function setStatus($pStatus)
+    {
+        $this->status = $pStatus;
     }
 }

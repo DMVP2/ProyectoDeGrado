@@ -72,6 +72,13 @@ class Estudiante
      */
     private $progreso;
 
+    /**
+     * Status del estudiante
+     * 
+     * @var String $status
+     */
+    private $status;
+
     //----------------------------------
     // Constructor
     //----------------------------------
@@ -244,5 +251,24 @@ class Estudiante
         $this->progreso = $pProgreso;
     }
 
+    /**
+     * Método que obtiene el status del estudiante
+     * 
+     * @return String $status
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Método que establece el status del estudiante
+     * 
+     * @param String $pStatus
+     */
+    public function setStatus($pStatus)
+    {
+        $this->status = $pStatus;
+    }
 }
 

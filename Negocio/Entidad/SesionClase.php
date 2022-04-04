@@ -65,6 +65,13 @@ class SesionClase
      */
     private $fichasBibliograficas;
 
+    /**
+     * Status de la temática
+     * 
+     * @var String $status
+     */
+    private $status;
+
     //----------------------------------
     // Constructor
     //----------------------------------
@@ -215,6 +222,26 @@ class SesionClase
     public function setFichasBibliograficas($pFichasBibliograficas)
     {
         $this->fichasBibliograficas = $pFichasBibliograficas;
+    }
+
+    /**
+     * Método que obtiene el status de la sesión de clase
+     * 
+     * @return String $status
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Método que establece el status de la sesión de clase
+     * 
+     * @param String $pStatus
+     */
+    public function setStatus($pStatus)
+    {
+        $this->status = $pStatus;
     }
 }
 

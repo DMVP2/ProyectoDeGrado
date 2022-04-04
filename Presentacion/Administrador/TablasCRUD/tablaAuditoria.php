@@ -149,7 +149,6 @@ $manejoAuditoria = new ManejoAuditoria($conexionActual);
                                         <th scope="col">Nuevo valor</th>
                                         <th scope="col">fecha operación</th>
                                         <th scope="col">Hora operación</th>
-                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -199,15 +198,6 @@ $manejoAuditoria = new ManejoAuditoria($conexionActual);
                                             echo "<td>" . $auditoria->getNuevoValor() . "</td>";
                                             echo "<td>" . $auditoria->getFechaOperacion() . "</td>";
                                             echo "<td>" . $auditoria->getHoraOperacion() . "</td>";
-                                            echo "<td class='text-right'>
-                                                <div class='dropdown'>
-                                                    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i></a>
-                                                    <div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
-                                                        <a class='dropdown-item' href='#'>Editar</a>
-                                                        <a class='dropdown-item' href='#'>Activar/Desactivar</a>
-                                                    </div>
-                                                </div>
-                                                </td>";
                                             echo "</tr>";
                                         }
                                         echo '<div class="card-footer py-4">';

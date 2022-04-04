@@ -119,9 +119,83 @@ $codigoSesionClase = $_GET['id'];
 
         <!-- Header -->
 
+        <?php
+
+        $sesionClase = $manejoSesionClase->buscarSesionClase($codigoSesionClase);
+        $cuestionario = $manejoSesionClase->buscarCuestionario($codigoSesionClase);
+        $progreso = $manejoEstudiante->buscarProgreso($usuario->getCodigo(), $codigoSesionClase);
+
+        if ($progreso != null) {
+
+            $respuestaReal = "";
+
+            if ($cuestionario->getOpcionA() == $cuestionario->getRespuestaCorrecta()) {
+                $respuestaReal = "A";
+            }
+            if ($cuestionario->getOpcionB() == $cuestionario->getRespuestaCorrecta()) {
+                $respuestaReal = "B";
+            }
+            if ($cuestionario->getOpcionC() == $cuestionario->getRespuestaCorrecta()) {
+                $respuestaReal = "C";
+            }
+            if ($cuestionario->getOpcionD() == $cuestionario->getRespuestaCorrecta()) {
+                $respuestaReal = "D";
+            }
+            if ($cuestionario->getOpcionE() == $cuestionario->getRespuestaCorrecta()) {
+                $respuestaReal = "E";
+            }
+
+            $respuestaDada = 1;
+
+            if ($progreso->getOpcionA() == 1) {
+                $respuestaDada = "A";
+            }
+            if ($progreso->getOpcionB() == 1) {
+                $respuestaDada = "B";
+            }
+            if ($progreso->getOpcionC() == 1) {
+                $respuestaDada = "C";
+            }
+            if ($progreso->getOpcionD() == 1) {
+                $respuestaDada = "D";
+            }
+            if ($progreso->getOpcionE() == 1) {
+                $respuestaDada = "E";
+            }
+
+            $respuestaCorrecta = $cuestionario->getRespuestaCorrecta();
+
+            $mensaje = "";
+
+            if ($respuestaDada == $respuestaReal) {
+                $mensaje = "La respuesta correcta era " . $respuestaCorrecta . " y la respuesta que has dado fue " . $respuestaDada . " así que la solución es correcta";
+            } else {
+                $mensaje = "La respuesta correcta era " . $respuestaCorrecta . " y la respuesta que has dado fue " . $respuestaDada . " así que la solución es incorrecta";
+            }
+        }
+
+        ?>
+
         <div class="header bg-primary pb-6">
             <div class="container-fluid">
                 <div class="header-body">
+
+                    <?php
+
+                    if ($progreso != null) {
+
+                    ?>
+
+                        <div class="nav-wrapper position-relative end-0">
+                            <div class="col-4 text-right" style="float: right;">
+                                <a href="<?php echo DIRECTORIO_RAIZ . RUTA_ESTUDIANTE . 'reporte.php' . "?idEstudiante=" . $usuario->getCodigo() . "&idSesionClase=" . $codigoSesionClase ?>" class="btn btn-success">Recomendaciones</a>
+                            </div>
+                        </div>
+
+                    <?php
+                    }
+                    ?>
+
                     <div class="row align-items-center py-4">
 
                         <!-- Este espacio se queda en blanco -->
@@ -130,67 +204,9 @@ $codigoSesionClase = $_GET['id'];
 
                     <?php
 
-                    $sesionClase = $manejoSesionClase->buscarSesionClase($codigoSesionClase);
-                    $cuestionario = $manejoSesionClase->buscarCuestionario($codigoSesionClase);
-                    $progreso = $manejoEstudiante->buscarProgreso($usuario->getCodigo(), $codigoSesionClase);
-
-                    if ($progreso != null) {
-
-                        $respuestaReal = "";
-
-                        if ($cuestionario->getOpcionA() == $cuestionario->getRespuestaCorrecta()) {
-                            $respuestaReal = "A";
-                        }
-                        if ($cuestionario->getOpcionB() == $cuestionario->getRespuestaCorrecta()) {
-                            $respuestaReal = "B";
-                        }
-                        if ($cuestionario->getOpcionC() == $cuestionario->getRespuestaCorrecta()) {
-                            $respuestaReal = "C";
-                        }
-                        if ($cuestionario->getOpcionD() == $cuestionario->getRespuestaCorrecta()) {
-                            $respuestaReal = "D";
-                        }
-                        if ($cuestionario->getOpcionE() == $cuestionario->getRespuestaCorrecta()) {
-                            $respuestaReal = "E";
-                        }
-
-                        $respuestaDada = 1;
-
-                        if ($progreso->getOpcionA() == 1) {
-                            $respuestaDada = "A";
-                        }
-                        if ($progreso->getOpcionB() == 1) {
-                            $respuestaDada = "B";
-                        }
-                        if ($progreso->getOpcionC() == 1) {
-                            $respuestaDada = "C";
-                        }
-                        if ($progreso->getOpcionD() == 1) {
-                            $respuestaDada = "D";
-                        }
-                        if ($progreso->getOpcionE() == 1) {
-                            $respuestaDada = "E";
-                        }
-
-                        $respuestaCorrecta = $cuestionario->getRespuestaCorrecta();
-
-                        $mensaje = "";
-
-                        if ($respuestaDada == $respuestaReal) {
-                            $mensaje = "La respuesta correcta era " . $respuestaCorrecta . " y la respuesta que has dado fue " . $respuestaDada . " así que la solución es correcta";
-                        } else {
-                            $mensaje = "La respuesta correcta era " . $respuestaCorrecta . " y la respuesta que has dado fue " . $respuestaDada . " así que la solución es incorrecta";
-                        }
-                    }
-
-                    ?>
-
-                    <?php
-
                     if ($progreso != null) {
 
                     ?>
-
                         <div class="row">
                             <div class="card">
                                 <div class="card-body pt-2">

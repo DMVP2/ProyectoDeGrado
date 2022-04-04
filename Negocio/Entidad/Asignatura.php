@@ -86,6 +86,13 @@ class Asignatura
      */
     private $tematicas;
 
+    /**
+     * Status de la asignatura
+     * 
+     * @var String $status
+     */
+    private $status;
+
     //----------------------------------
     // Constructor
     //----------------------------------
@@ -296,6 +303,26 @@ class Asignatura
     public function setTematicas($pTematicas)
     {
         $this->tematicas = $pTematicas;
+    }
+
+    /**
+     * Método que obtiene el status de la asignatura
+     * 
+     * @return String $status
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Método que establece el status de la asignatura
+     * 
+     * @param String $pStatus
+     */
+    public function setStatus($pStatus)
+    {
+        $this->status = $pStatus;
     }
 }
 

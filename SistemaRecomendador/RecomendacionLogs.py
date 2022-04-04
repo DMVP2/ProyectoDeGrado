@@ -66,7 +66,6 @@ tematicas = localizarTematicasIntents(masRepetidos, intentsTematicas)
 df = sr.lecturaArchivoCSV('D:\Archivos de programa\Xampp\htdocs\ProyectoDeGradoRepositorio\SistemaRecomendador\Dataset-RecommenderSystem.csv')
 df = sr.preprocesamientoDatos(df)
 df = sr.bolsaPalabras(df)
-
 similaridad = sr.matrizSimilaridad(df)
 
 for intent in tematicas:
