@@ -107,7 +107,7 @@ $sesionUsuario->closeSession();
                 <medium>Bienvenido a RetoñosApp</medium>
               </div>
               <div class="text-center text-muted mb-4">
-              <small>Ingrese sus credenciales</small>
+                <small>Ingrese sus credenciales</small>
               </div>
               <form role="form" method="POST" action="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>">
                 <div class="form-group mb-3">
@@ -134,7 +134,7 @@ $sesionUsuario->closeSession();
           </div>
           <div class="row mt-3">
             <div class="col-6">
-              <a href="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>" class="text-light"><small>Olvidé mi contraseña</small></a>
+              <!-- <a href="<?php echo DIRECTORIO_RAIZ . RUTA_SESION . 'IniciarSesion.php' ?>" class="text-light"><small>Olvidé mi contraseña</small></a> -->
             </div>
             <div class="col-6 text-right">
               <a href="<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . 'registroEstudiante.php' ?>" class="text-light"><small>Registrarse</small></a>
