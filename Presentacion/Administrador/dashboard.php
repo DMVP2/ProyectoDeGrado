@@ -143,8 +143,7 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
 
                     $listadoEstudiantes = $manejoEstudiante->listarEstudiantesSinPaginacion();
 
-                    foreach($listadoEstudiantes as $estudiante)
-                    {
+                    foreach ($listadoEstudiantes as $estudiante) {
                         $progresosEstudiante = $manejoEstudiante->listarProgresosPorEstudiante($estudiante->getCodigo());
 
                         $cantidadProgresos = $cantidadProgresos + count($progresosEstudiante);
@@ -154,18 +153,20 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                     $promedioCalificaciones = 0;
                     $promediosTotales = 0;
 
-                    foreach($listadoEstudiantes as $estudiante)
-                    {
+                    foreach ($listadoEstudiantes as $estudiante) {
                         $progresosEstudiante = $manejoEstudiante->listarProgresosPorEstudiante($estudiante->getCodigo());
 
-                        foreach($progresosEstudiante as $progreso)
-                        {
+                        foreach ($progresosEstudiante as $progreso) {
                             $sumatoriaPromedio = $sumatoriaPromedio + $progreso->getPuntajeObtenido();
                             $promediosTotales = $promediosTotales + 1;
                         }
                     }
 
-                    $promedioCalificaciones = $sumatoriaPromedio / $promediosTotales;
+                    if ($promediosTotales != 0) {
+                        $promedioCalificaciones = $sumatoriaPromedio / $promediosTotales;
+                    } else if ($promediosTotales == 0) {
+                        $promedioCalificaciones = $sumatoriaPromedio / 1;
+                    }
 
                     ?>
 
@@ -236,7 +237,8 @@ $manejoUsuario = new ManejoUsuario($conexionActual);
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Progreso estudiantil</h5>
-                                            <!-- <span class="h2 font-weight-bold mb-0"><?php // echo "Promedio: " . $promedioCalificaciones ?></span> -->
+                                            <!-- <span class="h2 font-weight-bold mb-0"><?php // echo "Promedio: " . $promedioCalificaciones 
+                                                                                        ?></span> -->
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">

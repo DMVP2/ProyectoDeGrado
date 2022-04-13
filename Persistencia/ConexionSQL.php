@@ -32,7 +32,7 @@ class ConexionSQL
     {
         $server = "localhost";
         $user = "retonosa_admin";
-        $pass = "123A456S789D0";
+        $pass = "RzA2j9ZSQd#";
         $bd = "retonosa_retonosapp";
         $port = "5432";
 
