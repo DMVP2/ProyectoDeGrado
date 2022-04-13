@@ -8,7 +8,7 @@ define('NOMBRE_PROYECTO_UEB', 'RetoñosApp - Universidad El Bosque');
 
 // Directorio raiz
 
-define('DIRECTORIO_RAIZ', '/ProyectoDeGradoRepositorio');
+define('DIRECTORIO_RAIZ', '');
 
 // Rutas capa de presentación
 
@@ -38,5 +38,9 @@ define('RUTA_UTILIDADES', '/Negocio/Utilidades/');
 // Rutas referentes al manejo de sesiones
 
 define('RUTA_SESION', '/Sesion/');
+
+// Rutas sistema de recomendación
+
+define('SISTEMA_RECOMENDACION', '/SistemaRecomendador/');
 
 ?>
