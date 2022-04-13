@@ -44,7 +44,7 @@ $administrador = new Administrador();
 $administrador->setCodigo($codigo);
 $administrador->setNombre($nombre);
 $administrador->setApellido($apellido);
-$administrador->setCorreoElectronicoPrincipal($correoElectronicoPrincipal);
+$administrador->setCorreoElectronico($correoElectronicoPrincipal);
 $administrador->setTelefono($telefono);
 
 try {

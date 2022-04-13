@@ -188,7 +188,7 @@ $administrador = $manejoAdministrador->buscarAdministrador($usuario->getCodigo()
                                             <i class="ni business_briefcase-24 mr-2"></i><?php echo $administrador->getCorreoElectronico() ?>
                                         </div>
                                         <div class="h5 mt-4">
-                                            <p style="color:green;">En linea</p>
+                                            <p style="color:green;">En línea</p>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +204,9 @@ $administrador = $manejoAdministrador->buscarAdministrador($usuario->getCodigo()
                                     <h3 class="mb-0">Perfil del usuario</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <button type="button" class="btn btn-outline-success">Actualizar perfil</button>
+                                    <form method="POST" action=<?php echo DIRECTORIO_RAIZ . RUTA_FORMULARIOS . "editarAdministrador.php?id=0"?>>
+                                        <button type="submit" class="btn btn-outline-success">Actualizar perfil</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

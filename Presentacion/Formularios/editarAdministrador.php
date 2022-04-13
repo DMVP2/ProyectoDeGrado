@@ -50,7 +50,11 @@ $codigoAdministrador = $_GET['id'];
 
 // Invocación de métodos
 
-$administrador = $manejoAdministrador->buscarAdministrador($codigoAdministrador);
+if (strcasecmp($codigoAdministrador, "0") == 0) {
+  $administrador = $manejoAdministrador->buscarAdministrador($usuario->getCodigo());
+} else {
+  $administrador = $manejoAdministrador->buscarAdministrador($codigoAdministrador);
+}
 
 ?>
 <!DOCTYPE html>

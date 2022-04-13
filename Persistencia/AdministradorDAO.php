@@ -122,7 +122,7 @@ class AdministradorDAO implements DAO
             $administrador->setCodigo($row->id_administrador);
             $administrador->setNombre($row->nombre_administrador);
             $administrador->setApellido($row->apellido_administrador);
-            $administrador->setTelefono($row->tel_administrador);
+            $administrador->setTelefono($row->telefono_administrador);
             $administrador->setCorreoElectronico($row->email_administrador);
 
         } 
@@ -141,7 +141,7 @@ class AdministradorDAO implements DAO
      */
     public function actualizarAdministrador($pAdministrador)
     {
-        $sql = "UPDATE ADMINISTRADOR SET" . " nombre_administrador = " . $pAdministrador->getNombre() . ", apellido_administrador = " . $pAdministrador->getApellido() . ", telefono_administrador = " . $pAdministrador->getTelefono() . ", email_administrador = " . $pAdministrador->getCorreoElectronico() . " WHERE id_administrador = " . $pAdministrador->getCodigo();
+        $sql = "UPDATE ADMINISTRADOR SET" . " nombre_administrador = " . "'" . $pAdministrador->getNombre() . "'" . ", apellido_administrador = " . "'" . $pAdministrador->getApellido() . "'" . ", telefono_administrador = " . "'" . $pAdministrador->getTelefono() . "'" . ", email_administrador = " . "'" . $pAdministrador->getCorreoElectronico() . "'" . " WHERE id_administrador = " . $pAdministrador->getCodigo();
         pg_query($this->conexion, $sql);
     }
 
@@ -169,7 +169,7 @@ class AdministradorDAO implements DAO
             $administrador->setCodigo($row['id_administrador']);
             $administrador->setNombre($row['nombre_administrador']);
             $administrador->setApellido($row['apellido_administrador']);
-            $administrador->setTelefono($row['tel_administrador']);
+            $administrador->setTelefono($row['telefono_administrador']);
             $administrador->setCorreoElectronico($row['email_administrador']);
 
             $datos[] = $administrador;

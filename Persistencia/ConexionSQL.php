@@ -51,7 +51,7 @@ class ConexionSQL
     public function desconectarBD($pConexion)
     {
         $conexion = pg_close($pConexion)
-            or die("An unexpected error occurred in the database disconnect");
+            or die("Error inesperado");
         return $conexion;
     }
 

@@ -95,13 +95,13 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_CRUD . 'tablaUsuario.php' ?>">
                                     <i class="ni ni-settings-gear-65 text-primary"></i>
-                                    <span class="nav-link-text">Usuario</span>
+                                    <span class="nav-link-text">Usuarios</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo DIRECTORIO_RAIZ . RUTA_CRUD . 'tablaAuditoria.php' ?>">
                                     <i class="ni ni-settings-gear-65 text-primary"></i>
-                                    <span class="nav-link-text">Auditoria</span>
+                                    <span class="nav-link-text">Auditoría</span>
                                 </a>
                             </li>
                         </ul>

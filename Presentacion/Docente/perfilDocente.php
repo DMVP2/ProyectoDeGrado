@@ -188,7 +188,7 @@ $docente = $manejoDocente->buscarDocente($usuario->getCodigo());
                                             <i class="ni business_briefcase-24 mr-2"></i><?php echo $docente->getCorreoElectronico() ?>
                                         </div>
                                         <div class="h5 mt-4">
-                                            <p style="color:green;">En linea</p>
+                                            <p style="color:green;">En línea</p>
                                         </div>
                                     </div>
                                 </div>
