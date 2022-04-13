@@ -31,9 +31,9 @@ class ConexionSQL
     public function conectarBD()
     {
         $server = "localhost";
-        $user = "postgres";
-        $pass = "1234";
-        $bd = "RetoñosApp";
+        $user = "retonosa_admin";
+        $pass = "123A456S789D0";
+        $bd = "retonosa_retonosapp";
         $port = "5432";
 
         $argumentosConexion = "host=$server port=$port dbname=$bd user=$user password=$pass";
