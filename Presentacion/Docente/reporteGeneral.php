@@ -32,7 +32,12 @@ class PDF extends FPDF
     }
 }
 
-    $resultadoPython = utf8_encode(shell_exec('py ../../..' . DIRECTORIO_RAIZ . SISTEMA_RECOMENDACION . 'RecomendacionLogs.py'));
+
+    $file = '../../..' . DIRECTORIO_RAIZ . SISTEMA_RECOMENDACION . 'RecomendacionesLogs.txt';
+    $openfile = fopen($file, "r");
+    $cont = fread($openfile, filesize($file));
+    $resultadoPython = $cont;
+
     $arreglos = explode("\n", $resultadoPython);
 
     $pdf = new PDF('P','mm','Legal');
@@ -110,5 +115,3 @@ class PDF extends FPDF
 
     ob_end_clean();
     $pdf->Output();
-
-?>

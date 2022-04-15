@@ -2,7 +2,6 @@ import SistemaRecomendador as sr
 from collections import Counter
 import pandas as pd
 import numpy as np
-from matplotlib import pyplot as plt
 
 def obtenerTematicas():
     diccionarioTematicas = pd.read_csv('D:\Archivos de programa\Xampp\htdocs\ProyectoDeGradoRepositorio\SistemaRecomendador\Intents-Temas.csv', sep=";", encoding ='latin1')
@@ -68,5 +67,9 @@ df = sr.preprocesamientoDatos(df)
 df = sr.bolsaPalabras(df)
 similaridad = sr.matrizSimilaridad(df)
 
+archivo = open('D:/Archivos de programa/Xampp/htdocs/ProyectoDeGradoRepositorio/SistemaRecomendador/RecomendacionesLogs.txt','w')
+archivo.write('')
+archivo.close()
+
 for intent in tematicas:
-    print(sr.recomendar(intent, similaridad, df))
+    sr.recomendarLogs(intent, similaridad, df)

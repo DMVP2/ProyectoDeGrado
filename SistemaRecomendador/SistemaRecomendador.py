@@ -1,3 +1,4 @@
+import os
 from rake_nltk import Rake
 import nltk
 nltk.download('stopwords')
@@ -92,7 +93,7 @@ def matrizSimilaridad(pDataframe):
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
     return cosine_sim
 
-def recomendar(pTema, pCosine_sim, pDataframe):
+def recomendarLogs(pTema, pCosine_sim, pDataframe):
     tema = pTema
     cosine_sim = pCosine_sim
     df = pDataframe
@@ -104,8 +105,10 @@ def recomendar(pTema, pCosine_sim, pDataframe):
 
     for i in top_indices:
         recomendaciones.append(list(df['Tema'])[i])
-        
-    return recomendaciones
+
+    file = open('D:/Archivos de programa/Xampp/htdocs/ProyectoDeGradoRepositorio/SistemaRecomendador/RecomendacionesLogs.txt', 'a')
+    file.write(str(recomendaciones) + '\n')
+    file.close()
 
 df = lecturaArchivoCSV('D:\Archivos de programa\Xampp\htdocs\ProyectoDeGradoRepositorio\SistemaRecomendador\Dataset-RecommenderSystem.csv')
 df = preprocesamientoDatos(df)
