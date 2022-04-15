@@ -43,7 +43,7 @@ class PDF extends FPDF
         // Movernos a la derecha
         $this->Cell(60);
         // Título
-        $this->Cell(215, 65, $resultadoPython, 0, 0, 'C');
+        $this->Cell(215, 65, "", 0, 0, 'C');
         // Salto de línea
         $this->Ln(42);
     }
@@ -116,32 +116,51 @@ if ($progreso != null) {
     }
 }
 
-$resultadoPython = utf8_encode(shell_exec('py ../../..' . DIRECTORIO_RAIZ . SISTEMA_RECOMENDACION . 'RecomendacionCuestionario.py "' . $sesionClase->getNombre()) . '"');
+$file = '../../..' . DIRECTORIO_RAIZ . SISTEMA_RECOMENDACION . 'RecomendacionesCuestionario.txt';
+$openfile = fopen($file, "r");
+$contenido = fread($openfile, filesize($file));
+$resultadoPython = $contenido;
+
+$arreglos = explode("\n", $resultadoPython);
+
+$sesionClaseActualNombre = "";
+$sesionClaseActualTematicas = "";
+
+foreach($arreglos as $sesionPotencial) 
+{
+
+    $sesionesDisponibles = explode(":", $sesionPotencial);
+
+    if(strcasecmp($sesionesDisponibles[0], $sesionClase->getNombre()) == 0)
+    {
+        $sesionClaseActualNombre = $sesionesDisponibles[0];
+        $sesionClaseActualTematicas = $sesionesDisponibles[1];
+    }
+}
 
 if ($resultado == "Correcto") {
-    $arreglos = explode("\n", $resultadoPython);
 
-    $pdf = new PDF('P', 'mm', 'Legal');
+    $arreglo = substr($sesionClaseActualTematicas, 0, -3);
+    $arreglo = substr($arreglo, 1);
+
+    $tematicas = explode(",", $arreglo);
+
+    $pdf = new PDF('P','mm','Legal');
     $pdf->AliasNbPages();
     $pdf->AddPage();
-    $pdf->SetFont('Arial', 'B', 8);
-
-    $arreglo1 = substr($arreglos[0], 0, -1);
-    $arreglo1 = substr($arreglo1, 1);
-
-    $tematicas = explode(",", $arreglo1);
+    $pdf->SetFont('Arial','B',8);
 
     $pdf->MultiCell(195, 5, utf8_decode($mensaje), 0, 'J');
 
     $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
     $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
 
-    $pdf->MultiCell(195, 5, utf8_decode("Aunque el cuestionario de la temática: " . utf8_decode($tematicas[0]) . " se respondió correctamente, para reforzar, profundizar y a modo de repaso, se recomienda seguir trabajando en la temática " . utf8_decode($tematicas[0]) . " al igual que en las siguiente subtemáticas:"), 0, 'J');
+    $pdf->MultiCell(195, 5, utf8_decode("Aunque el cuestionario de la sesión de clase: '" . utf8_decode($sesionClaseActualNombre) . "' se respondió correctamente, para reforzar, profundizar y a modo de repaso, se recomienda seguir trabajando en la temática " . utf8_decode($tematicas[0]) . " al igual que en las siguiente subtemáticas:"), 0, 'J');
 
     $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
     $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
 
-    $pdf->MultiCell(195, 5, utf8_decode("Temática: ") . utf8_decode($tematicas[0]), 0, 'J');
+    $pdf->MultiCell(195, 5, utf8_decode("Temática: ") . utf8_decode($sesionClaseActualNombre), 0, 'J');
 
     $i = 1;
 
@@ -154,17 +173,16 @@ if ($resultado == "Correcto") {
         $i++;
     }
 } else if ($resultado == "Erroneo") {
-    $arreglos = explode("\n", $resultadoPython);
 
-    $pdf = new PDF('P', 'mm', 'Legal');
+    $arreglo = substr($sesionClaseActualTematicas, 0, -3);
+    $arreglo = substr($arreglo, 1);
+
+    $tematicas = explode(",", $arreglo);
+
+    $pdf = new PDF('P','mm','Legal');
     $pdf->AliasNbPages();
     $pdf->AddPage();
-    $pdf->SetFont('Arial', 'B', 8);
-
-    $arreglo1 = substr($arreglos[0], 0, -1);
-    $arreglo1 = substr($arreglo1, 1);
-
-    $tematicas = explode(",", $arreglo1);
+    $pdf->SetFont('Arial','B',8);
 
     $pdf->MultiCell(195, 5, utf8_decode($mensaje), 0, 'J');
 
@@ -172,11 +190,6 @@ if ($resultado == "Correcto") {
     $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
 
     $pdf->MultiCell(195, 5, utf8_decode("Se tiene dificultad en las siguiente temática: " . utf8_decode($tematicas[0]) . " por lo cual, aparte de la tematica en sí, se recomienda reforzar tambien las siguientes subtemáticas:"), 0, 'J');
-
-    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
-    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
-
-    $pdf->MultiCell(195, 5, utf8_decode("Temática: ") . utf8_decode($tematicas[0]), 0, 'J');
 
     $i = 1;
 

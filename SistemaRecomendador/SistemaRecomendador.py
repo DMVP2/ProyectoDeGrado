@@ -110,6 +110,25 @@ def recomendarLogs(pTema, pCosine_sim, pDataframe):
     file.write(str(recomendaciones) + '\n')
     file.close()
 
+def recomendarCuestionario(pTema, pCosine_sim, pDataframe, pNombreClase):
+    tema = pTema
+    cosine_sim = pCosine_sim
+    df = pDataframe
+    indices = pd.Series(df['Tema'])
+    recomendaciones = []
+    idx = indices[indices == tema].index[0]
+    score_series = pd.Series(cosine_sim[idx]).sort_values(ascending = False)
+    top_indices = list(score_series.iloc[0:6].index)
+
+    file = open('D:/Archivos de programa/Xampp/htdocs/ProyectoDeGradoRepositorio/SistemaRecomendador/RecomendacionesCuestionario.txt', 'a')
+   
+    for i in top_indices:
+        recomendaciones.append(str(list(df['Tema'])[i]))
+
+    file.write(pNombreClase + ':' + str(recomendaciones) + '\n')
+    file.close()
+
+
 df = lecturaArchivoCSV('D:\Archivos de programa\Xampp\htdocs\ProyectoDeGradoRepositorio\SistemaRecomendador\Dataset-RecommenderSystem.csv')
 df = preprocesamientoDatos(df)
 df = bolsaPalabras(df)
