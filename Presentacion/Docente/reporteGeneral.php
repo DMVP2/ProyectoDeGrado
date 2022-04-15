@@ -32,7 +32,6 @@ class PDF extends FPDF
     }
 }
 
-
     $file = '../../..' . DIRECTORIO_RAIZ . SISTEMA_RECOMENDACION . 'RecomendacionesLogs.txt';
     $openfile = fopen($file, "r");
     $cont = fread($openfile, filesize($file));
@@ -45,45 +44,31 @@ class PDF extends FPDF
     $pdf->AddPage();
     $pdf->SetFont('Arial','B',8);
 
-    $arreglo1 = substr($arreglos[0], 0, -1);
+    $arreglo1 = substr($arreglos[0], 0, -3);
     $arreglo1 = substr($arreglo1, 1);
 
-    $tematicas = explode(",", $arreglo1);
-
-    $pdf->MultiCell(195, 5, utf8_decode("A nivel general se tienen dificultades en las siguientes temáticas: " . utf8_decode($tematicas[0]) . ", " . utf8_decode($tematicas[1]) . ", " . utf8_decode($tematicas[2]) . " para lo cual, aparte de la tematica en sí, se recomienda reforzar tambien las siguientes subtemáticas:" ), 0, 'J');
-
-    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
-    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
-
-    $pdf->MultiCell(195, 5, utf8_decode("Temática 1: ") . utf8_decode($tematicas[0]), 0, 'J');
-
-    $i = 1;
-
-    while($i < 6)
-    {
-        $tematica = ltrim($tematicas[$i], "'");
-        $tematica = rtrim($tematica, "'");
-
-        $pdf->Cell(195, 5, $i . ". " . utf8_decode($tematica), 0, 1, 'L', 0);
-        
-        $i++;
-    }
-
-    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
-    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
-
-    $arreglo2 = substr($arreglos[1], 0, -1);
+    $arreglo2 = substr($arreglos[1], 0, -3);
     $arreglo2 = substr($arreglo2, 1);
 
-    $tematicas = explode(",", $arreglo2);
+    $arreglo3 = substr($arreglos[2], 0, -3);
+    $arreglo3 = substr($arreglo3, 1);
 
-    $pdf->MultiCell(195, 5, utf8_decode("Temática 2: ") . utf8_decode($tematicas[1]), 0, 'J');
+    $tematicas1 = explode(",", $arreglo1);
+    $tematicas2 = explode(",", $arreglo2);
+    $tematicas3 = explode(",", $arreglo3);
+
+    $pdf->MultiCell(195, 5, utf8_decode("A nivel general se tienen dificultades en las siguientes temáticas: " . utf8_decode($tematicas1[0]) . ", " . utf8_decode($tematicas2[0]) . ", " . utf8_decode($tematicas3[0]) . " para lo cual, aparte de la tematica en sí, se recomienda reforzar tambien las siguientes subtemáticas:" ), 0, 'J');
+
+    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
+    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
+
+    $pdf->MultiCell(195, 5, utf8_decode("Temática 1: ") . utf8_decode($tematicas1[0]), 0, 'J');
 
     $i = 1;
 
     while($i < 6)
     {
-        $tematica = ltrim($tematicas[$i], "'");
+        $tematica = ltrim($tematicas1[$i], "'");
         $tematica = rtrim($tematica, "'");
 
         $pdf->Cell(195, 5, $i . ". " . utf8_decode($tematica), 0, 1, 'L', 0);
@@ -94,18 +79,30 @@ class PDF extends FPDF
     $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
     $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
 
-    $arreglo3 = substr($arreglos[2], 0, -1);
-    $arreglo3 = substr($arreglo3, 1);
-
-    $tematicas = explode(",", $arreglo3);
-
-    $pdf->MultiCell(195, 5, utf8_decode("Temática 3: ") . utf8_decode($tematicas[2]), 0, 'J');
+    $pdf->MultiCell(195, 5, utf8_decode("Temática 2: ") . utf8_decode($tematicas2[0]), 0, 'J');
 
     $i = 1;
 
     while($i < 6)
     {
-        $tematica = ltrim($tematicas[$i], "'");
+        $tematica = ltrim($tematicas2[$i], "'");
+        $tematica = rtrim($tematica, "'");
+
+        $pdf->Cell(195, 5, $i . ". " . utf8_decode($tematica), 0, 1, 'L', 0);
+        
+        $i++;
+    }
+
+    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
+    $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
+
+    $pdf->MultiCell(195, 5, utf8_decode("Temática 3: ") . utf8_decode($tematicas3[0]), 0, 'J');
+
+    $i = 1;
+
+    while($i < 6)
+    {
+        $tematica = ltrim($tematicas3[$i], "'");
         $tematica = rtrim($tematica, "'");
 
         $pdf->Cell(195, 5, $i . ". " . utf8_decode($tematica), 0, 1, 'L', 0);
