@@ -1,3 +1,4 @@
 Diagrama de clases:['Diagrama de clases', 'Significado de las figuras', 'Cómo leer o entender un diagrama de clases', 'Figuras', 'Qué es un atributo', 'Qué es un objeto']
 Introduccion a los tipos de datos:['Tipos de datos', 'Constantes y variables', 'Qué es un atributo', 'Tipos de datos primitivos', 'Tamaño de los datos', 'Variable local']
 Construccion de los diagramas de clase:['Cómo leer o entender un diagrama de clases', 'Diagrama de clases', 'Significado de las figuras', 'Figuras', 'Qué y cuales son las asociaciones', 'Cómo estructurar un diagrama de clases']
+Introduccion a los patrones GRASP:['GRASP', 'Fabricación pura', 'Diagramas UML', 'Asignación de responsabilidades', 'Bajo acoplamiento', 'Debug']

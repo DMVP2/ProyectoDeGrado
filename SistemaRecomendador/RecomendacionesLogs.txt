@@ -1,0 +1,3 @@
+['Diagrama de clases', 'Significado de las figuras', 'Cómo leer o entender un diagrama de clases', 'Figuras', 'Qué es un atributo', 'Qué es un objeto']
+['Tipos de datos', 'Constantes y variables', 'Qué es un atributo', 'Tipos de datos primitivos', 'Tamaño de los datos', 'Variable local']
+['Cómo leer o entender un diagrama de clases', 'Diagrama de clases', 'Significado de las figuras', 'Figuras', 'Qué y cuales son las asociaciones', 'Cómo estructurar un diagrama de clases']
