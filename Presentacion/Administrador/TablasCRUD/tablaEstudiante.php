@@ -148,7 +148,6 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
                                         <th scope="col">Correo electrónico principal</th>
                                         <th scope="col">Correo electrónico secundario</th>
                                         <th scope="col">Semestre</th>
-                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -202,15 +201,6 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
                                             echo "<td>" . $estudiante->getCorreoElectronicoPrincipal() . "</td>";
                                             echo "<td>" . $estudiante->getCorreoElectronicoSecundario() . "</td>";
                                             echo "<td>" . $estudiante->getSemestre() . "</td>";
-                                            echo "<td class='text-right'>
-                                                <div class='dropdown'>
-                                                    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i></a>
-                                                    <div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
-                                                        <a class='dropdown-item' href='#'>Editar</a>
-                                                        <a class='dropdown-item' href='#'>Activar/Desactivar</a>
-                                                    </div>
-                                                </div>
-                                                </td>";
                                             echo "</tr>";
                                         }
                                         echo '<div class="card-footer py-4">';

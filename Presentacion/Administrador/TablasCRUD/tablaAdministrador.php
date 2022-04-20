@@ -146,7 +146,6 @@ $manejoAdministrador = new ManejoAdministrador($conexionActual);
                                         <th scope="col">Apellido</th>
                                         <th scope="col">Teléfono</th>
                                         <th scope="col">Correo electrónico</th>
-                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -193,14 +192,6 @@ $manejoAdministrador = new ManejoAdministrador($conexionActual);
                                             echo "<td>" . $administrador->getApellido() . "</td>";
                                             echo "<td>" . $administrador->getTelefono() . "</td>";
                                             echo "<td>" . $administrador->getCorreoElectronico() . "</td>";
-                                            echo "<td class='text-right'>
-                                                <div class='dropdown'>
-                                                    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i></a>
-                                                    <div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
-                                                        <a class='dropdown-item' href='" . DIRECTORIO_RAIZ . RUTA_FORMULARIOS . "editarAdministrador.php" . "?id=" . $administrador->getCodigo() . "'>Editar</a>
-                                                    </div>
-                                                </div>
-                                                </td>";
                                             echo "</tr>";
                                         }
                                         echo '<div class="card-footer py-4">';

@@ -39,7 +39,7 @@ $user = $_POST['user'];
 $usuarioConsultado = $manejoUsuario->buscarUsuarioPorNickname($user);
 $passwordIngresado = $_POST['password'];
 
-if (isset($usuarioConsultado) and strcasecmp($usuarioConsultado->getPassword(), sha1($passwordIngresado) == 0)) {
+if (isset($usuarioConsultado) and (strcasecmp($usuarioConsultado->getPassword(), sha1($passwordIngresado)) == 0)) {
     $sesionUsuario->setCurrentUser($usuarioConsultado);
 
     if (strcasecmp($usuarioConsultado->getStatus(), 'Inactivo') == 0) {
