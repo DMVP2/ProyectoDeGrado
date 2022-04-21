@@ -85,21 +85,27 @@ if ($progreso != null) {
     }
 
     $respuestaDada = 1;
+    $respuestaObtenida = "";
 
     if ($progreso->getOpcionA() == 1) {
         $respuestaDada = "A";
+        $respuestaObtenida = $cuestionario->getOpcionA();
     }
     if ($progreso->getOpcionB() == 1) {
         $respuestaDada = "B";
+        $respuestaObtenida = $cuestionario->getOpcionB();
     }
     if ($progreso->getOpcionC() == 1) {
         $respuestaDada = "C";
+        $respuestaObtenida = $cuestionario->getOpcionC();
     }
     if ($progreso->getOpcionD() == 1) {
         $respuestaDada = "D";
+        $respuestaObtenida = $cuestionario->getOpcionD();
     }
     if ($progreso->getOpcionE() == 1) {
         $respuestaDada = "E";
+        $respuestaObtenida = $cuestionario->getOpcionE();
     }
 
     $respuestaCorrecta = $cuestionario->getRespuestaCorrecta();
@@ -108,10 +114,10 @@ if ($progreso != null) {
     $resultado = "";
 
     if ($respuestaDada == $respuestaReal) {
-        $mensaje = "En el cuestionario que ha respondido, la respuesta correcta era " . $respuestaCorrecta . " y la respuesta que has dado fue " . $respuestaDada . " así que la solución es correcta.";
+        $mensaje = "En el cuestionario que ha respondido, la respuesta correcta era '" . $respuestaCorrecta . "' y la respuesta que has dado fue '" . $respuestaObtenida . "' así que la solución es correcta.";
         $resultado = "Correcto";
     } else {
-        $mensaje = "En el cuestionario que ha respondido, la respuesta correcta era " . $respuestaCorrecta . " y la respuesta que has dado fue " . $respuestaDada . " así que la solución es incorrecta.";
+        $mensaje = "En el cuestionario que ha respondido, la respuesta correcta era '" . $respuestaCorrecta . "' y la respuesta que has dado fue '" . $respuestaObtenida . "' así que la solución es incorrecta.";
         $resultado = "Erroneo";
     }
 }

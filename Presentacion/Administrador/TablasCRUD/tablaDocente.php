@@ -145,7 +145,6 @@ $manejoDocente = new ManejoDocente($conexionActual);
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Apellido</th>
                                         <th scope="col">Correo electrónico</th>
-                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -191,15 +190,6 @@ $manejoDocente = new ManejoDocente($conexionActual);
                                             echo "<td>" . $docente->getNombre() . "</td>";
                                             echo "<td>" . $docente->getApellido() . "</td>";
                                             echo "<td>" . $docente->getCorreoElectronico() . "</td>";
-                                            echo "<td class='text-right'>
-                                                <div class='dropdown'>
-                                                    <a class='btn btn-sm btn-icon-only text-light' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-ellipsis-v'></i></a>
-                                                    <div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow'>
-                                                        <a class='dropdown-item' href='" . DIRECTORIO_RAIZ . RUTA_FORMULARIOS . "editarDocente.php" . "?id=" . $docente->getCodigo() . "'>Editar</a>
-                                                        <a class='dropdown-item' href='" . DIRECTORIO_RAIZ . RUTA_UTILIDADES . "StatusDocente.php" . "?id=" . $docente->getCodigo() . "'>Activar/Desactivar</a>
-                                                    </div>
-                                                </div>
-                                                </td>";
                                             echo "</tr>";
                                         }
                                         echo '<div class="card-footer py-4">';

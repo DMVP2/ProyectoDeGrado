@@ -57,7 +57,7 @@ class PDF extends FPDF
     $tematicas2 = explode(",", $arreglo2);
     $tematicas3 = explode(",", $arreglo3);
 
-    $pdf->MultiCell(195, 5, utf8_decode("A nivel general se tienen dificultades en las siguientes temáticas: " . utf8_decode($tematicas1[0]) . ", " . utf8_decode($tematicas2[0]) . ", " . utf8_decode($tematicas3[0]) . " para lo cual, aparte de la tematica en sí, se recomienda reforzar tambien las siguientes subtemáticas:" ), 0, 'J');
+    $pdf->MultiCell(195, 5, utf8_decode("A nivel general se tienen dificultades en las siguientes temáticas: '" . utf8_decode($tematicas1[0]) . "', '" . utf8_decode($tematicas2[0]) . "', '" . utf8_decode($tematicas3[0]) . "' para lo cual, aparte de la tematica en sí, se recomienda reforzar tambien las siguientes subtemáticas:" ), 0, 'J');
 
     $pdf->Cell(195, 5, "", 0, 1, 'L', 0);
     $pdf->Cell(195, 5, "", 0, 1, 'L', 0);

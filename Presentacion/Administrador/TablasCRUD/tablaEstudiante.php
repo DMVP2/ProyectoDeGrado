@@ -144,7 +144,6 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
                                         <th scope="col">No°</th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Apellido</th>
-                                        <th scope="col">Edad</th>
                                         <th scope="col">Correo electrónico principal</th>
                                         <th scope="col">Correo electrónico secundario</th>
                                         <th scope="col">Semestre</th>
@@ -158,7 +157,7 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
 
                                     $inicio = 0;
 
-                                    $numeroDeItemsPorPagina = 5;
+                                    $numeroDeItemsPorPagina = 20;
 
                                     $i;
 
@@ -192,12 +191,6 @@ $manejoEstudiante = new ManejoEstudiante($conexionActual);
                                             echo "<td>" . $numero . "</td>";
                                             echo "<td>" . $estudiante->getNombre() . "</td>";
                                             echo "<td>" . $estudiante->getApellido() . "</td>";
-
-                                            $fechaNacimiento = new DateTime($estudiante->getEdad());
-                                            $diaActual = new DateTime();
-                                            $edad = $diaActual->diff($fechaNacimiento);
-
-                                            echo "<td>" . $edad->format('%y') . "</td>";
                                             echo "<td>" . $estudiante->getCorreoElectronicoPrincipal() . "</td>";
                                             echo "<td>" . $estudiante->getCorreoElectronicoSecundario() . "</td>";
                                             echo "<td>" . $estudiante->getSemestre() . "</td>";
