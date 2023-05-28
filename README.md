@@ -1,3 +1,5 @@
+V 1.0.
+
 Proyecto de grado: RetoñosApp: Una plataforma de enseñanza virtual para apoyar la enseñanza de la programación en el aula.
 Institución: Universidad El Bosque.
 Facultad: Facultad de Ingeniería.
